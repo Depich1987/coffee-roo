@@ -18,60 +18,45 @@
     <spring:url value="/administration/auditlogs/settings/list?size=10" var="auditlogs_settingslist_url" />
     <spring:url value="/administration/auditlogs/analysis/list?size=10" var="auditlogs_analysislist_url" />
     <spring:url value="/administration/auditlogs/submissions/list?size=10" var="auditlogs_submissionslist_url" />
-    
-    <div class="navbar-default navbar-static-side" role="navigation">
-        <div class="sidebar-collapse">
-            <ul class="nav" id="side-menu">
-               <li>
-	              <a href="${generalsettings_details_url}">
-	              	<spring:message code="administration_baseinformations"/>
-	               	<span class="fa fa-dashboard fa-fw"></span> 
-	              </a>
-	          </li>
-              <li>
-	              <a href="${localizationslist_url}">
-	              	<spring:message code="menu_item_jlocalization_list_label"/>
-	               	<span class="fa fa-road fa-fw"></span> 
-	              </a>
-	          </li>
-              <li>
-	              <a href="${tourslist_url}">
-	              	<spring:message code="menu_item_jtour_list_label"/>
-	               	<span class="fa fa-folder fa-fw"></span> 
-	              </a>
-	          </li>
-              <li>
-	              <a href="${factorylist_url}">
-	              	<spring:message code="menu_item_jfactory_list_label"/>
-	               	<span class="fa fa-sitemap fa-fw"></span> 
-	              </a>
-	          </li>
-              <li>
-	              <a href="${dealerslist_url}">
-	              	<spring:message code="menu_item_jdealer_list_label"/>
-	               	<span class="fa fa-flag fa-fw"></span> 
-	              </a>
-	          </li>
-              <li>
-	              <a href="${exporterslist_url}">
-	              	<spring:message code="menu_item_jexporter_list_label"/>
-	               	<span class="fa fa-building fa-fw"></span> 
-	              </a>
-	          </li>
-              <li>
-	              <a href="${supplierslist_url}">
-	              	<spring:message code="menu_item_jsupplier_list_label"/>
-	               	<span class="fa fa-magic fa-fw"></span> 
-	              </a>
-	          </li>
-              <li>
-	              <a href="${userslist_url}">
-	              	<spring:message code="menu_item_juser_list_label"/>
-	               	<span class="fa fa-user fa-fw"></span> 
-	              </a>
-	          </li>
-            </ul>
-        </div>
-    </div>
 
+	<spring:url value="/resources/images/logo-kms.png" var="img_url"/>
+	<p>
+		<a href="#">
+		<img src="${img_url}" height="75" style="height:75"/>
+		</a>
+	</p>
+    <div class="list-group">
+      <a href="${generalsettings_details_url}" class="list-group-item"  id="basesettings_activeNav">
+       	<spring:message code="administration_baseinformations"/>
+       	<span class="glyphicon glyphicon-wrench pull-right"></span>
+       </a>
+      <a href="${localizationslist_url}" class="list-group-item"  id="localizations_activeNav">
+       	<spring:message code="menu_item_jlocalization_list_label"/>
+       	<span class="glyphicon glyphicon-road pull-right"></span>
+       </a>
+      <a href="${tourslist_url}" class="list-group-item"  id="tours_activeNav">
+       	<spring:message code="menu_item_jtour_list_label"/>
+       	<span class="glyphicon glyphicon-folder-open pull-right"></span>
+       </a>
+       <a href="${factorylist_url}" class="list-group-item"  id="factories_activeNav">
+       	<spring:message code="menu_item_jfactory_list_label"/>
+       	<span class="glyphicon glyphicon-star pull-right"></span>
+       </a>
+       <a href="${dealerslist_url}" class="list-group-item"  id="dealers_activeNav">
+       	<spring:message code="menu_item_jdealer_list_label"/>
+       	<span class="glyphicon glyphicon-home pull-right"></span>
+       </a>
+       <a href="${exporterslist_url}" class="list-group-item"  id="exporters_activeNav">
+       	<spring:message code="menu_item_jexporter_list_label"/>
+        <span class="glyphicon glyphicon-export pull-right"></span>
+       </a>
+       <a href="${supplierslist_url}" class="list-group-item"  id="suppliers_activeNav">
+       	<spring:message code="menu_item_jsupplier_list_label"/>
+       	<span class="glyphicon glyphicon-import pull-right"></span>
+       </a>
+       <a href="${userslist_url}" class="list-group-item"  id="users_activeNav">
+       	<spring:message code="menu_item_juser_list_label"/>
+       	<span class="glyphicon glyphicon-user pull-right"></span>
+       </a>
+    </div>
 </div>

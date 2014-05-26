@@ -25,9 +25,11 @@
     	<spring:url value="${path}/create?form" var="create_form_url" />
     	<a href="${create_form_url}" class="btn btn-primary">
     		<spring:message code="entity_create" arguments="${label}" />
+    		<![CDATA[&nbsp;&nbsp;]]>
+    		<span class="glyphicon glyphicon-plus-sign"></span>    	
     	</a>
     </p>
-	<div class="panel panel-default">
+	<div class="panel panel-primary">
 	    <div class="panel-heading">
 	        ${title_msg}
 	    </div>

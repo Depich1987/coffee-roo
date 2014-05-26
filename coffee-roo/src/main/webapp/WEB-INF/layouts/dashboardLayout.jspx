@@ -14,6 +14,12 @@
 		<spring:url value="/resources/sb-admin-v2/js/jquery.validate.js" var="jquery_validate_url"/>
 		<script src="${jquery_validate_url}"><!-- jquery validate js script--></script>
 		
+		<spring:url value="/resources/sb-admin-v2/datepicker/css/datepicker.css" var="bootstrap_datepicker_url"/>
+		<link href="${bootstrap_datepicker_url}" rel="stylesheet"/>
+
+		<spring:url value="/resources/sb-admin-v2/datepicker/js/bootstrap-datepicker.js" var="bootstrap_datepicker_js_url"/>
+		<script src="${bootstrap_datepicker_js_url}"><!-- bootstrap datepicker js script--></script>
+		
 		<spring:message code="application_name" var="app_name" htmlEscape="false"/>
 		<title>
 			<spring:message code="welcome_h3" arguments="${app_name}" />

@@ -23,13 +23,16 @@ public class JUtils {
 	public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy");
 	public static final SimpleDateFormat DATE_TIME_FORMAT = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	
+	public static final SimpleDateFormat TIME_FORMAT = new SimpleDateFormat("HH:mm");
+
+	
 	public static final String DB_ROLE_ADMIN = "ROLE_ADMIN";
 	public static final String DB_ROLE_FACTORY_MANAGER = "ROLE_FACTORY_MANAGER";
 	public static final String DB_ROLE_FACTORY_AGENT = "ROLE_FACTORY_AGENT";
 
-	private static final String DB_UI_ROLE_ADMIN = "ADMINISTRATEUR";
-	private static final String DB_UI_ROLE_FACTORY_MANAGER = "CHEF USINE";
-	private static final String DB_UI_ROLE_FACTORY_AGENT = "AGENT";
+	public static final String DB_UI_ROLE_ADMIN = "ADMINISTRATEUR";
+	public static final String DB_UI_ROLE_FACTORY_MANAGER = "CHEF USINE";
+	public static final String DB_UI_ROLE_FACTORY_AGENT = "AGENT";
 	
 	public static final String HTTP_SESSION_FACTORY_CODE = "userFactoryCode";
 	public static final String HTTP_SESSION_FACTORY_NAME = "userFactoryName";

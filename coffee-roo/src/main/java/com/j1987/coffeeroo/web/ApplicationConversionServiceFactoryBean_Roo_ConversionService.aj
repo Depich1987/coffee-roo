@@ -26,7 +26,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<JCoffeeAnalysis, String> ApplicationConversionServiceFactoryBean.getJCoffeeAnalysisToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.j1987.coffeeroo.domain.JCoffeeAnalysis, java.lang.String>() {
             public String convert(JCoffeeAnalysis jCoffeeAnalysis) {
-                return new StringBuilder().append(jCoffeeAnalysis.getDateOfAnalysis()).append(' ').append(jCoffeeAnalysis.getNumberLading()).append(' ').append(jCoffeeAnalysis.getTruckNumber()).append(' ').append(jCoffeeAnalysis.getNetWeightOfProductAccepted()).toString();
+                return new StringBuilder().append(jCoffeeAnalysis.getReference()).append(' ').append(jCoffeeAnalysis.getDateOfAnalysis()).append(' ').append(jCoffeeAnalysis.getNumberLading()).append(' ').append(jCoffeeAnalysis.getTruckNumber()).toString();
             }
         };
     }

@@ -16,6 +16,20 @@
     <put-attribute name="footer" value="/WEB-INF/views/footer.jspx" />
   </definition>
   
+   <definition name="administrationLayout" template="/WEB-INF/layouts/backofficeLayout.jspx">
+    <put-attribute name="header" value="/WEB-INF/views/coffee-roo/administration/header.jspx" />
+    <put-attribute name="menu" value="/WEB-INF/views/coffee-roo/administration/menu.jspx" />
+    <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/index.jspx" />
+    <put-attribute name="footer" value="/WEB-INF/views/coffee-roo/footer.jspx" />
+  </definition>
+  
+  <definition name="workbenchLayout" template="/WEB-INF/layouts/frontofficeLayout.jspx">
+    <put-attribute name="header" value="/WEB-INF/views/coffee-roo/workbench/header.jspx" />
+    <put-attribute name="menu" value="/WEB-INF/views/coffee-roo/workbench/menu.jspx" />
+    <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/index.jspx" />
+    <put-attribute name="footer" value="/WEB-INF/views/coffee-roo/footer.jspx" />
+  </definition>
+  
   <definition name="simpleLayout" template="/WEB-INF/layouts/dashboardLayout.jspx">
     <put-attribute name="header" value="/WEB-INF/views/coffee-roo/header.jspx" />
     <put-attribute name="menu" value="/WEB-INF/views/coffee-roo/menu.jspx" />

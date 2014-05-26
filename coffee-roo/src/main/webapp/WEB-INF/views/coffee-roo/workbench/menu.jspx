@@ -1,52 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
+<div xmlns:jsp="http://java.sun.com/JSP/Page" 
+	xmlns:spring="http://www.springframework.org/tags" version="2.0">
+	
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
-        <menu:category id="c_jcompany" z="3XncU6NyTl9qOpzMP60UZa+Ihjg=">
-            <menu:item id="i_jcompany_new" messageCode="global_menu_new" url="/jcompanys?form" z="2jwrcIbBDQCCryVvzjkNhr4cI7U="/>
-            <menu:item id="i_jcompany_list" messageCode="global_menu_list" url="/jcompanys?page=1&amp;size=${empty param.size ? 10 : param.size}" z="/ryd+UDXYsWXxKRHFCk+Rb9jGNc="/>
-        </menu:category>
-        <menu:category id="c_jexporter" z="/th8vBHTxlByehWcZ1Cvmk3/crA=">
-            <menu:item id="i_jexporter_new" messageCode="global_menu_new" url="/jexporters?form" z="/l6cJl5D8WQr97l07YsB9Ig0LUQ="/>
-            <menu:item id="i_jexporter_list" messageCode="global_menu_list" url="/jexporters?page=1&amp;size=${empty param.size ? 10 : param.size}" z="c+GgOSx+IKgmYb7IA5e16NSVsKE="/>
-        </menu:category>
-        <menu:category id="c_jfactory" z="CFd7hVL3jtbjl6ju6J1fBk9e0OY=">
-            <menu:item id="i_jfactory_new" messageCode="global_menu_new" url="/jfactorys?form" z="a2r7YEeml7FmFcgIvyMjIMB/z6E="/>
-            <menu:item id="i_jfactory_list" messageCode="global_menu_list" url="/jfactorys?page=1&amp;size=${empty param.size ? 10 : param.size}" z="URRd7avga+fZz851pWuxat1xgCg="/>
-        </menu:category>
-        <menu:category id="c_jtour" z="lP50Dac9MtOWtGuQavnzafFY5Yc=">
-            <menu:item id="i_jtour_new" messageCode="global_menu_new" url="/jtours?form" z="WCpp6LFkflP2jcJ8Oo4mxbp4oQc="/>
-            <menu:item id="i_jtour_list" messageCode="global_menu_list" url="/jtours?page=1&amp;size=${empty param.size ? 10 : param.size}" z="BPVo1Mm4TbkfBh9fw40Ow1A3WEQ="/>
-        </menu:category>
-        <menu:category id="c_jsupplier" z="kDjdFKKgPnSJpcfzz18EwWoHCKE=">
-            <menu:item id="i_jsupplier_new" messageCode="global_menu_new" url="/jsuppliers?form" z="MHyayzvcqjLBCTRsxJHaQbe4vIg="/>
-            <menu:item id="i_jsupplier_list" messageCode="global_menu_list" url="/jsuppliers?page=1&amp;size=${empty param.size ? 10 : param.size}" z="Zb0S4Y1g3V18jNjFP144GtTNAyw="/>
-        </menu:category>
-        <menu:category id="c_jdealer" z="+OAq8XgeGAYRnMuMYBjTkWAKc48=">
-            <menu:item id="i_jdealer_new" messageCode="global_menu_new" url="/jdealers?form" z="92+JT7hoRf6g6A+y2G3QIo3t+PE="/>
-            <menu:item id="i_jdealer_list" messageCode="global_menu_list" url="/jdealers?page=1&amp;size=${empty param.size ? 10 : param.size}" z="/QbZm08jsVI8SZ87IuybmMHAElw="/>
-        </menu:category>
-        <menu:category id="c_jcoffeeanalysis" z="taiUJ/IKeKLBMwFBn/uEs6Wr6sE=">
-            <menu:item id="i_jcoffeeanalysis_new" messageCode="global_menu_new" url="/jcoffeeanalyses?form" z="6rE+lNdoruXUhEhw3MnlKl0f1B4="/>
-            <menu:item id="i_jcoffeeanalysis_list" messageCode="global_menu_list" url="/jcoffeeanalyses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="jz1EBHytR1y/Qv3CMLGPZz55eOQ="/>
-        </menu:category>
-        <menu:category id="c_jrole" z="1LXypr9uA2Y0sUZ6naaQz6QkDNQ=">
-            <menu:item id="i_jrole_new" messageCode="global_menu_new" url="/jroles?form" z="Ua9OLd+dWN1dhTIgVpg9xBdaAm8="/>
-            <menu:item id="i_jrole_list" messageCode="global_menu_list" url="/jroles?page=1&amp;size=${empty param.size ? 10 : param.size}" z="kPCkucx1ezIslNaWUj6yAeo+yTo="/>
-        </menu:category>
-        <menu:category id="c_juser" z="zPfbJxGDYoTggFCqSI5PcP28wvw=">
-            <menu:item id="i_juser_new" messageCode="global_menu_new" url="/jusers?form" z="HF6035uEZl4582/802l4lQHDIdk="/>
-            <menu:item id="i_juser_list" messageCode="global_menu_list" url="/jusers?page=1&amp;size=${empty param.size ? 10 : param.size}" z="j5DCIt2x7hIKeg1q7+l+fzKNWo4="/>
-            <menu:item id="i_juser_userreportlist_report" messageCode="menu_juser_userreportlist_report" url="/jusers/reports/userreportlist?form" z="cLpzy5vJaR9WDFuaVsvyBvdNBWs="/>
-        </menu:category>
-        <menu:category id="c_jlocalization" z="8y/FWR8iiEOrCRhtSlUgOpCt1e0=">
-            <menu:item id="i_jlocalization_new" messageCode="global_menu_new" url="/jlocalizations?form" z="Q4NQJaAkw3w5SyEyQB3s3y6s5mM="/>
-            <menu:item id="i_jlocalization_list" messageCode="global_menu_list" url="/jlocalizations?page=1&amp;size=${empty param.size ? 10 : param.size}" z="4JJkvw4DWmhIGlZdS6DDARyiTYk="/>
-        </menu:category>
-        <menu:category id="c_jsubmissionforapproval" z="QDdSfGRwSfGfAW7bbq662h3p7Ag=">
-            <menu:item id="i_jsubmissionforapproval_new" messageCode="global_menu_new" url="/jsubmissionforapprovals?form" z="UROUoNuH8eJtifrnX6Fq5Iaak7k="/>
-            <menu:item id="i_jsubmissionforapproval_list" messageCode="global_menu_list" url="/jsubmissionforapprovals?page=1&amp;size=${empty param.size ? 10 : param.size}" z="R4ccxiN07kpDkD0xzkwEb77hnXw="/>
-        </menu:category>
-    </menu:menu>
+    
+    <spring:url value="/workbench/analysis/coffeeanalysis/list?size=10" var="coffeeanalysis_url"/>
+    <spring:url value="/workbench/submissions/list?size=10" var="submissionslist_url"/>
+    <spring:url value="/workbench/reports/periodicalreport?form" var="periodicalreport_url"/>
+   	<spring:url value="/resources/images/logo-kms.png" var="img_url"/>
+	<p>
+		<a href="#">
+		<img src="${img_url}" height="75" style="height:75"/>
+		</a>
+	</p>
+     <div class="list-group">
+          <a href="${coffeeanalysis_url}" class="list-group-item">
+          	<spring:message code="menu_item_jcoffeeanalysis_list_label"/>
+          </a>
+          <a href="${periodicalreport_url}" class="list-group-item">
+          	<spring:message code="workbench_periodicalreport"/>
+          </a>
+          <a href="${submissionslist_url}" class="list-group-item">
+          	<spring:message code="menu_item_jsubmissionforapproval_list_label"/>
+          </a>
+    </div>
 </div>

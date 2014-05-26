@@ -30,6 +30,7 @@
         <menu:category id="c_jcoffeeanalysis" z="taiUJ/IKeKLBMwFBn/uEs6Wr6sE=">
             <menu:item id="i_jcoffeeanalysis_new" messageCode="global_menu_new" url="/jcoffeeanalyses?form" z="6rE+lNdoruXUhEhw3MnlKl0f1B4="/>
             <menu:item id="i_jcoffeeanalysis_list" messageCode="global_menu_list" url="/jcoffeeanalyses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="jz1EBHytR1y/Qv3CMLGPZz55eOQ="/>
+            <menu:item id="i_jcoffeeanalysis_analysiscoffeereport_report" messageCode="menu_jcoffeeanalysis_analysiscoffeereport_report" url="/jcoffeeanalyses/reports/analysiscoffeereport?form" z="WLTzfBaLpr1slzIGMmkfKzqqsKQ="/>
         </menu:category>
         <menu:category id="c_jrole" z="1LXypr9uA2Y0sUZ6naaQz6QkDNQ=">
             <menu:item id="i_jrole_new" messageCode="global_menu_new" url="/jroles?form" z="Ua9OLd+dWN1dhTIgVpg9xBdaAm8="/>

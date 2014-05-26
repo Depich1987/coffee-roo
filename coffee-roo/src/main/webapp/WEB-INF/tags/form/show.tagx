@@ -4,8 +4,12 @@
   <jsp:directive.attribute name="id" type="java.lang.String" required="true" rtexprvalue="true" description="The identifier for this tag (do not change!)" />
   <jsp:directive.attribute name="object" type="java.lang.Object" required="true" rtexprvalue="true" description="The form backing object" />
   <jsp:directive.attribute name="path" type="java.lang.String" required="true" rtexprvalue="true" description="Specify the URL path" />
+  <jsp:directive.attribute name="entityNameToBeAssign" type="java.lang.String" required="false" rtexprvalue="true" description="Specify the entity name to be assign" />
+  <jsp:directive.attribute name="fieldValue" type="java.lang.String" required="false" rtexprvalue="true" description="Specify the field value" />
   <jsp:directive.attribute name="list" type="java.lang.Boolean" required="false" rtexprvalue="true" description="Include 'list' link into table (default true)" />
   <jsp:directive.attribute name="create" type="java.lang.Boolean" required="false" rtexprvalue="true" description="Include 'create' link into table (default true)" />
+  <jsp:directive.attribute name="assignrole" type="java.lang.Boolean" required="false" rtexprvalue="true" description="Include 'assignrole' link into table (default false)" />
+   <jsp:directive.attribute name="assignfactory" type="java.lang.Boolean" required="false" rtexprvalue="true" description="Include 'assignfactory' link into table (default false)" />
   <jsp:directive.attribute name="update" type="java.lang.Boolean" required="false" rtexprvalue="true" description="Include 'update' link into table (default true)" />
   <jsp:directive.attribute name="delete" type="java.lang.Boolean" required="false" rtexprvalue="true" description="Include 'delete' link into table (default true)" />
   <jsp:directive.attribute name="label" type="java.lang.String" required="false" rtexprvalue="true" description="The label used for this object, will default to a message bundle if not supplied" />
@@ -27,6 +31,14 @@
 
     <c:if test="${empty create}">
       <c:set var="create" value="true" />
+    </c:if>
+    
+    <c:if test="${empty assignrole}">
+      <c:set var="assignrole" value="false" />
+    </c:if>
+    
+    <c:if test="${empty assignfactory}">
+      <c:set var="assignfactory" value="false" />
     </c:if>
 
     <c:if test="${empty update}">
@@ -57,6 +69,23 @@
 		    	</a>
 	    	</c:if>
     	</div>
+   		<div class="btn-group">
+	    	<c:if test="${assignrole}">
+	    		<spring:url value="${path}/assignrole/${fieldValue}?form" var="assignrole_url"/>
+		    	<a href="${assignrole_url}" class="btn btn-info">
+		    		<spring:message code="assign_label" arguments="${entityNameToBeAssign},${fieldValue}" />
+		    		<span class="glyphicon glyphicon-link"></span>
+		    	</a>
+	    	</c:if>
+	    	<c:if test="${assignfactory}">
+	    		<spring:url value="${path}/assignfactory/${fieldValue}?form" var="assignfactory_url"/>
+		    	<a href="${assignfactory_url}" class="btn btn-info">
+		    		<spring:message code="assign_label" arguments="${entityNameToBeAssign},${fieldValue}" />
+		    		<![CDATA[&nbsp;&nbsp;]]>
+		    		<span class="glyphicon glyphicon-link"></span>
+		    	</a>
+	    	</c:if>
+    	</div>
    		<div class="btn-group pull-right">
 	    	<c:if test="${create}">
                 <spring:url value="${path}/create" var="create_form_url">
@@ -74,7 +103,7 @@
 		    	<a href="${update_form_url}" class="btn btn-warning">
 		    		<spring:message arguments="${typeName}" code="entity_update" var="update_label" htmlEscape="false" />
 		    		${update_label}
-		    		<span class="fa fa-pencil-square fa-fw"></span>
+		    		<span class="glyphicon glyphicon-pencil"></span>
 		    	</a>
 	    	</c:if>
             <c:if test="${delete}">
@@ -97,7 +126,7 @@
     </c:choose>
     </p>
     <spring:message arguments="${label}" code="entity_show" var="title_msg" htmlEscape="false" />
-    <div class="panel panel-default">
+    <div class="panel panel-primary">
     	<div class="panel-heading">
     		${title_msg}
     	</div>

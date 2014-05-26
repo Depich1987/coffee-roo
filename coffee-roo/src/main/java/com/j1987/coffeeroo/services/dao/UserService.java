@@ -10,6 +10,8 @@ public interface UserService {
 	public List<JUser> findUserByUserNameEquals(String userName);
 
 	public long countUsers();
+	
+	public long countUsersWithoutFirstUser();
 
 	public List<JUser> findAllUsers();
 	

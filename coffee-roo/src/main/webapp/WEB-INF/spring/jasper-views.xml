@@ -17,4 +17,5 @@
     <!--  <value>DataForMySubReport</value> -->
   </util:list>
 <bean class="com.j1987.coffeeroo.web.servlet.view.jasperreports.CustomJasperReportsMultiFormatView" id="juser_userreportlist" p:reportDataKey="userreportlistList" p:subReportDataKeys-ref="subReportDataKeys" p:subReportUrls-ref="subReportUrls" p:url="/WEB-INF/reports/juser_userreportlist.jrxml"/>
+<bean class="com.j1987.coffeeroo.web.servlet.view.jasperreports.CustomJasperReportsMultiFormatView" id="jcoffeeanalysis_analysiscoffeereport" p:reportDataKey="analysiscoffeereportList" p:subReportDataKeys-ref="subReportDataKeys" p:subReportUrls-ref="subReportUrls" p:url="/WEB-INF/reports/jcoffeeanalysis_analysiscoffeereport.jrxml"/>
 </beans>

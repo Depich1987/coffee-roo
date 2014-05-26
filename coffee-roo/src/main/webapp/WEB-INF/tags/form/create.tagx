@@ -3,6 +3,7 @@
   
   <jsp:directive.attribute name="id" type="java.lang.String" required="true" rtexprvalue="true" description="The identifier for this tag (do not change!)"/>
   <jsp:directive.attribute name="modelAttribute" type="java.lang.String" required="true" rtexprvalue="true" description="The name of the model attribute for form binding"/>
+  <jsp:directive.attribute name="list" type="java.lang.String" required="false" rtexprvalue="true" description="Specify the relative URL list (wit leading /)" />
   <jsp:directive.attribute name="path" type="java.lang.String" required="true" rtexprvalue="true" description="Specify the relative URL path (wit leading /)" />
   <jsp:directive.attribute name="compositePkField" type="java.lang.String" required="false" rtexprvalue="true" description="The field name of the composite primary key (only used if a composite PK is present in the form backing object)" />
   <jsp:directive.attribute name="multipart" type="java.lang.Boolean" required="false" rtexprvalue="true" description="Indicate if this is a multipart form (default: false)" />
@@ -22,6 +23,9 @@
     <c:if test="${multipart}">
       <c:set var="enctype" value="multipart/form-data"/>
     </c:if>
+   	<c:if test="${empty list}">
+      <c:set var="list" value="true" />
+    </c:if>
     <spring:message arguments="${label}" code="entity_create" var="title_msg" htmlEscape="false" />
         <h1 class="page-header">
     	${labelPlural}
@@ -30,15 +34,17 @@
     	<div class="btn-toolbar" role="toolbar">
     		<div class="btn-group">
 		    	<c:if test="${list}">
-			    	<a href="${path}/list?size=10" class="btn btn-default">
-			    		<spring:message code="entity_list_all" arguments="${label}" />
-			    		<span class="fa fa-th-list fa-fw"></span>
+		    		<spring:url value="${path}/list?size=10" var="list_url"/>
+			    	<a href="${list_url}" class="btn btn-default">
+			    		<spring:message code="entity_list_all" arguments="${labelPlural}" />
+			    		<![CDATA[&nbsp;&nbsp;]]>
+			    		<span class="glyphicon glyphicon-tasks"></span>
 			    	</a>
 		    	</c:if>
 	    	</div>
     	</div>
     </p>
-    <div class="panel panel-default">
+    <div class="panel panel-primary">
     	<div class="panel-heading">
     		${title_msg}
     	</div>
@@ -50,17 +56,19 @@
 	      </c:if>
 	      <form:form action="${form_url}" method="POST" modelAttribute="${modelAttribute}" enctype="${enctype}" onsubmit="${jsCall}" role="form" cssClass="form-horizontal">
 	        <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>
-	        <div class="col-sm-6">
+	        
 	        	<jsp:doBody />
+	        	<hr />
    	            <div class="form-group">
-	   				<div class="col-sm-10">
+	   				<div class="col-sm-offset-4 col-sm-10">
    		          		<button id="proceed" type="submit" value="${fn:escapeXml(save_button)}" class="btn btn-success">
 		          			<spring:message code="button_save"/>
-		          			<span class="fa fa-save fa-fw"></span>
+		          			<![CDATA[&nbsp;&nbsp;]]>
+		          			<span class="glyphicon glyphicon-floppy-save"></span>
 		          		</button>
 			        </div>
 			     </div>
-	        </div>
+	        
 	      </form:form>
       </div>
       <div class="panel-footer">

@@ -1,27 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
-    <definition extends="dashboardLayout" name="administration/localization/list">
-	   	<put-attribute name="header" value="/WEB-INF/views/coffee-roo/administration/header.jspx"/>
-  		<put-attribute name="menu" value="/WEB-INF/views/coffee-roo/administration/menu.jspx"/>
+    <definition extends="administrationLayout" name="administration/localization/list">
         <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/localization/list.jspx"/>
     </definition>
 
-	<definition extends="dashboardLayout" name="administration/localization/show">
-	   	<put-attribute name="header" value="/WEB-INF/views/coffee-roo/administration/header.jspx"/>
-  		<put-attribute name="menu" value="/WEB-INF/views/coffee-roo/administration/menu.jspx"/>
+	<definition extends="administrationLayout" name="administration/localization/show">
         <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/localization/show.jspx"/>
     </definition>
 
-	<definition extends="dashboardLayout" name="administration/localization/create">
-		   	<put-attribute name="header" value="/WEB-INF/views/coffee-roo/administration/header.jspx"/>
-  		<put-attribute name="menu" value="/WEB-INF/views/coffee-roo/administration/menu.jspx"/>
+	<definition extends="administrationLayout" name="administration/localization/create">
         <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/localization/create.jspx"/>
     </definition>
 
-	<definition extends="dashboardLayout" name="administration/localization/update">
-	   	<put-attribute name="header" value="/WEB-INF/views/coffee-roo/administration/header.jspx"/>
-  		<put-attribute name="menu" value="/WEB-INF/views/coffee-roo/administration/menu.jspx"/>
+	<definition extends="administrationLayout" name="administration/localization/update">
         <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/localization/update.jspx"/>
     </definition>
 </tiles-definitions>

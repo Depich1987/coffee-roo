@@ -1,70 +1,74 @@
-<div xmlns:jsp="http://java.sun.com/JSP/Page" 
-	 xmlns:fn="http://java.sun.com/jsp/jstl/functions" 
-	 xmlns:c="http://java.sun.com/jsp/jstl/core"
-	 xmlns:security="http://www.springframework.org/security/tags"  
-	 xmlns:spring="http://www.springframework.org/tags" version="2.0">
+<div xmlns:security="http://www.springframework.org/security/tags"
+		xmlns:jsp="http://java.sun.com/JSP/Page" 
+		xmlns:fn="http://java.sun.com/jsp/jstl/functions" 
+		xmlns:c="http://java.sun.com/jsp/jstl/core" 
+		xmlns:spring="http://www.springframework.org/tags" version="2.0">
+	
   <jsp:directive.page contentType="text/html;charset=UTF-8" />
   <jsp:output omit-xml-declaration="yes" />
+
+  <spring:message var="app_name" code="application_name" htmlEscape="false" />
   
-  <spring:message code="button_home" var="home_label" htmlEscape="false" />
-  <spring:message code="administration_label" var="administration_label"/>
-  <spring:message code="workbench_label" var="workbench_label"/>
-  
-  <spring:url var="home_url" value="/" />
+  <spring:url var="home" value="/" />
   <spring:url var="administration_url" value="/administration/" />
   <spring:url var="workbench_url" value="/workbench/" />
+  
+  <spring:message code="button_home" var="home_label" htmlEscape="false" />
+  
+  <spring:url value="/resources/j_spring_security_logout" var="logout"/>
 
-  <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="${home_url}">SB Admin v2.0</a>
+  <div class="navbar navbar-toolbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="${home}">${app_name}</a>
+        </div>
+        
+        <div class="navbar-collapse collapse">
+        
+       		<ul class="nav navbar-nav">
+              <li class="active">
+              	<a href="${home}">
+					<spring:message code="button_home"/>
+				</a>
+              </li>
+              <li>
+              	<a href="${administration_url}">
+					<spring:message code="administration_label"/>
+				</a>
+              </li>
+              
+              <li>
+              	<a href="${workbench_url}">
+					<spring:message code="workbench_label"/>
+				</a>
+              </li>
+            </ul>
+            
+	          <ul class="nav navbar-nav navbar-right">
+	            <li><a href="#">Help</a></li>
+	             <li class="dropdown">
+	                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+	                	<security:authentication property="principal.username" />
+	                	<span class="caret"></span>
+	                </a>
+	                <ul class="dropdown-menu">
+	                  <li>
+	                  	<a href="${logout}">
+							<spring:message code="security_logout"/>
+						</a>
+					</li>
+	                </ul>
+	              </li>
+	          </ul>
+        </div>
+        
+      </div>
   </div>
-  <!-- /.navbar-header -->
-  
-  <ul class="nav navbar-top-links navbar-right">
-  
-	<li class="active">
-		<a href="${home_url}">
-			${home_label}
-		</a>
-	</li>
-  
-	<li>
-		<a href="${administration_url}">
-			${administration_label}
-		</a>
-	</li>
-	<li>
-		<a href="${workbench_url}">
-			${workbench_label}
-		</a>
-	</li>
-	<c:if test="${pageContext['request'].userPrincipal != null}">
-	<li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <security:authentication property="principal.username" />
-            (${sessionScope.userRole })
-            <c:if test="${not empty userFactoryCode}">
-            	/
-            	${sessionScope.userFactoryName}
-            </c:if>
-        </a>
-        <ul class="dropdown-menu dropdown-tasks">
-             <li>
-             	<spring:url value="/resources/j_spring_security_logout" var="logout"/>
-                 <a href="${logout}">
-                 	<spring:message code="security_logout"/>
-                 	
-                 	<span class="fa fa-power-off fa-fw"></span>
-                 </a>
-             </li>
-         </ul>
-     </li>
-     </c:if>
-  </ul>
   
 </div> 

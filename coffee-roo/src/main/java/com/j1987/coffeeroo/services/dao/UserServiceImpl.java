@@ -27,6 +27,13 @@ public class UserServiceImpl implements UserService {
     public long  countUsers() {
         return entityManager.createQuery("SELECT COUNT(u) FROM JUser u", Long.class).getSingleResult();
     }
+	
+	@Override
+    public long  countUsersWithoutFirstUser() {
+        return entityManager.createQuery("SELECT COUNT(u) FROM JUser u WHERE u.id <> :id", Long.class)
+        		.setParameter("id", Long.valueOf("1"))
+        		.getSingleResult();
+    }
     
     
     @Override

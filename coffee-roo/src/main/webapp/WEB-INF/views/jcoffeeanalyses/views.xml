@@ -13,4 +13,7 @@
 <definition extends="default" name="jcoffeeanalyses/update">
         <put-attribute name="body" value="/WEB-INF/views/jcoffeeanalyses/update.jspx"/>
     </definition>
+<definition extends="default" name="jcoffeeanalyses/analysiscoffeereport">
+        <put-attribute name="body" value="/WEB-INF/views/jcoffeeanalyses/analysiscoffeereport.jspx"/>
+    </definition>
 </tiles-definitions>

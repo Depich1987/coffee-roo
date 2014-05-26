@@ -18,15 +18,11 @@
     <put-attribute name="body" value="/WEB-INF/views/coffee-roo/uncaughtException.jspx"/>
   </definition>
   
-  <definition extends="dashboardLayout" name="administration">
-  	<put-attribute name="header" value="/WEB-INF/views/coffee-roo/administration/header.jspx"/>
-  	<put-attribute name="menu" value="/WEB-INF/views/coffee-roo/administration/menu.jspx"/>
+  <definition extends="administrationLayout" name="administration">
     <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/index.jspx"/>
   </definition>
   
-  <definition extends="dashboardLayout" name="workbench">
-   	<put-attribute name="header" value="/WEB-INF/views/coffee-roo/workbench/header.jspx"/>
-  	<put-attribute name="menu" value="/WEB-INF/views/coffee-roo/workbench/menu.jspx"/>
+  <definition extends="workbenchLayout" name="workbench">
     <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/index.jspx"/>
   </definition>
 

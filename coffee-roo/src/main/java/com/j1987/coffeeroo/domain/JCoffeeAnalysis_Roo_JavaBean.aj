@@ -17,6 +17,14 @@ import java.util.List;
 
 privileged aspect JCoffeeAnalysis_Roo_JavaBean {
     
+    public String JCoffeeAnalysis.getReference() {
+        return this.reference;
+    }
+    
+    public void JCoffeeAnalysis.setReference(String reference) {
+        this.reference = reference;
+    }
+    
     public Date JCoffeeAnalysis.getDateOfAnalysis() {
         return this.dateOfAnalysis;
     }
@@ -183,6 +191,422 @@ privileged aspect JCoffeeAnalysis_Roo_JavaBean {
     
     public void JCoffeeAnalysis.setSubmissionsForApproval(List<JSubmissionForApproval> submissionsForApproval) {
         this.submissionsForApproval = submissionsForApproval;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPoidsMatieresEtrangeres() {
+        return this.poidsMatieresEtrangeres;
+    }
+    
+    public void JCoffeeAnalysis.setPoidsMatieresEtrangeres(BigDecimal poidsMatieresEtrangeres) {
+        this.poidsMatieresEtrangeres = poidsMatieresEtrangeres;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPourcentageMatieresEtrangeres() {
+        return this.pourcentageMatieresEtrangeres;
+    }
+    
+    public void JCoffeeAnalysis.setPourcentageMatieresEtrangeres(BigDecimal pourcentageMatieresEtrangeres) {
+        this.pourcentageMatieresEtrangeres = pourcentageMatieresEtrangeres;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPoidsDechetsParches() {
+        return this.poidsDechetsParches;
+    }
+    
+    public void JCoffeeAnalysis.setPoidsDechetsParches(BigDecimal poidsDechetsParches) {
+        this.poidsDechetsParches = poidsDechetsParches;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPourcentageDechetsParches() {
+        return this.pourcentageDechetsParches;
+    }
+    
+    public void JCoffeeAnalysis.setPourcentageDechetsParches(BigDecimal pourcentageDechetsParches) {
+        this.pourcentageDechetsParches = pourcentageDechetsParches;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPoidsDechetsCerise() {
+        return this.poidsDechetsCerise;
+    }
+    
+    public void JCoffeeAnalysis.setPoidsDechetsCerise(BigDecimal poidsDechetsCerise) {
+        this.poidsDechetsCerise = poidsDechetsCerise;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPourcentageDechetsCerise() {
+        return this.pourcentageDechetsCerise;
+    }
+    
+    public void JCoffeeAnalysis.setPourcentageDechetsCerise(BigDecimal pourcentageDechetsCerise) {
+        this.pourcentageDechetsCerise = pourcentageDechetsCerise;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPoidsDechetsDemiCerises() {
+        return this.poidsDechetsDemiCerises;
+    }
+    
+    public void JCoffeeAnalysis.setPoidsDechetsDemiCerises(BigDecimal poidsDechetsDemiCerises) {
+        this.poidsDechetsDemiCerises = poidsDechetsDemiCerises;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPourcentageDechetsDemiCerises() {
+        return this.pourcentageDechetsDemiCerises;
+    }
+    
+    public void JCoffeeAnalysis.setPourcentageDechetsDemiCerises(BigDecimal pourcentageDechetsDemiCerises) {
+        this.pourcentageDechetsDemiCerises = pourcentageDechetsDemiCerises;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPoidsDechetsCoques() {
+        return this.poidsDechetsCoques;
+    }
+    
+    public void JCoffeeAnalysis.setPoidsDechetsCoques(BigDecimal poidsDechetsCoques) {
+        this.poidsDechetsCoques = poidsDechetsCoques;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPourcentageDechetsCoques() {
+        return this.pourcentageDechetsCoques;
+    }
+    
+    public void JCoffeeAnalysis.setPourcentageDechetsCoques(BigDecimal pourcentageDechetsCoques) {
+        this.pourcentageDechetsCoques = pourcentageDechetsCoques;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPoidsDechetsPeaux() {
+        return this.poidsDechetsPeaux;
+    }
+    
+    public void JCoffeeAnalysis.setPoidsDechetsPeaux(BigDecimal poidsDechetsPeaux) {
+        this.poidsDechetsPeaux = poidsDechetsPeaux;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPourcentageDechetsPeaux() {
+        return this.pourcentageDechetsPeaux;
+    }
+    
+    public void JCoffeeAnalysis.setPourcentageDechetsPeaux(BigDecimal pourcentageDechetsPeaux) {
+        this.pourcentageDechetsPeaux = pourcentageDechetsPeaux;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPoidsSousTotalDechets() {
+        return this.poidsSousTotalDechets;
+    }
+    
+    public void JCoffeeAnalysis.setPoidsSousTotalDechets(BigDecimal poidsSousTotalDechets) {
+        this.poidsSousTotalDechets = poidsSousTotalDechets;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPourcentageSousTotalDechets() {
+        return this.pourcentageSousTotalDechets;
+    }
+    
+    public void JCoffeeAnalysis.setPourcentageSousTotalDechets(BigDecimal pourcentageSousTotalDechets) {
+        this.pourcentageSousTotalDechets = pourcentageSousTotalDechets;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPoidsHorsNormesGrainsNoirs() {
+        return this.poidsHorsNormesGrainsNoirs;
+    }
+    
+    public void JCoffeeAnalysis.setPoidsHorsNormesGrainsNoirs(BigDecimal poidsHorsNormesGrainsNoirs) {
+        this.poidsHorsNormesGrainsNoirs = poidsHorsNormesGrainsNoirs;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPourcentageHorsNormesGrainsNoirs() {
+        return this.pourcentageHorsNormesGrainsNoirs;
+    }
+    
+    public void JCoffeeAnalysis.setPourcentageHorsNormesGrainsNoirs(BigDecimal pourcentageHorsNormesGrainsNoirs) {
+        this.pourcentageHorsNormesGrainsNoirs = pourcentageHorsNormesGrainsNoirs;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPoidsHorsNormesGrainsDemiNoirs() {
+        return this.poidsHorsNormesGrainsDemiNoirs;
+    }
+    
+    public void JCoffeeAnalysis.setPoidsHorsNormesGrainsDemiNoirs(BigDecimal poidsHorsNormesGrainsDemiNoirs) {
+        this.poidsHorsNormesGrainsDemiNoirs = poidsHorsNormesGrainsDemiNoirs;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPourcentageHorsNormesGrainsDemiNoirs() {
+        return this.pourcentageHorsNormesGrainsDemiNoirs;
+    }
+    
+    public void JCoffeeAnalysis.setPourcentageHorsNormesGrainsDemiNoirs(BigDecimal pourcentageHorsNormesGrainsDemiNoirs) {
+        this.pourcentageHorsNormesGrainsDemiNoirs = pourcentageHorsNormesGrainsDemiNoirs;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPoidsHorsNormesBrisures() {
+        return this.poidsHorsNormesBrisures;
+    }
+    
+    public void JCoffeeAnalysis.setPoidsHorsNormesBrisures(BigDecimal poidsHorsNormesBrisures) {
+        this.poidsHorsNormesBrisures = poidsHorsNormesBrisures;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPourcentageHorsNormesBrisures() {
+        return this.pourcentageHorsNormesBrisures;
+    }
+    
+    public void JCoffeeAnalysis.setPourcentageHorsNormesBrisures(BigDecimal pourcentageHorsNormesBrisures) {
+        this.pourcentageHorsNormesBrisures = pourcentageHorsNormesBrisures;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPoidsSousTotalHorsNormes() {
+        return this.poidsSousTotalHorsNormes;
+    }
+    
+    public void JCoffeeAnalysis.setPoidsSousTotalHorsNormes(BigDecimal poidsSousTotalHorsNormes) {
+        this.poidsSousTotalHorsNormes = poidsSousTotalHorsNormes;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPourcentageSousTotalHorsNormes() {
+        return this.pourcentageSousTotalHorsNormes;
+    }
+    
+    public void JCoffeeAnalysis.setPourcentageSousTotalHorsNormes(BigDecimal pourcentageSousTotalHorsNormes) {
+        this.pourcentageSousTotalHorsNormes = pourcentageSousTotalHorsNormes;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPoidsGrainsAcceptablesVert() {
+        return this.poidsGrainsAcceptablesVert;
+    }
+    
+    public void JCoffeeAnalysis.setPoidsGrainsAcceptablesVert(BigDecimal poidsGrainsAcceptablesVert) {
+        this.poidsGrainsAcceptablesVert = poidsGrainsAcceptablesVert;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPourcentageGrainsAcceptablesVert() {
+        return this.pourcentageGrainsAcceptablesVert;
+    }
+    
+    public void JCoffeeAnalysis.setPourcentageGrainsAcceptablesVert(BigDecimal pourcentageGrainsAcceptablesVert) {
+        this.pourcentageGrainsAcceptablesVert = pourcentageGrainsAcceptablesVert;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPoidsGrainsAcceptablesSpongieux() {
+        return this.poidsGrainsAcceptablesSpongieux;
+    }
+    
+    public void JCoffeeAnalysis.setPoidsGrainsAcceptablesSpongieux(BigDecimal poidsGrainsAcceptablesSpongieux) {
+        this.poidsGrainsAcceptablesSpongieux = poidsGrainsAcceptablesSpongieux;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPourcentageGrainsAcceptablesSpongieux() {
+        return this.pourcentageGrainsAcceptablesSpongieux;
+    }
+    
+    public void JCoffeeAnalysis.setPourcentageGrainsAcceptablesSpongieux(BigDecimal pourcentageGrainsAcceptablesSpongieux) {
+        this.pourcentageGrainsAcceptablesSpongieux = pourcentageGrainsAcceptablesSpongieux;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPoidsGrainsAcceptablesDemiSombre() {
+        return this.poidsGrainsAcceptablesDemiSombre;
+    }
+    
+    public void JCoffeeAnalysis.setPoidsGrainsAcceptablesDemiSombre(BigDecimal poidsGrainsAcceptablesDemiSombre) {
+        this.poidsGrainsAcceptablesDemiSombre = poidsGrainsAcceptablesDemiSombre;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPourcentageGrainsAcceptablesDemiSombre() {
+        return this.pourcentageGrainsAcceptablesDemiSombre;
+    }
+    
+    public void JCoffeeAnalysis.setPourcentageGrainsAcceptablesDemiSombre(BigDecimal pourcentageGrainsAcceptablesDemiSombre) {
+        this.pourcentageGrainsAcceptablesDemiSombre = pourcentageGrainsAcceptablesDemiSombre;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPoidsGrainsAcceptablesScolytes() {
+        return this.poidsGrainsAcceptablesScolytes;
+    }
+    
+    public void JCoffeeAnalysis.setPoidsGrainsAcceptablesScolytes(BigDecimal poidsGrainsAcceptablesScolytes) {
+        this.poidsGrainsAcceptablesScolytes = poidsGrainsAcceptablesScolytes;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPourcentageGrainsAcceptablesScolytes() {
+        return this.pourcentageGrainsAcceptablesScolytes;
+    }
+    
+    public void JCoffeeAnalysis.setPourcentageGrainsAcceptablesScolytes(BigDecimal pourcentageGrainsAcceptablesScolytes) {
+        this.pourcentageGrainsAcceptablesScolytes = pourcentageGrainsAcceptablesScolytes;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPoidsGrainsAcceptablesIndesirables() {
+        return this.poidsGrainsAcceptablesIndesirables;
+    }
+    
+    public void JCoffeeAnalysis.setPoidsGrainsAcceptablesIndesirables(BigDecimal poidsGrainsAcceptablesIndesirables) {
+        this.poidsGrainsAcceptablesIndesirables = poidsGrainsAcceptablesIndesirables;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPourcentageGrainsAcceptablesIndesirables() {
+        return this.pourcentageGrainsAcceptablesIndesirables;
+    }
+    
+    public void JCoffeeAnalysis.setPourcentageGrainsAcceptablesIndesirables(BigDecimal pourcentageGrainsAcceptablesIndesirables) {
+        this.pourcentageGrainsAcceptablesIndesirables = pourcentageGrainsAcceptablesIndesirables;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPoidsGrainsAcceptablesImmature() {
+        return this.poidsGrainsAcceptablesImmature;
+    }
+    
+    public void JCoffeeAnalysis.setPoidsGrainsAcceptablesImmature(BigDecimal poidsGrainsAcceptablesImmature) {
+        this.poidsGrainsAcceptablesImmature = poidsGrainsAcceptablesImmature;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPourcentageGrainsAcceptablesImmature() {
+        return this.pourcentageGrainsAcceptablesImmature;
+    }
+    
+    public void JCoffeeAnalysis.setPourcentageGrainsAcceptablesImmature(BigDecimal pourcentageGrainsAcceptablesImmature) {
+        this.pourcentageGrainsAcceptablesImmature = pourcentageGrainsAcceptablesImmature;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getCalibrageTamis18() {
+        return this.CalibrageTamis18;
+    }
+    
+    public void JCoffeeAnalysis.setCalibrageTamis18(BigDecimal CalibrageTamis18) {
+        this.CalibrageTamis18 = CalibrageTamis18;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getCalibrageTamis16() {
+        return this.CalibrageTamis16;
+    }
+    
+    public void JCoffeeAnalysis.setCalibrageTamis16(BigDecimal CalibrageTamis16) {
+        this.CalibrageTamis16 = CalibrageTamis16;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getCalibrageTamis14() {
+        return this.CalibrageTamis14;
+    }
+    
+    public void JCoffeeAnalysis.setCalibrageTamis14(BigDecimal CalibrageTamis14) {
+        this.CalibrageTamis14 = CalibrageTamis14;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getCalibrageTamis12() {
+        return this.CalibrageTamis12;
+    }
+    
+    public void JCoffeeAnalysis.setCalibrageTamis12(BigDecimal CalibrageTamis12) {
+        this.CalibrageTamis12 = CalibrageTamis12;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getCalibrageTamis10() {
+        return this.CalibrageTamis10;
+    }
+    
+    public void JCoffeeAnalysis.setCalibrageTamis10(BigDecimal CalibrageTamis10) {
+        this.CalibrageTamis10 = CalibrageTamis10;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getCalibrageBase() {
+        return this.CalibrageBase;
+    }
+    
+    public void JCoffeeAnalysis.setCalibrageBase(BigDecimal CalibrageBase) {
+        this.CalibrageBase = CalibrageBase;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPourcentageGradeG0() {
+        return this.pourcentageGradeG0;
+    }
+    
+    public void JCoffeeAnalysis.setPourcentageGradeG0(BigDecimal pourcentageGradeG0) {
+        this.pourcentageGradeG0 = pourcentageGradeG0;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPourcentageGradeG1() {
+        return this.pourcentageGradeG1;
+    }
+    
+    public void JCoffeeAnalysis.setPourcentageGradeG1(BigDecimal pourcentageGradeG1) {
+        this.pourcentageGradeG1 = pourcentageGradeG1;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPourcentageGradeG2() {
+        return this.pourcentageGradeG2;
+    }
+    
+    public void JCoffeeAnalysis.setPourcentageGradeG2(BigDecimal pourcentageGradeG2) {
+        this.pourcentageGradeG2 = pourcentageGradeG2;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPourcentageGradeG3() {
+        return this.pourcentageGradeG3;
+    }
+    
+    public void JCoffeeAnalysis.setPourcentageGradeG3(BigDecimal pourcentageGradeG3) {
+        this.pourcentageGradeG3 = pourcentageGradeG3;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPourcentageGradeG4() {
+        return this.pourcentageGradeG4;
+    }
+    
+    public void JCoffeeAnalysis.setPourcentageGradeG4(BigDecimal pourcentageGradeG4) {
+        this.pourcentageGradeG4 = pourcentageGradeG4;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPourcentageGradeHN() {
+        return this.pourcentageGradeHN;
+    }
+    
+    public void JCoffeeAnalysis.setPourcentageGradeHN(BigDecimal pourcentageGradeHN) {
+        this.pourcentageGradeHN = pourcentageGradeHN;
+    }
+    
+    public String JCoffeeAnalysis.getConfirmiteOui() {
+        return this.confirmiteOui;
+    }
+    
+    public void JCoffeeAnalysis.setConfirmiteOui(String confirmiteOui) {
+        this.confirmiteOui = confirmiteOui;
+    }
+    
+    public String JCoffeeAnalysis.getConfirmiteNon() {
+        return this.confirmiteNon;
+    }
+    
+    public void JCoffeeAnalysis.setConfirmiteNon(String confirmiteNon) {
+        this.confirmiteNon = confirmiteNon;
+    }
+    
+    public Boolean JCoffeeAnalysis.getAcceptation() {
+        return this.acceptation;
+    }
+    
+    public void JCoffeeAnalysis.setAcceptation(Boolean acceptation) {
+        this.acceptation = acceptation;
+    }
+    
+    public Boolean JCoffeeAnalysis.getConfirmation() {
+        return this.confirmation;
+    }
+    
+    public void JCoffeeAnalysis.setConfirmation(Boolean confirmation) {
+        this.confirmation = confirmation;
+    }
+    
+    public String JCoffeeAnalysis.getAcceptationOui() {
+        return this.acceptationOui;
+    }
+    
+    public void JCoffeeAnalysis.setAcceptationOui(String acceptationOui) {
+        this.acceptationOui = acceptationOui;
+    }
+    
+    public String JCoffeeAnalysis.getAcceptationNon() {
+        return this.acceptationNon;
+    }
+    
+    public void JCoffeeAnalysis.setAcceptationNon(String acceptationNon) {
+        this.acceptationNon = acceptationNon;
     }
     
 }

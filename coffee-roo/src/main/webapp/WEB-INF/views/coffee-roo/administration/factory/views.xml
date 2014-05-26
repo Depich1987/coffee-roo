@@ -2,25 +2,25 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
 
-    <definition extends="dashboardLayout" name="administration/factory/list">
+    <definition extends="administrationLayout" name="administration/factory/list">
 	   	<put-attribute name="header" value="/WEB-INF/views/coffee-roo/administration/header.jspx"/>
   		<put-attribute name="menu" value="/WEB-INF/views/coffee-roo/administration/menu.jspx"/>
         <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/factory/list.jspx"/>
     </definition>
     
-	<definition extends="dashboardLayout" name="administration/factory/show">
+	<definition extends="administrationLayout" name="administration/factory/show">
 	   	<put-attribute name="header" value="/WEB-INF/views/coffee-roo/administration/header.jspx"/>
   		<put-attribute name="menu" value="/WEB-INF/views/coffee-roo/administration/menu.jspx"/>
         <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/factory/show.jspx"/>
     </definition>
     
-	<definition extends="dashboardLayout" name="administration/factory/create">
+	<definition extends="administrationLayout" name="administration/factory/create">
 	   	<put-attribute name="header" value="/WEB-INF/views/coffee-roo/administration/header.jspx"/>
   		<put-attribute name="menu" value="/WEB-INF/views/coffee-roo/administration/menu.jspx"/>
         <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/factory/create.jspx"/>
     </definition>
     
-	<definition extends="dashboardLayout" name="administration/factory/update">
+	<definition extends="administrationLayout" name="administration/factory/update">
 	   	<put-attribute name="header" value="/WEB-INF/views/coffee-roo/administration/header.jspx"/>
   		<put-attribute name="menu" value="/WEB-INF/views/coffee-roo/administration/menu.jspx"/>
         <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/factory/update.jspx"/>

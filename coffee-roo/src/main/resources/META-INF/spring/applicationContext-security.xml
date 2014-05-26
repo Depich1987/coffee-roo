@@ -12,6 +12,10 @@
         
         <remember-me key="uniqueAndSecret" token-validity-seconds="86400"/>
         
+        <intercept-url pattern="/administration/**" access="hasAnyRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/workbench/submissions/**" access="hasAnyRole('ROLE_ADMIN,ROLE_FACTORY_MANAGER')" />
+        <intercept-url pattern="/workbench/analysis/**" access="hasAnyRole('ROLE_FACTORY_MANAGER,ROLE_FACTORY_AGENT')" />
+        
         <!-- Configure these elements to secure URIs in your application -->
         <intercept-url pattern="/choices/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/member/**" access="isAuthenticated()" />

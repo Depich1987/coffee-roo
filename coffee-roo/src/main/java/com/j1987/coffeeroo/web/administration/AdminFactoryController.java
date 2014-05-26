@@ -82,6 +82,7 @@ public class AdminFactoryController {
     	
         uiModel.addAttribute("factory", factoryService.findFactory(id));
         uiModel.addAttribute("itemId", id);
+        uiModel.addAttribute("currentNav", "factories");
         
         return SHOW_VIEW;
     }
@@ -101,6 +102,9 @@ public class AdminFactoryController {
     	} else {
             uiModel.addAttribute("factories", factoryService.findAllFactories());
         }
+    	
+    	uiModel.addAttribute("currentNav", "factories");
+    	
         return LIST_VIEW;
     }
     
@@ -142,6 +146,7 @@ public class AdminFactoryController {
     
     void populateEditForm(Model uiModel, JFactory factory) {
         uiModel.addAttribute("factory", factory);
+        uiModel.addAttribute("currentNav", "factories");
     }
     
     String encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
