@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="administrationLayout" name="administration/supplier/list">
+	   	<put-attribute name="header" value="/WEB-INF/views/coffee-roo/administration/header.jspx"/>
+  		<put-attribute name="menu" value="/WEB-INF/views/coffee-roo/administration/menu.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/supplier/list.jspx"/>
+    </definition>
+
+	<definition extends="administrationLayout" name="administration/supplier/show">
+	   	<put-attribute name="header" value="/WEB-INF/views/coffee-roo/administration/header.jspx"/>
+  		<put-attribute name="menu" value="/WEB-INF/views/coffee-roo/administration/menu.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/supplier/show.jspx"/>
+    </definition>
+
+	<definition extends="administrationLayout" name="administration/supplier/create">
+	   	<put-attribute name="header" value="/WEB-INF/views/coffee-roo/administration/header.jspx"/>
+  		<put-attribute name="menu" value="/WEB-INF/views/coffee-roo/administration/menu.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/supplier/create.jspx"/>
+    </definition>
+
+	<definition extends="administrationLayout" name="administration/supplier/update">
+	   	<put-attribute name="header" value="/WEB-INF/views/coffee-roo/administration/header.jspx"/>
+  		<put-attribute name="menu" value="/WEB-INF/views/coffee-roo/administration/menu.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/supplier/update.jspx"/>
+    </definition>
+</tiles-definitions>

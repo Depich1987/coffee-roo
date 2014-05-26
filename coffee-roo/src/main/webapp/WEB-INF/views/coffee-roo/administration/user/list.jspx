@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_j1987_coffeeroo_domain_JUser" items="${users}" z="M7QgAeK3R5HSynaqI1P3PtLCXUM=" path="/administration/users"> 
+        <table:table data="${users}" id="l_com_j1987_coffeeroo_domain_JUser" path="/administration/users" z="Lgb8g5kaUVSS/3pjo6I6Iqd13Fc=" create="false" delete="false">
+            <table:column id="c_com_j1987_coffeeroo_domain_JUser_userName" property="userName" z="G6iL8svziX6avKy+tyPco+Bvezg="/>
+            <table:column id="c_com_j1987_coffeeroo_domain_JUser_firstName" property="firstName" z="eXc63nMbMdqRMQVo/x0oWk0GOgs="/>
+            <table:column id="c_com_j1987_coffeeroo_domain_JUser_lastName" property="lastName" z="qD8PCqGo9r9rt57im0UgmtXLhio="/>
+            <table:column id="c_com_j1987_coffeeroo_domain_JUser_roleName" property="roleName" z="ew1p58a/271n4YEJjqadHnbR3hw="/>
+            <table:column id="c_com_j1987_coffeeroo_domain_JUser_factoryNames" property="factoryNames" z="ew1p58a/271n4YEJjqadHnbR3hw="/>
+        </table:table>
+    </page:list>
+</div>

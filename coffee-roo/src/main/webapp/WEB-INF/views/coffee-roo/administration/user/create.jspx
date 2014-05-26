@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_com_j1987_coffeeroo_domain_JUser" modelAttribute="user" path="/administration/users" render="${empty dependencies}" z="IsYwd/J5SujJWsO/UCKp4vc7EC4=" list="true">
+        <field:input field="userName" id="c_com_j1987_coffeeroo_domain_JUser_userName" required="true" z="Ax5JPWpLD5e+4Vb6OiQqNYGiG/0="/>
+        <field:input field="password" id="c_com_j1987_coffeeroo_domain_JUser_password" required="true" z="GhM7zIGSjc827e5jpX6CjdPriCs=" type="password"/>
+        <field:input field="confirmPassword" id="c_com_j1987_coffeeroo_domain_JUser_confirmPassword" z="Xm4acDxs1s5YqdwLC5xtBJZCt5U=" type="password"/>
+        <hr />
+        <field:input field="firstName" id="c_com_j1987_coffeeroo_domain_JUser_firstName" z="bLr38CIp/7snkcchloYYOgCkciU="/>
+        <field:input field="lastName" id="c_com_j1987_coffeeroo_domain_JUser_lastName" z="1fP4hIiLu1cC7ucXn5+Cq4IsHE8="/>
+        <field:input field="phoneNumber" id="c_com_j1987_coffeeroo_domain_JUser_phoneNumber" z="YB0npndxjgz1t7Okce4sNJaF3GY="/>
+        <field:input field="email" id="c_com_j1987_coffeeroo_domain_JUser_email" validationMessageCode="field_invalid_email" z="IidVBHjyld6RnWHYASI4nWGEQjg="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_com_j1987_coffeeroo_domain_JUser" render="${not empty dependencies}" z="5QFC9kuzPTjMkwycreEZHvSWoK0="/>
+</div>

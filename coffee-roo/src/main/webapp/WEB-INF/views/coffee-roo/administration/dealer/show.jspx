@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_j1987_coffeeroo_domain_JDealer" object="${dealer}" path="/administration/dealers" z="65GwP2wHW9mMXvxCtZULeLW4ffQ=" delete="false" create="false">
+        <field:display field="code" id="s_com_j1987_coffeeroo_domain_JDealer_code" object="${dealer}" z="heSQKvLa4JF5HAc6ebFgDv+E+GM="/>
+        <field:display field="name" id="s_com_j1987_coffeeroo_domain_JDealer_name" object="${dealer}" z="WvxaafkMOqB29qUGAtRkzMMTyyU="/>
+        <field:display field="description" id="s_com_j1987_coffeeroo_domain_JDealer_description" object="${dealer}" z="oqzJhtIaDFOu14iMTcfdlFM9DaE="/>
+    </page:show>
+</div>

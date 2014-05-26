@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="administrationLayout" name="administration/user/list">
+   	   	<put-attribute name="header" value="/WEB-INF/views/coffee-roo/administration/header.jspx"/>
+  		<put-attribute name="menu" value="/WEB-INF/views/coffee-roo/administration/menu.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/user/list.jspx"/>
+    </definition>
+
+	<definition extends="administrationLayout" name="administration/user/show">
+   	   	<put-attribute name="header" value="/WEB-INF/views/coffee-roo/administration/header.jspx"/>
+  		<put-attribute name="menu" value="/WEB-INF/views/coffee-roo/administration/menu.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/user/show.jspx"/>
+    </definition>
+
+	<definition extends="administrationLayout" name="administration/user/create">
+   	   	<put-attribute name="header" value="/WEB-INF/views/coffee-roo/administration/header.jspx"/>
+  		<put-attribute name="menu" value="/WEB-INF/views/coffee-roo/administration/menu.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/user/create.jspx"/>
+    </definition>
+
+	<definition extends="administrationLayout" name="administration/user/update">
+   	   	<put-attribute name="header" value="/WEB-INF/views/coffee-roo/administration/header.jspx"/>
+  		<put-attribute name="menu" value="/WEB-INF/views/coffee-roo/administration/menu.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/user/update.jspx"/>
+    </definition>
+    
+   	<definition extends="administrationLayout" name="administration/user/assignrole">
+   	   	<put-attribute name="header" value="/WEB-INF/views/coffee-roo/administration/header.jspx"/>
+  		<put-attribute name="menu" value="/WEB-INF/views/coffee-roo/administration/menu.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/user/assignrole.jspx"/>
+    </definition>
+    
+   	<definition extends="administrationLayout" name="administration/user/assignfactory">
+   	   	<put-attribute name="header" value="/WEB-INF/views/coffee-roo/administration/header.jspx"/>
+  		<put-attribute name="menu" value="/WEB-INF/views/coffee-roo/administration/menu.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/user/assignfactory.jspx"/>
+    </definition>
+
+</tiles-definitions>

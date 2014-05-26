@@ -1,0 +1,106 @@
+<jsp:root xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+  <jsp:output omit-xml-declaration="yes"/>
+  
+  <jsp:directive.attribute name="id" type="java.lang.String" required="true" rtexprvalue="true" description="The identifier for this tag (do not change!)"/>
+  <jsp:directive.attribute name="modelAttribute" type="java.lang.String" required="true" rtexprvalue="true" description="The name of the model attribute for form binding"/>
+  <jsp:directive.attribute name="list" type="java.lang.String" required="false" rtexprvalue="true" description="Specify the relative URL list (wit leading /)" />
+  <jsp:directive.attribute name="update" type="java.lang.Boolean" required="false" rtexprvalue="true" description="Include 'update' link into table (default true)" />
+  <jsp:directive.attribute name="path" type="java.lang.String" required="true" rtexprvalue="true" description="Specify the relative URL path (wit leading /)" />
+  <jsp:directive.attribute name="targetPath" type="java.lang.String" required="true" rtexprvalue="true" description="Specify the relative URL path (wit leading /)" />
+  <jsp:directive.attribute name="compositePkField" type="java.lang.String" required="false" rtexprvalue="true" description="The field name of the composite primary key (only used if a composite PK is present in the form backing object)" />
+  <jsp:directive.attribute name="multipart" type="java.lang.Boolean" required="false" rtexprvalue="true" description="Indicate if this is a multipart form (default: false)" />
+  <jsp:directive.attribute name="label" type="java.lang.String" required="false" rtexprvalue="true" description="The label used for this object, will default to a message bundle if not supplied"/>
+  <jsp:directive.attribute name="render" type="java.lang.Boolean" required="false" rtexprvalue="true" description="Indicate if the contents of this tag and all enclosed tags should be rendered (default 'true')" />
+  <jsp:directive.attribute name="openPane" type="java.lang.Boolean" required="false" rtexprvalue="true" description="Control if the title pane is opened or closed by default (default: true)"/>
+  <jsp:directive.attribute name="z" type="java.lang.String" required="false" description="Used for checking if element has been modified (to recalculate simply provide empty string value)"/>
+	
+  <c:if test="${empty render or render}">
+    <c:if test="${empty label}">
+      <spring:message code="label_${fn:toLowerCase(fn:substringAfter(id,'_'))}" var="label" htmlEscape="false" />
+    </c:if>
+    <c:if test="${empty labelPlural}">
+      <spring:message code="label_${fn:toLowerCase(fn:substringAfter(id,'_'))}_plural" var="labelPlural" htmlEscape="false" />
+    </c:if>
+    <c:set var="enctype" value="application/x-www-form-urlencoded"/>
+    <c:if test="${multipart}">
+      <c:set var="enctype" value="multipart/form-data"/>
+    </c:if>
+   	<c:if test="${empty list}">
+      <c:set var="list" value="true" />
+    </c:if>
+   	<c:if test="${empty update}">
+      <c:set var="update" value="true" />
+    </c:if>
+    
+    <spring:message var="typeName" code="menu_item_${fn:toLowerCase(fn:split(id,'_')[fn:length(fn:split(id,'_')) - 1])}_new_label" htmlEscape="false" />
+    <spring:message var="typeNamePlural" code="menu_item_${fn:toLowerCase(fn:split(id,'_')[fn:length(fn:split(id,'_')) - 1])}_list_label" htmlEscape="false" />
+    
+    <spring:message arguments="${typeName},${label}" code="assign_label" var="title_msg" htmlEscape="false" />
+        <h1 class="page-header">
+    	${labelPlural}
+    </h1>
+    <p>
+    	<div class="btn-toolbar" role="toolbar">
+    		<div class="btn-group">
+		    	<c:if test="${list}">
+		    		<spring:url value="${path}/list?size=10" var="list_url"/>
+			    	<a href="${list_url}" class="btn btn-default">
+			    		<spring:message code="entity_list_all" arguments="${label}" />
+			    		<span class="fa fa-th-list fa-fw"></span>
+			    	</a>
+		    	</c:if>
+		    	<c:if test="${update}">
+                	<spring:url value="${path}/${itemId}" var="update_form_url">
+	                  <spring:param name="form" />
+	                </spring:url>
+			    	<a href="${update_form_url}" class="btn btn-default">
+			    		<spring:message arguments="${typeName}" code="entity_update" var="update_label" htmlEscape="false" />
+		    			${update_label}
+		    			<span class="fa fa-pencil-square fa-fw"></span>
+			    	</a>
+		    	</c:if>
+	    	</div>
+    		<div class="btn-group pull-right">
+		    	<c:if test="${list}">
+		    		<spring:url value="${path}/list?size=10" var="list_url"/>
+			    	<a href="${list_url}" class="btn btn-danger">
+			    		<spring:message code="unassignuser_label" arguments="${label}" />
+			    		<span class="glyphicon glyphicon-icon-remove-sign"></span>
+			    	</a>
+		    	</c:if>
+	    	</div>
+    	</div>
+    </p>
+    <div class="panel panel-default">
+    	<div class="panel-heading">
+    		${title_msg}
+    	</div>
+    	<div class="pane panel-body">
+	      <spring:url value="${targetPath}" var="form_url"/>
+	      <c:set var="jsCall" value=""/>
+	      <c:if test="${not empty compositePkField}">
+	      	<c:set var="jsCall" value="encodePk()" />
+	      </c:if>
+	      <form:form action="${form_url}" method="POST" modelAttribute="${modelAttribute}" enctype="${enctype}" onsubmit="${jsCall}" role="form" cssClass="form-horizontal">
+	        <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>
+	        <div class="col-sm-6">
+	        	<jsp:doBody />
+   	            <div class="form-group">
+	   				<div class="col-sm-10">
+   		          		<button id="proceed" type="submit" value="${fn:escapeXml(save_button)}" class="btn btn-success">
+		          			<spring:message code="button_save"/>
+		          			<span class="fa fa-save fa-fw"></span>
+		          		</button>
+			        </div>
+			     </div>
+	        </div>
+	      </form:form>
+      </div>
+      <div class="panel-footer">
+           <span>
+           	<spring:message code="global_sponsored"/>
+           </span>
+       </div>
+    </div>
+  </c:if>
+</jsp:root>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:assignment id="fa_com_j1987_coffeeroo_domain_JUser" modelAttribute="assignRoleForm" path="/administration/users" targetPath="/administration/users/assignrole" z="5HEds+DS3PPx8MyRDZ/JOfAuKoE=" list="true" update="true">
+        <field:input field="userName" id="c_com_j1987_coffeeroo_domain_JUser_userName" required="true" z="Ax5JPWpLD5e+4Vb6OiQqNYGiG/0="/>
+        <field:select field="roleName" id="c_com_j1987_coffeeroo_domain_JUser_roleName" required="true" items="${roleNames}" path="/administration/users" z="GhM7zIGSjc827e5jpX6CjdPriCs="/>
+    </form:assignment>
+</div>

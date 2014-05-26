@@ -1,9 +1,49 @@
 <aspectj>
 <aspects>
-<aspect name="com.j1987.coffeeroo.domain.JCompanyDataOnDemand_Roo_DataOnDemand"/>
-<aspect name="com.j1987.coffeeroo.domain.JCompanyDataOnDemand_Roo_Configurable"/>
-<aspect name="com.j1987.coffeeroo.domain.JCompanyIntegrationTest_Roo_IntegrationTest"/>
+<aspect name="com.j1987.coffeeroo.domain.JCoffeeAnalysisIntegrationTest_Roo_IntegrationTest"/>
+<aspect name="com.j1987.coffeeroo.domain.JRoleIntegrationTest_Roo_Configurable"/>
+<aspect name="com.j1987.coffeeroo.domain.JFactoryDataOnDemand_Roo_Configurable"/>
+<aspect name="com.j1987.coffeeroo.domain.JTourIntegrationTest_Roo_Configurable"/>
+<aspect name="com.j1987.coffeeroo.domain.JExporterDataOnDemand_Roo_Configurable"/>
+<aspect name="com.j1987.coffeeroo.domain.JCoffeeAnalysisDataOnDemand_Roo_Configurable"/>
+<aspect name="com.j1987.coffeeroo.domain.JCoffeeAnalysisDataOnDemand_Roo_DataOnDemand"/>
 <aspect name="com.j1987.coffeeroo.domain.JCompanyIntegrationTest_Roo_Configurable"/>
+<aspect name="com.j1987.coffeeroo.domain.JFactoryIntegrationTest_Roo_IntegrationTest"/>
+<aspect name="com.j1987.coffeeroo.domain.JExporterIntegrationTest_Roo_Configurable"/>
+<aspect name="com.j1987.coffeeroo.domain.JLocalizationDataOnDemand_Roo_DataOnDemand"/>
+<aspect name="com.j1987.coffeeroo.domain.JDealerDataOnDemand_Roo_DataOnDemand"/>
+<aspect name="com.j1987.coffeeroo.domain.JSupplierDataOnDemand_Roo_Configurable"/>
+<aspect name="com.j1987.coffeeroo.domain.JExporterDataOnDemand_Roo_DataOnDemand"/>
+<aspect name="com.j1987.coffeeroo.domain.JSupplierIntegrationTest_Roo_IntegrationTest"/>
+<aspect name="com.j1987.coffeeroo.domain.JLocalizationDataOnDemand_Roo_Configurable"/>
+<aspect name="com.j1987.coffeeroo.domain.JUserDataOnDemand_Roo_Configurable"/>
+<aspect name="com.j1987.coffeeroo.domain.JDealerDataOnDemand_Roo_Configurable"/>
+<aspect name="com.j1987.coffeeroo.domain.JSubmissionForApprovalDataOnDemand_Roo_Configurable"/>
+<aspect name="com.j1987.coffeeroo.domain.JCompanyDataOnDemand_Roo_DataOnDemand"/>
+<aspect name="com.j1987.coffeeroo.domain.JSubmissionForApprovalDataOnDemand_Roo_DataOnDemand"/>
+<aspect name="com.j1987.coffeeroo.domain.JCompanyDataOnDemand_Roo_Configurable"/>
+<aspect name="com.j1987.coffeeroo.domain.JFactoryDataOnDemand_Roo_DataOnDemand"/>
+<aspect name="com.j1987.coffeeroo.domain.JRoleIntegrationTest_Roo_IntegrationTest"/>
+<aspect name="com.j1987.coffeeroo.domain.JTourIntegrationTest_Roo_IntegrationTest"/>
+<aspect name="com.j1987.coffeeroo.domain.JDealerIntegrationTest_Roo_IntegrationTest"/>
+<aspect name="com.j1987.coffeeroo.domain.JRoleDataOnDemand_Roo_DataOnDemand"/>
+<aspect name="com.j1987.coffeeroo.domain.JUserIntegrationTest_Roo_IntegrationTest"/>
+<aspect name="com.j1987.coffeeroo.domain.JExporterIntegrationTest_Roo_IntegrationTest"/>
+<aspect name="com.j1987.coffeeroo.domain.JRoleDataOnDemand_Roo_Configurable"/>
+<aspect name="com.j1987.coffeeroo.domain.JLocalizationIntegrationTest_Roo_IntegrationTest"/>
+<aspect name="com.j1987.coffeeroo.domain.JSupplierIntegrationTest_Roo_Configurable"/>
+<aspect name="com.j1987.coffeeroo.domain.JCoffeeAnalysisIntegrationTest_Roo_Configurable"/>
+<aspect name="com.j1987.coffeeroo.domain.JDealerIntegrationTest_Roo_Configurable"/>
+<aspect name="com.j1987.coffeeroo.domain.JSupplierDataOnDemand_Roo_DataOnDemand"/>
+<aspect name="com.j1987.coffeeroo.domain.JLocalizationIntegrationTest_Roo_Configurable"/>
+<aspect name="com.j1987.coffeeroo.domain.JCompanyIntegrationTest_Roo_IntegrationTest"/>
+<aspect name="com.j1987.coffeeroo.domain.JTourDataOnDemand_Roo_DataOnDemand"/>
+<aspect name="com.j1987.coffeeroo.domain.JUserDataOnDemand_Roo_DataOnDemand"/>
+<aspect name="com.j1987.coffeeroo.domain.JTourDataOnDemand_Roo_Configurable"/>
+<aspect name="com.j1987.coffeeroo.domain.JSubmissionForApprovalIntegrationTest_Roo_IntegrationTest"/>
+<aspect name="com.j1987.coffeeroo.domain.JSubmissionForApprovalIntegrationTest_Roo_Configurable"/>
+<aspect name="com.j1987.coffeeroo.domain.JFactoryIntegrationTest_Roo_Configurable"/>
+<aspect name="com.j1987.coffeeroo.domain.JUserIntegrationTest_Roo_Configurable"/>
 </aspects>
 </aspectj>
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_j1987_coffeeroo_domain_JSupplier" items="${suppliers}" z="4TN7g0555LDHnh4Mjckh1TRfKgo=" path="/administration/suppliers">
+        <table:table data="${suppliers}" id="l_com_j1987_coffeeroo_domain_JSupplier" path="/administration/suppliers" z="y9f7PGN9pXvG9oxu5i2uzhtaNXc=" delete="false" create="false">
+            <table:column id="c_com_j1987_coffeeroo_domain_JSupplier_code" property="code" z="t4SDdw9NzDP6++uE0G1vDBmOBug="/>
+            <table:column id="c_com_j1987_coffeeroo_domain_JSupplier_name" property="name" z="zT1wgqVEIQUusU9lvP86gUGVA8o="/>
+            <table:column id="c_com_j1987_coffeeroo_domain_JSupplier_description" property="description" z="fiqBWAvq1yfHTqLmKV+DDvBRNL4="/>
+        </table:table>
+    </page:list>
+</div>

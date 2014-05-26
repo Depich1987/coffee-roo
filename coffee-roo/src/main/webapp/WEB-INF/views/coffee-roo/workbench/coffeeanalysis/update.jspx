@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_j1987_coffeeroo_domain_JCoffeeAnalysis" modelAttribute="JCoffeeAnalysis_" path="/jcoffeeanalyses" versionField="Version" z="hhF6yGtDY3mx6hFskzmCrytjYAY=">
+        <field:datetime dateTimePattern="${JCoffeeAnalysis__dateofanalysis_date_format}" field="dateOfAnalysis" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_dateOfAnalysis" required="true" z="W2pLWjamDyIrd6qZKCRpkUAPmDg="/>
+        <field:input field="numberLading" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_numberLading" required="true" z="/dYUvq0xvG+VNVLmt/H13S+PSwg="/>
+        <field:input field="truckNumber" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_truckNumber" required="true" z="GSCppjmNHQLETA9iIsFsjn+mmWM="/>
+        <field:input field="netWeightOfProductAccepted" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_netWeightOfProductAccepted" validationMessageCode="field_invalid_number" z="RTuAPDWdk6EI7x+EhxWMJYDzPBY="/>
+        <field:select field="provenance" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_provenance" itemValue="id" items="${jlocalizations}" path="/jlocalizations" z="Fh2csM8KrfQxXIhSyKF2tim26+4="/>
+        <field:select field="dealerEntry" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_dealerEntry" itemValue="id" items="${jdealers}" path="/jdealers" z="0n049o7Jrw1VbkdbSuUJurx3mC8="/>
+        <field:select field="factoryEntry" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_factoryEntry" itemValue="id" items="${jfactorys}" path="/jfactorys" z="t+hkOVdxBcEtNlW2Az79KjenRR4="/>
+        <field:select field="exporterEntry" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_exporterEntry" itemValue="id" items="${jexporters}" path="/jexporters" z="sVGp9op2SjEHRJExExFw1JRr65A="/>
+        <field:select field="supplierEntry" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_supplierEntry" itemValue="id" items="${jsuppliers}" path="/jsuppliers" z="V8ej8cyZohYFcnURIzfrZd9IMC4="/>
+        <field:datetime dateTimePattern="${JCoffeeAnalysis__starttime_date_format}" field="startTime" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_startTime" z="JY0Bv0dzS++omB3Lw36n3QH8MsE="/>
+        <field:datetime dateTimePattern="${JCoffeeAnalysis__endtime_date_format}" field="endTime" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_endTime" z="cikNh3SDD2d1UptZdrHZXrNWdlk="/>
+        <field:input field="totalOfBagPushed" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_totalOfBagPushed" validationMessageCode="field_invalid_integer" z="ULxe+ljZs/638afM0Sb7jGw0Vzs="/>
+        <field:input field="totalOfReportedBags" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_totalOfReportedBags" validationMessageCode="field_invalid_integer" z="fqE795UoBNRh6ZBWb1GlgBzT8Bo="/>
+        <field:input field="numberOfBagAllowed" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_numberOfBagAllowed" validationMessageCode="field_invalid_integer" z="riUqMRQveE+esZP5zSVYDw/cQVU="/>
+        <field:input field="sampleCode" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_sampleCode" required="true" z="XU8Bpsl743xn5z+1Ckfcy54/D+E="/>
+        <field:input field="numberSAIGIC" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_numberSAIGIC" z="DUamvfCuryZ/CKod1zjAGo3U+O8="/>
+        <field:datetime dateTimePattern="${JCoffeeAnalysis__creationdate_date_format}" field="creationDate" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_creationDate" z="H5I8qdayVkLODFwh1SiqTyBcv2Q="/>
+        <field:input field="createdBy" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_createdBy" z="hrAL08mX1/g/DB8liuHAcWwQABI="/>
+        <field:input field="modifiedBy" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_modifiedBy" z="QkLlfiBVOTql6mgWVM1vxWlvt0I="/>
+        <field:datetime dateTimePattern="${JCoffeeAnalysis__modificationdate_date_format}" field="modificationDate" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_modificationDate" z="c54MU1l80fQZ2cWX5PhlrqiCuiI="/>
+        <field:select field="submissionsForApproval" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_submissionsForApproval" itemValue="id" items="${jsubmissionforapprovals}" multiple="true" path="/jsubmissionforapprovals" z="z+pjmasQsZ+iMiyClagX6rdwyk0="/>
+    </form:update>
+</div>
