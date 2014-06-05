@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_j1987_coffeeroo_domain_JBill" modelAttribute="bill" path="/workbench/bills" versionField="Version" z="/V0LO0Elkja+az5OOrQAkyZvZY8=">
+        <field:input field="reference" id="c_com_j1987_coffeeroo_domain_JBill_reference" required="true"/>
+        <field:input field="periodTitle" id="c_com_j1987_coffeeroo_domain_JBill_periodTitle" required="true"/>
+        <field:input field="area" id="c_com_j1987_coffeeroo_domain_JBill_area"/>
+        <field:input field="totalWeightProductAllowed" id="c_com_j1987_coffeeroo_domain_JBill_totalWeightProductAllowed" validationMessageCode="field_invalid_number"/>
+        <field:input field="totalWeightProductPushed" id="c_com_j1987_coffeeroo_domain_JBill_totalWeightProductPushed" validationMessageCode="field_invalid_number"/>
+        <field:input field="amountWithoutTaxes" id="c_com_j1987_coffeeroo_domain_JBill_amountWithoutTaxes" validationMessageCode="field_invalid_number"/>
+        <field:select field="submission" id="c_com_j1987_coffeeroo_domain_JBill_submission" itemValue="id" items="${submissions}" itemLabel="reference" path="/jsubmissionforapprovals"/>
+    </form:update>
+</div>

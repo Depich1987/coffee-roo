@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_j1987_coffeeroo_domain_JAnalysis" modelAttribute="JAnalysis_" path="/janalyses" versionField="Version" z="HL1g7RvbeUW7UPAMPmJT+tH0ETw=">
+        <field:input field="reference" id="c_com_j1987_coffeeroo_domain_JAnalysis_reference" z="f7M3mDnRgh1viOCoUKGtLinxOxE="/>
+        <field:input field="status" id="c_com_j1987_coffeeroo_domain_JAnalysis_status" validationMessageCode="field_invalid_integer" z="4Ub+1hQVRJki7WsR4B79APipAmw="/>
+        <field:datetime dateTimePattern="${JAnalysis__dateofanalysis_date_format}" field="dateOfAnalysis" id="c_com_j1987_coffeeroo_domain_JAnalysis_dateOfAnalysis" required="true" z="4fMl/08JKasTMQC6wAADjfqzlD4="/>
+        <field:input field="numberLading" id="c_com_j1987_coffeeroo_domain_JAnalysis_numberLading" required="true" z="pRnFyKQkbgHV5jQLNmZo5b3KDLs="/>
+        <field:input field="truckNumber" id="c_com_j1987_coffeeroo_domain_JAnalysis_truckNumber" required="true" z="CTaGkoHzxwJEeEnW/uxgqeYS54c="/>
+        <field:input field="netWeightOfProductAccepted" id="c_com_j1987_coffeeroo_domain_JAnalysis_netWeightOfProductAccepted" validationMessageCode="field_invalid_number" z="Hb004hino3c0lCZT8+fS3mswpt4="/>
+        <field:datetime dateTimePattern="${JAnalysis__starttime_date_format}" field="startTime" id="c_com_j1987_coffeeroo_domain_JAnalysis_startTime" z="4kOSsRm8PUuRVNnXyObRSZhwQug="/>
+        <field:datetime dateTimePattern="${JAnalysis__endtime_date_format}" field="endTime" id="c_com_j1987_coffeeroo_domain_JAnalysis_endTime" z="5Rv99beeQfCmDqQGfJZdW9HzfEo="/>
+        <field:input field="totalOfBagPushed" id="c_com_j1987_coffeeroo_domain_JAnalysis_totalOfBagPushed" validationMessageCode="field_invalid_integer" z="1SaOijgPld3wDD6MXymZr449iCM="/>
+        <field:input field="totalOfReportedBags" id="c_com_j1987_coffeeroo_domain_JAnalysis_totalOfReportedBags" validationMessageCode="field_invalid_integer" z="f92d9MHSyTBkRLhbTgURT/jorYY="/>
+        <field:input field="numberOfBagAllowed" id="c_com_j1987_coffeeroo_domain_JAnalysis_numberOfBagAllowed" validationMessageCode="field_invalid_integer" z="ThA0q7UXnRXBC+m5WhQdtZ/Cjgw="/>
+        <field:input field="sampleCode" id="c_com_j1987_coffeeroo_domain_JAnalysis_sampleCode" required="true" z="+b7pQHmblMmdAPKUmAOLRAw/Kvk="/>
+        <field:input field="numberSAIGIC" id="c_com_j1987_coffeeroo_domain_JAnalysis_numberSAIGIC" z="keVhCyvpfywUhLPlthUbyXa5+8k="/>
+        <field:datetime dateTimePattern="${JAnalysis__creationdate_date_format}" field="creationDate" id="c_com_j1987_coffeeroo_domain_JAnalysis_creationDate" z="Q4UMkVa/NcikGoNd/AJU2XoQrXs="/>
+        <field:input field="createdBy" id="c_com_j1987_coffeeroo_domain_JAnalysis_createdBy" z="vabK4hiPwMO7wENqG1C/kmnOxcE="/>
+        <field:input field="modifiedBy" id="c_com_j1987_coffeeroo_domain_JAnalysis_modifiedBy" z="nzJYeMv12VJ8LSWXJbHZ2DN8Vy4="/>
+        <field:datetime dateTimePattern="${JAnalysis__modificationdate_date_format}" field="modificationDate" id="c_com_j1987_coffeeroo_domain_JAnalysis_modificationDate" z="K5//ceaJr+OMzHvuX3tOgn7CNHI="/>
+        <field:input field="productType" id="c_com_j1987_coffeeroo_domain_JAnalysis_productType" z="nUMDzUvs3cwJPS2pUEP+mK1BklU="/>
+        <field:select field="provenance" id="c_com_j1987_coffeeroo_domain_JAnalysis_provenance" itemValue="id" items="${jlocalizations}" path="/jlocalizations" z="QrbgKShcUrFUVZKygkY8D0KwUEU="/>
+        <field:select field="tour" id="c_com_j1987_coffeeroo_domain_JAnalysis_tour" itemValue="id" items="${jtours}" path="/jtours" z="vHGaVl/DFpr5jl+dQgrv0MUgTE4="/>
+        <field:input field="provenanceName" id="c_com_j1987_coffeeroo_domain_JAnalysis_provenanceName" z="htdVjMmFY9D0L8yZ+WY5DU4gwtI="/>
+        <field:select field="dealerEntry" id="c_com_j1987_coffeeroo_domain_JAnalysis_dealerEntry" itemValue="id" items="${jdealers}" path="/jdealers" z="o225R/aLRIaPW0/HjN3cm42MBIw="/>
+        <field:input field="dealerName" id="c_com_j1987_coffeeroo_domain_JAnalysis_dealerName" z="7+E8t7+yL1XXrQabUktYYvqhV70="/>
+        <field:input field="factoryCode" id="c_com_j1987_coffeeroo_domain_JAnalysis_factoryCode" z="Nuz1TWawQrsxhXFrMJbiNMyXhsA="/>
+        <field:input field="bridge" id="c_com_j1987_coffeeroo_domain_JAnalysis_bridge" z="zKGEm7lGcbA3+JJN4AbIP1dHr0I="/>
+        <field:input field="factoryName" id="c_com_j1987_coffeeroo_domain_JAnalysis_factoryName" z="8DoLSSmEpziC+LMdKAmhAF5d0Ic="/>
+        <field:select field="exporterEntry" id="c_com_j1987_coffeeroo_domain_JAnalysis_exporterEntry" itemValue="id" items="${jexporters}" path="/jexporters" z="drlGf96NB7y5W1ntB5YlUW0BDyQ="/>
+        <field:input field="exporterName" id="c_com_j1987_coffeeroo_domain_JAnalysis_exporterName" z="LXEU2bzkJ7/wvei/M3YAcmhAWLU="/>
+        <field:select field="supplierEntry" id="c_com_j1987_coffeeroo_domain_JAnalysis_supplierEntry" itemValue="id" items="${jsuppliers}" path="/jsuppliers" z="JHYFimMxqG6YTFXDa6BbVYoRNoU="/>
+        <field:input field="supplierName" id="c_com_j1987_coffeeroo_domain_JAnalysis_supplierName" z="uHtomBhKKVkEohK+YmgjsyViYiQ="/>
+    </form:update>
+</div>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+	<definition extends="administrationLayout" name="administration/firm/show">
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/firm/show.jspx"/>
+    </definition>
+
+	<definition extends="administrationLayout" name="administration/firm/update">
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/firm/update.jspx"/>
+    </definition>
+    
+</tiles-definitions>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+    <definition extends="workbenchLayout" name="workbench/submissioncoffee/list">
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/submissioncoffee/list.jspx"/>
+    </definition>
+
+	<definition extends="workbenchLayout" name="workbench/submissioncoffee/show">
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/submissioncoffee/show.jspx"/>
+    </definition>
+
+	<definition extends="workbenchLayout" name="workbench/submissioncoffee/create">
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/submissioncoffee/create.jspx"/>
+    </definition>
+
+	<definition extends="workbenchLayout" name="workbench/submissioncoffee/update">
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/submissioncoffee/update.jspx"/>
+    </definition>
+    
+</tiles-definitions>

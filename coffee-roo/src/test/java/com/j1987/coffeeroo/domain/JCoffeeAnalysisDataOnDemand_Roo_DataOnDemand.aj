@@ -10,8 +10,8 @@ import com.j1987.coffeeroo.domain.JExporterDataOnDemand;
 import com.j1987.coffeeroo.domain.JFactoryDataOnDemand;
 import com.j1987.coffeeroo.domain.JLocalizationDataOnDemand;
 import com.j1987.coffeeroo.domain.JSupplierDataOnDemand;
+import com.j1987.coffeeroo.domain.JTourDataOnDemand;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -47,6 +47,9 @@ privileged aspect JCoffeeAnalysisDataOnDemand_Roo_DataOnDemand {
     
     @Autowired
     JSupplierDataOnDemand JCoffeeAnalysisDataOnDemand.jSupplierDataOnDemand;
+    
+    @Autowired
+    JTourDataOnDemand JCoffeeAnalysisDataOnDemand.jTourDataOnDemand;
     
     public JCoffeeAnalysis JCoffeeAnalysisDataOnDemand.getNewTransientJCoffeeAnalysis(int index) {
         JCoffeeAnalysis obj = new JCoffeeAnalysis();
@@ -115,6 +118,7 @@ privileged aspect JCoffeeAnalysisDataOnDemand_Roo_DataOnDemand {
         setReference(obj, index);
         setSampleCode(obj, index);
         setStartTime(obj, index);
+        setStatus(obj, index);
         setTotalOfBagPushed(obj, index);
         setTotalOfReportedBags(obj, index);
         setTruckNumber(obj, index);
@@ -137,33 +141,33 @@ privileged aspect JCoffeeAnalysisDataOnDemand_Roo_DataOnDemand {
     }
     
     public void JCoffeeAnalysisDataOnDemand.setCalibrageBase(JCoffeeAnalysis obj, int index) {
-        BigDecimal CalibrageBase = BigDecimal.valueOf(index);
-        obj.setCalibrageBase(CalibrageBase);
+        BigDecimal calibrageBase = BigDecimal.valueOf(index);
+        obj.setCalibrageBase(calibrageBase);
     }
     
     public void JCoffeeAnalysisDataOnDemand.setCalibrageTamis10(JCoffeeAnalysis obj, int index) {
-        BigDecimal CalibrageTamis10 = BigDecimal.valueOf(index);
-        obj.setCalibrageTamis10(CalibrageTamis10);
+        BigDecimal calibrageTamis10 = BigDecimal.valueOf(index);
+        obj.setCalibrageTamis10(calibrageTamis10);
     }
     
     public void JCoffeeAnalysisDataOnDemand.setCalibrageTamis12(JCoffeeAnalysis obj, int index) {
-        BigDecimal CalibrageTamis12 = BigDecimal.valueOf(index);
-        obj.setCalibrageTamis12(CalibrageTamis12);
+        BigDecimal calibrageTamis12 = BigDecimal.valueOf(index);
+        obj.setCalibrageTamis12(calibrageTamis12);
     }
     
     public void JCoffeeAnalysisDataOnDemand.setCalibrageTamis14(JCoffeeAnalysis obj, int index) {
-        BigDecimal CalibrageTamis14 = BigDecimal.valueOf(index);
-        obj.setCalibrageTamis14(CalibrageTamis14);
+        BigDecimal calibrageTamis14 = BigDecimal.valueOf(index);
+        obj.setCalibrageTamis14(calibrageTamis14);
     }
     
     public void JCoffeeAnalysisDataOnDemand.setCalibrageTamis16(JCoffeeAnalysis obj, int index) {
-        BigDecimal CalibrageTamis16 = BigDecimal.valueOf(index);
-        obj.setCalibrageTamis16(CalibrageTamis16);
+        BigDecimal calibrageTamis16 = BigDecimal.valueOf(index);
+        obj.setCalibrageTamis16(calibrageTamis16);
     }
     
     public void JCoffeeAnalysisDataOnDemand.setCalibrageTamis18(JCoffeeAnalysis obj, int index) {
-        BigDecimal CalibrageTamis18 = BigDecimal.valueOf(index);
-        obj.setCalibrageTamis18(CalibrageTamis18);
+        BigDecimal calibrageTamis18 = BigDecimal.valueOf(index);
+        obj.setCalibrageTamis18(calibrageTamis18);
     }
     
     public void JCoffeeAnalysisDataOnDemand.setConfirmation(JCoffeeAnalysis obj, int index) {
@@ -222,7 +226,7 @@ privileged aspect JCoffeeAnalysisDataOnDemand_Roo_DataOnDemand {
     }
     
     public void JCoffeeAnalysisDataOnDemand.setNumberOfBagAllowed(JCoffeeAnalysis obj, int index) {
-        BigInteger numberOfBagAllowed = BigInteger.valueOf(index);
+        Long numberOfBagAllowed = new Integer(index).longValue();
         obj.setNumberOfBagAllowed(numberOfBagAllowed);
     }
     
@@ -446,13 +450,18 @@ privileged aspect JCoffeeAnalysisDataOnDemand_Roo_DataOnDemand {
         obj.setStartTime(startTime);
     }
     
+    public void JCoffeeAnalysisDataOnDemand.setStatus(JCoffeeAnalysis obj, int index) {
+        Long status = new Integer(index).longValue();
+        obj.setStatus(status);
+    }
+    
     public void JCoffeeAnalysisDataOnDemand.setTotalOfBagPushed(JCoffeeAnalysis obj, int index) {
-        BigInteger totalOfBagPushed = BigInteger.valueOf(index);
+        Long totalOfBagPushed = new Integer(index).longValue();
         obj.setTotalOfBagPushed(totalOfBagPushed);
     }
     
     public void JCoffeeAnalysisDataOnDemand.setTotalOfReportedBags(JCoffeeAnalysis obj, int index) {
-        BigInteger totalOfReportedBags = BigInteger.valueOf(index);
+        Long totalOfReportedBags = new Integer(index).longValue();
         obj.setTotalOfReportedBags(totalOfReportedBags);
     }
     

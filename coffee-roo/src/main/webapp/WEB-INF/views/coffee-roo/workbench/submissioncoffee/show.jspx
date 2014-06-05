@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" 
+	 xmlns:jsp="http://java.sun.com/JSP/Page"
+	 xmlns:c="http://java.sun.com/jsp/jstl/core"
+	 xmlns:spring="http://www.springframework.org/tags"
+	 xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" 
+	 xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+	 
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    
+    <page:show id="ps_com_j1987_coffeeroo_domain_JSubmissionForApproval" object="${submission}" path="/workbench/submissions/coffee" create="false" delete="false">
+        <field:display field="reference" id="s_com_j1987_coffeeroo_domain_JSubmissionForApproval_reference" object="${submission}"/>
+        <field:display field="description" id="s_com_j1987_coffeeroo_domain_JSubmissionForApproval_description" object="${submission}"/>
+        <field:display date="true" dateTimePattern="${JSubmissionForApproval__creationdate_date_format}" field="creationDate" id="s_com_j1987_coffeeroo_domain_JSubmissionForApproval_creationDate" object="${submission}"/>
+        <field:display field="createdBy" id="s_com_j1987_coffeeroo_domain_JSubmissionForApproval_createdBy" object="${submission}"/>
+		<div>
+	      <label>
+	      	<spring:message code="label_com_j1987_coffeeroo_domain_jsubmissionforapproval_status"/>
+	      	:
+	       </label>
+			<div class="box">
+				<c:if test="${submission.status eq 1}">
+					En Attente
+				</c:if>
+				<c:if test="${submission.status eq 2}">
+					Valide
+				</c:if>
+				<c:if test="${submission.status eq 0}">
+					Rejete
+				</c:if>
+			</div>
+		</div>
+        <hr />
+        <c:if test="${not empty submission.analyzesCoffee}">
+	        <div class="btn-toolbar">
+	        	<div class="btn-group">
+		        	<c:if test="${submission.status != 2}">
+			        		<spring:url value="/workbench/submissions/coffee/generatefile/${submission.id}" var="generatesubmissioncoffee_url"/>
+			        		<a href="${generatesubmissioncoffee_url}" class="btn btn-default">
+			        			Generer Fichier xls
+			        		</a>
+		        	</c:if>
+		        	<c:if test="${submission.status eq 2}">
+		        			<c:if test="${submission.bill != null }">
+		        				<spring:url value="/workbench/bills/${submission.bill.id}" var="billdetails_url"/>
+		        			</c:if>
+		        			
+		        			<c:if test="${submission.bill eq null }">
+		        				<spring:url value="/workbench/bills/create/${submission.reference}?form" var="billdetails_url"/>
+		        			</c:if>
+
+			        		<a href="${billdetails_url}" class="btn btn-default">
+			        			<spring:message code="label_com_j1987_coffeeroo_domain_jbill"/>
+			        		</a>
+		        	</c:if>
+	        	</div>
+	        </div>
+
+       	        <table:table data="${submission.analyzesCoffee}" id="l_com_j1987_coffeeroo_domain_JCoffeeAnalysis" path="/workbench/analysis/coffeeanalysis" z="deMOtOjtvLPiAt2FJDCmiluc36M=" create="false" delete="false">
+		            <table:column date="true" dateTimePattern="${JSubmissionForApproval__creationdate_date_format}" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_dateOfAnalysis" property="dateOfAnalysis" z="2cZVDYoqNya4rwa4c3x7MRMgIFE="/>
+		            <table:column id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_numberLading" property="numberLading" z="E9w+SGbqYIYQPD3VxQLt21AKwrQ="/>
+		            <table:column id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_truckNumber" property="truckNumber" z="PNIrHcyWo6a9qVF6X8eqCZlqESs="/>
+		            <table:column id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_netWeightOfProductAccepted" property="netWeightOfProductAccepted" z="PH6vfqXhklEcuFUQr1fTwTnT4RI="/>
+		            <table:column id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_provenance" property="provenance" z="wnvLymWdXAcBMgXhbOAdxSMiphc="/>
+		            <table:column id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_dealerEntry" property="dealerEntry"  z="yDGsI2ECC9nS0HQ85pXlnmFeIZs="/>
+		        </table:table>
+
+        </c:if>
+    </page:show>
+</div>

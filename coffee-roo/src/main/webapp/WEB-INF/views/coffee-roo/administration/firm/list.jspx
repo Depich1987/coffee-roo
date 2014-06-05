@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_j1987_coffeeroo_domain_JFirm" items="${jfirms}" path="/administration/firms" z="ef/YdgTh77EF/uTY0Bg4JqSAl2I=">
+        <table:table data="${jfirms}" id="l_com_j1987_coffeeroo_domain_JFirm" path="/administration/firms" z="3RVhhLG19WfTN0OhnWOWSI+KVrY=">
+            <table:column id="c_com_j1987_coffeeroo_domain_JFirm_dealerCode" property="dealerCode" z="brKAnKGnMEeniiaXzQXKR7snKuY="/>
+            <table:column id="c_com_j1987_coffeeroo_domain_JFirm_name" property="name" z="s3HS+fgfNltcAGgFtB7LI+OFSrw="/>
+            <table:column id="c_com_j1987_coffeeroo_domain_JFirm_priceCocoaAnalysis" property="priceCocoaAnalysis" z="04ju6ync15E/8bk8E0LY7iGKGiQ="/>
+            <table:column id="c_com_j1987_coffeeroo_domain_JFirm_priceCoffeeAnalysis" property="priceCoffeeAnalysis" z="JUZIwNTl25wlvtw6CiwzyMDUJvQ="/>
+            <table:column id="c_com_j1987_coffeeroo_domain_JFirm_productWeightBag" property="productWeightBag" z="DKb0lXVCyddlVEuxhjau3cHhV44="/>
+            <table:column id="c_com_j1987_coffeeroo_domain_JFirm_users" property="users" z="3UIYS3c3PeM659yt3ofCvoYwM50="/>
+        </table:table>
+    </page:list>
+</div>

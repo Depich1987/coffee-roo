@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" 
+	 xmlns:jsp="http://java.sun.com/JSP/Page"
+	 xmlns:spring="http://www.springframework.org/tags" 
+	 xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_j1987_coffeeroo_domain_JBill" object="${bill}" path="/workbench/bills" z="iewxvIeyy+cPE5uFOKLluIgGqWA=" create="false" list="false" update="true" delete="false">
+        <p>
+        	<div class="btn-toolbar">
+        		<div class="btn-group pull-right">
+        			<spring:url value="/workbench/bills/generatefile/${bill.id}?format=pdf" var="generatebill_url"/>
+        			<a href="${generatebill_url}" class="btn btn-danger" target="_blank">
+        				Generer Facture
+        				<span class="glyphicon glyphicon-icon-print"></span>
+        			</a>
+        		</div>
+        	</div>
+        </p>
+        <hr />
+        <field:display field="reference" id="s_com_j1987_coffeeroo_domain_JBill_reference" object="${bill}" z="156a77wOS/J+XOqTGW/hZU+0WK8="/>
+        <field:display field="dateOfBill" id="s_com_j1987_coffeeroo_domain_JBill_dateOfBill" object="${bill}" z="yVGRFibPs3K+BW4Z03JyWAMxP4w="/>
+        <field:display field="tourName" id="s_com_j1987_coffeeroo_domain_JBill_tourName" object="${bill}" z="TQpBeObTx878flB/TjuHC5sG3pA="/>
+        <field:display field="factoryCode" id="s_com_j1987_coffeeroo_domain_JBill_factoryCode" object="${bill}" z="y0CopexWFhWq10ZWUrRn2eY39SE="/>
+        <field:display field="factoryName" id="s_com_j1987_coffeeroo_domain_JBill_factoryName" object="${bill}" z="jy34Gm5TVx/8MCqFFLFgZPKXafc="/>
+        <field:display field="exporterName" id="s_com_j1987_coffeeroo_domain_JBill_exporterName" object="${bill}" z="87UVUnvhc8gD7/vehgFqKD6xMmM="/>
+        <field:display field="periodTitle" id="s_com_j1987_coffeeroo_domain_JBill_periodTitle" object="${bill}" z="n/iQETorsUqX/XlDdmN/W/6JxDA="/>
+        <field:display field="area" id="s_com_j1987_coffeeroo_domain_JBill_area" object="${bill}" z="pjJoM4/m6gRjMaCjzk1A6+3pR1g="/>
+        <field:display field="totalWeightProductAllowed" id="s_com_j1987_coffeeroo_domain_JBill_totalWeightProductAllowed" object="${bill}" z="mgBaPWWNQ8Z8Qzr8wg0w4Tcy0XM="/>
+        <field:display field="totalWeightProductPushed" id="s_com_j1987_coffeeroo_domain_JBill_totalWeightProductPushed" object="${bill}" z="YgoypByrkvC1XeQ9iMmxZ0Yzyco="/>
+        <field:display field="amountWithoutTaxes" id="s_com_j1987_coffeeroo_domain_JBill_amountWithoutTaxes" object="${bill}" z="koyXsriVJZm3/Z9aIVBFELJ2IgY="/>
+        <field:display field="submission" id="s_com_j1987_coffeeroo_domain_JBill_submission" object="${bill}" z="WO3rcukizYTbkFVv3TBRyzTHf3g="/>
+    </page:show>
+</div>

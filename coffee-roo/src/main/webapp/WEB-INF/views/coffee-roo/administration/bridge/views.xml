@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    
+    <definition extends="administrationLayout" name="administration/bridge/list">
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/bridge/list.jspx"/>
+    </definition>
+
+	<definition extends="administrationLayout" name="administration/bridge/show">
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/bridge/show.jspx"/>
+    </definition>
+
+	<definition extends="administrationLayout" name="administration/bridge/create">
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/bridge/create.jspx"/>
+    </definition>
+	
+	<definition extends="administrationLayout" name="administration/bridge/update">
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/bridge/update.jspx"/>
+    </definition>
+</tiles-definitions>

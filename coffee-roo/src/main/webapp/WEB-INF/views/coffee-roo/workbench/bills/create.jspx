@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_com_j1987_coffeeroo_domain_JBill" modelAttribute="bill" path="/workbench/bills" render="${empty dependencies}" z="98f3sVB7OhQVrnO272T8vugNlvM=">
+        <field:input field="reference" id="c_com_j1987_coffeeroo_domain_JBill_reference" required="true" z="31821tyxstlvlSmZVk8+LRDrXnY="/>
+        <field:datetime dateTimePattern="dd/MM/yyyy"  field="dateOfBillAsString" id="c_com_j1987_coffeeroo_domain_JBill_dateOfBill" required="true" z="W2pLWjamDyIrd6qZKCRpkUAPmDg="/>
+        <field:input field="periodTitle" id="c_com_j1987_coffeeroo_domain_JBill_periodTitle" required="true" z="XyCcPpgUTazIMPU8v9OBG5BTCdc="/>
+        <field:input field="tourName" id="c_com_j1987_coffeeroo_domain_JBill_tourName" z="uqJ84bG2FjBWsIzCCNTAiSmfQZM="/>
+        <field:input field="factoryCode" id="c_com_j1987_coffeeroo_domain_JBill_factoryCode" z="JZcbLd6tjv0bL+Zo3vZqVUjIG1s="/>
+        <field:input field="factoryName" id="c_com_j1987_coffeeroo_domain_JBill_factoryName" z="nxomYo/Pk8EufNI8xsIRL+GBuPs="/>
+        <field:input field="exporterName" id="c_com_j1987_coffeeroo_domain_JBill_exporterName" z="/IzDJXngwPCbkqy7Xy1MC/eTzac="/>
+        <field:input field="area" id="c_com_j1987_coffeeroo_domain_JBill_area" z="lSQ5eSA92PYiJROflknG1Qs7pIw="/>
+        <field:input field="totalWeightProductAllowed" id="c_com_j1987_coffeeroo_domain_JBill_totalWeightProductAllowed" validationMessageCode="field_invalid_number" z="4T6LvSbTosKT+DTSGdJ7bTa6lOk="/>
+        <field:input field="totalWeightProductPushed" id="c_com_j1987_coffeeroo_domain_JBill_totalWeightProductPushed" validationMessageCode="field_invalid_number" z="gK7Rs67j8lG4PT1NfVodIc5uPIM="/>
+        <field:input field="amountWithoutTaxes" id="c_com_j1987_coffeeroo_domain_JBill_amountWithoutTaxes" validationMessageCode="field_invalid_number" z="Yyk8x8LV4qRpiv841AZdtPLEt90="/>
+        <field:select field="submission" id="c_com_j1987_coffeeroo_domain_JBill_submission" itemValue="id" items="${submissions}" itemLabel="reference" path="/jsubmissionforapprovals" z="g2Jjb8MU3Dycbrm5RdtVZ5xTPnI="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_com_j1987_coffeeroo_domain_JBill" render="${not empty dependencies}" z="mwKuwN2Vvfzi95zMm8HFcyFHxz4="/>
+
+</div>

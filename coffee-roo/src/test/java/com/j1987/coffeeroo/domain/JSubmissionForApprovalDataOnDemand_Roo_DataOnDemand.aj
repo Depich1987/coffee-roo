@@ -3,6 +3,7 @@
 
 package com.j1987.coffeeroo.domain;
 
+import com.j1987.coffeeroo.domain.JBillDataOnDemand;
 import com.j1987.coffeeroo.domain.JSubmissionForApproval;
 import com.j1987.coffeeroo.domain.JSubmissionForApprovalDataOnDemand;
 import java.security.SecureRandom;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.Random;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 privileged aspect JSubmissionForApprovalDataOnDemand_Roo_DataOnDemand {
@@ -25,12 +27,18 @@ privileged aspect JSubmissionForApprovalDataOnDemand_Roo_DataOnDemand {
     
     private List<JSubmissionForApproval> JSubmissionForApprovalDataOnDemand.data;
     
+    @Autowired
+    JBillDataOnDemand JSubmissionForApprovalDataOnDemand.jBillDataOnDemand;
+    
     public JSubmissionForApproval JSubmissionForApprovalDataOnDemand.getNewTransientJSubmissionForApproval(int index) {
         JSubmissionForApproval obj = new JSubmissionForApproval();
         setCreatedBy(obj, index);
         setCreationDate(obj, index);
         setDescription(obj, index);
+        setFactoryCode(obj, index);
         setReference(obj, index);
+        setStatus(obj, index);
+        setTourId(obj, index);
         return obj;
     }
     
@@ -49,9 +57,24 @@ privileged aspect JSubmissionForApprovalDataOnDemand_Roo_DataOnDemand {
         obj.setDescription(description);
     }
     
+    public void JSubmissionForApprovalDataOnDemand.setFactoryCode(JSubmissionForApproval obj, int index) {
+        String factoryCode = "factoryCode_" + index;
+        obj.setFactoryCode(factoryCode);
+    }
+    
     public void JSubmissionForApprovalDataOnDemand.setReference(JSubmissionForApproval obj, int index) {
         String reference = "reference_" + index;
         obj.setReference(reference);
+    }
+    
+    public void JSubmissionForApprovalDataOnDemand.setStatus(JSubmissionForApproval obj, int index) {
+        Long status = new Integer(index).longValue();
+        obj.setStatus(status);
+    }
+    
+    public void JSubmissionForApprovalDataOnDemand.setTourId(JSubmissionForApproval obj, int index) {
+        Long tourId = new Integer(index).longValue();
+        obj.setTourId(tourId);
     }
     
     public JSubmissionForApproval JSubmissionForApprovalDataOnDemand.getSpecificJSubmissionForApproval(int index) {

@@ -1,0 +1,769 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" 
+	 xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" 
+	  xmlns:form="http://www.springframework.org/tags/form" 
+	 xmlns:jsp="http://java.sun.com/JSP/Page" 
+	 xmlns:spring="http://www.springframework.org/tags" version="2.0">
+	 
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    
+    <spring:message code="workbench_analysis_generalinformations" var="generalinfos_label"/>
+    <spring:message code="workbench_analysis_technincalinformations" var="technincalinfos_label"/>
+
+	<h1 class="page-header">
+    	COFFEE ANALYSIS
+    </h1>
+    <div class="btn-toolbar" role="toolbar" style="margin-bottom: 15px;">
+    	<div class="btn-group">
+	    		<spring:url value="${path}/list?size=10" var="list_url"/>
+		    	<a href="${list_url}" class="btn btn-default">
+		    		<spring:message code="entity_list_all" arguments="${labelPlural}" />
+		    		<![CDATA[&nbsp;&nbsp;]]>
+		    		<span class="glyphicon glyphicon-list-alt"></span>
+		    	</a>
+    	</div>
+    </div>
+    
+    <div class="panel panel-primary">
+    	<div class="panel-heading">
+    		ENTETE FORMULAIRE
+    	</div>
+    	<div class="panel-body">
+           <p>
+		        <div id="error-message">
+		        	<!-- error place -->
+		        </div>
+	        </p>
+	        <form:form modelAttribute="coffeeAnalysisForm" action="/workbench/analysis/coffeeanalysis/create">
+
+		        <FIELDSET>
+		        	<LEGEND>
+		        		${generalinfos_label}
+		        	</LEGEND>
+		        	
+	        	<!-- ******************* SELECT FIELD ******************** -->
+	        	
+		        	<div class="row">
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="tourId" class="control-label">
+						        <spring:message code="label_com_j1987_coffeeroo_domain_jtour"/>
+						        :
+						      </label>
+			   					<select  name="tourId" id="tourId" class="form-control">
+			   						<c:forEach items="${tours}" var="tour">
+			   							<option value="${tour.id}">
+			   								${tour.name}
+			   							</option>
+			   						</c:forEach>
+			   					</select>
+
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="exporterCode" class="control-label">
+						        <spring:message code="label_com_j1987_coffeeroo_domain_jexporter"/>
+						        :
+						      </label>
+			   					<form:select path="exporterCode" class="form-control">
+			   						<form:options items="${exporters}" itemLabel="name" itemValue="code" />
+			   					</form:select>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="supplierCode" class="control-label">
+						        <spring:message code="label_com_j1987_coffeeroo_domain_jsupplier"/>
+						        :
+						      </label>
+			   					<form:select path="supplierCode" class="form-control">
+			   						<form:options items="${suppliers}" itemLabel="name" itemValue="code" />
+			   					</form:select>
+			    			</div>
+		        		</div>
+		       		</div>
+		       		
+		       		
+		        	<div class="row">
+		        		<div class="col-sm-4">
+	   			   				<div class="form-group">
+							      <label for="provenance" class="control-label">
+							        <spring:message code="label_com_j1987_coffeeroo_domain_jlocalization"/>
+							        :
+							      </label>
+				   					<form:select path="provenance" class="form-control">
+				   						<form:options items="${localizations}" itemLabel="name" itemValue="id" />
+				   					</form:select>
+				    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+		        			<div class="form-group">
+						      <label for="factoryCode" class="control-label">
+						        <spring:message code="label_com_j1987_coffeeroo_domain_jfactory"/>
+						        :
+						      </label>
+			   					<form:select path="factoryCode" class="form-control">
+			   						<form:options items="${factories}" itemLabel="name" itemValue="code" />
+			   					</form:select>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+		        			<p></p>
+		        		</div>
+		       		</div>
+		       		
+	       		<!-- ******************* INPUT FIELD ******************** -->
+	       		
+	       		<hr></hr>
+	       		
+					<div class="row">
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="numberLading" class="control-label">
+						       Numero Connaissement :
+						      </label>
+						      <form:input path="numberLading" class="form-control"/>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="truckNumber" class="control-label">
+						       Numero Camion :
+						      </label>
+						      <form:input path="truckNumber" class="form-control"/>
+		        		</div>
+		        		</div>
+		        		<div class="col-sm-4">
+		        			<div class="form-group">
+						      <label for="netWeightOfProductAccepted" class="control-label">
+						       Poids net de produit accepte :
+						      </label>
+						      <form:input path="netWeightOfProductAccepted" class="form-control"/>
+						     </div>
+		        		</div>
+		       		</div>	       		
+	       		
+	       			<div class="row">
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="totalOfBagPushed" class="control-label">
+						       Sac total refoule :
+						      </label>
+						      <form:input path="totalOfBagPushed" class="form-control"/>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="totalOfReportedBags" class="control-label">
+						       Sac total reporte :
+						      </label>
+						      <form:input path="totalOfReportedBags" class="form-control"/>
+		        		</div>
+		        		</div>
+		        		<div class="col-sm-4">
+		        			<div class="form-group">
+						      <label for="numberOfBagAllowed" class="control-label">
+						       Numero de sac declare :
+						      </label>
+						      <form:input path="numberOfBagAllowed" class="form-control"/>
+						     </div>
+		        		</div>
+		       		</div>	      
+	       			
+	       			<div class="row">
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="sampleCode" class="control-label">
+						       Code echantillon :
+						      </label>
+						      <form:input path="sampleCode" class="form-control"/>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="numberSAIGIC" class="control-label">
+						       Numero SAIGIC :
+						      </label>
+						      <form:input path="numberSAIGIC" class="form-control"/>
+		        			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <p></p>
+		        			</div>
+		        		</div>
+		       		</div>	   
+	       			
+	       		</FIELDSET>
+	       		
+	       		<FIELDSET>
+		        	<LEGEND>
+		        		${technincalinfos_label}
+		        	</LEGEND>
+		        	<div class="row">
+		        		<div class="col-sm-4">
+		        			<h4>
+		        				Rubrique
+		        			</h4>
+		        		</div>
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="poidsMatieresEtrangeres" class="control-label">
+						       Poids matieres etrangeres :
+						      </label>
+						      <form:input path="poidsMatieresEtrangeres" class="form-control"/>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="pourcentageMatieresEtrangeres" class="control-label">
+						       Matieres etrangeres (%) :
+						      </label>
+						      <form:input path="pourcentageMatieresEtrangeres" class="form-control"/>
+		        		</div>
+		        		</div>
+		       		</div>	  
+		        	<hr></hr>
+		        	
+	        		<div class="row">
+	        			<div class="col-sm-4">
+		        			<h4>
+		        				Dechets
+		        			</h4>
+		        		</div>
+		        		<div class="col-sm-4">
+	  			   				<div class="form-group">
+						      <label for="poidsDechetsParches" class="control-label">
+						       Poids dechets parches :
+						      </label>
+						      <form:input path="poidsDechetsParches" class="form-control"/>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageDechetsParches" class="control-label">
+						       Dechets Parches (%) :
+						      </label>
+						      <form:input path="pourcentageDechetsParches" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		<div class="row">
+	        			<div class="col-sm-4">
+							<h4></h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="poidsDechetsCerise" class="control-label">
+						       Poids dechets cerise :
+						      </label>
+						      <form:input path="poidsDechetsCerise" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageDechetsCerise" class="control-label">
+						       Dechets cerise (%) :
+						      </label>
+						      <form:input path="pourcentageDechetsCerise" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		<div class="row">
+	        			<div class="col-sm-4">
+							<h4></h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="poidsDechetsDemiCerises" class="control-label">
+						       Poids dechets demi cerises :
+						      </label>
+						      <form:input path="poidsDechetsDemiCerises" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageDechetsDemiCerises" class="control-label">
+						       Dechets demi cerise (%) :
+						      </label>
+						      <form:input path="pourcentageDechetsDemiCerises" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		<div class="row">
+	        			<div class="col-sm-4">
+							<h4></h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="poidsDechetsCoques" class="control-label">
+						       Poids dechets coques :
+						      </label>
+						      <form:input path="poidsDechetsCoques" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageDechetsCoques" class="control-label">
+						       Dechets coques (%) :
+						      </label>
+						      <form:input path="pourcentageDechetsCoques" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		<div class="row">
+	        			<div class="col-sm-4">
+							<h4></h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="poidsDechetsPeaux" class="control-label">
+						       Poids dechet peaux :
+						      </label>
+						      <form:input path="poidsDechetsPeaux" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageDechetsPeaux" class="control-label">
+						       Dechets peaux (%) :
+						      </label>
+						      <form:input path="pourcentageDechetsPeaux" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		<div class="row">
+	        			<div class="col-sm-4">
+							<h4></h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="poidsSousTotalDechets" class="control-label">
+						       Poids sous total dechet :
+						      </label>
+						      <form:input path="poidsSousTotalDechets" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageSousTotalDechets" class="control-label">
+						       Sous total dechets (%) :
+						      </label>
+						      <form:input path="pourcentageSousTotalDechets" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		
+		       		<hr></hr>
+		       		
+		       		<div>
+		       			<div class="row">
+		       				<div class="col-sm-4">
+		       					<h4>Hors normes</h4>
+		       				</div>
+		       				<div class="col-sm-4">
+		       					<div class="form-group">
+		       						<label for="poidsHorsNormesGrainsNoirs" class="control-label">
+		       						Poids hors normes grains noirs :
+		       						</label>
+		       						<form:input path="poidsHorsNormesGrainsNoirs" class="form-control" />
+		       					</div>
+		       				</div>
+		       				<div class="col-sm-4">
+		       					<div class="form-group">
+		       						<label for="pourcentageHorsNormesGrainsNoirs" class="control-label">
+		       						Hors normes grains noirs (%) :
+		       						</label>
+		       						<form:input path="pourcentageHorsNormesGrainsNoirs" class="form-control" />
+		       					</div>
+		       				</div>
+		       				<div class="col-sm-4">
+		       					<h4></h4>
+		       				</div>
+		       				<div class="col-sm-4">
+		       					<div class="form-group">
+		       						<label for="poidsHorsNormesGrainsDemiNoirs" class="control-label">
+		       						Poids hors normes grains demi noirs :
+		       						</label>
+		       						<form:input path="poidsHorsNormesGrainsDemiNoirs" class="form-control" />
+		       					</div>
+		       				</div>
+		       				<div class="col-sm-4">
+		       					<div class="form-group">
+		       						<label for="pourcentageHorsNormesGrainsDemiNoirs" class="control-label">
+		       						Hors normes grains demi noirs (%) :
+		       						</label>
+		       						<form:input path="pourcentageHorsNormesGrainsDemiNoirs" class="form-control" />
+		       					</div>
+		       				</div>
+		       				<div class="col-sm-4">
+		       					<h4></h4>
+		       				</div>
+		       				<div class="col-sm-4">
+		       					<div class="form-group">
+		       						<label for="poidsHorsNormesBrisures" class="control-label">
+		       						Poids hors normes brisures :
+		       						</label>
+		       						<form:input path="poidsHorsNormesBrisures" class="form-control" />
+		       					</div>
+		       				</div>
+		       				<div class="col-sm-4">
+		       					<div class="form-group">
+		       						<label for="pourcentageHorsNormesBrisures" class="control-label">
+		       						Hors normes brisures (%) :
+		       						</label>
+		       						<form:input path="pourcentageHorsNormesBrisures" class="form-control" />
+		       					</div>
+		       				</div>
+		       				<div class="col-sm-4">
+		       					<h4></h4>
+		       				</div>
+		       				<div class="col-sm-4">
+		       					<div class="form-group">
+		       						<label for="poidsSousTotalHorsNormes" class="control-label">
+		       						Poids sous total hors normes :
+		       						</label>
+		       						<form:input path="poidsSousTotalHorsNormes" class="form-control" />
+		       					</div>
+		       				</div>
+		       				<div class="col-sm-4">
+		       					<div class="form-group">
+		       						<label for="pourcentageSousTotalHorsNormes" class="control-label">
+		       						Sous total hors normes (%) :
+		       						</label>
+		       						<form:input path="pourcentageSousTotalHorsNormes" class="form-control" />
+		       					</div>
+		       				</div>
+		       			</div>
+		       		</div>
+		       		
+		       		<hr></hr>
+		       		
+		       		<div class="row">
+	        			<div class="col-sm-4">
+		        			<h4>
+		        				Grains acceptables
+		        			</h4>
+		        		</div>
+		        		<div class="col-sm-4">
+	  			   				<div class="form-group">
+						      <label for="poidsGrainsAcceptablesVert" class="control-label">
+						       Poids grains acceptables vert :
+						      </label>
+						      <form:input path="poidsGrainsAcceptablesVert" class="form-control"/>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageGrainsAcceptablesVert" class="control-label">
+						       Grains acceptables vert (%) :
+						      </label>
+						      <form:input path="pourcentageGrainsAcceptablesVert" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		<div class="row">
+	        			<div class="col-sm-4">
+							<h4></h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="poidsGrainsAcceptablesSpongieux" class="control-label">
+						       Poids grains acceptables spongieux :
+						      </label>
+						      <form:input path="poidsGrainsAcceptablesSpongieux" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageGrainsAcceptablesSpongieux" class="control-label">
+						       Grains acceptables spongieux (%) :
+						      </label>
+						      <form:input path="pourcentageGrainsAcceptablesSpongieux" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		<div class="row">
+	        			<div class="col-sm-4">
+							<h4></h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="poidsGrainsAcceptablesDemiSombre" class="control-label">
+						       Poids grains acceptables demi sombre :
+						      </label>
+						      <form:input path="poidsGrainsAcceptablesDemiSombre" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageGrainsAcceptablesDemiSombre" class="control-label">
+						       Grains acceptables demi sombre (%) :
+						      </label>
+						      <form:input path="pourcentageGrainsAcceptablesDemiSombre" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		<div class="row">
+	        			<div class="col-sm-4">
+							<h4></h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="poidsGrainsAcceptablesScolytes" class="control-label">
+						       Poids grains acceptables scolytes :
+						      </label>
+						      <form:input path="poidsGrainsAcceptablesScolytes" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageGrainsAcceptablesScolytes" class="control-label">
+						       Grains acceptables scolytes (%) :
+						      </label>
+						      <form:input path="pourcentageGrainsAcceptablesScolytes" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		<div class="row">
+	        			<div class="col-sm-4">
+							<h4></h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="poidsGrainsAcceptablesIndesirables" class="control-label">
+						       Poids grains acceptables indesirables :
+						      </label>
+						      <form:input path="poidsGrainsAcceptablesIndesirables" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageGrainsAcceptablesIndesirables" class="control-label">
+						       Grains acceptables indesirables (%) :
+						      </label>
+						      <form:input path="pourcentageGrainsAcceptablesIndesirables" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		<div class="row">
+	        			<div class="col-sm-4">
+							<h4></h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="poidsGrainsAcceptablesImmature" class="control-label">
+						       Poids grains acceptables immature :
+						      </label>
+						      <form:input path="poidsGrainsAcceptablesImmature" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageGrainsAcceptablesImmature" class="control-label">
+						       Poids grains acceptables immature (%) :
+						      </label>
+						      <form:input path="pourcentageGrainsAcceptablesImmature" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		        	
+		        	<div class="row">
+	        			<div class="col-sm-4">
+							<h4></h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="poidsGrainsAcceptablesIndesirables" class="control-label">
+						       Poids grains acceptables indesirables :
+						      </label>
+						      <form:input path="poidsGrainsAcceptablesIndesirables" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageGrainsAcceptablesIndesirables" class="control-label">
+						       Grains acceptables indesirables (%) :
+						      </label>
+						      <form:input path="pourcentageGrainsAcceptablesIndesirables" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		
+		       		<hr></hr>
+		       		
+		       		<div class="row">
+	        			<div class="col-sm-4">
+							<h4>
+								Calibrage
+							</h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="CalibrageTamis18" class="control-label">
+						       Tamis 18 :
+						      </label>
+						      <form:input path="CalibrageTamis18" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="CalibrageTamis16" class="control-label">
+						       Tamis 16 :
+						      </label>
+						      <form:input path="CalibrageTamis16" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+							<h4>
+							</h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="CalibrageTamis14" class="control-label">
+						       Tamis 14 :
+						      </label>
+						      <form:input path="CalibrageTamis14" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="CalibrageTamis12" class="control-label">
+						       Tamis 12 :
+						      </label>
+						      <form:input path="CalibrageTamis12" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+							<h4>
+							</h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="CalibrageTamis10" class="control-label">
+						       Tamis 10 :
+						      </label>
+						      <form:input path="CalibrageTamis10" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="CalibrageBase" class="control-label">
+						       Base :
+						      </label>
+						      <form:input path="CalibrageBase" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		
+		       		<hr></hr>
+		       		
+		       		<div class="row">
+	        			<div class="col-sm-4">
+							<h4>
+								Grade
+							</h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageGradeG0" class="control-label">
+						       Grade G0 :
+						      </label>
+						      <form:input path="pourcentageGradeG0" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageGradeG1" class="control-label">
+						       Grade G1 :
+						      </label>
+						      <form:input path="pourcentageGradeG1" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+							<h4>
+							</h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageGradeG2" class="control-label">
+						       Grade G2 :
+						      </label>
+						      <form:input path="pourcentageGradeG2" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageGradeG3" class="control-label">
+						       Grade G3 :
+						      </label>
+						      <form:input path="pourcentageGradeG3" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+							<h4>
+							</h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageGradeG4" class="control-label">
+						       Grade G4 :
+						      </label>
+						      <form:input path="pourcentageGradeG4" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageGradeHN" class="control-label">
+						       Grade HN :
+						      </label>
+						      <form:input path="pourcentageGradeHN" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		
+		       		<hr></hr>
+		       		
+		       		<div class="row">
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="acceptation" class="control-label">
+						       Acceptation :
+						      </label>
+						      <form:select path="acceptation" class="form-control">
+						      	<form:option value=" "></form:option>
+						      	<form:option value="Oui"></form:option>
+						      	<form:option value="Nom"></form:option>
+						      </form:select>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="confirmation" class="control-label">
+						       Conformite :
+						      </label>
+						      <form:select path="confirmation" class="form-control">
+						      	<form:option value=" "></form:option>
+						      	<form:option value="Oui"></form:option>
+						      	<form:option value="Nom"></form:option>
+						      </form:select>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<h4></h4>
+	        			</div>
+		       		</div>
+		        	
+		        </FIELDSET>
+       		</form:form>
+        </div>
+         <div class="panel-footer">
+           <small>
+           	<spring:message code="global_sponsored"/>
+           </small>
+         </div>
+    </div>
+    
+</div>

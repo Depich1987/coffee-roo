@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    
+    <definition extends="workbenchLayout" name="workbench/bills/list">
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/bills/list.jspx"/>
+    </definition>
+	
+	<definition extends="workbenchLayout" name="workbench/bills/show">
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/bills/show.jspx"/>
+    </definition>
+	
+	<definition extends="workbenchLayout" name="workbench/bills/create">
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/bills/create.jspx"/>
+    </definition>
+
+	<definition extends="workbenchLayout" name="workbench/bills/update">
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/bills/update.jspx"/>
+    </definition>
+    
+</tiles-definitions>
