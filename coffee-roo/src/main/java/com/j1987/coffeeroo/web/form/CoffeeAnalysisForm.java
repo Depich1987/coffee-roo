@@ -2,7 +2,6 @@ package com.j1987.coffeeroo.web.form;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 
 import javax.validation.constraints.NotNull;
 
@@ -12,6 +11,12 @@ public class CoffeeAnalysisForm implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -5487322124302987462L;
+	
+	private Long id;
+	
+	private Long tourId;
+	
+	private String reference;
 	
 	/**
      */
@@ -62,15 +67,15 @@ public class CoffeeAnalysisForm implements Serializable {
 
     /**
      */
-    private BigInteger totalOfBagPushed;
+    private Long totalOfBagPushed;
 
     /**
      */
-    private BigInteger totalOfReportedBags;
+    private Long totalOfReportedBags;
 
     /**
      */
-    private BigInteger numberOfBagAllowed;
+    private Long numberOfBagAllowed;
 
     /**
      */
@@ -362,27 +367,27 @@ public class CoffeeAnalysisForm implements Serializable {
 		this.endTime = endTime;
 	}
 
-	public BigInteger getTotalOfBagPushed() {
+	public Long getTotalOfBagPushed() {
 		return totalOfBagPushed;
 	}
 
-	public void setTotalOfBagPushed(BigInteger totalOfBagPushed) {
+	public void setTotalOfBagPushed(Long totalOfBagPushed) {
 		this.totalOfBagPushed = totalOfBagPushed;
 	}
 
-	public BigInteger getTotalOfReportedBags() {
+	public Long getTotalOfReportedBags() {
 		return totalOfReportedBags;
 	}
 
-	public void setTotalOfReportedBags(BigInteger totalOfReportedBags) {
+	public void setTotalOfReportedBags(Long totalOfReportedBags) {
 		this.totalOfReportedBags = totalOfReportedBags;
 	}
 
-	public BigInteger getNumberOfBagAllowed() {
+	public Long getNumberOfBagAllowed() {
 		return numberOfBagAllowed;
 	}
 
-	public void setNumberOfBagAllowed(BigInteger numberOfBagAllowed) {
+	public void setNumberOfBagAllowed(Long numberOfBagAllowed) {
 		this.numberOfBagAllowed = numberOfBagAllowed;
 	}
 
@@ -803,6 +808,30 @@ public class CoffeeAnalysisForm implements Serializable {
 
 	public void setConfirmation(Boolean confirmation) {
 		this.confirmation = confirmation;
+	}
+
+	public String getReference() {
+		return reference;
+	}
+
+	public void setReference(String reference) {
+		this.reference = reference;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getTourId() {
+		return tourId;
+	}
+
+	public void setTourId(Long tourId) {
+		this.tourId = tourId;
 	}
 
 	

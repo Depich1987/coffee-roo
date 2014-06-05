@@ -32,7 +32,7 @@
   
   <definition name="simpleLayout" template="/WEB-INF/layouts/dashboardLayout.jspx">
     <put-attribute name="header" value="/WEB-INF/views/coffee-roo/header.jspx" />
-    <put-attribute name="menu" value="/WEB-INF/views/coffee-roo/menu.jspx" />
+    <put-attribute name="menu" value="" />
   </definition>
   
   <definition name="dashboardLayout" template="/WEB-INF/layouts/dashboardLayout.jspx">

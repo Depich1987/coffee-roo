@@ -1,27 +1,22 @@
 package com.j1987.coffeeroo.domain;
-import org.springframework.roo.addon.javabean.RooJavaBean;
-import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
-import org.springframework.roo.addon.tostring.RooToString;
-
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.math.BigDecimal;
-
-import javax.persistence.ManyToOne;
-
-import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.roo.addon.javabean.RooJavaBean;
+import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
+import org.springframework.roo.addon.tostring.RooToString;
 
 @RooJavaBean
 @RooToString
@@ -30,6 +25,8 @@ public class JCoffeeAnalysis {
 	
 	@Column(unique = true)
 	private String reference;
+	
+	private Long status;
 
     /**
      */
@@ -50,32 +47,51 @@ public class JCoffeeAnalysis {
 
     /**
      */
-    private BigDecimal netWeightOfProductAccepted;
+    private BigDecimal netWeightOfProductAccepted = new BigDecimal("0");
 
     /**
      */
     @ManyToOne
     private JLocalization provenance;
+    
+    @ManyToOne
+    private JTour tour;
+    
+    @Transient
+    private String provenanceName;
 
     /**
      */
     @ManyToOne
     private JDealer dealerEntry;
+    
+    @Transient
+    private String dealerName;
 
     /**
      */
     @ManyToOne
     private JFactory factoryEntry;
+    
+    @Transient
+    private String factoryName;
 
     /**
      */
     @ManyToOne
     private JExporter exporterEntry;
+    
+    
+    @Transient
+    private String exporterName;
 
     /**
      */
     @ManyToOne
     private JSupplier supplierEntry;
+    
+    @Transient
+    private String supplierName;
 
     /**
      */
@@ -91,15 +107,15 @@ public class JCoffeeAnalysis {
 
     /**
      */
-    private BigInteger totalOfBagPushed;
+    private Long totalOfBagPushed;
 
     /**
      */
-    private BigInteger totalOfReportedBags;
+    private Long totalOfReportedBags;
 
     /**
      */
-    private BigInteger numberOfBagAllowed;
+    private Long numberOfBagAllowed;
 
     /**
      */
@@ -137,59 +153,59 @@ public class JCoffeeAnalysis {
     
     /**
      */
-    private BigDecimal poidsMatieresEtrangeres;
+    private BigDecimal poidsMatieresEtrangeres = new BigDecimal("0");
     
     /**
      */
-    private BigDecimal pourcentageMatieresEtrangeres;
+    private BigDecimal pourcentageMatieresEtrangeres = new BigDecimal("0");
     
     /**
      */
-    private BigDecimal poidsDechetsParches;
+    private BigDecimal poidsDechetsParches = new BigDecimal("0");
     
     /**
      */
-    private BigDecimal pourcentageDechetsParches;
+    private BigDecimal pourcentageDechetsParches = new BigDecimal("0");
     
     /**
      */
-    private BigDecimal poidsDechetsCerise;
+    private BigDecimal poidsDechetsCerise = new BigDecimal("0");
     
     /**
      */
-    private BigDecimal pourcentageDechetsCerise;
+    private BigDecimal pourcentageDechetsCerise = new BigDecimal("0");
     
     /**
      */
-    private BigDecimal poidsDechetsDemiCerises;
+    private BigDecimal poidsDechetsDemiCerises = new BigDecimal("0");
     
     /**
      */
-    private BigDecimal pourcentageDechetsDemiCerises;
+    private BigDecimal pourcentageDechetsDemiCerises = new BigDecimal("0");
     
     /**
      */
-    private BigDecimal poidsDechetsCoques;
+    private BigDecimal poidsDechetsCoques = new BigDecimal("0");
     
     /**
      */
-    private BigDecimal pourcentageDechetsCoques;
+    private BigDecimal pourcentageDechetsCoques = new BigDecimal("0");
     
     /**
      */
-    private BigDecimal poidsDechetsPeaux;
+    private BigDecimal poidsDechetsPeaux = new BigDecimal("0");
     
     /**
      */
-    private BigDecimal pourcentageDechetsPeaux;
+    private BigDecimal pourcentageDechetsPeaux = new BigDecimal("0");
     
     /**
      */
-    private BigDecimal poidsSousTotalDechets;
+    private BigDecimal poidsSousTotalDechets = new BigDecimal("0");
     
     /**
      */
-    private BigDecimal pourcentageSousTotalDechets;
+    private BigDecimal pourcentageSousTotalDechets = new BigDecimal("0");
     
     /**
      */
@@ -273,27 +289,27 @@ public class JCoffeeAnalysis {
 
     /**
      */
-    private BigDecimal CalibrageTamis18;
+    private BigDecimal calibrageTamis18;
     
     /**
      */
-    private BigDecimal CalibrageTamis16;
+    private BigDecimal calibrageTamis16;
     
     /**
      */
-    private BigDecimal CalibrageTamis14;
+    private BigDecimal calibrageTamis14;
     
     /**
      */
-    private BigDecimal CalibrageTamis12;
+    private BigDecimal calibrageTamis12;
     
     /**
      */
-    private BigDecimal CalibrageTamis10;
+    private BigDecimal calibrageTamis10;
     
     /**
      */
-    private BigDecimal CalibrageBase;
+    private BigDecimal calibrageBase;
     
     /**
      */

@@ -6,6 +6,7 @@
   <jsp:directive.attribute name="label" type="java.lang.String" required="false" rtexprvalue="true" description="The label used for this field, will default to a message bundle if not supplied" />
   <jsp:directive.attribute name="labelCode" type="java.lang.String" required="false" rtexprvalue="true" description="Key for label message bundle if label is not supplied" />
   <jsp:directive.attribute name="required" type="java.lang.Boolean" required="false" rtexprvalue="true" description="Indicates if this field is required (default false)" />
+  <jsp:directive.attribute name="upperCase" type="java.lang.Boolean" required="false" rtexprvalue="true" description="Indicates if this field the text value will be transformed in uppercase (default false)" />
   <jsp:directive.attribute name="disabled" type="java.lang.Boolean" required="false" rtexprvalue="true" description="Specify if this field should be enabled" />
   <jsp:directive.attribute name="validationRegex" type="java.lang.String" required="false" rtexprvalue="true" description="Specify regular expression to be used for the validation of the input contents" />
   <jsp:directive.attribute name="validationMessageCode" type="java.lang.String" required="false" rtexprvalue="true" description="Specify the message (message property code) to be displayed if the regular expression validation fails" />
@@ -25,8 +26,12 @@
       <c:set value="text" var="type" />
     </c:if>
     
+    <c:if test="${not empty uppercase}">
+      <c:set value="text-transform:uppercase" var="uppercase" />
+    </c:if>
+    
     <c:if test="${empty disabled}">
-      <c:set value="false" var="disabled" />
+      <c:set value="false" var="readonly" />
     </c:if>
     
     <c:if test="${empty label}">
@@ -61,18 +66,18 @@
         <c:out value="${fn:escapeXml(label)}" />
         :
       </label>
-		<div class="col-sm-6">
+		<div class="col-sm-4">
       <c:choose>
         <c:when test="${disableFormBinding}">
-          <input id="_${sec_field}_id" name="${sec_field}" type="${fn:escapeXml(type)}" class="form-control"/>
+          <input id="_${sec_field}_id" name="${sec_field}" type="${fn:escapeXml(type)}" class="form-control" cssStyle="${uppercase}"/>
         </c:when>
         <c:otherwise>
           <c:choose>
             <c:when test="${type eq 'password'}">
-              <form:password id="_${sec_field}_id" path="${sec_field}" disabled="${disabled}" cssClass="form-control" />
+              <form:password id="_${sec_field}_id" path="${sec_field}" readonly="${disabled}" cssClass="form-control" />
             </c:when>
             <c:otherwise>
-              <form:input id="_${sec_field}_id" path="${sec_field}" disabled="${disabled}" cssClass="form-control"/>
+              <form:input id="_${sec_field}_id" path="${sec_field}" readonly="${disabled}" cssClass="form-control" cssStyle="${uppercase}"/>
             </c:otherwise>
           </c:choose>
           <br />

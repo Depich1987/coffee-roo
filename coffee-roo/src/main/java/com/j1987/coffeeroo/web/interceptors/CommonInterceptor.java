@@ -14,12 +14,13 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.j1987.coffeeroo.domain.JCompany;
+import com.j1987.coffeeroo.domain.JFirm;
 import com.j1987.coffeeroo.domain.JFactory;
 import com.j1987.coffeeroo.domain.JUser;
 import com.j1987.coffeeroo.framework.JDataImporter;
 import com.j1987.coffeeroo.framework.JUtils;
 import com.j1987.coffeeroo.framework.properties.PropertiesService;
+import com.j1987.coffeeroo.services.dao.FirmService;
 import com.j1987.coffeeroo.services.dao.UserService;
 
 public class CommonInterceptor extends HandlerInterceptorAdapter {
@@ -33,18 +34,21 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 	private PropertiesService propertiesService;
 	
 	@Autowired
+	private FirmService firmService;
+	
+	@Autowired
 	private UserService userService;
 
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
 		
-		JDataImporter.getInstance(
-				propertiesService.getSqlScript(), 
-				propertiesService.getDbDriverClassName(), 
-				propertiesService.getDbURL(), 
-				propertiesService.getDbUserName(), 
-				propertiesService.getDbPassword());
+//		JDataImporter.getInstance(
+//				propertiesService.getSqlScript(), 
+//				propertiesService.getDbDriverClassName(), 
+//				propertiesService.getDbURL(), 
+//				propertiesService.getDbUserName(), 
+//				propertiesService.getDbPassword());
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		
@@ -63,7 +67,7 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 						HttpSession session = request.getSession();
 						if (session != null && (session.getAttribute(JUtils.HTTP_SESSION_FACTORY_CODE) == null)) {
 							
-							logger.debug("preHandle() - setting 'useractivitycode' attribute to the session");
+							logger.debug("preHandle() - setting 'userfactorycode' attribute to the session");
 							
 							if (user == null) {
 								List<JUser> users = userService.findUserByUserNameEquals(authUser);
@@ -88,19 +92,19 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 								
 								if (session.getAttribute(JUtils.HTTP_SESSION_COMPANY_CODE) == null) {
 									
-									JCompany company = factory.getCompany();
+									JFirm firm = firmService.findFirm(Long.valueOf("1"));
 									
-									session.setAttribute(JUtils.HTTP_SESSION_COMPANY_CODE, company.getId());
-									session.setAttribute(JUtils.HTTP_SESSION_COMPANY_NAME, company.getName());
+									session.setAttribute(JUtils.HTTP_SESSION_COMPANY_CODE, firm.getId());
+									session.setAttribute(JUtils.HTTP_SESSION_COMPANY_NAME, firm.getName());
 									
-									logger.debug("preHandle() - company's session variables has been set");
+									logger.debug("preHandle() - firm's session variables has been set");
 								}
 							}
 							
 							
 						}
 						
-					}else if(JUtils.DB_ROLE_ADMIN.equals(authority.getAuthority())){
+					}else if(JUtils.DB_ROLE_ADMIN.equals(authority.getAuthority()) || JUtils.DB_ROLE_SUPERVISOR.equals(authority.getAuthority()) ){
 						// if the current user is a SUPERVISOR
 						
 						HttpSession session = request.getSession();
@@ -115,19 +119,19 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 
 							session.setAttribute(JUtils.HTTP_SESSION_USER_ROLE, user.getRoleName());
 							
-							//Retrieves the companies of current SUPERVISOR
-							List<JCompany> companies = user.getCompanies();
+							//Retrieves the firms of current SUPERVISOR
+							List<JFirm> firms = user.getFirms();
 							
-							if(!companies.isEmpty() && companies.size() <=1){
+							if(!firms.isEmpty() && firms.size() <=1){
 								
 								if (session.getAttribute(JUtils.HTTP_SESSION_COMPANY_CODE) == null) {
 									
-									JCompany company = companies.get(0);
+									JFirm firm = firms.get(0);
 									
-									session.setAttribute(JUtils.HTTP_SESSION_COMPANY_CODE, company.getId());
-									session.setAttribute(JUtils.HTTP_SESSION_COMPANY_NAME, company.getName());
+									session.setAttribute(JUtils.HTTP_SESSION_COMPANY_CODE, firm.getId());
+									session.setAttribute(JUtils.HTTP_SESSION_COMPANY_NAME, firm.getName());
 									
-									logger.debug("preHandle() - company's session variables has been set");
+									logger.debug("preHandle() - firm's session variables has been set");
 								}
 								
 							}

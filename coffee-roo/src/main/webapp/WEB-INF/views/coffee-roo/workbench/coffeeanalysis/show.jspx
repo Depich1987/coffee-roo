@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" 
+	 xmlns:jsp="http://java.sun.com/JSP/Page" 
+	 xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+	 
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
+    
     <page:show id="ps_com_j1987_coffeeroo_domain_JCoffeeAnalysis" object="${coffeeAnalysis}" path="/workbench/analysis/coffeeanalysis" z="w3OboC2vCDtWdAtB0Lau6xnmQDI=" create="false" update="true"  delete="false">
         <field:display date="true" dateTimePattern="${JCoffeeAnalysis__dateofanalysis_date_format}" field="dateOfAnalysis" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_dateOfAnalysis" object="${coffeeAnalysis}" z="Cogmi+zNsA7Chzyqu7d2YC9I73s="/>
         <field:display field="numberLading" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_numberLading" object="${coffeeAnalysis}" z="q9DU+QKFN+xO/t49f80DgR/eLCs="/>
@@ -12,8 +16,8 @@
         <field:display field="factoryEntry" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_factoryEntry" object="${coffeeAnalysis}" z="TZIhWI5+VQa6EgHmpg2BpBt9Kcg="/>
         <field:display field="exporterEntry" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_exporterEntry" object="${coffeeAnalysis}" z="dJAlnaV6F1qPquBeJgLKCWWUE/c="/>
         <field:display field="supplierEntry" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_supplierEntry" object="${coffeeAnalysis}" z="kpWmXHc7HrRb53WoCI+C2a0ZHwE="/>
-        <field:display date="true" dateTimePattern="${JCoffeeAnalysis__starttime_date_format}" field="startTime" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_startTime" object="${coffeeAnalysis}" z="JX1+aGyFlG3+I3dmxgBi4NaxYKg="/>
-        <field:display date="true" dateTimePattern="${JCoffeeAnalysis__endtime_date_format}" field="endTime" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_endTime" object="${coffeeAnalysis}" z="++cTrAturIdgsSk4VC9988GEjv4="/>
+        <field:display date="true" dateTimePattern="HH:mm" field="startTime" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_startTime" object="${coffeeAnalysis}" z="JX1+aGyFlG3+I3dmxgBi4NaxYKg="/>
+        <field:display date="true" dateTimePattern="HH:mm" field="endTime" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_endTime" object="${coffeeAnalysis}" z="++cTrAturIdgsSk4VC9988GEjv4="/>
         <field:display field="totalOfBagPushed" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_totalOfBagPushed" object="${coffeeAnalysis}" z="qgQjoB3rVoxG5vw4ZD3ZAcw86o0="/>
         <field:display field="totalOfReportedBags" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_totalOfReportedBags" object="${coffeeAnalysis}" z="U+STx+GoWILZh8Z9Ti+8FXTdAPI="/>
         <field:display field="numberOfBagAllowed" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_numberOfBagAllowed" object="${coffeeAnalysis}" z="YdnGjLTN86LMz6V43kKUiBHBElU="/>
@@ -21,8 +25,7 @@
         <field:display field="numberSAIGIC" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_numberSAIGIC" object="${coffeeAnalysis}" z="ZKdtiXMiqo1v84PSOpLm4YHhd8Q="/>
         <field:display date="true" dateTimePattern="${JCoffeeAnalysis__creationdate_date_format}" field="creationDate" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_creationDate" object="${coffeeAnalysis}" z="yKtb/EwsNdRY+pqWKNAwA7VWGeY="/>
         <field:display field="createdBy" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_createdBy" object="${coffeeAnalysis}" z="GjG2YSDSHXyydMvqjekweR5uuIY="/>
-        <field:display field="modifiedBy" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_modifiedBy" object="${coffeeAnalysis}" z="Rbev8ku7YVcMp8tprpiE1prA96w="/>
         <field:display date="true" dateTimePattern="${JCoffeeAnalysis__modificationdate_date_format}" field="modificationDate" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_modificationDate" object="${coffeeAnalysis}" z="d+oGcEbPLwzT/0ffCBiJyCDHyIE="/>
-        <field:display field="submissionsForApproval" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_submissionsForApproval" object="${coffeeAnalysis}" z="2z9fFNSSZNi/ecO7hm44rhj6XdI="/>
+        
     </page:show>
 </div>

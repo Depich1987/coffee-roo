@@ -8,10 +8,64 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     
+    <spring:url value="/administration/factories/validatefactorycode" var="validatefactorycode_url" />
+    
     <form:create id="fc_com_j1987_coffeeroo_domain_JFactory" modelAttribute="factory" path="/administration/factories" render="${empty dependencies}" z="6YEdkk/gmi8KahQYbj98OT8OI7c=">
         <field:input field="code" id="c_com_j1987_coffeeroo_domain_JFactory_code" required="true" z="+aa6WH8VUuBvqzrXz4Kt9Abz6ng="/>
-        <field:input field="name" id="c_com_j1987_coffeeroo_domain_JFactory_name" required="true" z="NPaMIKvifA/xSw2V9jFF0AJP4r8="/>
+        <field:input field="name" id="c_com_j1987_coffeeroo_domain_JFactory_name" required="true" z="NPaMIKvifA/xSw2V9jFF0AJP4r8=" upperCase="true"/>
         <field:textarea field="description" id="c_com_j1987_coffeeroo_domain_JFactory_description" z="1lQXgLRnZ8+r14yJDjTEtSVXgow="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_j1987_coffeeroo_domain_JFactory" render="${not empty dependencies}" z="Uz6cd4IppBVHKi8UTEcsewRaMeU="/>
+    <SCRIPT type="text/javascript">
+	function validateFactoryCode(agCode){
+		var isSuccess = false;
+		if(faCode != ''){
+			
+			$.ajax({
+				url:'${validatefactorycode_url}',
+				type:'post',
+				dataType:'json',
+				data:{factoryCode:faCode},
+				async:false,
+				success:function(a){
+					if(a === true) isSuccess = a;
+				},
+				error:function(err,xhr,status){
+					alert('Une Erreur est survenue dans la verification du code Usine!');
+					console.log(err);
+				}
+			});
+		}
+		return isSuccess;
+	}
+    
+    
+    	$(document).ready(function(){
+    		
+    		$.validator.addMethod("checkfactorycode",function(value, element){
+    			return validateFactoryCode(value);
+    		}, 'Ce code Usine est deja utilise!');
+    		
+    		$.validator.addMethod("validateExpressionCode", function(value, element){
+    			var s = element.value;
+    			s.replace(/[\wÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ]/g,"");
+    			return this.optional(element) || /^[a-zA-Z0-9]+$/.test( value );
+    		},"Les caracteres speciaux et/ou accentues ne sont pas acceptes");
+    		
+    		$('#factory').validate({
+    			rules:{
+    				name:{required:true},
+    				code:{required:true,checkfactorycode:true, validateExpressionCode:true}
+    			},
+    			highlight: function(label) {
+    				$(label).closest('.control-group').removeClass('success').addClass('error');
+    				},
+    				success: function(label) {
+    				label.addClass('valid').closest('.control-group').removeClass('error').addClass('success');
+    				}
+    			
+    		});
+    	});
+    </SCRIPT>
+
 </div>

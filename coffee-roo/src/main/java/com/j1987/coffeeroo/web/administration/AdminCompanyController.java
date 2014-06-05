@@ -47,6 +47,7 @@ public class AdminCompanyController {
 	    	JCompany company = companyService.findCompanyById(Long.valueOf("1"));
 	        uiModel.addAttribute("company", company);
 	        uiModel.addAttribute("itemId", company.getId());
+	        uiModel.addAttribute("currentNav", "basesettings");
 	        
 	        return SHOW_VIEW;
 	    }
@@ -76,6 +77,7 @@ public class AdminCompanyController {
 	    
 	    void populateEditForm(Model uiModel, JCompany company) {
 	        uiModel.addAttribute("company", company);
+	        uiModel.addAttribute("currentNav", "basesettings");
 	        
 	    }
 	    

@@ -13,6 +13,8 @@
   <jsp:directive.attribute name="render" type="java.lang.Boolean" required="false" rtexprvalue="true" description="Indicate if the contents of this tag and all enclosed tags should be rendered (default 'true')" />
   <jsp:directive.attribute name="openPane" type="java.lang.Boolean" required="false" rtexprvalue="true" description="Control if the title pane is opened or closed by default (default: true)"/>
   <jsp:directive.attribute name="z" type="java.lang.String" required="false" description="Used for checking if element has been modified (to recalculate simply provide empty string value)"/>
+  <jsp:directive.attribute name="assignlabel" type="java.lang.String" required="false" description="Used for checking specify the text of entity's name "/>
+	
 	
   <c:if test="${empty render or render}">
     <c:if test="${empty label}">
@@ -35,7 +37,7 @@
     <spring:message var="typeName" code="menu_item_${fn:toLowerCase(fn:split(id,'_')[fn:length(fn:split(id,'_')) - 1])}_new_label" htmlEscape="false" />
     <spring:message var="typeNamePlural" code="menu_item_${fn:toLowerCase(fn:split(id,'_')[fn:length(fn:split(id,'_')) - 1])}_list_label" htmlEscape="false" />
     
-    <spring:message arguments="${typeName},${label}" code="assign_label" var="title_msg" htmlEscape="false" />
+    <spring:message arguments="${assignlabel},${label}" code="assign_label" var="title_msg" htmlEscape="false" />
         <h1 class="page-header">
     	${labelPlural}
     </h1>
@@ -60,18 +62,9 @@
 			    	</a>
 		    	</c:if>
 	    	</div>
-    		<div class="btn-group pull-right">
-		    	<c:if test="${list}">
-		    		<spring:url value="${path}/list?size=10" var="list_url"/>
-			    	<a href="${list_url}" class="btn btn-danger">
-			    		<spring:message code="unassignuser_label" arguments="${label}" />
-			    		<span class="glyphicon glyphicon-icon-remove-sign"></span>
-			    	</a>
-		    	</c:if>
-	    	</div>
     	</div>
     </p>
-    <div class="panel panel-default">
+    <div class="panel  panel-primary">
     	<div class="panel-heading">
     		${title_msg}
     	</div>
@@ -83,17 +76,18 @@
 	      </c:if>
 	      <form:form action="${form_url}" method="POST" modelAttribute="${modelAttribute}" enctype="${enctype}" onsubmit="${jsCall}" role="form" cssClass="form-horizontal">
 	        <form:errors cssClass="errors" delimiter="&lt;p/&gt;"/>
-	        <div class="col-sm-6">
+	        
 	        	<jsp:doBody />
+	        	<hr />
    	            <div class="form-group">
-	   				<div class="col-sm-10">
+	   				<div class="col-sm-offset-4 col-sm-10">
    		          		<button id="proceed" type="submit" value="${fn:escapeXml(save_button)}" class="btn btn-success">
 		          			<spring:message code="button_save"/>
 		          			<span class="fa fa-save fa-fw"></span>
 		          		</button>
 			        </div>
 			     </div>
-	        </div>
+
 	      </form:form>
       </div>
       <div class="panel-footer">

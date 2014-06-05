@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <div xmlns:c="http://java.sun.com/jsp/jstl/core" 
 	 xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" 
-	 xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" 
+	  xmlns:form="http://www.springframework.org/tags/form" 
 	 xmlns:jsp="http://java.sun.com/JSP/Page" 
 	 xmlns:spring="http://www.springframework.org/tags" version="2.0">
 	 
@@ -11,146 +11,759 @@
     <spring:message code="workbench_analysis_generalinformations" var="generalinfos_label"/>
     <spring:message code="workbench_analysis_technincalinformations" var="technincalinfos_label"/>
 
-    <form:create id="fc_com_j1987_coffeeroo_domain_JCoffeeAnalysis" modelAttribute="coffeeAnalysisForm" path="/workbench/analysis/coffeeanalysis" render="${empty dependencies}" z="Zq1C8NQ38sP2bnDY7Vxt3Nts8FU=">
-        <p>
-        <div id="error-message">
-        	<!-- error place -->
+	<h1 class="page-header">
+    	COFFEE ANALYSIS
+    </h1>
+    <div class="btn-toolbar" role="toolbar" style="margin-bottom: 15px;">
+    	<div class="btn-group">
+	    		<spring:url value="${path}/list?size=10" var="list_url"/>
+		    	<a href="${list_url}" class="btn btn-default">
+		    		<spring:message code="entity_list_all" arguments="${labelPlural}" />
+		    		<![CDATA[&nbsp;&nbsp;]]>
+		    		<span class="glyphicon glyphicon-list-alt"></span>
+		    	</a>
+    	</div>
+    </div>
+    
+    <div class="panel panel-primary">
+    	<div class="panel-heading">
+    		ENTETE FORMULAIRE
+    	</div>
+    	<div class="panel-body">
+           <p>
+		        <div id="error-message">
+		        	<!-- error place -->
+		        </div>
+	        </p>
+	        <form:form modelAttribute="coffeeAnalysisForm" action="/workbench/analysis/coffeeanalysis/create">
+
+		        <FIELDSET>
+		        	<LEGEND>
+		        		${generalinfos_label}
+		        	</LEGEND>
+		        	
+	        	<!-- ******************* SELECT FIELD ******************** -->
+	        	
+		        	<div class="row">
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="tourId" class="control-label">
+						        <spring:message code="label_com_j1987_coffeeroo_domain_jtour"/>
+						        :
+						      </label>
+			   					<select  name="tourId" id="tourId" class="form-control">
+			   						<c:forEach items="${tours}" var="tour">
+			   							<option value="${tour.id}">
+			   								${tour.name}
+			   							</option>
+			   						</c:forEach>
+			   					</select>
+
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="exporterCode" class="control-label">
+						        <spring:message code="label_com_j1987_coffeeroo_domain_jexporter"/>
+						        :
+						      </label>
+			   					<form:select path="exporterCode" class="form-control">
+			   						<form:options items="${exporters}" itemLabel="name" itemValue="code" />
+			   					</form:select>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="supplierCode" class="control-label">
+						        <spring:message code="label_com_j1987_coffeeroo_domain_jsupplier"/>
+						        :
+						      </label>
+			   					<form:select path="supplierCode" class="form-control">
+			   						<form:options items="${suppliers}" itemLabel="name" itemValue="code" />
+			   					</form:select>
+			    			</div>
+		        		</div>
+		       		</div>
+		       		
+		       		
+		        	<div class="row">
+		        		<div class="col-sm-4">
+	   			   				<div class="form-group">
+							      <label for="provenance" class="control-label">
+							        <spring:message code="label_com_j1987_coffeeroo_domain_jlocalization"/>
+							        :
+							      </label>
+				   					<form:select path="provenance" class="form-control">
+				   						<form:options items="${localizations}" itemLabel="name" itemValue="id" />
+				   					</form:select>
+				    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+		        			<div class="form-group">
+						      <label for="factoryCode" class="control-label">
+						        <spring:message code="label_com_j1987_coffeeroo_domain_jfactory"/>
+						        :
+						      </label>
+			   					<form:select path="factoryCode" class="form-control">
+			   						<form:options items="${factories}" itemLabel="name" itemValue="code" />
+			   					</form:select>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+		        			<p></p>
+		        		</div>
+		       		</div>
+		       		
+	       		<!-- ******************* INPUT FIELD ******************** -->
+	       		
+	       		<hr></hr>
+	       		
+					<div class="row">
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="numberLading" class="control-label">
+						       Numero Connaissement :
+						      </label>
+						      <form:input path="numberLading" class="form-control"/>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="truckNumber" class="control-label">
+						       Numero Camion :
+						      </label>
+						      <form:input path="truckNumber" class="form-control"/>
+		        		</div>
+		        		</div>
+		        		<div class="col-sm-4">
+		        			<div class="form-group">
+						      <label for="netWeightOfProductAccepted" class="control-label">
+						       Poids net de produit accepte :
+						      </label>
+						      <form:input path="netWeightOfProductAccepted" class="form-control"/>
+						     </div>
+		        		</div>
+		       		</div>	       		
+	       		
+	       			<div class="row">
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="totalOfBagPushed" class="control-label">
+						       Sac total refoule :
+						      </label>
+						      <form:input path="totalOfBagPushed" class="form-control"/>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="totalOfReportedBags" class="control-label">
+						       Sac total reporte :
+						      </label>
+						      <form:input path="totalOfReportedBags" class="form-control"/>
+		        		</div>
+		        		</div>
+		        		<div class="col-sm-4">
+		        			<div class="form-group">
+						      <label for="numberOfBagAllowed" class="control-label">
+						       Numero de sac declare :
+						      </label>
+						      <form:input path="numberOfBagAllowed" class="form-control"/>
+						     </div>
+		        		</div>
+		       		</div>	      
+	       			
+	       			<div class="row">
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="sampleCode" class="control-label">
+						       Code echantillon :
+						      </label>
+						      <form:input path="sampleCode" class="form-control"/>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="numberSAIGIC" class="control-label">
+						       Numero SAIGIC :
+						      </label>
+						      <form:input path="numberSAIGIC" class="form-control"/>
+		        			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <p></p>
+		        			</div>
+		        		</div>
+		       		</div>	   
+	       			
+	       		</FIELDSET>
+	       		
+	       		<FIELDSET>
+		        	<LEGEND>
+		        		${technincalinfos_label}
+		        	</LEGEND>
+		        	<div class="row">
+		        		<div class="col-sm-4">
+		        			<h4>
+		        				Rubrique
+		        			</h4>
+		        		</div>
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="poidsMatieresEtrangeres" class="control-label">
+						       Poids matieres etrangeres :
+						      </label>
+						      <form:input path="poidsMatieresEtrangeres" class="form-control"/>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="pourcentageMatieresEtrangeres" class="control-label">
+						       Matieres etrangeres (%) :
+						      </label>
+						      <form:input path="pourcentageMatieresEtrangeres" class="form-control"/>
+		        		</div>
+		        		</div>
+		       		</div>	  
+		        	<hr></hr>
+		        	
+	        		<div class="row">
+	        			<div class="col-sm-4">
+		        			<h4>
+		        				Dechets
+		        			</h4>
+		        		</div>
+		        		<div class="col-sm-4">
+	  			   				<div class="form-group">
+						      <label for="poidsDechetsParches" class="control-label">
+						       Poids dechets parches :
+						      </label>
+						      <form:input path="poidsDechetsParches" class="form-control"/>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageDechetsParches" class="control-label">
+						       Dechets Parches (%) :
+						      </label>
+						      <form:input path="pourcentageDechetsParches" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		<div class="row">
+	        			<div class="col-sm-4">
+							<h4></h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="poidsDechetsCerise" class="control-label">
+						       Poids dechets cerise :
+						      </label>
+						      <form:input path="poidsDechetsCerise" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageDechetsCerise" class="control-label">
+						       Dechets cerise (%) :
+						      </label>
+						      <form:input path="pourcentageDechetsCerise" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		<div class="row">
+	        			<div class="col-sm-4">
+							<h4></h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="poidsDechetsDemiCerises" class="control-label">
+						       Poids dechets demi cerises :
+						      </label>
+						      <form:input path="poidsDechetsDemiCerises" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageDechetsDemiCerises" class="control-label">
+						       Dechets demi cerise (%) :
+						      </label>
+						      <form:input path="pourcentageDechetsDemiCerises" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		<div class="row">
+	        			<div class="col-sm-4">
+							<h4></h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="poidsDechetsCoques" class="control-label">
+						       Poids dechets coques :
+						      </label>
+						      <form:input path="poidsDechetsCoques" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageDechetsCoques" class="control-label">
+						       Dechets coques (%) :
+						      </label>
+						      <form:input path="pourcentageDechetsCoques" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		<div class="row">
+	        			<div class="col-sm-4">
+							<h4></h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="poidsDechetsPeaux" class="control-label">
+						       Poids dechet peaux :
+						      </label>
+						      <form:input path="poidsDechetsPeaux" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageDechetsPeaux" class="control-label">
+						       Dechets peaux (%) :
+						      </label>
+						      <form:input path="pourcentageDechetsPeaux" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		<div class="row">
+	        			<div class="col-sm-4">
+							<h4></h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="poidsSousTotalDechets" class="control-label">
+						       Poids sous total dechet :
+						      </label>
+						      <form:input path="poidsSousTotalDechets" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageSousTotalDechets" class="control-label">
+						       Sous total dechets (%) :
+						      </label>
+						      <form:input path="pourcentageSousTotalDechets" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		
+		       		<hr></hr>
+		       		
+		       		<div>
+		       			<div class="row">
+		       				<div class="col-sm-4">
+		       					<h4>Hors normes</h4>
+		       				</div>
+		       				<div class="col-sm-4">
+		       					<div class="form-group">
+		       						<label for="poidsHorsNormesGrainsNoirs" class="control-label">
+		       						Poids hors normes grains noirs :
+		       						</label>
+		       						<form:input path="poidsHorsNormesGrainsNoirs" class="form-control" />
+		       					</div>
+		       				</div>
+		       				<div class="col-sm-4">
+		       					<div class="form-group">
+		       						<label for="pourcentageHorsNormesGrainsNoirs" class="control-label">
+		       						Hors normes grains noirs (%) :
+		       						</label>
+		       						<form:input path="pourcentageHorsNormesGrainsNoirs" class="form-control" />
+		       					</div>
+		       				</div>
+		       				<div class="col-sm-4">
+		       					<h4></h4>
+		       				</div>
+		       				<div class="col-sm-4">
+		       					<div class="form-group">
+		       						<label for="poidsHorsNormesGrainsDemiNoirs" class="control-label">
+		       						Poids hors normes grains demi noirs :
+		       						</label>
+		       						<form:input path="poidsHorsNormesGrainsDemiNoirs" class="form-control" />
+		       					</div>
+		       				</div>
+		       				<div class="col-sm-4">
+		       					<div class="form-group">
+		       						<label for="pourcentageHorsNormesGrainsDemiNoirs" class="control-label">
+		       						Hors normes grains demi noirs (%) :
+		       						</label>
+		       						<form:input path="pourcentageHorsNormesGrainsDemiNoirs" class="form-control" />
+		       					</div>
+		       				</div>
+		       				<div class="col-sm-4">
+		       					<h4></h4>
+		       				</div>
+		       				<div class="col-sm-4">
+		       					<div class="form-group">
+		       						<label for="poidsHorsNormesBrisures" class="control-label">
+		       						Poids hors normes brisures :
+		       						</label>
+		       						<form:input path="poidsHorsNormesBrisures" class="form-control" />
+		       					</div>
+		       				</div>
+		       				<div class="col-sm-4">
+		       					<div class="form-group">
+		       						<label for="pourcentageHorsNormesBrisures" class="control-label">
+		       						Hors normes brisures (%) :
+		       						</label>
+		       						<form:input path="pourcentageHorsNormesBrisures" class="form-control" />
+		       					</div>
+		       				</div>
+		       				<div class="col-sm-4">
+		       					<h4></h4>
+		       				</div>
+		       				<div class="col-sm-4">
+		       					<div class="form-group">
+		       						<label for="poidsSousTotalHorsNormes" class="control-label">
+		       						Poids sous total hors normes :
+		       						</label>
+		       						<form:input path="poidsSousTotalHorsNormes" class="form-control" />
+		       					</div>
+		       				</div>
+		       				<div class="col-sm-4">
+		       					<div class="form-group">
+		       						<label for="pourcentageSousTotalHorsNormes" class="control-label">
+		       						Sous total hors normes (%) :
+		       						</label>
+		       						<form:input path="pourcentageSousTotalHorsNormes" class="form-control" />
+		       					</div>
+		       				</div>
+		       			</div>
+		       		</div>
+		       		
+		       		<hr></hr>
+		       		
+		       		<div class="row">
+	        			<div class="col-sm-4">
+		        			<h4>
+		        				Grains acceptables
+		        			</h4>
+		        		</div>
+		        		<div class="col-sm-4">
+	  			   				<div class="form-group">
+						      <label for="poidsGrainsAcceptablesVert" class="control-label">
+						       Poids grains acceptables vert :
+						      </label>
+						      <form:input path="poidsGrainsAcceptablesVert" class="form-control"/>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageGrainsAcceptablesVert" class="control-label">
+						       Grains acceptables vert (%) :
+						      </label>
+						      <form:input path="pourcentageGrainsAcceptablesVert" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		<div class="row">
+	        			<div class="col-sm-4">
+							<h4></h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="poidsGrainsAcceptablesSpongieux" class="control-label">
+						       Poids grains acceptables spongieux :
+						      </label>
+						      <form:input path="poidsGrainsAcceptablesSpongieux" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageGrainsAcceptablesSpongieux" class="control-label">
+						       Grains acceptables spongieux (%) :
+						      </label>
+						      <form:input path="pourcentageGrainsAcceptablesSpongieux" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		<div class="row">
+	        			<div class="col-sm-4">
+							<h4></h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="poidsGrainsAcceptablesDemiSombre" class="control-label">
+						       Poids grains acceptables demi sombre :
+						      </label>
+						      <form:input path="poidsGrainsAcceptablesDemiSombre" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageGrainsAcceptablesDemiSombre" class="control-label">
+						       Grains acceptables demi sombre (%) :
+						      </label>
+						      <form:input path="pourcentageGrainsAcceptablesDemiSombre" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		<div class="row">
+	        			<div class="col-sm-4">
+							<h4></h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="poidsGrainsAcceptablesScolytes" class="control-label">
+						       Poids grains acceptables scolytes :
+						      </label>
+						      <form:input path="poidsGrainsAcceptablesScolytes" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageGrainsAcceptablesScolytes" class="control-label">
+						       Grains acceptables scolytes (%) :
+						      </label>
+						      <form:input path="pourcentageGrainsAcceptablesScolytes" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		<div class="row">
+	        			<div class="col-sm-4">
+							<h4></h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="poidsGrainsAcceptablesIndesirables" class="control-label">
+						       Poids grains acceptables indesirables :
+						      </label>
+						      <form:input path="poidsGrainsAcceptablesIndesirables" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageGrainsAcceptablesIndesirables" class="control-label">
+						       Grains acceptables indesirables (%) :
+						      </label>
+						      <form:input path="pourcentageGrainsAcceptablesIndesirables" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		<div class="row">
+	        			<div class="col-sm-4">
+							<h4></h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="poidsGrainsAcceptablesImmature" class="control-label">
+						       Poids grains acceptables immature :
+						      </label>
+						      <form:input path="poidsGrainsAcceptablesImmature" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageGrainsAcceptablesImmature" class="control-label">
+						       Poids grains acceptables immature (%) :
+						      </label>
+						      <form:input path="pourcentageGrainsAcceptablesImmature" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		        	
+		        	<div class="row">
+	        			<div class="col-sm-4">
+							<h4></h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="poidsGrainsAcceptablesIndesirables" class="control-label">
+						       Poids grains acceptables indesirables :
+						      </label>
+						      <form:input path="poidsGrainsAcceptablesIndesirables" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageGrainsAcceptablesIndesirables" class="control-label">
+						       Grains acceptables indesirables (%) :
+						      </label>
+						      <form:input path="pourcentageGrainsAcceptablesIndesirables" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		
+		       		<hr></hr>
+		       		
+		       		<div class="row">
+	        			<div class="col-sm-4">
+							<h4>
+								Calibrage
+							</h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="CalibrageTamis18" class="control-label">
+						       Tamis 18 :
+						      </label>
+						      <form:input path="CalibrageTamis18" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="CalibrageTamis16" class="control-label">
+						       Tamis 16 :
+						      </label>
+						      <form:input path="CalibrageTamis16" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+							<h4>
+							</h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="CalibrageTamis14" class="control-label">
+						       Tamis 14 :
+						      </label>
+						      <form:input path="CalibrageTamis14" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="CalibrageTamis12" class="control-label">
+						       Tamis 12 :
+						      </label>
+						      <form:input path="CalibrageTamis12" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+							<h4>
+							</h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="CalibrageTamis10" class="control-label">
+						       Tamis 10 :
+						      </label>
+						      <form:input path="CalibrageTamis10" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="CalibrageBase" class="control-label">
+						       Base :
+						      </label>
+						      <form:input path="CalibrageBase" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		
+		       		<hr></hr>
+		       		
+		       		<div class="row">
+	        			<div class="col-sm-4">
+							<h4>
+								Grade
+							</h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageGradeG0" class="control-label">
+						       Grade G0 :
+						      </label>
+						      <form:input path="pourcentageGradeG0" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageGradeG1" class="control-label">
+						       Grade G1 :
+						      </label>
+						      <form:input path="pourcentageGradeG1" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+							<h4>
+							</h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageGradeG2" class="control-label">
+						       Grade G2 :
+						      </label>
+						      <form:input path="pourcentageGradeG2" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageGradeG3" class="control-label">
+						       Grade G3 :
+						      </label>
+						      <form:input path="pourcentageGradeG3" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+							<h4>
+							</h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageGradeG4" class="control-label">
+						       Grade G4 :
+						      </label>
+						      <form:input path="pourcentageGradeG4" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageGradeHN" class="control-label">
+						       Grade HN :
+						      </label>
+						      <form:input path="pourcentageGradeHN" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		
+		       		<hr></hr>
+		       		
+		       		<div class="row">
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="acceptation" class="control-label">
+						       Acceptation :
+						      </label>
+						      <form:select path="acceptation" class="form-control">
+						      	<form:option value=" "></form:option>
+						      	<form:option value="Oui"></form:option>
+						      	<form:option value="Nom"></form:option>
+						      </form:select>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="confirmation" class="control-label">
+						       Conformite :
+						      </label>
+						      <form:select path="confirmation" class="form-control">
+						      	<form:option value=" "></form:option>
+						      	<form:option value="Oui"></form:option>
+						      	<form:option value="Nom"></form:option>
+						      </form:select>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<h4></h4>
+	        			</div>
+		       		</div>
+		        	
+		        </FIELDSET>
+       		</form:form>
         </div>
-        </p>
-        
-        <FIELDSET>
-        	<LEGEND>
-        		${generalinfos_label}
-        	</LEGEND>
-        	
-        	<div class="row">
-      			<field:select field="provenance" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_provenance" itemValue="id" itemLabel="name" items="${localizations}" path="/jlocalizations" z="Fh2csM8KrfQxXIhSyKF2tim26+4="/>
-      			<field:select field="dealerCode" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_dealerEntry" itemValue="code" itemLabel="name" items="${dealers}" path="/jdealers" z="0n049o7Jrw1VbkdbSuUJurx3mC8="/>
-      			<field:select field="factoryCode" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_factoryEntry" itemValue="code" itemLabel="name" items="${factories}" path="/jfactorys" z="t+hkOVdxBcEtNlW2Az79KjenRR4="/>
-      			<field:select field="exporterCode" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_exporterEntry" itemValue="code" itemLabel="name" items="${exporters}" path="/jexporters" z="sVGp9op2SjEHRJExExFw1JRr65A="/>
-      			<field:select field="supplierCode" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_supplierEntry" itemValue="code" itemLabel="name" items="${suppliers}" path="/jsuppliers" z="V8ej8cyZohYFcnURIzfrZd9IMC4="/>
-       		</div>
-       		<hr />
-           <div class="row">
-           		<field:datetime dateTimePattern="${JCoffeeAnalysis__dateofanalysis_date_format}" field="dateOfAnalysis" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_dateOfAnalysis" required="true" z="W2pLWjamDyIrd6qZKCRpkUAPmDg="/>
-           		<field:time dateTimePattern="${JCoffeeAnalysis__starttime_date_format}" field="startTime" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_startTime" z="JY0Bv0dzS++omB3Lw36n3QH8MsE="/>
-       			<field:time dateTimePattern="${JCoffeeAnalysis__endtime_date_format}" field="endTime" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_endTime" z="cikNh3SDD2d1UptZdrHZXrNWdlk="/>
-           </div>
-           <hr />
-           <div class="row">
-          		<field:input field="numberLading" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_numberLading" required="true" z="/dYUvq0xvG+VNVLmt/H13S+PSwg="/>
-      			<field:input field="truckNumber" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_truckNumber" required="true" z="GSCppjmNHQLETA9iIsFsjn+mmWM="/>
-      			<field:input field="netWeightOfProductAccepted" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_netWeightOfProductAccepted" validationMessageCode="field_invalid_number" z="RTuAPDWdk6EI7x+EhxWMJYDzPBY="/>
-      			<field:input field="totalOfBagPushed" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_totalOfBagPushed" validationMessageCode="field_invalid_integer" z="ULxe+ljZs/638afM0Sb7jGw0Vzs="/>
-      			<field:input field="totalOfReportedBags" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_totalOfReportedBags" validationMessageCode="field_invalid_integer" z="fqE795UoBNRh6ZBWb1GlgBzT8Bo="/>
-      			<field:input field="numberOfBagAllowed" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_numberOfBagAllowed" validationMessageCode="field_invalid_integer" z="riUqMRQveE+esZP5zSVYDw/cQVU="/>
-      			<field:input field="sampleCode" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_sampleCode" required="true" z="XU8Bpsl743xn5z+1Ckfcy54/D+E="/>
-      			<field:input field="numberSAIGIC" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_numberSAIGIC" z="DUamvfCuryZ/CKod1zjAGo3U+O8="/>
-           </div>
-        </FIELDSET>
-        
-        <FIELDSET>
-        	<LEGEND>
-        		${technincalinfos_label}
-        	</LEGEND>
-        	
-        	<div class="row">
-       			<field:input field="poidsMatieresEtrangeres" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_poidsMatieresEtrangeres" validationMessageCode="field_invalid_number" z="osQAgIOJtEb2FRjJshIycF7TeYY="/>
-        		<field:input field="pourcentageMatieresEtrangeres" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_pourcentageMatieresEtrangeres" validationMessageCode="field_invalid_number" z="juIKhkEcmgfYe2y7G3EqN/zfrQo="/>
-			</div>	
-			<hr />
-			<div class="row">
-  				<field:input field="poidsDechetsParches" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_poidsDechetsParches" validationMessageCode="field_invalid_number" z="RRUs0uvyyt0MHJAjirMCEtatYZs="/>
-		        <field:input field="pourcentageDechetsParches" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_pourcentageDechetsParches" validationMessageCode="field_invalid_number" z="7McSq7R46Do708Rhp9ERb2Kk5P0="/>
-		        <field:input field="poidsDechetsCerise" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_poidsDechetsCerise" validationMessageCode="field_invalid_number" z="T+hpklFxkoRw1gHVqV5dfs5U4HM="/>
-		        <field:input field="pourcentageDechetsCerise" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_pourcentageDechetsCerise" validationMessageCode="field_invalid_number" z="O54fw9Tgbaw4WooyiuXoxEKDc4M="/>
-		        <field:input field="poidsDechetsDemiCerises" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_poidsDechetsDemiCerises" validationMessageCode="field_invalid_number" z="A/EJjIuRxDCmOFv3Wm92GyAHV6U="/>
-		        <field:input field="pourcentageDechetsDemiCerises" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_pourcentageDechetsDemiCerises" validationMessageCode="field_invalid_number" z="5B3yDmwqI5lOeZIYNq3D/Llmna4="/>
-		        <field:input field="poidsDechetsCoques" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_poidsDechetsCoques" validationMessageCode="field_invalid_number" z="+irWLihIPzzTqaUCIE2R5i10T/c="/>
-		        <field:input field="pourcentageDechetsCoques" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_pourcentageDechetsCoques" validationMessageCode="field_invalid_number" z="cF+GUY9HVjfNVAzd+8Spx3FJwzQ="/>
-		        <field:input field="poidsDechetsPeaux" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_poidsDechetsPeaux" validationMessageCode="field_invalid_number" z="b436Mh+2EXUyEfGVyWjqew69L7c="/>
-		        <field:input field="pourcentageDechetsPeaux" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_pourcentageDechetsPeaux" validationMessageCode="field_invalid_number" z="z/tY+2kRqjACuUJ4iqwKaN2b8eo="/>
-		        <field:input field="poidsSousTotalDechets" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_poidsSousTotalDechets" validationMessageCode="field_invalid_number" z="V7SHWg6RjVXV3ccK/AowUSZMJYY=" disabled="true"/>
-		        <field:input field="pourcentageSousTotalDechets" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_pourcentageSousTotalDechets" validationMessageCode="field_invalid_number" z="4/E+kBZ1wW+BpraMaqHudrwq/eY=" disabled="true"/>
-   			</div>
-   			<hr />
-   			<div class="row">
-   				<field:input field="poidsHorsNormesGrainsNoirs" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_poidsHorsNormesGrainsNoirs" validationMessageCode="field_invalid_number" z="+lhtCbm4iC/yHnb/IAWWH5vcHhc="/>
-		        <field:input field="pourcentageHorsNormesGrainsNoirs" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_pourcentageHorsNormesGrainsNoirs" validationMessageCode="field_invalid_number" z="Of+P6vcsXtV8w+7EFYED6xWDeyA="/>
-		        <field:input field="poidsHorsNormesGrainsDemiNoirs" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_poidsHorsNormesGrainsDemiNoirs" validationMessageCode="field_invalid_number" z="V3sd1fFiG8Dcc45MPTrhwaBAEXU="/>
-		        <field:input field="pourcentageHorsNormesGrainsDemiNoirs" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_pourcentageHorsNormesGrainsDemiNoirs" validationMessageCode="field_invalid_number" z="3RNsN0KtH8D3BKKA7B+aj/R48qc="/>
-		        <field:input field="poidsHorsNormesBrisures" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_poidsHorsNormesBrisures" validationMessageCode="field_invalid_number" z="AMZHbaTUFCT0Uz6IPHgN+FkioU4="/>
-		        <field:input field="pourcentageHorsNormesBrisures" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_pourcentageHorsNormesBrisures" validationMessageCode="field_invalid_number" z="U52CT88agxdHn0lEga9a5WRCzk8="/>
-		        <field:input field="poidsSousTotalHorsNormes" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_poidsSousTotalHorsNormes" validationMessageCode="field_invalid_number" z="nXTF1vy1Qj3QV+PJtQ+3UzkShHc=" disabled="true"/>
-		        <field:input field="pourcentageSousTotalHorsNormes" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_pourcentageSousTotalHorsNormes" validationMessageCode="field_invalid_number" z="ahatAyRckoxS7RXRPk7g0vjzK4c=" disabled="true"/>
-   			</div>
-   			<hr />
-   			<div class="row">
-   				<field:input field="poidsGrainsAcceptablesVert" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_poidsGrainsAcceptablesVert" validationMessageCode="field_invalid_number" z="ElubZgaza2DJewgWEldaQAjhuK4="/>
-		        <field:input field="pourcentageGrainsAcceptablesVert" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_pourcentageGrainsAcceptablesVert" validationMessageCode="field_invalid_number" z="rUGjlweyC1rtnwPJG1j3gVgB2Js="/>
-		        <field:input field="poidsGrainsAcceptablesSpongieux" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_poidsGrainsAcceptablesSpongieux" validationMessageCode="field_invalid_number" z="mOKtHDzPDZ3rcYm74YHD+cluZT0="/>
-		        <field:input field="pourcentageGrainsAcceptablesSpongieux" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_pourcentageGrainsAcceptablesSpongieux" validationMessageCode="field_invalid_number" z="GkMikjOrx+Sd/Th2bNHjMsY7NZg="/>
-		        <field:input field="poidsGrainsAcceptablesDemiSombre" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_poidsGrainsAcceptablesDemiSombre" validationMessageCode="field_invalid_number" z="tTL/QHH3E592o5YULC2nWV4B8Jc="/>
-		        <field:input field="pourcentageGrainsAcceptablesDemiSombre" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_pourcentageGrainsAcceptablesDemiSombre" validationMessageCode="field_invalid_number" z="vjh0+QOBV2LfwWSgr3YOJTIEng4="/>
-		        <field:input field="poidsGrainsAcceptablesScolytes" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_poidsGrainsAcceptablesScolytes" validationMessageCode="field_invalid_number" z="n51UPHxaRzsI5/Z0/luIoEzs+fk="/>
-		        <field:input field="pourcentageGrainsAcceptablesScolytes" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_pourcentageGrainsAcceptablesScolytes" validationMessageCode="field_invalid_number" z="D7qtPADN8KJLmmqaERJxCttAIOc="/>
-		        <field:input field="poidsGrainsAcceptablesIndesirables" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_poidsGrainsAcceptablesIndesirables" validationMessageCode="field_invalid_number" z="4ZyryvayRRJFjrWMoId0Evi2QE4="/>
-		        <field:input field="pourcentageGrainsAcceptablesIndesirables" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_pourcentageGrainsAcceptablesIndesirables" validationMessageCode="field_invalid_number" z="SiIQb0scTQOhTom03fCUU1aQIz0="/>
-		        <field:input field="poidsGrainsAcceptablesImmature" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_poidsGrainsAcceptablesImmature" validationMessageCode="field_invalid_number" z="VOU7+uTCO1QODO1KcUZRF6jE+7c=" disabled="true"/>
-		        <field:input field="pourcentageGrainsAcceptablesImmature" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_pourcentageGrainsAcceptablesImmature" validationMessageCode="field_invalid_number" z="1q4i5q0VX3zv4beVnSqBdJCSf3o=" disabled="true"/>
-   			</div>
-   			<hr />
-   			<div class="row">
-   				<field:input field="CalibrageTamis18" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_CalibrageTamis18" validationMessageCode="field_invalid_number" z="d8KBvkY0Zy3gfH0lbsHrCDPrhug="/>
-		        <field:input field="CalibrageTamis16" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_CalibrageTamis16" validationMessageCode="field_invalid_number" z="4GlPPpFFPYnNJ2X+7SY7rSdFGBY="/>
-		        <field:input field="CalibrageTamis14" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_CalibrageTamis14" validationMessageCode="field_invalid_number" z="pzLnHS8CCEssZOrRhQdC6QYRffA="/>
-		        <field:input field="CalibrageTamis12" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_CalibrageTamis12" validationMessageCode="field_invalid_number" z="rUQkEYNQdLvdsEPfgQz/X4T7uGs="/>
-		        <field:input field="CalibrageTamis10" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_CalibrageTamis10" validationMessageCode="field_invalid_number" z="uWJ6NeExjTALsc5i//NwCGl4ORA="/>
-		        <field:input field="CalibrageBase" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_CalibrageBase" validationMessageCode="field_invalid_number" z="Hy4vdncC13HwQDyL+izekevUGxI="/>
-   			</div>
-  			<hr />
-   			<div class="row">
-   				<field:input field="pourcentageGradeG0" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_pourcentageGradeG0" validationMessageCode="field_invalid_number" z="LXXys1Q0D9vEruQ2hvZDm0V27mE="/>
-		        <field:input field="pourcentageGradeG1" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_pourcentageGradeG1" validationMessageCode="field_invalid_number" z="Se2yO9cKIAeiku6TK5HAI4j0t5w="/>
-		        <field:input field="pourcentageGradeG2" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_pourcentageGradeG2" validationMessageCode="field_invalid_number" z="vkqoXi42xexPCJ0vU512CtroIds="/>
-		        <field:input field="pourcentageGradeG3" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_pourcentageGradeG3" validationMessageCode="field_invalid_number" z="V8dG14AziJkPMww4dQSShCLjje0="/>
-		        <field:input field="pourcentageGradeG4" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_pourcentageGradeG4" validationMessageCode="field_invalid_number" z="a7NsgiWmxj4P6Bg5Q1aoItBHXoY="/>
-		        <field:input field="pourcentageGradeHN" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_pourcentageGradeHN" validationMessageCode="field_invalid_number" z="hwXh+4FBIBrRp1H19C/TNfhqJoc="/>
-   			</div>
-   			<hr />
-   			<div class="row">
-		        <field:checkbox field="acceptation" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_acceptation" z="U+C7Bq5IwxtQS+DG48DjFJblLyI="/>
-		        <field:checkbox field="confirmation" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_confirmation" z="LYfJ4I+xDciUadZ1w4dYLqZGz2o="/>
-   			</div>
-    </FIELDSET>
-
-    </form:create>
-    <form:dependency dependencies="${dependencies}" id="d_com_j1987_coffeeroo_domain_JCoffeeAnalysis" render="${not empty dependencies}" z="cq/6JdSbgYAX6Veg2JRFuf1ZQ50="/>
-	<SCRIPT type="text/javascript">
-		$(document).ready(function(){
-			$('#coffeeAnalysisForm').validate({
-    			rules:{
-    				dateOfAnalysis:{required:true},
-    				startTime:{required:true},
-    				endTime:{required:true},
-    				numberLading:{required:true},
-    				truckNumber:{required:true},
-    				sampleCode:{required:true}
-    			},
-    	        invalidHandler: function(form, validator) {
-    	            var errors = validator.numberOfInvalids();
-
-    	            if (errors) {
-    	                $("#error-message")
-    	                .show()
-    	                .addClass("alert alert-danger")
-    	                .text("You missed " + errors + " field(s)");
-    	            } else {
-    	                $("#error-message").hide()
-    	                .removeClass("alert alert-danger");
-    	            }
-    	        }
-			});
-		});
-	</SCRIPT>
+         <div class="panel-footer">
+           <small>
+           	<spring:message code="global_sponsored"/>
+           </small>
+         </div>
+    </div>
+    
 </div>

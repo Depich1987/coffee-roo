@@ -10,8 +10,8 @@ import com.j1987.coffeeroo.domain.JFactory;
 import com.j1987.coffeeroo.domain.JLocalization;
 import com.j1987.coffeeroo.domain.JSubmissionForApproval;
 import com.j1987.coffeeroo.domain.JSupplier;
+import com.j1987.coffeeroo.domain.JTour;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 
@@ -23,6 +23,14 @@ privileged aspect JCoffeeAnalysis_Roo_JavaBean {
     
     public void JCoffeeAnalysis.setReference(String reference) {
         this.reference = reference;
+    }
+    
+    public Long JCoffeeAnalysis.getStatus() {
+        return this.status;
+    }
+    
+    public void JCoffeeAnalysis.setStatus(Long status) {
+        this.status = status;
     }
     
     public Date JCoffeeAnalysis.getDateOfAnalysis() {
@@ -65,12 +73,36 @@ privileged aspect JCoffeeAnalysis_Roo_JavaBean {
         this.provenance = provenance;
     }
     
+    public JTour JCoffeeAnalysis.getTour() {
+        return this.tour;
+    }
+    
+    public void JCoffeeAnalysis.setTour(JTour tour) {
+        this.tour = tour;
+    }
+    
+    public String JCoffeeAnalysis.getProvenanceName() {
+        return this.provenanceName;
+    }
+    
+    public void JCoffeeAnalysis.setProvenanceName(String provenanceName) {
+        this.provenanceName = provenanceName;
+    }
+    
     public JDealer JCoffeeAnalysis.getDealerEntry() {
         return this.dealerEntry;
     }
     
     public void JCoffeeAnalysis.setDealerEntry(JDealer dealerEntry) {
         this.dealerEntry = dealerEntry;
+    }
+    
+    public String JCoffeeAnalysis.getDealerName() {
+        return this.dealerName;
+    }
+    
+    public void JCoffeeAnalysis.setDealerName(String dealerName) {
+        this.dealerName = dealerName;
     }
     
     public JFactory JCoffeeAnalysis.getFactoryEntry() {
@@ -81,6 +113,14 @@ privileged aspect JCoffeeAnalysis_Roo_JavaBean {
         this.factoryEntry = factoryEntry;
     }
     
+    public String JCoffeeAnalysis.getFactoryName() {
+        return this.factoryName;
+    }
+    
+    public void JCoffeeAnalysis.setFactoryName(String factoryName) {
+        this.factoryName = factoryName;
+    }
+    
     public JExporter JCoffeeAnalysis.getExporterEntry() {
         return this.exporterEntry;
     }
@@ -89,12 +129,28 @@ privileged aspect JCoffeeAnalysis_Roo_JavaBean {
         this.exporterEntry = exporterEntry;
     }
     
+    public String JCoffeeAnalysis.getExporterName() {
+        return this.exporterName;
+    }
+    
+    public void JCoffeeAnalysis.setExporterName(String exporterName) {
+        this.exporterName = exporterName;
+    }
+    
     public JSupplier JCoffeeAnalysis.getSupplierEntry() {
         return this.supplierEntry;
     }
     
     public void JCoffeeAnalysis.setSupplierEntry(JSupplier supplierEntry) {
         this.supplierEntry = supplierEntry;
+    }
+    
+    public String JCoffeeAnalysis.getSupplierName() {
+        return this.supplierName;
+    }
+    
+    public void JCoffeeAnalysis.setSupplierName(String supplierName) {
+        this.supplierName = supplierName;
     }
     
     public Date JCoffeeAnalysis.getStartTime() {
@@ -113,27 +169,27 @@ privileged aspect JCoffeeAnalysis_Roo_JavaBean {
         this.endTime = endTime;
     }
     
-    public BigInteger JCoffeeAnalysis.getTotalOfBagPushed() {
+    public Long JCoffeeAnalysis.getTotalOfBagPushed() {
         return this.totalOfBagPushed;
     }
     
-    public void JCoffeeAnalysis.setTotalOfBagPushed(BigInteger totalOfBagPushed) {
+    public void JCoffeeAnalysis.setTotalOfBagPushed(Long totalOfBagPushed) {
         this.totalOfBagPushed = totalOfBagPushed;
     }
     
-    public BigInteger JCoffeeAnalysis.getTotalOfReportedBags() {
+    public Long JCoffeeAnalysis.getTotalOfReportedBags() {
         return this.totalOfReportedBags;
     }
     
-    public void JCoffeeAnalysis.setTotalOfReportedBags(BigInteger totalOfReportedBags) {
+    public void JCoffeeAnalysis.setTotalOfReportedBags(Long totalOfReportedBags) {
         this.totalOfReportedBags = totalOfReportedBags;
     }
     
-    public BigInteger JCoffeeAnalysis.getNumberOfBagAllowed() {
+    public Long JCoffeeAnalysis.getNumberOfBagAllowed() {
         return this.numberOfBagAllowed;
     }
     
-    public void JCoffeeAnalysis.setNumberOfBagAllowed(BigInteger numberOfBagAllowed) {
+    public void JCoffeeAnalysis.setNumberOfBagAllowed(Long numberOfBagAllowed) {
         this.numberOfBagAllowed = numberOfBagAllowed;
     }
     
@@ -466,51 +522,51 @@ privileged aspect JCoffeeAnalysis_Roo_JavaBean {
     }
     
     public BigDecimal JCoffeeAnalysis.getCalibrageTamis18() {
-        return this.CalibrageTamis18;
+        return this.calibrageTamis18;
     }
     
-    public void JCoffeeAnalysis.setCalibrageTamis18(BigDecimal CalibrageTamis18) {
-        this.CalibrageTamis18 = CalibrageTamis18;
+    public void JCoffeeAnalysis.setCalibrageTamis18(BigDecimal calibrageTamis18) {
+        this.calibrageTamis18 = calibrageTamis18;
     }
     
     public BigDecimal JCoffeeAnalysis.getCalibrageTamis16() {
-        return this.CalibrageTamis16;
+        return this.calibrageTamis16;
     }
     
-    public void JCoffeeAnalysis.setCalibrageTamis16(BigDecimal CalibrageTamis16) {
-        this.CalibrageTamis16 = CalibrageTamis16;
+    public void JCoffeeAnalysis.setCalibrageTamis16(BigDecimal calibrageTamis16) {
+        this.calibrageTamis16 = calibrageTamis16;
     }
     
     public BigDecimal JCoffeeAnalysis.getCalibrageTamis14() {
-        return this.CalibrageTamis14;
+        return this.calibrageTamis14;
     }
     
-    public void JCoffeeAnalysis.setCalibrageTamis14(BigDecimal CalibrageTamis14) {
-        this.CalibrageTamis14 = CalibrageTamis14;
+    public void JCoffeeAnalysis.setCalibrageTamis14(BigDecimal calibrageTamis14) {
+        this.calibrageTamis14 = calibrageTamis14;
     }
     
     public BigDecimal JCoffeeAnalysis.getCalibrageTamis12() {
-        return this.CalibrageTamis12;
+        return this.calibrageTamis12;
     }
     
-    public void JCoffeeAnalysis.setCalibrageTamis12(BigDecimal CalibrageTamis12) {
-        this.CalibrageTamis12 = CalibrageTamis12;
+    public void JCoffeeAnalysis.setCalibrageTamis12(BigDecimal calibrageTamis12) {
+        this.calibrageTamis12 = calibrageTamis12;
     }
     
     public BigDecimal JCoffeeAnalysis.getCalibrageTamis10() {
-        return this.CalibrageTamis10;
+        return this.calibrageTamis10;
     }
     
-    public void JCoffeeAnalysis.setCalibrageTamis10(BigDecimal CalibrageTamis10) {
-        this.CalibrageTamis10 = CalibrageTamis10;
+    public void JCoffeeAnalysis.setCalibrageTamis10(BigDecimal calibrageTamis10) {
+        this.calibrageTamis10 = calibrageTamis10;
     }
     
     public BigDecimal JCoffeeAnalysis.getCalibrageBase() {
-        return this.CalibrageBase;
+        return this.calibrageBase;
     }
     
-    public void JCoffeeAnalysis.setCalibrageBase(BigDecimal CalibrageBase) {
-        this.CalibrageBase = CalibrageBase;
+    public void JCoffeeAnalysis.setCalibrageBase(BigDecimal calibrageBase) {
+        this.calibrageBase = calibrageBase;
     }
     
     public BigDecimal JCoffeeAnalysis.getPourcentageGradeG0() {

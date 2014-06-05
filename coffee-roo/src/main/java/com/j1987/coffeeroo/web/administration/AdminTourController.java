@@ -69,6 +69,7 @@ public class AdminTourController {
     	
         uiModel.addAttribute("tour", tourService.findTour(id));
         uiModel.addAttribute("itemId", id);
+        uiModel.addAttribute("currentNav", "tours");
         
         return SHOW_VIEW;
     }
@@ -88,6 +89,9 @@ public class AdminTourController {
     	} else {
             uiModel.addAttribute("tours", tourService.findAllTours());
         }
+    	
+    	uiModel.addAttribute("currentNav", "tours");
+    	
         return LIST_VIEW;
     }
     
@@ -128,6 +132,7 @@ public class AdminTourController {
     
     void populateEditForm(Model uiModel, JTour tour) {
         uiModel.addAttribute("tour", tour);
+        uiModel.addAttribute("currentNav", "tours");
     }
     
     String encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

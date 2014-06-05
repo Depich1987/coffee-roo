@@ -44,7 +44,7 @@
 		    		<spring:url value="${path}/list?size=10" var="list_url" />
 			    	<a href="${list_url}" class="btn btn-default">
 			    		<spring:message code="entity_list_all" arguments="${labelPlural}" />
-			    		<span class="fa fa-th-list fa-fw"></span>
+			    		<span class="glyphicon glyphicon-list-alt"></span>
 			    	</a>
 		    	</c:if>
 	    	</div>
@@ -59,18 +59,19 @@
       	<spring:url value="${path}/update" var="form_url" />
       
 	      <form:form action="${form_url}" method="PUT" modelAttribute="${modelAttribute}" enctype="${enctype}" role="form" cssClass="form-horizontal">
-	        <div class="col-sm-6">
+	        
 	        <form:errors cssClass="errors" delimiter="&lt;p/&gt;" />
 	        <jsp:doBody />
 	         <div class="form-group">
-	   			<div class="col-sm-10">
+	   			<div class="col-sm-offset-4 col-sm-10">
 		          	<spring:message code="button_save" var="save_button" htmlEscape="false" />
 		          	<script type="text/javascript">
 		          	//Spring.addDecoration(new Spring.ValidateAllDecoration({elementId:'proceed', event:'onclick'}));
 		          	</script>
-		          	<button id="proceed" type="submit" value="${fn:escapeXml(save_button)}" class="btn btn-success">
+		          	<button id="proceed" type="submit"  class="btn btn-success">
 		          		<spring:message code="button_update"/>
-		          		<span class="fa fa-save fa-fw"></span>
+		          		<![CDATA[&nbsp;&nbsp;]]>
+		          		<span class="glyphicon glyphicon-edit"></span>
 		          	</button>
 	          	</div>
 	        </div>
@@ -78,7 +79,7 @@
 	        <c:if test="${versionField ne 'none'}">
 	          <form:hidden id="_${fn:escapeXml(versionField)}_id" path="${fn:escapeXml(versionField)}" />
 	        </c:if>
-	        </div>
+
 	      </form:form>
       </div>
       <div class="panel-footer">

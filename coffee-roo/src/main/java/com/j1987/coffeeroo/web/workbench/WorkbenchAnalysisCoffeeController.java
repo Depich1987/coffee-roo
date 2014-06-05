@@ -34,6 +34,7 @@ import com.j1987.coffeeroo.domain.JExporter;
 import com.j1987.coffeeroo.domain.JFactory;
 import com.j1987.coffeeroo.domain.JLocalization;
 import com.j1987.coffeeroo.domain.JSupplier;
+import com.j1987.coffeeroo.domain.JTour;
 import com.j1987.coffeeroo.framework.CoffeeAnalysisNotFoundException;
 import com.j1987.coffeeroo.framework.FactoryNotFoundException;
 import com.j1987.coffeeroo.framework.JUtils;
@@ -43,6 +44,7 @@ import com.j1987.coffeeroo.services.dao.ExporterService;
 import com.j1987.coffeeroo.services.dao.FactoryService;
 import com.j1987.coffeeroo.services.dao.LocalizationService;
 import com.j1987.coffeeroo.services.dao.SupplierService;
+import com.j1987.coffeeroo.services.dao.TourService;
 import com.j1987.coffeeroo.services.security.JSecurityService;
 import com.j1987.coffeeroo.web.form.CoffeeAnalysisForm;
 import com.j1987.coffeeroo.web.form.FilterCoffeeAnalysis;
@@ -75,7 +77,7 @@ public class WorkbenchAnalysisCoffeeController {
 	private JSecurityService securityService;
 	
 	@Autowired
-	private DealerService tourService;
+	private TourService tourService;
 	
 	@Autowired
 	private LocalizationService localizationService;
@@ -146,7 +148,10 @@ public class WorkbenchAnalysisCoffeeController {
 		
 		JLocalization provenance = localizationService.findLocalization(coffeeAnalysisForm.getProvenance());
 		coffeeAnalysis.setProvenance(provenance);
-        
+		
+		JTour tour = tourService.findTour(coffeeAnalysisForm.getTourId());
+		coffeeAnalysis.setTour(tour);
+		
 		coffeeAnalysis.setCreatedBy(securityService.currentUser());
         coffeeAnalysis.setCreationDate(new Date());
         
@@ -176,7 +181,7 @@ public class WorkbenchAnalysisCoffeeController {
 		}
         
         String referenceGenerated = RandomStringUtils.random(8, true, true);
-        coffeeAnalysis.setReference(referenceGenerated);
+        coffeeAnalysis.setReference(referenceGenerated.toUpperCase());
         coffeeAnalysis.setNetWeightOfProductAccepted(coffeeAnalysisForm.getNetWeightOfProductAccepted());
         coffeeAnalysis.setNumberLading(coffeeAnalysisForm.getNumberLading());
         coffeeAnalysis.setNumberSAIGIC(coffeeAnalysisForm.getNumberSAIGIC());
@@ -185,6 +190,9 @@ public class WorkbenchAnalysisCoffeeController {
         coffeeAnalysis.setTotalOfReportedBags(coffeeAnalysisForm.getTotalOfReportedBags());
         coffeeAnalysis.setTotalOfBagPushed(coffeeAnalysisForm.getTotalOfBagPushed());
         coffeeAnalysis.setSampleCode(coffeeAnalysisForm.getSampleCode());
+        
+        coffeeAnalysis.setCalibrageBase(coffeeAnalysisForm.getCalibrageBase());
+        coffeeAnalysis.setStatus(Long.valueOf("0"));
         coffeeAnalysisService.persist(coffeeAnalysis);
         
         
@@ -193,7 +201,137 @@ public class WorkbenchAnalysisCoffeeController {
         return "redirect:/workbench/analysis/coffeeanalysis/" + encodeUrlPathSegment(coffeeAnalysis.getId().toString(), httpServletRequest);
     }
     
+    @RequestMapping(value = "/update", method = RequestMethod.PUT, produces = "text/html")
+    public String update(@Valid CoffeeAnalysisForm coffeeAnalysisForm, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) throws FactoryNotFoundException {
+		
+    	if (bindingResult.hasErrors()) {
+            populateEditForm(uiModel, coffeeAnalysisForm, coffeeAnalysisForm.getFactoryCode());
+            logger.debug("update() - the coffeeAnalysisForm object is invalid. Redirect to update view");
+            return UPDATE_VIEW;
+        }
+    	
+        uiModel.asMap().clear();
+        
+	JCoffeeAnalysis coffeeAnalysis = coffeeAnalysisService.findCoffeeAnalysis(coffeeAnalysisForm.getId());
+	    	
+	HttpSession session = httpServletRequest.getSession();
+	String factoryCode = null;
 	
+	if(coffeeAnalysisForm.getFactoryCode() != null){
+		factoryCode = coffeeAnalysisForm.getFactoryCode();
+	}else{
+		 
+		factoryCode = (String)session.getAttribute(JUtils.HTTP_SESSION_FACTORY_CODE);
+	}
+	
+	List<JFactory>  factories = factoryService.findFactoriesByCodeEquals(factoryCode);
+	
+	if(factories.isEmpty()){
+	    	String errMsg = ">>>> create() - Failed finding Factory with code : " + coffeeAnalysisForm.getFactoryCode();
+	   	   	 logger.error(errMsg);
+	   	   	 throw new FactoryNotFoundException("Aucune usine avec le code [ "+ coffeeAnalysisForm.getFactoryCode() +" ] au sein de votre usine "); 
+	
+	}
+	
+	JFactory factory = factories.get(0);
+	
+	coffeeAnalysis.setFactoryEntry(factory);
+	
+	JExporter exporterEntry = null;
+	List<JExporter> exporters = exporterService.findExportersByCodeEquals(coffeeAnalysisForm.getExporterCode());
+	if(! exporters.isEmpty()){
+		exporterEntry = exporters.get(0);
+	}
+	coffeeAnalysis.setExporterEntry(exporterEntry);
+	
+	JDealer dealerEntry = null;
+	List<JDealer> dealers = dealerService.findDealersByCodeEquals(coffeeAnalysisForm.getDealerCode());
+	if(!dealers.isEmpty()){
+		dealerEntry = dealers.get(0);
+	}
+	coffeeAnalysis.setDealerEntry(dealerEntry);
+	
+	JSupplier supplierEntry = null ;
+	List<JSupplier> suppliers = supplierService.findSuppliersByCodeEquals(coffeeAnalysisForm.getSupplierCode());
+	if(! suppliers.isEmpty()){
+		supplierEntry = suppliers.get(0);
+	}
+	coffeeAnalysis.setSupplierEntry(supplierEntry);
+	
+	JLocalization provenance = localizationService.findLocalization(coffeeAnalysisForm.getProvenance());
+	coffeeAnalysis.setProvenance(provenance);
+	
+	coffeeAnalysis.setCreatedBy(securityService.currentUser());
+	coffeeAnalysis.setCreationDate(new Date());
+	
+	try {
+		Date coffeeAnalysisDate = JUtils.DATE_FORMAT.parse(coffeeAnalysisForm.getDateOfAnalysis());
+		
+		Date startTime = JUtils.TIME_FORMAT.parse(coffeeAnalysisForm.getStartTime());
+		Date endTime = JUtils.TIME_FORMAT.parse(coffeeAnalysisForm.getEndTime());
+		
+		if(coffeeAnalysisDate != null){
+			coffeeAnalysis.setDateOfAnalysis(coffeeAnalysisDate);
+		}
+		
+		if(startTime != null){
+			coffeeAnalysis.setStartTime(startTime);
+		}
+		
+		if(endTime != null){
+			coffeeAnalysis.setEndTime(endTime);
+		}
+		
+	} catch (ParseException e) {
+	
+		populateEditForm(uiModel, coffeeAnalysisForm, factoryCode);
+		logger.debug("create() - message :"+e.getMessage());
+		return CREATE_VIEW;
+	}
+
+	String referenceGenerated = RandomStringUtils.random(8, true, true);
+	coffeeAnalysis.setReference(referenceGenerated.toUpperCase());
+	coffeeAnalysis.setNetWeightOfProductAccepted(coffeeAnalysisForm.getNetWeightOfProductAccepted());
+	coffeeAnalysis.setNumberLading(coffeeAnalysisForm.getNumberLading());
+	coffeeAnalysis.setNumberSAIGIC(coffeeAnalysisForm.getNumberSAIGIC());
+	coffeeAnalysis.setNumberOfBagAllowed(coffeeAnalysisForm.getNumberOfBagAllowed());
+	coffeeAnalysis.setTruckNumber(coffeeAnalysisForm.getTruckNumber());
+	coffeeAnalysis.setTotalOfReportedBags(coffeeAnalysisForm.getTotalOfReportedBags());
+	coffeeAnalysis.setTotalOfBagPushed(coffeeAnalysisForm.getTotalOfBagPushed());
+	coffeeAnalysis.setSampleCode(coffeeAnalysisForm.getSampleCode());
+	
+	coffeeAnalysis.setCalibrageBase(coffeeAnalysisForm.getCalibrageBase());
+        
+        
+	coffeeAnalysis.merge();
+        return "redirect:/workbench/analysis/coffeeanalysis/" + encodeUrlPathSegment(coffeeAnalysis.getId().toString(), httpServletRequest);
+    }
+    
+    @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
+    public String updateForm(@PathVariable("id") Long id, Model uiModel, HttpServletRequest httpServletRequest) {
+    	
+    	CoffeeAnalysisForm  coffeeAnalysisForm = new CoffeeAnalysisForm();
+    	JCoffeeAnalysis coffeeAnalysis = coffeeAnalysisService.findCoffeeAnalysis(id);
+    	
+    	coffeeAnalysisForm.setAcceptation(coffeeAnalysis.getAcceptation());
+    	coffeeAnalysisForm.setConfirmation(coffeeAnalysis.getConfirmation());
+    	coffeeAnalysisForm.setDateOfAnalysis(coffeeAnalysis.getDateOfAnalysis().toString());
+    	coffeeAnalysisForm.setReference(coffeeAnalysis.getReference());
+    	coffeeAnalysisForm.setNetWeightOfProductAccepted(coffeeAnalysis.getNetWeightOfProductAccepted());
+    	coffeeAnalysisForm.setNumberLading(coffeeAnalysis.getNumberLading());
+    	coffeeAnalysisForm.setNumberSAIGIC(coffeeAnalysis.getNumberSAIGIC());
+    	coffeeAnalysisForm.setNumberOfBagAllowed(coffeeAnalysis.getNumberOfBagAllowed());
+    	coffeeAnalysisForm.setTruckNumber(coffeeAnalysis.getTruckNumber());
+    	coffeeAnalysisForm.setTotalOfReportedBags(coffeeAnalysis.getTotalOfReportedBags());
+    	coffeeAnalysisForm.setTotalOfBagPushed(coffeeAnalysis.getTotalOfBagPushed());
+    	coffeeAnalysisForm.setSampleCode(coffeeAnalysis.getSampleCode());
+    	coffeeAnalysisForm.setId(coffeeAnalysis.getId());
+    	HttpSession session = httpServletRequest.getSession();
+    	String factoryCode = (String)session.getAttribute(JUtils.HTTP_SESSION_FACTORY_CODE);
+    	
+    	populateEditForm(uiModel, coffeeAnalysisForm, factoryCode);
+        return UPDATE_VIEW;
+    }
 	
 	
     @RequestMapping(value = "/create", params = "form", produces = "text/html")
@@ -219,8 +357,10 @@ public class WorkbenchAnalysisCoffeeController {
     	
     	uiModel.asMap().clear();
     	
+    	List<JCoffeeAnalysis> coffeeAnalysis = coffeeAnalysisService.findCoffeeAnalysisByReferenceEquals(filterCoffeeAnalysis.getAnalysisReference());
+    	uiModel.addAttribute("coffeeAnalysis", coffeeAnalysis);
     	
-    	
+    	populateEditFindAnalysis(uiModel, filterCoffeeAnalysis);
     	
     	return FIND_VIEW;
     }
@@ -249,7 +389,7 @@ public class WorkbenchAnalysisCoffeeController {
     			
     			String errMsg = ">>>> show() - Failed trying to access an other factory's coffeeAnalysis with id : " + coffeeAnalysis.getId();
    	   	   	 	logger.error(errMsg);
-   	   	   	 	throw new CoffeeAnalysisNotFoundException("Aucun Flux Financier avec cet identifiant [ "+ coffeeAnalysis.getId() +" ] au sein de votre activite "); 
+   	   	   	 	throw new CoffeeAnalysisNotFoundException("Aucun usine avec cet identifiant [ "+ coffeeAnalysis.getId() +" ] au sein de votre usine "); 
     		}
     		
             uiModel.addAttribute("coffeeAnalysis", coffeeAnalysis);
@@ -272,7 +412,7 @@ public class WorkbenchAnalysisCoffeeController {
         return  SHOW_VIEW;
     }
     
-    @Secured(value = {"ROLE_ADMIN","ROLE_FACTORY_MANAGER"})
+    @Secured(value = {"ROLE_ADMIN","ROLE_SUPERVISOR"})
     @RequestMapping(value = "/list/filter", produces = "text/html")
     public String listByFilter(@RequestParam(value = "factoryFilter", required = false)String factoryFilter, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) throws FactoryNotFoundException{
     	
@@ -280,7 +420,7 @@ public class WorkbenchAnalysisCoffeeController {
     		
     		String errMsg = ">>>> listByFilter() - Failed finding Factory with code : " + factoryFilter;
 	   	   	 logger.error(errMsg);
-	   	   	 throw new FactoryNotFoundException("Aucune activite avec le code [ "+ factoryFilter +" ] au sein de votre activite "); 
+	   	   	 throw new FactoryNotFoundException("Aucune usine avec le code [ "+ factoryFilter +" ] au sein de votre usine "); 
     	}
     	
     	List<JFactory> factories = factoryService.findFactoriesByCodeEquals(factoryFilter);
@@ -288,7 +428,7 @@ public class WorkbenchAnalysisCoffeeController {
         if(factories.isEmpty()){
 	    	String errMsg = ">>>> listByFilter() - Failed finding Factory with code : " + factoryFilter;
 	   	   	 logger.error(errMsg);
-	   	   	 throw new FactoryNotFoundException("Aucune activite avec le code [ "+ factoryFilter +" ] au sein de votre activite "); 
+	   	   	 throw new FactoryNotFoundException("Aucune usine avec le code [ "+ factoryFilter +" ] au sein de votre usine "); 
 
         }
     	
@@ -302,7 +442,7 @@ public class WorkbenchAnalysisCoffeeController {
             uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
             
     	}else {
-            uiModel.addAttribute("cofeeAnalysis", coffeeAnalysisService.findCoffeeAnalysisByFactory(factory));
+            uiModel.addAttribute("coffeeAnalysis", coffeeAnalysisService.findCoffeeAnalysisByFactory(factory));
         }
     	
     	uiModel.addAttribute("factories", factoryService.findAllFactories());
@@ -333,7 +473,7 @@ public class WorkbenchAnalysisCoffeeController {
             if(factories.isEmpty()){
     	    	String errMsg = ">>>> list() - Failed finding Factory with code : " + factoryCode;
     	   	   	 logger.error(errMsg);
-    	   	   	 throw new FactoryNotFoundException("Aucune usine avec le code [ "+ factoryCode +" ] au sein de votre activite "); 
+    	   	   	 throw new FactoryNotFoundException("Aucune usine avec le code [ "+ factoryCode +" ] au sein de votre usine "); 
 
             }
     	}
@@ -381,25 +521,34 @@ public class WorkbenchAnalysisCoffeeController {
     	FilterCoffeeAnalysis filterCoffeeAnalysis = new FilterCoffeeAnalysis();
     	uiModel.addAttribute("filterCoffeeAnalysis", filterCoffeeAnalysis);
     	uiModel.addAttribute("factories", factoryService.findAllFactories());
+    	
+    	uiModel.addAttribute("currentNav", "coffeeanalysis");
         
         return LIST_VIEW;
     }
     
     
     void populateEditForm(Model uiModel, CoffeeAnalysisForm coffeeAnalysisForm, String factoryCode ) {
+
+    	List<JFactory>  factories = new ArrayList<JFactory>();
     	
-    	List<JFactory>  factories = factoryService.findFactoriesByCodeEquals(factoryCode);
-    	if(!factories.isEmpty()){
-    		uiModel.addAttribute("factories", factories);
+    	if(factoryCode == null){
+    		factories = factoryService.findAllFactories();
+    	}else{
+    		factories = factoryService.findFactoriesByCodeEquals(factoryCode);
     	}
+ 
     	
+    	uiModel.addAttribute("factories", factories);
     	uiModel.addAttribute("suppliers", supplierService.findAllSuppliers());
     	uiModel.addAttribute("dealers", dealerService.findAllDealers());
-    	uiModel.addAttribute("tours", tourService.findAllDealers());
+    	uiModel.addAttribute("tours", tourService.findAllTours());
     	uiModel.addAttribute("localizations", localizationService.findAllLocalizations());
     	uiModel.addAttribute("exporters", exporterService.findAllExporters());
     	
         uiModel.addAttribute("coffeeAnalysisForm", coffeeAnalysisForm);
+        
+        uiModel.addAttribute("currentNav", "coffeeanalysis");
         
     }
     

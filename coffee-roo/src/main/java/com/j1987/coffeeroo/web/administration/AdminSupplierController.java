@@ -69,6 +69,7 @@ public class AdminSupplierController {
     	
         uiModel.addAttribute("supplier", supplierService.findSupplier(id));
         uiModel.addAttribute("itemId", id);
+        uiModel.addAttribute("currentNav", "suppliers");
         
         return SHOW_VIEW;
     }
@@ -88,6 +89,9 @@ public class AdminSupplierController {
     	} else {
             uiModel.addAttribute("suppliers", supplierService.findAllSuppliers());
         }
+    	
+    	uiModel.addAttribute("currentNav", "suppliers");
+    	
         return LIST_VIEW;
     }
     
@@ -128,6 +132,7 @@ public class AdminSupplierController {
     
     void populateEditForm(Model uiModel, JSupplier supplier) {
         uiModel.addAttribute("supplier", supplier);
+        uiModel.addAttribute("currentNav", "suppliers");
     }
     
     String encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

@@ -48,6 +48,9 @@ public class JUser {
 
     @ManyToMany
     private List<JCompany> companies = new ArrayList<JCompany>();
+    
+    @ManyToMany
+    private List<JFirm> firms = new ArrayList<JFirm>();
 
     @ManyToMany
     private List<JFactory> factories = new ArrayList<JFactory>();

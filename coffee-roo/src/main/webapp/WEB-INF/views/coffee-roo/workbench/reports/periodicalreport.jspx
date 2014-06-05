@@ -1,30 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <div xmlns:jsp="http://java.sun.com/JSP/Page"
-	 xmlns:form="http://www.springframework.org/tags/form"  
+	 xmlns:security="http://www.springframework.org/security/tags"
+	 xmlns:c="http://java.sun.com/jsp/jstl/core"
+	 xmlns:form="http://www.springframework.org/tags/form"
+	 xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"  
 	 xmlns:spring="http://www.springframework.org/tags" version="2.0">
 	
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     
     
-    <spring:message code="label_com_j1987_aakura_domain_jfactory" var="factory_label"/>
+    <spring:message code="label_com_j1987_coffeeroo_domain_jfactory" var="factory_label"/>
+ 	<spring:message code="label_com_j1987_coffeeroo_domain_jcoffeeanalysis" var="coffeeanalysis_label"/>
  	
- 	
- 	<spring:url value="/workbench/analysis/reports/periodicalreport" var="periodicalreport_url" htmlEscape="false"/>
+ 	<spring:url value="/workbench/reports/findcoffeeanalysis" var="findcoffeeanalysis_url" htmlEscape="false"/>
+    
+    <h1 class="page-header">
+    	Rapport Periodique
+    </h1>
     
     <div class="panel panel-primary">
     	<div class="panel-heading">
     		<spring:message code="workbench_periodicalreport"/>
     	</div>
     	<div class="pane panel-body">
-    		<form:form role="form" cssClass="form-horizontal">
+    		<form:form action="${findcoffeeanalysis_url}" role="form" modelAttribute="filterCoffeeAnalysis" method="post" cssClass="form-horizontal">
 	 	 		<security:authorize access="hasAnyRole('ROLE_SUPERVISOR','ROLE_ADMIN')">
 				 <div class="form-group">
 				   <label class="col-sm-2 control-label">
 						${factory_label}
 				   </label>
 				   <div class="col-sm-4">
-				     <form:select path="factoryCodeList" placeholder="${factory_label}" items="${factories}" itemLabel="name" itemValue="code" cssClass="form-control"/>
+				     <form:select path="factoryFilter" placeholder="${factory_label}" items="${factories}" itemLabel="name" itemValue="code" cssClass="form-control"/>
 				   </div>
 				 </div>
 			 	</security:authorize>
@@ -34,7 +41,7 @@
 							${factory_label}
 					   </label>
 					   <div class="col-sm-4">
-					     <form:select path="factoryCodeList" placeholder="${factory_label}" items="${factories}" itemLabel="name" itemValue="code" cssClass="form-control" readonly="true"/>
+					     <form:select path="factoryFilter" placeholder="${factory_label}" items="${factories}" itemLabel="name" itemValue="code" cssClass="form-control" readonly="true"/>
 					   </div>
 					 </div>
 				 </security:authorize>
@@ -60,6 +67,78 @@
 			   		</div>
 	   			</div>
     		</form:form>
+    		<c:if test="${resultDisplay}">
+    			<c:if test="${coffeeAnalysis.size() eq 0}">
+    				<div class="alert alert-info">
+    					<spring:message arguments="${coffeeanalysis_label}" code="entity_not_found" />
+    				</div>
+    			</c:if>
+    		</c:if>
+	    	<c:if test="${coffeeAnalysis.size() gt 0}">
+	    		<spring:url value="/workbench/reports/generatefile" var="generatefile_url"/>
+	    		<hr />
+    			<form:form action="${generatefile_url}" method="get" modelAttribute="reportFilterForm" role="form" cssClass="form-horizontal">
+		    		<div >
+			    		<table class="table">
+			    			<thead>
+			    				<th>Date analyse</th>
+			    				<th>Code Echantillon</th>
+			    				<th>Concessionnaire</th>
+			    				<th>Exportateur</th>
+			    				<th>Usine</th>
+			    				<th>Fournisseur</th>
+			    				<th>Date de Creation</th>
+			    				<th></th>
+			    			</thead>
+			    			<tbody>
+			    				<c:forEach items="${coffeeAnalysis}" var="analysis">
+			    				<tr>
+			    					<td>
+			    						<fmt:formatDate value="${analysis.dateOfAnalysis}" dateStyle="short" pattern="dd/MM/yyyy" />
+			    					</td>
+			    					<td>${analysis.sampleCode}</td>
+			    					<td>${analysis.dealerEntry.name}</td>
+			    					<td>${analysis.exporterEntry.name}</td>
+			    					<td>${analysis.factoryEntry.name}</td>
+			    					<td>${analysis.supplierEntry.name}</td>
+			    					<td>
+			    						<fmt:formatDate value="${analysis.creationDate}" dateStyle="short" pattern="dd/MM/yyyy" />
+			    					</td>
+			    					<td>
+			    						<form:checkbox path="analysisList" value="${analysis.reference}"/>
+			    					</td>
+			    				</tr>
+			    				</c:forEach>
+			    			</tbody>
+			    		</table>
+		    			<hr />
+		    			<div class="form-group">
+		    				<label for="AutomaticSubmission" class="col-sm-4 control-label">
+		    					Creer Envoi
+		    				</label>
+		    				<div class="col-sm-6">
+		    					<form:checkbox  path="automaticSubmission" value="off"/>
+		    				</div>
+		    			</div>
+		    			<div class="form-group">
+		    				<label for="description" class="col-sm-4 control-label">
+		    					<spring:message code="label_com_j1987_coffeeroo_domain_jlocalization_description"/>
+		    				</label>
+		    				<div class="col-sm-6">
+		    					<form:textarea  path="description" disabled="true" cssClass="form-control"/>
+		    				</div>
+		    			</div>
+			    		<div class="form-group">
+			   				<div class="col-sm-offset-4 col-sm-10">
+			   					<INPUT type="hidden" name="format" value="xls"/>
+		   		          		<button id="proceed" type="submit" class="btn btn-success">
+				          			Generer
+				          		</button>
+					        </div>
+				        </div>
+			        </div>
+	    		</form:form>
+	    	</c:if>
     	</div>
     	<div class="panel-footer">
            <span>
@@ -70,6 +149,15 @@
        <script type="text/javascript">
     
     	$(document).ready(function(){
+    		
+    		$('#automaticSubmission1').on('change',function(){
+    			if($(this).is(':checked') == true){
+    				$('#description').removeAttr('disabled');
+    			}else{
+    				$('#description').attr('disabled',true);
+    			}
+    		});
+    		
     		$('#startDate').datepicker({ 
   		      autoclose: true, 
 		      todayHighlight: true 

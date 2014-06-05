@@ -47,6 +47,30 @@ public class CoffeeAnalysisServiceImpl implements CoffeeAnalysisService {
     }
     
     @Override
+    public List<JCoffeeAnalysis> findNotSentCoffeeAnalysisByReferenceList(List<String> referenceList){
+    	return entityManager.createQuery("SELECT o FROM JCoffeeAnalysis o WHERE (o.reference IN :referenceList) AND o.status = :status", JCoffeeAnalysis.class)
+    			.setParameter("referenceList", referenceList)
+    			.setParameter("status",Long.valueOf("0"))
+    			.getResultList();
+    }
+    
+    @Override
+    public List<JCoffeeAnalysis> findStandByCoffeeAnalysisByReferenceList(List<String> referenceList){
+    	return entityManager.createQuery("SELECT o FROM JCoffeeAnalysis o WHERE (o.reference IN :referenceList) AND o.status = :status", JCoffeeAnalysis.class)
+    			.setParameter("referenceList", referenceList)
+    			.setParameter("status",Long.valueOf("1"))
+    			.getResultList();
+    }
+    
+    @Override
+    public List<JCoffeeAnalysis> findValidatedCoffeeAnalysisByReferenceList(List<String> referenceList){
+    	return entityManager.createQuery("SELECT o FROM JCoffeeAnalysis o WHERE (o.reference IN :referenceList) AND o.status = :status", JCoffeeAnalysis.class)
+    			.setParameter("referenceList", referenceList)
+    			.setParameter("status",Long.valueOf("2"))
+    			.getResultList();
+    }
+    
+    @Override
     public List<JCoffeeAnalysis> findCoffeeAnalysisEntries(int firstResult, int maxResults) {
         return entityManager.createQuery("SELECT o FROM JCoffeeAnalysis o ORDER BY o.creationDate DESC", JCoffeeAnalysis.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
@@ -104,6 +128,38 @@ public class CoffeeAnalysisServiceImpl implements CoffeeAnalysisService {
 		.setParameter("factories", factories)
 		.setParameter("startDate", startDate, TemporalType.DATE)
         .setParameter("endDate", endDateTemp, TemporalType.DATE)
+        .getResultList();
+    }
+    
+    @Override
+    public List<JCoffeeAnalysis> findStandByCoffeeAnalysisByFactoryListAndCoffeeAnalysisDateBetween(List<JFactory> factories, Date startDate, Date endDate) {
+        
+    	if (startDate == null) throw new IllegalArgumentException("The startDate argument is required");
+        if (endDate == null) throw new IllegalArgumentException("The endDate argument is required");
+        
+        Date endDateTemp = DateUtils.addDays(endDate, 1);
+        
+        return entityManager.createQuery("SELECT p FROM JCoffeeAnalysis AS p WHERE (p.factoryEntry IN :factories) AND (p.status = :status) AND p.dateOfAnalysis BETWEEN :startDate AND :endDate ORDER BY   p.creationDate DESC", JCoffeeAnalysis.class)
+		.setParameter("factories", factories)
+		.setParameter("startDate", startDate, TemporalType.DATE)
+        .setParameter("endDate", endDateTemp, TemporalType.DATE)
+        .setParameter("status", Long.valueOf("1"))
+        .getResultList();
+    }
+    
+    @Override
+    public List<JCoffeeAnalysis> findNotSentCoffeeAnalysisByFactoryListAndCoffeeAnalysisDateBetween(List<JFactory> factories, Date startDate, Date endDate) {
+        
+    	if (startDate == null) throw new IllegalArgumentException("The startDate argument is required");
+        if (endDate == null) throw new IllegalArgumentException("The endDate argument is required");
+        
+        Date endDateTemp = DateUtils.addDays(endDate, 1);
+        
+        return entityManager.createQuery("SELECT p FROM JCoffeeAnalysis AS p WHERE (p.factoryEntry IN :factories) AND (p.status = :status) AND p.dateOfAnalysis BETWEEN :startDate AND :endDate ORDER BY   p.creationDate DESC", JCoffeeAnalysis.class)
+		.setParameter("factories", factories)
+		.setParameter("startDate", startDate, TemporalType.DATE)
+        .setParameter("endDate", endDateTemp, TemporalType.DATE)
+        .setParameter("status", Long.valueOf("0"))
         .getResultList();
     }
     

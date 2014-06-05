@@ -20,10 +20,24 @@
         <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/factory/create.jspx"/>
     </definition>
     
+    
+  	<definition extends="administrationLayout" name="administration/factory/createbridge">
+	   	<put-attribute name="header" value="/WEB-INF/views/coffee-roo/administration/header.jspx"/>
+  		<put-attribute name="menu" value="/WEB-INF/views/coffee-roo/administration/menu.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/factory/createbridge.jspx"/>
+    </definition>
+    
+    
 	<definition extends="administrationLayout" name="administration/factory/update">
 	   	<put-attribute name="header" value="/WEB-INF/views/coffee-roo/administration/header.jspx"/>
   		<put-attribute name="menu" value="/WEB-INF/views/coffee-roo/administration/menu.jspx"/>
         <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/factory/update.jspx"/>
+    </definition>
+    
+   	<definition extends="administrationLayout" name="administration/factory/updatebridge">
+	   	<put-attribute name="header" value="/WEB-INF/views/coffee-roo/administration/header.jspx"/>
+  		<put-attribute name="menu" value="/WEB-INF/views/coffee-roo/administration/menu.jspx"/>
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/administration/factory/updatebridge.jspx"/>
     </definition>
 
 </tiles-definitions>

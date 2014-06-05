@@ -1,82 +1,148 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="JasperReportTemplate" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e7e322c5-e058-4953-96e5-1a2fe4a3cbc3">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="JasperReportTemplate" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e7e322c5-e058-4953-96e5-1a2fe4a3cbc3">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="title" class="java.lang.String"/>
-	<field name="userName" class="java.lang.String"/>
-	<field name="firstName" class="java.lang.String"/>
-	<field name="lastName" class="java.lang.String"/>
+	<parameter name="KMSLogoLocation" class="java.lang.String"/>
+	<field name="Date" class="java.util.Date"/>
+	<field name="numeroFacture" class="java.lang.String"/>
+	<field name="codeUsine" class="java.lang.String"/>
+	<field name="nameUsine" class="java.lang.String"/>
+	<field name="poidControleAccepte" class="java.math.BigDecimal"/>
+	<field name="poidsControleRefoule" class="java.math.BigDecimal"/>
+	<field name="poidsTotalAPayer" class="java.math.BigDecimal"/>
+	<field name="montantTotal" class="java.lang.String"/>
+	<variable name="totalProduitAccepte" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{poidControleAccepte}]]></variableExpression>
+	</variable>
+	<variable name="totalProduitRefoule" class="java.math.BigDecimal" calculation="Sum"/>
+	<variable name="totalPoidAPayer" class="java.math.BigDecimal" calculation="Sum"/>
+	<variable name="montantTotal" class="java.lang.String" calculation="Sum"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
 		<band height="79" splitType="Stretch">
-			<textField>
-				<reportElement uuid="d2cad9a5-3875-4bfd-9c06-66a1cfff4012" x="214" y="0" width="129" height="34"/>
-				<textElement textAlignment="Center">
-					<font size="13" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{title}]]></textFieldExpression>
-			</textField>
+			<image>
+				<reportElement uuid="bf070ea5-f63e-43b6-b844-f2f6e129c3b1" x="0" y="0" width="213" height="44"/>
+				<imageExpression><![CDATA[$P{KMSLogoLocation}]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="7564464d-66af-426d-b22d-4ae05038faaf" mode="Opaque" x="0" y="0" width="802" height="36" forecolor="#000000" backcolor="#CCCCCC"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Arial" size="13" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[ETAT RECAPITULATIF DES FACTURES DU CONTROLE QUALITE DU CACAO AUX ENTREES DES USINES DE CONDITIONNEMENT]]></text>
+			</staticText>
+		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch">
+		<band height="28" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="7564464d-66af-426d-b22d-4ae05038faaf" mode="Opaque" x="0" y="41" width="187" height="20" backcolor="#009900"/>
+				<reportElement uuid="f92129d4-2d6d-46fa-9539-fcccf954ce4a" x="28" y="6" width="86" height="20"/>
 				<textElement/>
-				<text><![CDATA[EnTete]]></text>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="94867056-e825-4de4-ab68-881bd86f4869" x="126" y="6" width="94" height="20"/>
+				<textElement/>
+				<text><![CDATA[numeroFacture]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="017e23a4-4289-47d6-b6c8-2bd07104370b" x="231" y="6" width="86" height="20"/>
+				<textElement/>
+				<text><![CDATA[codeUsine]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c97b4a6d-9c15-49e9-bc07-478631269e7e" x="321" y="6" width="79" height="20"/>
+				<textElement/>
+				<text><![CDATA[nameUsine]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="639603e7-424d-4841-976d-629733b25dd7" x="400" y="6" width="84" height="20"/>
+				<textElement/>
+				<text><![CDATA[poidControleAccepte]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a0606669-8ea9-4d0a-9a1e-20afacd85436" x="484" y="6" width="93" height="20"/>
+				<textElement/>
+				<text><![CDATA[poidsControleRefoule]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ad67e9e6-f576-4ab1-b452-931173e8f377" x="579" y="6" width="104" height="20"/>
+				<textElement/>
+				<text><![CDATA[poidsTotalAPayer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c341d6bd-0bdb-44d9-a432-ba5bbf5055ff" x="683" y="6" width="88" height="20"/>
+				<textElement/>
+				<text><![CDATA[montantTotal]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="25" splitType="Stretch">
-			<staticText>
-				<reportElement uuid="69d1350c-5b0e-42f5-9195-c40e191b44ec" x="0" y="0" width="64" height="20"/>
-				<textElement/>
-				<text><![CDATA[User Name]]></text>
-			</staticText>
 			<textField>
-				<reportElement uuid="cac6bcf6-df3f-4503-85a1-c8d9af46bdc4" x="65" y="0" width="119" height="20"/>
+				<reportElement uuid="1356c599-a53e-436d-8819-4d9c69ff6d0f" x="28" y="0" width="86" height="20"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{userName}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Date}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement uuid="14903bee-2d35-49e2-93a4-d351eee3d25f" x="185" y="0" width="64" height="20"/>
-				<textElement/>
-				<text><![CDATA[First Name]]></text>
-			</staticText>
 			<textField>
-				<reportElement uuid="1b8c8726-aea1-4832-89c8-ab5868a7b473" x="250" y="0" width="119" height="20"/>
+				<reportElement uuid="620d2dd0-dfd7-4d97-9486-b662c7e8179d" x="126" y="0" width="94" height="20"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{firstName}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{numeroFacture}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement uuid="57a8d294-5491-413b-b8da-0a1587bb7bee" x="370" y="0" width="64" height="20"/>
-				<textElement/>
-				<text><![CDATA[Last Name]]></text>
-			</staticText>
 			<textField>
-				<reportElement uuid="b9739b01-f3db-4039-87d3-34da3338ecc4" x="435" y="0" width="119" height="20"/>
+				<reportElement uuid="cb0d4b3e-bf69-40a7-a4a1-fdc5bd4bfec8" x="231" y="0" width="86" height="20"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{lastName}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{codeUsine}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8c709742-6e5c-428b-8e9b-ce3300422766" x="321" y="0" width="79" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nameUsine}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f737cb4b-c4bc-44b3-91f2-57e8f1b52873" x="400" y="0" width="84" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{poidControleAccepte}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="83b2663f-530b-4da0-99a8-4b50ba438456" x="484" y="0" width="93" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{poidsControleRefoule}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="40f91e51-5e89-40ae-84bc-525090c2639e" x="579" y="0" width="104" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{poidsTotalAPayer}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0e981737-f73c-4560-93ec-0f89ab0216d5" x="683" y="0" width="88" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{montantTotal}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch">
 			<textField>
-				<reportElement uuid="9663b3cb-ecbf-43d8-be52-2ca449a08af0" x="87" y="0" width="100" height="20"/>
+				<reportElement uuid="9663b3cb-ecbf-43d8-be52-2ca449a08af0" x="87" y="0" width="107" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
@@ -85,6 +151,26 @@
 				<textElement/>
 				<text><![CDATA[Printed Records:]]></text>
 			</staticText>
+			<textField>
+				<reportElement uuid="31c66238-55c3-43a6-9288-8cc6a1cd1cfe" x="400" y="2" width="84" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{totalProduitAccepte}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b6f18cdf-6ebd-4d8f-9ff1-ca743d8bde9e" x="484" y="2" width="93" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{totalProduitRefoule}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="438ad53d-8f0d-4b67-9984-f73acac3f70e" x="579" y="2" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{totalPoidAPayer}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="39e7bb8c-46e6-437f-807b-85ab9db80a2e" x="683" y="2" width="88" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{montantTotal}]]></textFieldExpression>
+			</textField>
 		</band>
 	</summary>
 </jasperReport>

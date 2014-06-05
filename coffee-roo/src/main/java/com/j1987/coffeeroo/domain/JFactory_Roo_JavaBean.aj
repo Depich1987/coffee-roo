@@ -3,10 +3,12 @@
 
 package com.j1987.coffeeroo.domain;
 
+import com.j1987.coffeeroo.domain.JBridge;
 import com.j1987.coffeeroo.domain.JCompany;
 import com.j1987.coffeeroo.domain.JFactory;
 import com.j1987.coffeeroo.domain.JUser;
 import java.util.List;
+import java.util.Set;
 
 privileged aspect JFactory_Roo_JavaBean {
     
@@ -48,6 +50,14 @@ privileged aspect JFactory_Roo_JavaBean {
     
     public void JFactory.setUsers(List<JUser> users) {
         this.users = users;
+    }
+    
+    public Set<JBridge> JFactory.getBridges() {
+        return this.bridges;
+    }
+    
+    public void JFactory.setBridges(Set<JBridge> bridges) {
+        this.bridges = bridges;
     }
     
 }

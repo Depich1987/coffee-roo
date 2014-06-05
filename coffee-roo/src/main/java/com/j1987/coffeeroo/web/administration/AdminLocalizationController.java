@@ -69,6 +69,7 @@ public class AdminLocalizationController {
     	
         uiModel.addAttribute("localization", localizationService.findLocalization(id));
         uiModel.addAttribute("itemId", id);
+        uiModel.addAttribute("currentNav", "localizations");
         
         return SHOW_VIEW;
     }
@@ -88,6 +89,9 @@ public class AdminLocalizationController {
     	} else {
             uiModel.addAttribute("localizations", localizationService.findAllLocalizations());
         }
+    	
+    	uiModel.addAttribute("currentNav", "localizations");
+    	
         return LIST_VIEW;
     }
     
@@ -128,6 +132,7 @@ public class AdminLocalizationController {
     
     void populateEditForm(Model uiModel, JLocalization localization) {
         uiModel.addAttribute("localization", localization);
+        uiModel.addAttribute("currentNav", "localizations");
     }
     
     String encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

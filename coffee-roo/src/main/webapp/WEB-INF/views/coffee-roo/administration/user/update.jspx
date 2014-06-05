@@ -4,8 +4,8 @@
     <jsp:output omit-xml-declaration="yes"/>
     <form:update id="fu_com_j1987_coffeeroo_domain_JUser" modelAttribute="user" path="/administration/users" versionField="Version" z="5HEds+DS3PPx8MyRDZ/JOfAuKoE=" list="true">
         <field:input field="userName" id="c_com_j1987_coffeeroo_domain_JUser_userName" required="true" z="Ax5JPWpLD5e+4Vb6OiQqNYGiG/0="/>
-        <field:input field="password" id="c_com_j1987_coffeeroo_domain_JUser_password" required="true" z="GhM7zIGSjc827e5jpX6CjdPriCs="/>
-        <field:input field="confirmPassword" id="c_com_j1987_coffeeroo_domain_JUser_confirmPassword" z="Xm4acDxs1s5YqdwLC5xtBJZCt5U="/>
+        <field:input type="password" field="password" id="c_com_j1987_coffeeroo_domain_JUser_password" required="true" z="GhM7zIGSjc827e5jpX6CjdPriCs="/>
+        <field:input type="password" field="confirmPassword" id="c_com_j1987_coffeeroo_domain_JUser_confirmPassword" required="true" z="Xm4acDxs1s5YqdwLC5xtBJZCt5U="/>
         <hr />
         <field:input field="firstName" id="c_com_j1987_coffeeroo_domain_JUser_firstName" z="bLr38CIp/7snkcchloYYOgCkciU="/>
         <field:input field="lastName" id="c_com_j1987_coffeeroo_domain_JUser_lastName" z="1fP4hIiLu1cC7ucXn5+Cq4IsHE8="/>

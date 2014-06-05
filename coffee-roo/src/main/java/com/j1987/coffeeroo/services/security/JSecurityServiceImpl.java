@@ -17,7 +17,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.j1987.coffeeroo.domain.JCompany;
+import com.j1987.coffeeroo.domain.JFirm;
 import com.j1987.coffeeroo.domain.JFactory;
 import com.j1987.coffeeroo.domain.JRole;
 import com.j1987.coffeeroo.domain.JUser;
@@ -141,10 +141,10 @@ public class JSecurityServiceImpl implements JSecurityService {
 			String roleName = user.getRoleName();
 			String dbRoleName = dbRoles.get(roleName);
 			
-			if (dbRoleName.equals(JUtils.DB_ROLE_ADMIN)) {
-				List<JCompany> companies = user.getCompanies();
-				if (companies.isEmpty()) {
-					String errMsg = "handlePreconditionsAccess() - User ["+userName+"] with network admin role doesnt have any company assigned yet. Please ask your administrator";
+			if (dbRoleName.equals(JUtils.DB_ROLE_ADMIN) || dbRoleName.equals(JUtils.DB_ROLE_SUPERVISOR) ) {
+				List<JFirm> firms = user.getFirms();
+				if (firms.isEmpty()) {
+					String errMsg = "handlePreconditionsAccess() - User ["+userName+"] with network admin role doesnt have any firm assigned yet. Please ask your administrator";
 					logger.error(errMsg, new UsernameNotFoundException(errMsg));
 					throw new UsernameNotFoundException(errMsg);
 				} 

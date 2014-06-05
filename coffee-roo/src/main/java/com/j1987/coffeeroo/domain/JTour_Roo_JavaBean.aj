@@ -3,7 +3,9 @@
 
 package com.j1987.coffeeroo.domain;
 
+import com.j1987.coffeeroo.domain.JCoffeeAnalysis;
 import com.j1987.coffeeroo.domain.JTour;
+import java.util.List;
 
 privileged aspect JTour_Roo_JavaBean {
     
@@ -21,6 +23,14 @@ privileged aspect JTour_Roo_JavaBean {
     
     public void JTour.setDescription(String description) {
         this.description = description;
+    }
+    
+    public List<JCoffeeAnalysis> JTour.getAnalysis() {
+        return this.analysis;
+    }
+    
+    public void JTour.setAnalysis(List<JCoffeeAnalysis> analysis) {
+        this.analysis = analysis;
     }
     
 }

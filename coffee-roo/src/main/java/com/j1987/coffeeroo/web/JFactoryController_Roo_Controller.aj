@@ -3,6 +3,7 @@
 
 package com.j1987.coffeeroo.web;
 
+import com.j1987.coffeeroo.domain.JBridge;
 import com.j1987.coffeeroo.domain.JCompany;
 import com.j1987.coffeeroo.domain.JFactory;
 import com.j1987.coffeeroo.domain.JUser;
@@ -88,6 +89,7 @@ privileged aspect JFactoryController_Roo_Controller {
     
     void JFactoryController.populateEditForm(Model uiModel, JFactory JFactory_) {
         uiModel.addAttribute("JFactory_", JFactory_);
+        uiModel.addAttribute("jbridges", JBridge.findAllJBridges());
         uiModel.addAttribute("jcompanys", JCompany.findAllJCompanys());
         uiModel.addAttribute("jusers", JUser.findAllJUsers());
     }

@@ -8,39 +8,45 @@ import com.j1987.coffeeroo.domain.JFactory;
 
 public interface CoffeeAnalysisService {
 
-	long countCoffeeAnalyses();
+	public long countCoffeeAnalyses();
 
-	List<JCoffeeAnalysis> findAllCoffeeAnalyses();
+	public List<JCoffeeAnalysis> findAllCoffeeAnalyses();
 
-	JCoffeeAnalysis findCoffeeAnalysis(Long id);
+	public JCoffeeAnalysis findCoffeeAnalysis(Long id);
 
-	List<JCoffeeAnalysis> findCoffeeAnalysisEntries(int firstResult,
+	public List<JCoffeeAnalysis> findCoffeeAnalysisEntries(int firstResult,
 			int maxResults);
 
-	void persist(JCoffeeAnalysis coffeeAnalysis);
+	public void persist(JCoffeeAnalysis coffeeAnalysis);
 
-	void remove(Long id);
+	public void remove(Long id);
 
-	void flush();
+	public void flush();
 
-	void clear();
+	public void clear();
 
-	JCoffeeAnalysis merge(JCoffeeAnalysis coffeeAnalysis);
+	public JCoffeeAnalysis merge(JCoffeeAnalysis coffeeAnalysis);
 
-	List<JCoffeeAnalysis> findCoffeeAnalysisByFactoryEntries(JFactory factory,
-			int firstResult, int maxResults);
+	public List<JCoffeeAnalysis> findCoffeeAnalysisByFactoryEntries(JFactory factory,int firstResult, int maxResults);
 
-	Long CountCoffeeAnalysisByFactory(JFactory factory);
+	public Long CountCoffeeAnalysisByFactory(JFactory factory);
 
-	List<JCoffeeAnalysis> findCoffeeAnalysisByFactory(JFactory factory);
+	public List<JCoffeeAnalysis> findCoffeeAnalysisByFactory(JFactory factory);
 
-	List<JCoffeeAnalysis> findCoffeeAnalysisByFactoryListAndCoffeeAnalysisDateBetween(
-			List<JFactory> factories, Date startDate, Date endDate);
+	public List<JCoffeeAnalysis> findCoffeeAnalysisByFactoryListAndCoffeeAnalysisDateBetween(List<JFactory> factories, Date startDate, Date endDate);
 
-	List<JCoffeeAnalysis> findCoffeeAnalysisByFactoryListDateBetweenEntries(
-			List<JFactory> factories, Date startDate, Date endDate,
-			int firstResult, int maxResults);
+	public List<JCoffeeAnalysis> findCoffeeAnalysisByFactoryListDateBetweenEntries(List<JFactory> factories, Date startDate, Date endDate,int firstResult, int maxResults);
 
-	List<JCoffeeAnalysis> findCoffeeAnalysisByReferenceEquals(String reference);
+	public List<JCoffeeAnalysis> findCoffeeAnalysisByReferenceEquals(String reference);
+
+	public List<JCoffeeAnalysis> findNotSentCoffeeAnalysisByReferenceList(List<String> referenceList);
+
+	public List<JCoffeeAnalysis> findStandByCoffeeAnalysisByReferenceList(List<String> referenceList);
+
+	public List<JCoffeeAnalysis> findValidatedCoffeeAnalysisByReferenceList(List<String> referenceList);
+
+	public List<JCoffeeAnalysis> findStandByCoffeeAnalysisByFactoryListAndCoffeeAnalysisDateBetween(List<JFactory> factories, Date startDate, Date endDate);
+
+	public List<JCoffeeAnalysis> findNotSentCoffeeAnalysisByFactoryListAndCoffeeAnalysisDateBetween(List<JFactory> factories, Date startDate, Date endDate);
 
 }

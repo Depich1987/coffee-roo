@@ -65,7 +65,8 @@
 	    		<spring:url value="${path}/list?size=10" var="list_url"/>
 		    	<a href="${list_url}" class="btn btn-default">
 		    		<spring:message code="entity_list_all" arguments="${labelPlural}" />
-		    		<span class="fa fa-th-list fa-fw"></span>
+		    		<![CDATA[&nbsp;&nbsp;]]>
+		    		<span class="glyphicon glyphicon-list-alt"></span>
 		    	</a>
 	    	</c:if>
     	</div>

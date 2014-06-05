@@ -38,6 +38,10 @@
 				
 				$('select').select2();
 				
+	    		//get current navigation
+	    		var targetNavig='${currentNav}'+'_activeNav';
+	    		if(targetNavig !="_activeNav"){	$('#'+targetNavig).addClass('active');}
+				
 				$.validator.setDefaults({
 				    highlight: function(element) {
 				        $(element).closest('.form-group').addClass('has-error');

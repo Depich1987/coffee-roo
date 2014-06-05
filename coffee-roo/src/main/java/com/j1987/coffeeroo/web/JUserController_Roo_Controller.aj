@@ -5,6 +5,7 @@ package com.j1987.coffeeroo.web;
 
 import com.j1987.coffeeroo.domain.JCompany;
 import com.j1987.coffeeroo.domain.JFactory;
+import com.j1987.coffeeroo.domain.JFirm;
 import com.j1987.coffeeroo.domain.JRole;
 import com.j1987.coffeeroo.domain.JUser;
 import com.j1987.coffeeroo.web.JUserController;
@@ -91,6 +92,7 @@ privileged aspect JUserController_Roo_Controller {
         uiModel.addAttribute("JUser_", JUser_);
         uiModel.addAttribute("jcompanys", JCompany.findAllJCompanys());
         uiModel.addAttribute("jfactorys", JFactory.findAllJFactorys());
+        uiModel.addAttribute("jfirms", JFirm.findAllJFirms());
         uiModel.addAttribute("jroles", JRole.findAllJRoles());
     }
     

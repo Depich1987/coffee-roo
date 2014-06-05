@@ -8,9 +8,11 @@ public class FilterCoffeeAnalysis implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -8429343930632693933L;
-	private String factoryFilter;
-	
 	private String analysisReference;
+	private String factoryFilter;
+	private String startDate;
+	private String endDate;
+	
 	
 	public FilterCoffeeAnalysis() {
 		// TODO Auto-generated constructor stub
@@ -30,6 +32,22 @@ public class FilterCoffeeAnalysis implements Serializable{
 
 	public void setAnalysisReference(String analysisReference) {
 		this.analysisReference = analysisReference;
+	}
+
+	public String getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+
+	public String getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
 	}
 	
 	

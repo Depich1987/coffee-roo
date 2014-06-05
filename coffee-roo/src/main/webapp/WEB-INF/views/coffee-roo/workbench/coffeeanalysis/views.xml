@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
+
     <definition extends="workbenchLayout" name="workbench/coffeeanalysis/list">
         <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/coffeeanalysis/list.jspx"/>
     </definition>
@@ -16,4 +17,9 @@
 	<definition extends="workbenchLayout" name="workbench/coffeeanalysis/update">
         <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/coffeeanalysis/update.jspx"/>
     </definition>
+    
+   	<definition extends="workbenchLayout" name="workbench/coffeeanalysis/find">
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/coffeeanalysis/find.jspx"/>
+    </definition>
+    
 </tiles-definitions>

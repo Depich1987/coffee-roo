@@ -10,6 +10,7 @@ import com.j1987.coffeeroo.domain.JFactory;
 import com.j1987.coffeeroo.domain.JLocalization;
 import com.j1987.coffeeroo.domain.JSubmissionForApproval;
 import com.j1987.coffeeroo.domain.JSupplier;
+import com.j1987.coffeeroo.domain.JTour;
 import com.j1987.coffeeroo.web.JCoffeeAnalysisController;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
@@ -111,6 +112,7 @@ privileged aspect JCoffeeAnalysisController_Roo_Controller {
         uiModel.addAttribute("jlocalizations", JLocalization.findAllJLocalizations());
         uiModel.addAttribute("jsubmissionforapprovals", JSubmissionForApproval.findAllJSubmissionForApprovals());
         uiModel.addAttribute("jsuppliers", JSupplier.findAllJSuppliers());
+        uiModel.addAttribute("jtours", JTour.findAllJTours());
     }
     
     String JCoffeeAnalysisController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

@@ -19,18 +19,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
-import com.j1987.coffeeroo.domain.JCompany;
 import com.j1987.coffeeroo.domain.JFactory;
+import com.j1987.coffeeroo.domain.JFirm;
 import com.j1987.coffeeroo.domain.JRole;
 import com.j1987.coffeeroo.domain.JUser;
 import com.j1987.coffeeroo.framework.FactoryNotFoundException;
 import com.j1987.coffeeroo.framework.JUtils;
 import com.j1987.coffeeroo.framework.UserNotFoundException;
-import com.j1987.coffeeroo.services.dao.CompanyService;
 import com.j1987.coffeeroo.services.dao.FactoryService;
+import com.j1987.coffeeroo.services.dao.FirmService;
 import com.j1987.coffeeroo.services.dao.UserService;
 import com.j1987.coffeeroo.services.security.JSecurityService;
 import com.j1987.coffeeroo.web.form.AssignFactoryForm;
@@ -57,7 +58,7 @@ public class AdminUserController {
 	private FactoryService factoryService;
 	
 	@Autowired
-	private CompanyService companyService;
+	private FirmService firmService;
 	
 	@Autowired
 	private JSecurityService securityService; 
@@ -65,6 +66,24 @@ public class AdminUserController {
 	public AdminUserController() {
 		// TODO Auto-generated constructor stub
 	}
+	
+    /**
+     * Validate User's login by AJAX request
+     * @param userName
+     * @return boolean
+     */
+    @RequestMapping(value = "/validateusername", method = RequestMethod.POST, produces = "application/json")
+    public @ResponseBody boolean validateUserName(@RequestParam("userName")String userName){
+    	boolean valid =  false;
+    	
+    	List<JUser> users = userService.findUserByUserNameEquals(userName);
+    	
+    	if(users.isEmpty()){
+    		valid = true;
+    	}
+    	
+    	return valid;
+    }
 	
 	@RequestMapping(value = "/create", method = RequestMethod.POST, produces = "text/html")
     public String create(@Valid JUser user, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
@@ -154,12 +173,10 @@ public class AdminUserController {
 				Map<String, String> namesMap = JUtils.uiRoleNamesMap();
 				String roleName = namesMap.get(role.getName());
 				dtUser.setRoleName(roleName);
-				
-				
-				
-				if(roleName.equals(JUtils.DB_UI_ROLE_ADMIN) || roleName.equals(JUtils.DB_UI_ROLE_FACTORY_MANAGER)){
+
+				if(roleName.equals(JUtils.DB_UI_ROLE_ADMIN) || roleName.equals(JUtils.DB_UI_ROLE_SUPERVISOR)){
 					
-					if(!dtUser.getCompanies().isEmpty()){
+					if(!dtUser.getFirms().isEmpty()){
 						dtUser.setFactoryNames("*");
 					}
 				}
@@ -237,10 +254,10 @@ public class AdminUserController {
 				role.getUsers().add(user);
 				user.setRoleName(roleName);
 				
-				if(roleName.equals(JUtils.DB_UI_ROLE_ADMIN)){
-					JCompany company = companyService.findCompanyById(Long.valueOf("1"));
-					user.getCompanies().add(company);
-					company.getUsers().add(user);
+				if(roleName.equals(JUtils.DB_UI_ROLE_ADMIN) || roleName.equals(JUtils.DB_UI_ROLE_SUPERVISOR)){
+					JFirm firm = firmService.findFirm(Long.valueOf("1"));
+					user.getFirms().add(firm);
+					firm.getUsers().add(user);
 				}
 				
 				userService.merge(user);
@@ -362,10 +379,10 @@ public class AdminUserController {
     	if(user != null){
     		
     		//remove all companies of current user.
-    		List<JCompany> userCompanies = user.getCompanies();
-    		if(!userCompanies.isEmpty()){
+    		List<JFirm> userFirms = user.getFirms();
+    		if(!userFirms.isEmpty()){
     			
-    			for (JCompany jCompany : userCompanies) {
+    			for (JFirm jCompany : userFirms) {
 					jCompany.getUsers().remove(user);
 				}
     		}
@@ -381,7 +398,7 @@ public class AdminUserController {
     		}
     		
     		//set the user's companies and factories to null
-    		user.setCompanies(null);
+    		user.setFirms(null);
     		user.setFactories(null);
     		
         	userService.merge(user);
@@ -401,6 +418,7 @@ public class AdminUserController {
         List<String> roleNames = new ArrayList<String>();
         Map<String, String> roleNamesMap = JUtils.uiRoleNamesMap();
         roleNames.add(roleNamesMap.get(JUtils.DB_ROLE_ADMIN));
+        roleNames.add(roleNamesMap.get(JUtils.DB_ROLE_SUPERVISOR));
         roleNames.add(roleNamesMap.get(JUtils.DB_ROLE_FACTORY_MANAGER));
         roleNames.add(roleNamesMap.get(JUtils.DB_ROLE_FACTORY_AGENT));
         

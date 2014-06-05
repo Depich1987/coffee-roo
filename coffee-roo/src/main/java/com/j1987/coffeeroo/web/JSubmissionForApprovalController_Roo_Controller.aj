@@ -3,6 +3,7 @@
 
 package com.j1987.coffeeroo.web;
 
+import com.j1987.coffeeroo.domain.JBill;
 import com.j1987.coffeeroo.domain.JCoffeeAnalysis;
 import com.j1987.coffeeroo.domain.JSubmissionForApproval;
 import com.j1987.coffeeroo.web.JSubmissionForApprovalController;
@@ -96,6 +97,7 @@ privileged aspect JSubmissionForApprovalController_Roo_Controller {
     void JSubmissionForApprovalController.populateEditForm(Model uiModel, JSubmissionForApproval JSubmissionForApproval_) {
         uiModel.addAttribute("JSubmissionForApproval_", JSubmissionForApproval_);
         addDateTimeFormatPatterns(uiModel);
+        uiModel.addAttribute("jbills", JBill.findAllJBills());
         uiModel.addAttribute("jcoffeeanalyses", JCoffeeAnalysis.findAllJCoffeeAnalyses());
     }
     

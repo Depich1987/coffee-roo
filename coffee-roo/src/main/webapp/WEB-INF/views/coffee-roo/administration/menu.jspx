@@ -5,8 +5,12 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
 
-    <spring:url value="/administration/basesettings/details" var="generalsettings_details_url"/>
+    <spring:url value="/administration/basesettings/details" var="basesettings_details_url"/>
+    <spring:url value="/administration/generalsettings/details" var="generalsettings_details_url"/>
+    
     <spring:url value="/administration/factories/list?size=10" var="factorylist_url"/>
+    <spring:url value="/administration/bridges/list?size=10" var="bridgelist_url" />
+    
     <spring:url value="/administration/users/list?size=10" var="userslist_url" />
     <spring:url value="/administration/exporters/list?size=10" var="exporterslist_url" />
     <spring:url value="/administration/tours/list?size=10" var="tourslist_url" />
@@ -22,41 +26,49 @@
 	<spring:url value="/resources/images/logo-kms.png" var="img_url"/>
 	<p>
 		<a href="#">
-		<img src="${img_url}" height="75" style="height:75"/>
+		<img src="${img_url}" height="75" style="height:75" class="img-thumbnail"/>
 		</a>
 	</p>
     <div class="list-group">
-      <a href="${generalsettings_details_url}" class="list-group-item"  id="basesettings_activeNav">
-       	<spring:message code="administration_baseinformations"/>
+       <a href="${generalsettings_details_url}" class="list-group-item"  id="generalsettings_activeNav">
+       	<spring:message code="administration_generalsettings"/>
        	<span class="glyphicon glyphicon-wrench pull-right"></span>
        </a>
+       
       <a href="${localizationslist_url}" class="list-group-item"  id="localizations_activeNav">
        	<spring:message code="menu_item_jlocalization_list_label"/>
        	<span class="glyphicon glyphicon-road pull-right"></span>
        </a>
+       
       <a href="${tourslist_url}" class="list-group-item"  id="tours_activeNav">
        	<spring:message code="menu_item_jtour_list_label"/>
        	<span class="glyphicon glyphicon-folder-open pull-right"></span>
        </a>
+       
        <a href="${factorylist_url}" class="list-group-item"  id="factories_activeNav">
        	<spring:message code="menu_item_jfactory_list_label"/>
        	<span class="glyphicon glyphicon-star pull-right"></span>
        </a>
-       <a href="${dealerslist_url}" class="list-group-item"  id="dealers_activeNav">
-       	<spring:message code="menu_item_jdealer_list_label"/>
-       	<span class="glyphicon glyphicon-home pull-right"></span>
+       
+       <a href="${bridgelist_url}" class="list-group-item"  id="bridges_activeNav">
+       	<spring:message code="menu_item_jbridge_list_label"/>
+       	<span class="glyphicon glyphicon-star pull-right"></span>
        </a>
+       
        <a href="${exporterslist_url}" class="list-group-item"  id="exporters_activeNav">
        	<spring:message code="menu_item_jexporter_list_label"/>
         <span class="glyphicon glyphicon-export pull-right"></span>
        </a>
+       
        <a href="${supplierslist_url}" class="list-group-item"  id="suppliers_activeNav">
        	<spring:message code="menu_item_jsupplier_list_label"/>
        	<span class="glyphicon glyphicon-import pull-right"></span>
        </a>
+       
        <a href="${userslist_url}" class="list-group-item"  id="users_activeNav">
        	<spring:message code="menu_item_juser_list_label"/>
        	<span class="glyphicon glyphicon-user pull-right"></span>
        </a>
+       
     </div>
 </div>

@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
 	@Override
     public long  countUsersWithoutFirstUser() {
         return entityManager.createQuery("SELECT COUNT(u) FROM JUser u WHERE u.id <> :id", Long.class)
-        		.setParameter("id", Long.valueOf("1"))
+        		.setParameter("id", Long.valueOf("250"))
         		.getSingleResult();
     }
     
@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
     public List<JUser> findAllUsersWithoutFirstUser() {
 
     	return entityManager.createQuery("SELECT u FROM JUser u WHERE u.id <> :id", JUser.class)
-    			.setParameter("id", Long.valueOf("1"))
+    			.setParameter("id", Long.valueOf("250"))
     			.getResultList();
     }
     
@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
     public JUser findUserByIdWithoutFirstUser(Long id) {
     	
 		return entityManager.createQuery("SELECT u FROM JUser u WHERE u.id <> :adminId AND u.id = :id", JUser.class)
-		.setParameter("adminId", Long.valueOf("1"))
+		.setParameter("adminId", Long.valueOf("250"))
 		.setParameter("id", id)
 		.getSingleResult();
     }
@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService {
     public List<JUser> findUserEntriesWithoutFirstUser(int firstResult,	int maxResults) {
     
     	return entityManager.createQuery("SELECT u FROM JUser u WHERE u.id <> :adminId", JUser.class)
-    			.setParameter("adminId", Long.valueOf("1"))
+    			.setParameter("adminId", Long.valueOf("250"))
     			.setFirstResult(firstResult)
     			.setMaxResults(maxResults)
     			.getResultList();

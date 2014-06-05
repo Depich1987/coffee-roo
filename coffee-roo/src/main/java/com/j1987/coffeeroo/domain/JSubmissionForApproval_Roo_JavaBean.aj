@@ -3,6 +3,7 @@
 
 package com.j1987.coffeeroo.domain;
 
+import com.j1987.coffeeroo.domain.JBill;
 import com.j1987.coffeeroo.domain.JCoffeeAnalysis;
 import com.j1987.coffeeroo.domain.JSubmissionForApproval;
 import java.util.Date;
@@ -26,6 +27,22 @@ privileged aspect JSubmissionForApproval_Roo_JavaBean {
         this.description = description;
     }
     
+    public String JSubmissionForApproval.getFactoryCode() {
+        return this.factoryCode;
+    }
+    
+    public void JSubmissionForApproval.setFactoryCode(String factoryCode) {
+        this.factoryCode = factoryCode;
+    }
+    
+    public long JSubmissionForApproval.getTourId() {
+        return this.tourId;
+    }
+    
+    public void JSubmissionForApproval.setTourId(long tourId) {
+        this.tourId = tourId;
+    }
+    
     public Date JSubmissionForApproval.getCreationDate() {
         return this.creationDate;
     }
@@ -42,12 +59,28 @@ privileged aspect JSubmissionForApproval_Roo_JavaBean {
         this.createdBy = createdBy;
     }
     
+    public Long JSubmissionForApproval.getStatus() {
+        return this.status;
+    }
+    
+    public void JSubmissionForApproval.setStatus(Long status) {
+        this.status = status;
+    }
+    
     public Set<JCoffeeAnalysis> JSubmissionForApproval.getAnalyzesCoffee() {
         return this.analyzesCoffee;
     }
     
     public void JSubmissionForApproval.setAnalyzesCoffee(Set<JCoffeeAnalysis> analyzesCoffee) {
         this.analyzesCoffee = analyzesCoffee;
+    }
+    
+    public JBill JSubmissionForApproval.getBill() {
+        return this.bill;
+    }
+    
+    public void JSubmissionForApproval.setBill(JBill bill) {
+        this.bill = bill;
     }
     
 }

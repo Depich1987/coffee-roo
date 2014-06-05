@@ -103,15 +103,5 @@
         <error-code>404</error-code>
         <location>/resourceNotFound</location>
     </error-page>
-    
-   	<!-- force https on the browser when http was called-->
-	<security-constraint>
-	    <web-resource-collection>
-	        <web-resource-name>coffee-roo</web-resource-name>
-	        <url-pattern>/*</url-pattern>
-	    </web-resource-collection>
-	    <user-data-constraint>
-	        <transport-guarantee>CONFIDENTIAL</transport-guarantee>
-	    </user-data-constraint>
-	</security-constraint>
+
 </web-app>

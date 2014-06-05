@@ -49,5 +49,21 @@
             <menu:item id="i_jsubmissionforapproval_new" messageCode="global_menu_new" url="/jsubmissionforapprovals?form" z="UROUoNuH8eJtifrnX6Fq5Iaak7k="/>
             <menu:item id="i_jsubmissionforapproval_list" messageCode="global_menu_list" url="/jsubmissionforapprovals?page=1&amp;size=${empty param.size ? 10 : param.size}" z="R4ccxiN07kpDkD0xzkwEb77hnXw="/>
         </menu:category>
+        <menu:category id="c_jbill" z="EBObS6i52flaaGbwsEox3bpq0D0=">
+            <menu:item id="i_jbill_new" messageCode="global_menu_new" url="/jbills?form" z="o95gXj9FdYIln6/7Z7LGa2YfBEA="/>
+            <menu:item id="i_jbill_list" messageCode="global_menu_list" url="/jbills?page=1&amp;size=${empty param.size ? 10 : param.size}" z="Ablg4m+5UsQK9bkdZ2OTerye1p8="/>
+        </menu:category>
+        <menu:category id="c_jbridge" z="fPa/HndKfOrDJaI80ogApGAU5WI=">
+            <menu:item id="i_jbridge_new" messageCode="global_menu_new" url="/jbridges?form" z="mERaZXbtlKEryMpxfzrktuR+IvU="/>
+            <menu:item id="i_jbridge_list" messageCode="global_menu_list" url="/jbridges?page=1&amp;size=${empty param.size ? 10 : param.size}" z="mOAeovT5Z9rY9cKrR4Q/AlC1Juc="/>
+        </menu:category>
+        <menu:category id="c_jfirm" z="sbyslvNvgRt1nB17x+Fsn75UaBk=">
+            <menu:item id="i_jfirm_new" messageCode="global_menu_new" url="/jfirms?form" z="KSdDhCUmQuZiBRVUbRTTQZ3vbLg="/>
+            <menu:item id="i_jfirm_list" messageCode="global_menu_list" url="/jfirms?page=1&amp;size=${empty param.size ? 10 : param.size}" z="RFGo6so2wp/MO/GIyyhBfq3OQj4="/>
+        </menu:category>
+        <menu:category id="c_janalysis" z="zVRykCNxuJ70WQs6y8wHAVMgCnk=">
+            <menu:item id="i_janalysis_new" messageCode="global_menu_new" url="/janalyses?form" z="N6rntEhlYUAgqR1DVItc+4xWUNo="/>
+            <menu:item id="i_janalysis_list" messageCode="global_menu_list" url="/janalyses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="5ZWkpPdJOUXUcREfY8zQaesP5M8="/>
+        </menu:category>
     </menu:menu>
 </div>

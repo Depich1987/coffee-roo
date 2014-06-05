@@ -12,6 +12,12 @@ public class ReportFilterForm implements Serializable {
 	private static final long serialVersionUID = -4623403080959414252L;
 	
 	private List<String> factoryCodeList = new ArrayList<String>();
+	
+	private List<String> analysisList = new ArrayList<String>();
+	
+	private Boolean automaticSubmission = false;
+	
+	private String description;
 	private	Boolean coffee = true;
 	private	Boolean cocoa = true;
 	
@@ -71,6 +77,30 @@ public class ReportFilterForm implements Serializable {
 
 	public void setFormat(String format) {
 		this.format = format;
+	}
+
+	public List<String> getAnalysisList() {
+		return analysisList;
+	}
+
+	public void setAnalysisList(List<String> analysisList) {
+		this.analysisList = analysisList;
+	}
+
+	public Boolean getAutomaticSubmission() {
+		return automaticSubmission;
+	}
+
+	public void setAutomaticSubmission(Boolean automaticSubmission) {
+		this.automaticSubmission = automaticSubmission;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	

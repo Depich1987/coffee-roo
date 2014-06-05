@@ -3,6 +3,7 @@
 
 package com.j1987.coffeeroo.web;
 
+import com.j1987.coffeeroo.domain.JCoffeeAnalysis;
 import com.j1987.coffeeroo.domain.JTour;
 import com.j1987.coffeeroo.web.JTourController;
 import java.io.UnsupportedEncodingException;
@@ -86,6 +87,7 @@ privileged aspect JTourController_Roo_Controller {
     
     void JTourController.populateEditForm(Model uiModel, JTour JTour_) {
         uiModel.addAttribute("JTour_", JTour_);
+        uiModel.addAttribute("jcoffeeanalyses", JCoffeeAnalysis.findAllJCoffeeAnalyses());
     }
     
     String JTourController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

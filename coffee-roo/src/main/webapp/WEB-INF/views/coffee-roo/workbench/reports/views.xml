@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
-    <definition extends="workbenchLayout" name="workbench/coffeeanalysis/list">
-        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/coffeeanalysis/list.jspx"/>
+    <definition extends="workbenchLayout" name="workbench/report/periodicalreport">
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/reports/periodicalreport.jspx"/>
     </definition>
 
 	<definition extends="workbenchLayout" name="workbench/coffeeanalysis/show">
