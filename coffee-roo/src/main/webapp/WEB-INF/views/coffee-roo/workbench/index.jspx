@@ -6,7 +6,7 @@
   <jsp:output omit-xml-declaration="yes" />
   
   <spring:message code="workbench_label" var="workbench_label"/>
-  <spring:url value="/resources/images/gboudjou.png" var="img_url"/>
+  <spring:url value="/resources/images/laboratoire-chimie.jpg" var="img_url"/>
   <spring:message var="title" code="welcome_titlepane" arguments="${workbench_label}" htmlEscape="false" />
   
   <h1 class="page-header">${title}</h1>
@@ -14,7 +14,7 @@
   <p>
   	<spring:message code="welcome_text"/>
   	<center>
-  		<img alt="" src="${img_url}" />
+  		<img alt="" src="${img_url}" width="555" class="img-thumbnail"/>
   	</center>
   	
   </p>

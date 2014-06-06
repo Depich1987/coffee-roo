@@ -6,8 +6,8 @@ package com.j1987.coffeeroo.domain;
 import com.j1987.coffeeroo.domain.JAnalysis;
 import com.j1987.coffeeroo.domain.JAnalysisDataOnDemand;
 import com.j1987.coffeeroo.domain.JBridge;
-import com.j1987.coffeeroo.domain.JDealerDataOnDemand;
 import com.j1987.coffeeroo.domain.JExporterDataOnDemand;
+import com.j1987.coffeeroo.domain.JFirmDataOnDemand;
 import com.j1987.coffeeroo.domain.JLocalizationDataOnDemand;
 import com.j1987.coffeeroo.domain.JSupplierDataOnDemand;
 import com.j1987.coffeeroo.domain.JTourDataOnDemand;
@@ -34,7 +34,7 @@ privileged aspect JAnalysisDataOnDemand_Roo_DataOnDemand {
     private List<JAnalysis> JAnalysisDataOnDemand.data;
     
     @Autowired
-    JDealerDataOnDemand JAnalysisDataOnDemand.jDealerDataOnDemand;
+    JFirmDataOnDemand JAnalysisDataOnDemand.jFirmDataOnDemand;
     
     @Autowired
     JExporterDataOnDemand JAnalysisDataOnDemand.jExporterDataOnDemand;
@@ -59,13 +59,15 @@ privileged aspect JAnalysisDataOnDemand_Roo_DataOnDemand {
         setCalibrageTamis16(obj, index);
         setCalibrageTamis18(obj, index);
         setClassification(obj, index);
-        setConfirmation(obj, index);
-        setConformite(obj, index);
+        setConformity(obj, index);
         setCreatedBy(obj, index);
         setCreationDate(obj, index);
         setDateOfAnalysis(obj, index);
+        setDealerName(obj, index);
         setEndTime(obj, index);
+        setExporterName(obj, index);
         setFactoryCode(obj, index);
+        setFactoryName(obj, index);
         setFevesArdoiseesPlateau1(obj, index);
         setFevesArdoiseesPlateau2(obj, index);
         setFevesArdoiseesPlateau3(obj, index);
@@ -148,6 +150,7 @@ privileged aspect JAnalysisDataOnDemand_Roo_DataOnDemand {
         setSommeTotalFevesDefectueuses(obj, index);
         setStartTime(obj, index);
         setStatus(obj, index);
+        setSupplierName(obj, index);
         setTauxHumidite1(obj, index);
         setTauxHumidite2(obj, index);
         setTauxHumidite3(obj, index);
@@ -211,14 +214,9 @@ privileged aspect JAnalysisDataOnDemand_Roo_DataOnDemand {
         obj.setClassification(classification);
     }
     
-    public void JAnalysisDataOnDemand.setConfirmation(JAnalysis obj, int index) {
-        Boolean confirmation = Boolean.TRUE;
-        obj.setConfirmation(confirmation);
-    }
-    
-    public void JAnalysisDataOnDemand.setConformite(JAnalysis obj, int index) {
-        Boolean conformite = Boolean.TRUE;
-        obj.setConformite(conformite);
+    public void JAnalysisDataOnDemand.setConformity(JAnalysis obj, int index) {
+        Boolean conformity = Boolean.TRUE;
+        obj.setConformity(conformity);
     }
     
     public void JAnalysisDataOnDemand.setCreatedBy(JAnalysis obj, int index) {
@@ -236,14 +234,29 @@ privileged aspect JAnalysisDataOnDemand_Roo_DataOnDemand {
         obj.setDateOfAnalysis(dateOfAnalysis);
     }
     
+    public void JAnalysisDataOnDemand.setDealerName(JAnalysis obj, int index) {
+        String dealerName = "dealerName_" + index;
+        obj.setDealerName(dealerName);
+    }
+    
     public void JAnalysisDataOnDemand.setEndTime(JAnalysis obj, int index) {
         Date endTime = new GregorianCalendar(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH), Calendar.getInstance().get(Calendar.HOUR_OF_DAY), Calendar.getInstance().get(Calendar.MINUTE), Calendar.getInstance().get(Calendar.SECOND) + new Double(Math.random() * 1000).intValue()).getTime();
         obj.setEndTime(endTime);
     }
     
+    public void JAnalysisDataOnDemand.setExporterName(JAnalysis obj, int index) {
+        String exporterName = "exporterName_" + index;
+        obj.setExporterName(exporterName);
+    }
+    
     public void JAnalysisDataOnDemand.setFactoryCode(JAnalysis obj, int index) {
         String factoryCode = "factoryCode_" + index;
         obj.setFactoryCode(factoryCode);
+    }
+    
+    public void JAnalysisDataOnDemand.setFactoryName(JAnalysis obj, int index) {
+        String factoryName = "factoryName_" + index;
+        obj.setFactoryName(factoryName);
     }
     
     public void JAnalysisDataOnDemand.setFevesArdoiseesPlateau1(JAnalysis obj, int index) {
@@ -652,8 +665,13 @@ privileged aspect JAnalysisDataOnDemand_Roo_DataOnDemand {
     }
     
     public void JAnalysisDataOnDemand.setStatus(JAnalysis obj, int index) {
-        Long status = new Integer(index).longValue();
+        Boolean status = Boolean.TRUE;
         obj.setStatus(status);
+    }
+    
+    public void JAnalysisDataOnDemand.setSupplierName(JAnalysis obj, int index) {
+        String supplierName = "supplierName_" + index;
+        obj.setSupplierName(supplierName);
     }
     
     public void JAnalysisDataOnDemand.setTauxHumidite1(JAnalysis obj, int index) {

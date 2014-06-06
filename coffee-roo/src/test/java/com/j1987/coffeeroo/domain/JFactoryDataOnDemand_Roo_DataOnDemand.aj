@@ -3,7 +3,6 @@
 
 package com.j1987.coffeeroo.domain;
 
-import com.j1987.coffeeroo.domain.JCompanyDataOnDemand;
 import com.j1987.coffeeroo.domain.JFactory;
 import com.j1987.coffeeroo.domain.JFactoryDataOnDemand;
 import java.security.SecureRandom;
@@ -13,7 +12,6 @@ import java.util.List;
 import java.util.Random;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 privileged aspect JFactoryDataOnDemand_Roo_DataOnDemand {
@@ -23,9 +21,6 @@ privileged aspect JFactoryDataOnDemand_Roo_DataOnDemand {
     private Random JFactoryDataOnDemand.rnd = new SecureRandom();
     
     private List<JFactory> JFactoryDataOnDemand.data;
-    
-    @Autowired
-    JCompanyDataOnDemand JFactoryDataOnDemand.jCompanyDataOnDemand;
     
     public JFactory JFactoryDataOnDemand.getNewTransientJFactory(int index) {
         JFactory obj = new JFactory();

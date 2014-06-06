@@ -22,7 +22,7 @@ public class JAnalysis {
 	@Column(unique = true)
 	private String reference;
 	
-	private Long status;
+	private Boolean status;
 
     /**
      */
@@ -92,18 +92,14 @@ public class JAnalysis {
     /**
      */
     @ManyToOne
-    private JDealer dealerEntry;
+    private JFirm dealerEntry;
     
-    @Transient
     private String dealerName;
 
     /**
      */
     private String factoryCode;
-    
-    /**
-     */
-    @Transient
+
     private String factoryName;
     
     
@@ -117,8 +113,6 @@ public class JAnalysis {
     @ManyToOne
     private JExporter exporterEntry;
     
-    
-    @Transient
     private String exporterName;
 
     /**
@@ -126,7 +120,6 @@ public class JAnalysis {
     @ManyToOne
     private JSupplier supplierEntry;
     
-    @Transient
     private String supplierName;
     
 
@@ -153,6 +146,12 @@ public class JAnalysis {
     /**
      */
     private String productType;
+    
+    private Boolean acceptation;
+    
+	/** 
+	 */
+	private Boolean conformity;
     
     /**********************************
      *************** COCOA ************ 
@@ -333,10 +332,7 @@ public class JAnalysis {
 	 * 
 	 */
 	private String classification;
-	/*
-	 * 
-	 */
-	private Boolean conformite;
+
 
 
 	/*********************************************************************
@@ -528,9 +524,8 @@ public class JAnalysis {
     private BigDecimal pourcentageGradeHN;
 
     
-    private Boolean acceptation;
     
-    private Boolean confirmation;
+    
 
 
 }

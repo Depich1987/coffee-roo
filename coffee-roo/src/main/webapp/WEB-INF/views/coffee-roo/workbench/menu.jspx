@@ -6,6 +6,7 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     
+    <spring:url value="/workbench/analysis/cocoaanalysis/list?size=10" var="cocoaanalysis_url"/>
     <spring:url value="/workbench/analysis/coffeeanalysis/list?size=10" var="coffeeanalysis_url"/>
     
     <security:authorize access="hasAnyRole('ROLE_SUPERVISOR','ROLE_ADMIN')">
@@ -19,10 +20,18 @@
     		<spring:param name="factoryCode" value="${sessionScope.userFactoryCode}"/>
     		<spring:param name="size" value="10"/>
     	</spring:url>
+    	
+   	    <spring:url value="/workbench/analysis/cocoaanalysis/list?size=10" var="cocoaanalysis_url">
+   	    	<spring:param name="factoryCode" value="${sessionScope.userFactoryCode}"/>
+    		<spring:param name="size" value="10"/>
+   	    </spring:url>
+    	<spring:url value="/workbench/analysis/coffeeanalysis/list?size=10" var="coffeeanalysis_url">
+    		<spring:param name="factoryCode" value="${sessionScope.userFactoryCode}"/>
+    		<spring:param name="size" value="10"/>
+    	</spring:url>
     </security:authorize>
     
     <spring:url value="/workbench/reports/findcoffeeanalysis?form" var="periodicalanalysisreport_url"/>
-    <spring:url value="/workbench/analysis/coffeeanalysis/find?form" var="findanalysis_url"/>
    	<spring:url value="/resources/images/logo-kms.png" var="img_url"/>
 	<p>
 		<a href="#">
@@ -30,16 +39,15 @@
 		</a>
 	</p>
      <div class="list-group">
-     
-          <a href="${findanalysis_url}" class="list-group-item"  id="findcoffeeanalysis_activeNav">
-          	<spring:message code="label_com_j1987_coffeeroo_domain_jcoffeeanalysis" var="coffeeanalysis_label"/>
-          	<spring:message code="button_find" arguments="${coffeeanalysis_label}"/>
+          
+          <a href="${cocoaanalysis_url}" class="list-group-item"  id="analysisCocoa_activeNav">
+          	<spring:message code="analysiscocoa_labelplural"/>
+          	<span class="glyphicon glyphicon-leaf pull-right"></span>
           </a>
           
-          <a href="${coffeeanalysis_url}" class="list-group-item"  id="coffeeanalysis_activeNav">
-          	<spring:message code="menu_item_jcoffeeanalysis_list_label" var="coffeeanalysis_plural"/>
-          	${coffeeanalysis_plural}
-          		<span class="glyphicon glyphicon-icon-leaf"></span>
+          <a href="${coffeeanalysis_url}" class="list-group-item"  id="analysisCocoa_activeNav">
+          	<spring:message code="analysiscocoa_labelplural"/>
+          	<span class="glyphicon glyphicon-leaf pull-right"></span>
           </a>
           
           <a href="${submissionslist_url}" class="list-group-item"  id="submissions_activeNav">

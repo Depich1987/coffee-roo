@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
+    
     <definition extends="workbenchLayout" name="workbench/cocoaanalysis/list">
         <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/cocoaanalysis/list.jspx"/>
     </definition>
-<definition extends="workbenchLayout" name="workbench/cocoaanalysis/show">
+
+	<definition extends="workbenchLayout" name="workbench/cocoaanalysis/show">
         <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/cocoaanalysis/show.jspx"/>
     </definition>
-<definition extends="workbenchLayout" name="workbench/cocoaanalysis/create">
+
+	<definition extends="workbenchLayout" name="workbench/cocoaanalysis/create">
         <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/cocoaanalysis/create.jspx"/>
     </definition>
-<definition extends="workbenchLayout" name="workbench/cocoaanalysis/update">
+    
+   	<definition extends="workbenchLayout" name="workbench/cocoaanalysis/find">
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/cocoaanalysis/find.jspx"/>
+    </definition>
+	
+	<definition extends="workbenchLayout" name="workbench/cocoaanalysis/update">
         <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/cocoaanalysis/update.jspx"/>
     </definition>
 </tiles-definitions>

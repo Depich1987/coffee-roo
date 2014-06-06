@@ -30,7 +30,7 @@
     <put-attribute name="footer" value="/WEB-INF/views/coffee-roo/footer.jspx" />
   </definition>
   
-  <definition name="simpleLayout" template="/WEB-INF/layouts/dashboardLayout.jspx">
+  <definition name="simpleLayout" template="/WEB-INF/layouts/frontofficeLayout.jspx">
     <put-attribute name="header" value="/WEB-INF/views/coffee-roo/header.jspx" />
     <put-attribute name="menu" value="" />
   </definition>

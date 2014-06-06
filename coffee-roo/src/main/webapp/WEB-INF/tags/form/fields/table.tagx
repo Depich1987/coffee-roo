@@ -85,10 +85,20 @@
                   </c:set>
                 </c:otherwise>
               </c:choose>
-              <c:if test="${columnMaxLength ge 0}">
+             <c:if test="${columnMaxLength ge 0}">
                 <c:set value="${fn:substring(colTxt, 0, columnMaxLength)}" var="colTxt" />
               </c:if>
-              <c:out value="${colTxt}" />
+              <c:choose>
+              	<c:when test="${colTxt eq 'true'}">
+              		<input type="checkbox" disabled="disabled" checked="checked" />
+              	</c:when>
+              	<c:when test="${colTxt eq 'false'}">
+              		<input type="checkbox" disabled="disabled" />
+              	</c:when>
+              	<c:otherwise>
+              		<c:out value="${colTxt}" />
+              	</c:otherwise>
+              </c:choose>
             </td>
           </c:forTokens>
           <c:set var="itemId"><spring:eval expression="item[typeIdFieldName]"/></c:set>

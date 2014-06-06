@@ -4,11 +4,9 @@
 package com.j1987.coffeeroo.domain;
 
 import com.j1987.coffeeroo.domain.JCompany;
-import com.j1987.coffeeroo.domain.JFactory;
 import com.j1987.coffeeroo.domain.JUser;
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Set;
 
 privileged aspect JCompany_Roo_JavaBean {
     
@@ -74,14 +72,6 @@ privileged aspect JCompany_Roo_JavaBean {
     
     public void JCompany.setUsers(List<JUser> users) {
         this.users = users;
-    }
-    
-    public Set<JFactory> JCompany.getFactories() {
-        return this.factories;
-    }
-    
-    public void JCompany.setFactories(Set<JFactory> factories) {
-        this.factories = factories;
     }
     
 }

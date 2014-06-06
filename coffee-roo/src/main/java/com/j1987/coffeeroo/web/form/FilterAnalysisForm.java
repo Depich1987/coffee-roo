@@ -2,7 +2,7 @@ package com.j1987.coffeeroo.web.form;
 
 import java.io.Serializable;
 
-public class FilterCoffeeAnalysis implements Serializable{
+public class FilterAnalysisForm implements Serializable{
 
 	/**
 	 * 
@@ -10,11 +10,12 @@ public class FilterCoffeeAnalysis implements Serializable{
 	private static final long serialVersionUID = -8429343930632693933L;
 	private String analysisReference;
 	private String factoryFilter;
+	private String bridgeFilter;
 	private String startDate;
 	private String endDate;
 	
 	
-	public FilterCoffeeAnalysis() {
+	public FilterAnalysisForm() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -49,6 +50,15 @@ public class FilterCoffeeAnalysis implements Serializable{
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
+
+	public String getBridgeFilter() {
+		return bridgeFilter;
+	}
+
+	public void setBridgeFilter(String bridgeFilter) {
+		this.bridgeFilter = bridgeFilter;
+	}
+	
 	
 	
 }

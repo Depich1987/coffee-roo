@@ -30,7 +30,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<JAnalysis, String> ApplicationConversionServiceFactoryBean.getJAnalysisToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.j1987.coffeeroo.domain.JAnalysis, java.lang.String>() {
             public String convert(JAnalysis jAnalysis) {
-                return new StringBuilder().append(jAnalysis.getReference()).append(' ').append(jAnalysis.getStatus()).append(' ').append(jAnalysis.getDateOfAnalysis()).append(' ').append(jAnalysis.getNumberLading()).toString();
+                return new StringBuilder().append(jAnalysis.getReference()).append(' ').append(jAnalysis.getDateOfAnalysis()).append(' ').append(jAnalysis.getNumberLading()).append(' ').append(jAnalysis.getTruckNumber()).toString();
             }
         };
     }

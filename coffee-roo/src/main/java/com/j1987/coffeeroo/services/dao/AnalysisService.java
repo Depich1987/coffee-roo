@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.j1987.coffeeroo.domain.JAnalysis;
 import com.j1987.coffeeroo.domain.JBridge;
-import com.j1987.coffeeroo.domain.JFactory;
 
 public interface AnalysisService {
 	
@@ -29,27 +28,31 @@ public interface AnalysisService {
 
 	public void clear();
 
-	public JAnalysis merge(JAnalysis coffeeAnalysis);
-
-	public List<JAnalysis> findAnalysisByFactoryEntries(JFactory factory,int firstResult, int maxResults);
+	public JAnalysis merge(JAnalysis analysis);
 	
-	public List<JAnalysis> findAnalysisByFactory(JFactory factory);
+	public void update(JAnalysis analysis);
 
-	public List<JAnalysis> findAnalysisByFactoryCodeListAndAnalysisDateBetween(List<String> factoriesCode, Date startDate, Date endDate);
+	public List<JAnalysis> findAnalysisByFactoryCodeEntries(String factoryCode, String productType,	int firstResult, int maxResults);
+	
+	public List<JAnalysis> findAnalysisByFactoryCode(String factoryCode, String productType);
 
-	public List<JAnalysis> findAnalysisByFactoryCodeListDateBetweenEntries(List<String> factoriesCode, Date startDate, Date endDate,int firstResult, int maxResults);
+	public List<JAnalysis> findAnalysisByFactoryCodeListAndAnalysisDateBetween(List<String> factoriesCode , String productType, Date startDate, Date endDate);
+
+	public List<JAnalysis> findAnalysisByFactoryCodeListDateBetweenEntries(List<String> factoriesCode , String productType, Date startDate, Date endDate,int firstResult, int maxResults);
 
 	public List<JAnalysis> findAnalysisByReferenceEquals(String reference);
 
-	public List<JAnalysis> findNotSentAnalysisByReferenceList(List<String> referenceList);
+	public List<JAnalysis> findRefusedAnalysisByReferenceList(List<String> referenceList);
 
 	public List<JAnalysis> findStandByAnalysisByReferenceList(List<String> referenceList);
 
 	public List<JAnalysis> findValidatedAnalysisByReferenceList(List<String> referenceList);
 
-	public List<JAnalysis> findStandByAnalysisByFactoryCodeListAndAnalysisDateBetween(List<String> factoriesCode, Date startDate, Date endDate);
+	public List<JAnalysis> findRefusedAnalysisByFactoryCodeListAndAnalysisDateBetween(List<String> factoriesCode , String productType, Date startDate, Date endDate);
 
-	public List<JAnalysis> findNotSentAnalysisByFactoryCodeListAndAnalysisDateBetween(List<String> factoriesCode, Date startDate, Date endDate);
+	public List<JAnalysis> findAllowedAnalysisByFactoryCodeListAndAnalysisDateBetween(List<String> factoriesCode , String productType, Date startDate, Date endDate);
+
+	public List<JAnalysis> findAnalysisByReferenceEqualsAndProductType(String analysisReference, String cocoaProduct);
 
 	
 }

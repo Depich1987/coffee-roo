@@ -47,7 +47,7 @@ import com.j1987.coffeeroo.services.dao.SupplierService;
 import com.j1987.coffeeroo.services.dao.TourService;
 import com.j1987.coffeeroo.services.security.JSecurityService;
 import com.j1987.coffeeroo.web.form.CoffeeAnalysisForm;
-import com.j1987.coffeeroo.web.form.FilterCoffeeAnalysis;
+import com.j1987.coffeeroo.web.form.FilterAnalysisForm;
 
 @Controller
 @RequestMapping(value = "/workbench/analysis/coffeeanalysis")
@@ -326,6 +326,7 @@ public class WorkbenchAnalysisCoffeeController {
     	coffeeAnalysisForm.setTotalOfBagPushed(coffeeAnalysis.getTotalOfBagPushed());
     	coffeeAnalysisForm.setSampleCode(coffeeAnalysis.getSampleCode());
     	coffeeAnalysisForm.setId(coffeeAnalysis.getId());
+    	
     	HttpSession session = httpServletRequest.getSession();
     	String factoryCode = (String)session.getAttribute(JUtils.HTTP_SESSION_FACTORY_CODE);
     	
@@ -347,7 +348,7 @@ public class WorkbenchAnalysisCoffeeController {
     }
     
     @RequestMapping(value = "/find", method = RequestMethod.POST ,produces = "text/html")
-    public String findAnalysisByQuerySearch(@Valid FilterCoffeeAnalysis filterCoffeeAnalysis, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest){
+    public String findAnalysisByQuerySearch(@Valid FilterAnalysisForm filterCoffeeAnalysis, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest){
     	
     	if (bindingResult.hasErrors()) {
     		populateEditFindAnalysis(uiModel, filterCoffeeAnalysis);
@@ -368,11 +369,11 @@ public class WorkbenchAnalysisCoffeeController {
     
     @RequestMapping(value = "/find", params = "form", produces = "text/html")
     public String findAnalysisByQuerySearchForm( Model uiModel, HttpServletRequest httpServletRequest){
-    	populateEditFindAnalysis(uiModel, new FilterCoffeeAnalysis());
+    	populateEditFindAnalysis(uiModel, new FilterAnalysisForm());
     	return FIND_VIEW;
     }
     
-    void populateEditFindAnalysis(Model uiModel, FilterCoffeeAnalysis filterCoffeeAnalysis){
+    void populateEditFindAnalysis(Model uiModel, FilterAnalysisForm filterCoffeeAnalysis){
     	uiModel.addAttribute("filterCoffeeAnalysis", filterCoffeeAnalysis);
     }
     
@@ -447,7 +448,7 @@ public class WorkbenchAnalysisCoffeeController {
     	
     	uiModel.addAttribute("factories", factoryService.findAllFactories());
     	
-    	FilterCoffeeAnalysis filterCoffeeAnalysis = new FilterCoffeeAnalysis();
+    	FilterAnalysisForm filterCoffeeAnalysis = new FilterAnalysisForm();
     	if(factoryFilter != null){
     		filterCoffeeAnalysis.setFactoryFilter(factoryFilter);
     	}
@@ -518,7 +519,7 @@ public class WorkbenchAnalysisCoffeeController {
         }
     	
         
-    	FilterCoffeeAnalysis filterCoffeeAnalysis = new FilterCoffeeAnalysis();
+    	FilterAnalysisForm filterCoffeeAnalysis = new FilterAnalysisForm();
     	uiModel.addAttribute("filterCoffeeAnalysis", filterCoffeeAnalysis);
     	uiModel.addAttribute("factories", factoryService.findAllFactories());
     	

@@ -5,8 +5,8 @@ package com.j1987.coffeeroo.domain;
 
 import com.j1987.coffeeroo.domain.JAnalysis;
 import com.j1987.coffeeroo.domain.JBridge;
-import com.j1987.coffeeroo.domain.JDealer;
 import com.j1987.coffeeroo.domain.JExporter;
+import com.j1987.coffeeroo.domain.JFirm;
 import com.j1987.coffeeroo.domain.JLocalization;
 import com.j1987.coffeeroo.domain.JSupplier;
 import com.j1987.coffeeroo.domain.JTour;
@@ -23,11 +23,11 @@ privileged aspect JAnalysis_Roo_JavaBean {
         this.reference = reference;
     }
     
-    public Long JAnalysis.getStatus() {
+    public Boolean JAnalysis.getStatus() {
         return this.status;
     }
     
-    public void JAnalysis.setStatus(Long status) {
+    public void JAnalysis.setStatus(Boolean status) {
         this.status = status;
     }
     
@@ -143,11 +143,11 @@ privileged aspect JAnalysis_Roo_JavaBean {
         this.provenanceName = provenanceName;
     }
     
-    public JDealer JAnalysis.getDealerEntry() {
+    public JFirm JAnalysis.getDealerEntry() {
         return this.dealerEntry;
     }
     
-    public void JAnalysis.setDealerEntry(JDealer dealerEntry) {
+    public void JAnalysis.setDealerEntry(JFirm dealerEntry) {
         this.dealerEntry = dealerEntry;
     }
     
@@ -167,20 +167,20 @@ privileged aspect JAnalysis_Roo_JavaBean {
         this.factoryCode = factoryCode;
     }
     
-    public JBridge JAnalysis.getBridge() {
-        return this.bridge;
-    }
-    
-    public void JAnalysis.setBridge(JBridge bridge) {
-        this.bridge = bridge;
-    }
-    
     public String JAnalysis.getFactoryName() {
         return this.factoryName;
     }
     
     public void JAnalysis.setFactoryName(String factoryName) {
         this.factoryName = factoryName;
+    }
+    
+    public JBridge JAnalysis.getBridge() {
+        return this.bridge;
+    }
+    
+    public void JAnalysis.setBridge(JBridge bridge) {
+        this.bridge = bridge;
     }
     
     public JExporter JAnalysis.getExporterEntry() {
@@ -253,6 +253,22 @@ privileged aspect JAnalysis_Roo_JavaBean {
     
     public void JAnalysis.setProductType(String productType) {
         this.productType = productType;
+    }
+    
+    public Boolean JAnalysis.getAcceptation() {
+        return this.acceptation;
+    }
+    
+    public void JAnalysis.setAcceptation(Boolean acceptation) {
+        this.acceptation = acceptation;
+    }
+    
+    public Boolean JAnalysis.getConformity() {
+        return this.conformity;
+    }
+    
+    public void JAnalysis.setConformity(Boolean conformity) {
+        this.conformity = conformity;
     }
     
     public BigDecimal JAnalysis.getTauxHumidite1() {
@@ -605,14 +621,6 @@ privileged aspect JAnalysis_Roo_JavaBean {
     
     public void JAnalysis.setClassification(String classification) {
         this.classification = classification;
-    }
-    
-    public Boolean JAnalysis.getConformite() {
-        return this.conformite;
-    }
-    
-    public void JAnalysis.setConformite(Boolean conformite) {
-        this.conformite = conformite;
     }
     
     public BigDecimal JAnalysis.getPoidsMatieresEtrangeres() {
@@ -981,22 +989,6 @@ privileged aspect JAnalysis_Roo_JavaBean {
     
     public void JAnalysis.setPourcentageGradeHN(BigDecimal pourcentageGradeHN) {
         this.pourcentageGradeHN = pourcentageGradeHN;
-    }
-    
-    public Boolean JAnalysis.getAcceptation() {
-        return this.acceptation;
-    }
-    
-    public void JAnalysis.setAcceptation(Boolean acceptation) {
-        this.acceptation = acceptation;
-    }
-    
-    public Boolean JAnalysis.getConfirmation() {
-        return this.confirmation;
-    }
-    
-    public void JAnalysis.setConfirmation(Boolean confirmation) {
-        this.confirmation = confirmation;
     }
     
 }

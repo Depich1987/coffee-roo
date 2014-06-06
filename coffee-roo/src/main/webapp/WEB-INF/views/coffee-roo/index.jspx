@@ -6,7 +6,7 @@
   <jsp:output omit-xml-declaration="yes" />
 
   <spring:message code="application_name" htmlEscape="false" var="app_name"/>
-  <spring:url value="/resources/images/gboudjou.png" var="img_url"/>
+  <spring:url value="/resources/images/cacao.jpg" var="img_url"/>
   
   <spring:message var="title" code="welcome_titlepane" arguments="${app_name}" htmlEscape="false" />
   
@@ -14,7 +14,9 @@
   
   <p>
   	<spring:message code="welcome_text"/>
-
+	<center>
+  		<img alt="" src="${img_url}"  class="img-thumbnail"/>
+  	</center>
   </p>
   
 </div>

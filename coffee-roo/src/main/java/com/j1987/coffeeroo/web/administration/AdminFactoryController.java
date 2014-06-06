@@ -20,10 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
-
-
 import com.j1987.coffeeroo.domain.JBridge;
-import com.j1987.coffeeroo.domain.JCompany;
 import com.j1987.coffeeroo.domain.JFactory;
 import com.j1987.coffeeroo.services.dao.BridgeService;
 import com.j1987.coffeeroo.services.dao.CompanyService;
@@ -95,9 +92,7 @@ public class AdminFactoryController {
         }
 		
         uiModel.asMap().clear();
-        JCompany company = companyService.findCompanyById(Long.valueOf("1"));
-        if(company != null)		factory.setCompany(company );
-        
+
         factoryService.persist(factory);
         
         logger.debug("create()- a new factory has been created with success !");

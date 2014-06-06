@@ -45,4 +45,17 @@ public class AjaxController {
 		return generatedCode;
 	}
 	
+	@RequestMapping(value = "/getfactoryparent", method = RequestMethod.POST, produces = "application/json")
+	public @ResponseBody  String findFactoryParentByBridge(@RequestParam("bridgeCode")String bridgeCode){
+
+			List<JBridge> bridges = bridgeService.findBridgesByCodeEquals(bridgeCode);
+			String factoryName = "N/A";
+			if(!bridges.isEmpty()){
+				JBridge bridge = bridges.get(0);
+				if(bridge.getFactory() != null ) factoryName = bridge.getFactory().getName();
+
+			}
+			return factoryName;
+		
+	}
 }

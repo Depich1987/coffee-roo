@@ -26,7 +26,7 @@
 	<spring:url value="/resources/images/logo-kms.png" var="img_url"/>
 	<p>
 		<a href="#">
-		<img src="${img_url}" height="75" style="height:75" class="img-thumbnail"/>
+		<img src="${img_url}" height="75" style="height:75"/>
 		</a>
 	</p>
     <div class="list-group">

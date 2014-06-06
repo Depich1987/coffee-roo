@@ -50,9 +50,5 @@ public class JCompany {
      */
     @ManyToMany
     private List<JUser> users = new ArrayList<JUser>();
-    
-    /**
-     */
-    @OneToMany
-    private Set<JFactory> factories = new HashSet<JFactory>();
+
 }

@@ -31,11 +31,18 @@ public class JUtils {
 	public static final String LANGUAGE_FR = "french";
 	public static final String LANGUAGE_EN = "english";
 	
+	public static final String COCOA_PRODUCT = "Cacao";
+	public static final String COFFEE_PRODUCT = "Cafe";
+	
 	public static final String STATUS_PUSH = "Refuse";
 	public static final String STATUS_NO = "Non";
 	public static final String STATUS_STANDBY = "En Attente";
 	public static final String STATUS_CONFIRMED = "Accepte";
 	public static final String STATUS_YES = "Oui";
+	
+	public static final String CLASSIFICATION_G1 = "G1";
+	public static final String CLASSIFICATION_G2 = "G2";
+	public static final String CLASSIFICATION_SG = "SG";
 
 	public static final String DB_ROLE_ADMIN = "ROLE_ADMIN";
 	public static final String DB_ROLE_SUPERVISOR = "ROLE_SUPERVISOR";

@@ -4,7 +4,6 @@
 package com.j1987.coffeeroo.domain;
 
 import com.j1987.coffeeroo.domain.JBridge;
-import com.j1987.coffeeroo.domain.JCompany;
 import com.j1987.coffeeroo.domain.JFactory;
 import com.j1987.coffeeroo.domain.JUser;
 import java.util.List;
@@ -34,14 +33,6 @@ privileged aspect JFactory_Roo_JavaBean {
     
     public void JFactory.setDescription(String description) {
         this.description = description;
-    }
-    
-    public JCompany JFactory.getCompany() {
-        return this.company;
-    }
-    
-    public void JFactory.setCompany(JCompany company) {
-        this.company = company;
     }
     
     public List<JUser> JFactory.getUsers() {

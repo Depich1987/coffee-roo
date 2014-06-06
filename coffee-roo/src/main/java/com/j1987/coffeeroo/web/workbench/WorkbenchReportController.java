@@ -28,7 +28,7 @@ import com.j1987.coffeeroo.framework.JUtils;
 import com.j1987.coffeeroo.services.dao.CoffeeAnalysisService;
 import com.j1987.coffeeroo.services.dao.FactoryService;
 import com.j1987.coffeeroo.services.security.JSecurityService;
-import com.j1987.coffeeroo.web.form.FilterCoffeeAnalysis;
+import com.j1987.coffeeroo.web.form.FilterAnalysisForm;
 import com.j1987.coffeeroo.web.form.ReportFilterForm;
 
 @Controller
@@ -52,7 +52,7 @@ public class WorkbenchReportController {
 	}
 	
 	@RequestMapping(value = "/findcoffeeanalysis", method = RequestMethod.POST ,produces = "text/html")
-	public String findCoffeeAnalysisByFilter(@Valid FilterCoffeeAnalysis filterCoffeeAnalysis, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest){
+	public String findCoffeeAnalysisByFilter(@Valid FilterAnalysisForm filterCoffeeAnalysis, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest){
 		
 		
 		Date startDate = null;
@@ -85,7 +85,7 @@ public class WorkbenchReportController {
 			 uiModel.addAttribute("reportFilterForm", new ReportFilterForm());
 		 }
 		
-		 populateEditFindAnalysis(uiModel, new FilterCoffeeAnalysis(), factoryCode);
+		 populateEditFindAnalysis(uiModel, new FilterAnalysisForm(), factoryCode);
 		 
 		 uiModel.addAttribute("resultDispaly", true);
 		 
@@ -98,7 +98,7 @@ public class WorkbenchReportController {
     	HttpSession session = httpServletRequest.getSession();
     	String factoryCode = (String)session.getAttribute(JUtils.HTTP_SESSION_FACTORY_CODE);
     	
-    	populateEditFindAnalysis(uiModel, new FilterCoffeeAnalysis(), factoryCode);
+    	populateEditFindAnalysis(uiModel, new FilterAnalysisForm(), factoryCode);
     	return PERIODICALREPORT_VIEW;
     }
 
@@ -174,7 +174,7 @@ public class WorkbenchReportController {
     	return coffeeAnalysis;
     }
     
-    void populateEditFindAnalysis(Model uiModel, FilterCoffeeAnalysis filterCoffeeAnalysis, String factoryCode){
+    void populateEditFindAnalysis(Model uiModel, FilterAnalysisForm filterCoffeeAnalysis, String factoryCode){
     	uiModel.addAttribute("filterCoffeeAnalysis", filterCoffeeAnalysis);
     	uiModel.addAttribute("currentNav", "periodicalreport");
     	

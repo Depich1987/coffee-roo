@@ -5,8 +5,8 @@ package com.j1987.coffeeroo.web;
 
 import com.j1987.coffeeroo.domain.JAnalysis;
 import com.j1987.coffeeroo.domain.JBridge;
-import com.j1987.coffeeroo.domain.JDealer;
 import com.j1987.coffeeroo.domain.JExporter;
+import com.j1987.coffeeroo.domain.JFirm;
 import com.j1987.coffeeroo.domain.JLocalization;
 import com.j1987.coffeeroo.domain.JSupplier;
 import com.j1987.coffeeroo.domain.JTour;
@@ -106,8 +106,8 @@ privileged aspect JAnalysisController_Roo_Controller {
         uiModel.addAttribute("JAnalysis_", JAnalysis_);
         addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("jbridges", JBridge.findAllJBridges());
-        uiModel.addAttribute("jdealers", JDealer.findAllJDealers());
         uiModel.addAttribute("jexporters", JExporter.findAllJExporters());
+        uiModel.addAttribute("jfirms", JFirm.findAllJFirms());
         uiModel.addAttribute("jlocalizations", JLocalization.findAllJLocalizations());
         uiModel.addAttribute("jsuppliers", JSupplier.findAllJSuppliers());
         uiModel.addAttribute("jtours", JTour.findAllJTours());
