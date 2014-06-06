@@ -1,0 +1,170 @@
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-19 17:11:59
+project --topLevelPackage com.j1987.coffeeroo --projectName coffee-roo --java 6 --packaging JAR
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-19 17:12:16
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-19 17:13:37
+jpa setup --database MYSQL --provider ECLIPSELINK 
+hint
+entity jpa --class ~.domain.JCompany --table J_COMPANY --testAutomatically true
+field string --fieldName name --notNull 0
+web mvc setup 
+web mvc all --package ~.web
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-19 17:32:45
+entity jpa --class ~.domain.JFactory --table J_FACTORY --testAutomatically true
+field string --fieldName code --notNull true --unique true
+field string --fieldName name --notNull true
+entity jpa --class ~.domain.JExporter --table J_EXPORTER --testAutomatically true
+field string --fieldName code --notNull true --unique true
+field string --fieldName name --notNull true
+web mvc all --package com.j1987.coffeeroo.web
+entity jpa --class ~.domain.JDealer --table J_DEALER --testAutomatically true
+field string --fieldName code --unique true --notNull true
+field string --fieldName name --notNull true
+entity jpa --class ~.domain.JSupplier --table J_SUPPLIER --testAutomatically true
+field string --fieldName code --unique true --notNull true
+field string --fieldName name --notNull true
+entity jpa --class ~.domain.JTour --table J_TOUR --testAutomatically true
+field string --fieldName name --notNull true
+field string --fieldName description
+web mvc all --package ~.web
+entity jpa --class ~.domain.JUser --table J_USER --testAutomatically true
+entity jpa --class ~.domain.JRole --table J_ROLE --testAutomatically true
+field string --fieldName name --notNull true
+field string --fieldName description
+entity jpa --class ~.domain.JLocalization --table J_LOCALIZATION --testAutomatically 
+field string --fieldName name --notNull true
+field string --fieldName description
+entity jpa --class ~.domain.JCoffeeAnalysis --table J_COFFEE_ANALYSIS --testAutomatically true
+field date --fieldName dateOfAnalysis --type java.util.Date --notNull true
+field string --fieldName numberLading --notNull true
+field string --fieldName truckNumber --notNull true
+field number --fieldName netWeightOfProductAccepted --type java.math.BigDecimal
+field reference --fieldName provenance --type ~.domain.JLocalization --cardinality MANY_TO_ONE 
+field reference --fieldName dealerEntry --type ~.domain.JDealer --cardinality MANY_TO_ONE 
+field reference --fieldName factoryEntry --type ~.domain.JFactory --cardinality MANY_TO_ONE
+field reference --fieldName exporterEntry --type ~.domain.JExporter --cardinality MANY_TO_ONE 
+field reference --fieldName supplierEntry --type ~.domain.JSupplier --cardinality MANY_TO_ONE 
+field date --fieldName startTime --type java.util.Date --timeFormat SHORT 
+field date --fieldName endTime --type java.util.Date --timeFormat SHORT 
+field number --fieldName totalOfBagPushed --type java.math.BigInteger
+field number --fieldName totalOfReportedBags --type java.math.BigInteger
+field number --fieldName numberOfBagAllowed --type java.math.BigInteger
+field string --fieldName sampleCode --notNull true
+field string --fieldName numberSAIGIC
+field date --fieldName creationDate --type java.util.Date
+field string --fieldName createdBy
+field string --fieldName modifiedBy
+field date --fieldName modificationDate --type java.util.Date
+entity jpa --class ~.domain.JSubmissionForApproval --table J_SUBMISSION_APPROVAL --testAutomatically true
+field string --fieldName description
+field date --fieldName creationDate --type java.util.Date
+field string --fieldName createdBy
+field set --fieldName analyzesCoffee --type ~.domain.JCoffeeAnalysis --cardinality MANY_TO_MANY 
+focus --class ~.domain.JCoffeeAnalysis
+field list --fieldName submissionsForApproval --type ~.domain.JSubmissionForApproval --cardinality MANY_TO_MANY 
+web mvc all --package ~.web
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-19 19:30:41
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-19 19:44:06
+web report setup 
+web report add --controller ~.web.JUserController --reportName userreportlist
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-19 19:57:08
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-19 19:57:22
+security setup
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-20 11:12:15
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-20 12:07:31
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-20 12:09:38
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-22 02:15:18
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-22 03:13:36
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-22 03:14:44
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-22 03:16:05
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-22 03:26:51
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-25 19:42:55
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-26 11:55:47
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-26 12:08:37
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-26 16:28:06
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-26 16:37:43
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-26 16:38:53
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-26 16:55:32
+hint
+web report add --controller ~.web.JCoffeeAnalysisController --reportName analysiscoffeereport --format pdf,xls
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-26 19:10:02
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-28 11:29:55
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-30 11:47:08
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-31 03:09:51
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-31 03:51:37
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-05-31 09:07:13
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-05-31 09:48:04
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-06-01 08:29:16
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-06-01 08:50:22
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-06-01 14:22:03
+hint
+entity jpa --class ~.domain.JBill --table J_BILL --testAutomatically 
+field string --fieldName reference --unique true --notNull true
+field string --fieldName periodTitle --notNull 
+field string --fieldName area
+field number --fieldName totalWeightProductAllowed --type java.math.BigDecimal
+field number --fieldName totalWeightProductPushed --type java.math.BigDecimal
+field number --fieldName amountWithoutTaxes --type java.math.BigDecimal
+field reference --fieldName submission --type ~.domain.JSubmissionForApproval --cardinality ONE_TO_ONE 
+focus --class ~.domain.JSubmissionForApproval
+field reference --fieldName bill --type ~.domain.JBill --cardinality ONE_TO_ONE 
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-06-01 15:07:07
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-06-01 15:11:24
+hint
+web mvc scaffold --backingType ~.domain.JBill --class ~.web.BillController
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-06-01 15:29:17
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-06-01 15:56:44
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-06-01 19:30:50
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-06-01 20:40:40
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-06-01 21:16:11
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-06-02 05:22:05
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-06-02 07:43:34
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-06-02 07:46:40
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-06-02 09:01:04
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-06-03 12:46:20
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-06-03 12:46:55
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-06-03 12:47:27
+entity jpa --class ~.domain.JBridge --table J_BRIDGE --testAutomatically true
+field string --fieldName code --notNull true --unique true
+field string --fieldName name
+field reference --fieldName factory --type ~.domain.JFactory
+focus --class ~.domain.JFactory
+field set --fieldName bridges --type ~.domain.JBridge --cardinality ONE_TO_MANY 
+web mvc all --package ~.web
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-06-03 13:07:30
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-06-03 13:27:54
+entity jpa --class ~.domain.JFirm --table J_FIRM --testAutomatically true
+field string --fieldName dealerCode --notNull true --unique true
+web mvc all --package ~.web
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-06-03 13:46:22
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-06-03 14:34:06
+entity jpa --class ~.domain.JAnalysis --table J_ANALYSIS --testAutomatically true
+web mvc all --package ~.web
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-06-03 14:50:19
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-06-03 15:31:07
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-06-04 04:43:40
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-06-04 09:05:15
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-06-04 09:07:12
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-06-04 15:40:43
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-06-04 21:22:52
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-06-04 21:50:39
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-06-05 04:45:54
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-06-05 08:58:40
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-06-05 09:03:25
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-06-05 09:14:27
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-06-05 14:59:51
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-06-05 15:03:08
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-06-05 16:18:43
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-06-05 16:18:43
