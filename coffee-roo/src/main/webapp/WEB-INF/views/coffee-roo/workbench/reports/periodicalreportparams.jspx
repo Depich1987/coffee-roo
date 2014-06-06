@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	 xmlns:security="http://www.springframework.org/security/tags"
+	 xmlns:c="http://java.sun.com/jsp/jstl/core"
+	 xmlns:form="http://www.springframework.org/tags/form"
+	 xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"  
+	 xmlns:spring="http://www.springframework.org/tags" version="2.0">
+	
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    
+    
+    <spring:message code="label_com_j1987_coffeeroo_domain_jfactory" var="factory_label"/>
+ 	<spring:message code="label_com_j1987_coffeeroo_domain_jcoffeeanalysis" var="coffeeanalysis_label"/>
+ 	
+ 	<spring:url value="/workbench/reports/findcoffeeanalysis" var="findcoffeeanalysis_url" htmlEscape="false"/>
+    
+    <h1 class="page-header">
+    	Rapport Periodique
+    </h1>
+    
+    <div class="panel panel-primary">
+    	<div class="panel-heading">
+    		<spring:message code="workbench_periodicalreport"/>
+    	</div>
+    	<div class="pane panel-body">
+    		<form:form action="${findcoffeeanalysis_url}" role="form" modelAttribute="filterCoffeeAnalysis" method="post" cssClass="form-horizontal">
+	 	 		<security:authorize access="hasAnyRole('ROLE_SUPERVISOR','ROLE_ADMIN')">
+				 <div class="form-group">
+				   <label class="col-sm-2 control-label">
+						${factory_label}
+				   </label>
+				   <div class="col-sm-4">
+				     <form:select path="factoryFilter" placeholder="${factory_label}" items="${factories}" itemLabel="name" itemValue="code" cssClass="form-control"/>
+				   </div>
+				 </div>
+			 	</security:authorize>
+			 	<security:authorize access="hasAnyRole('ROLE_FACTORY_MANAGER,ROLE_FACTORY_AGENT')">
+				 	<div class="form-group">
+					   <label class="col-sm-2 control-label">
+							${factory_label}
+					   </label>
+					   <div class="col-sm-4">
+					     <form:select path="factoryFilter" placeholder="${factory_label}" items="${factories}" itemLabel="name" itemValue="code" cssClass="form-control" readonly="true"/>
+					   </div>
+					 </div>
+				 </security:authorize>
+				 
+				 <div class="form-group">
+				    <label class="col-sm-2 control-label" for="bridgeCode">Pont</label>
+				    <div class="col-sm-3">
+				    	<form:input   path="bridgeCode" cssClass="form-control"/>
+				    </div>
+				</div>
+				 
+				 <div class="form-group">
+				    <label class="col-sm-2 control-label" for="startDate">Date de début traitement</label>
+				    <div class="col-sm-3">
+				    	<form:input   path="startDate" cssClass="form-control"/>
+				    </div>
+				</div>
+					
+				<div class="form-group">
+				    <label class="col-sm-2 control-label" for="endDate">Date de fin traitement</label>
+				    <div class="col-sm-3">
+				    	<form:input  path="endDate" cssClass="form-control"/>
+				    </div>
+				</div>	
+		
+		     	<div class="form-group">
+				   <div class="col-sm-offset-2 col-sm-10">
+				     <button type="submit" class="btn btn-success">
+						<spring:message code="button_proceed"/>
+					</button>
+			   		</div>
+	   			</div>
+    		</form:form>
+    	</div>
+    	<div class="panel-footer">
+           <small>
+           	<spring:message code="global_sponsored"/>
+           </small>
+       </div>
+    </div>
+       <script type="text/javascript">
+    
+    	$(document).ready(function(){
+    		
+    		$('#automaticSubmission1').on('change',function(){
+    			if($(this).is(':checked') == true){
+    				$('#description').removeAttr('disabled');
+    			}else{
+    				$('#description').attr('disabled',true);
+    			}
+    		});
+    		
+    		$('#startDate').datepicker({ 
+  		      autoclose: true, 
+		      todayHighlight: true 
+		    });
+    		$('#endDate').datepicker({ 
+    		      autoclose: true, 
+    		      todayHighlight: true 
+    		    });
+    	});
+    
+    </script>
+</div>
