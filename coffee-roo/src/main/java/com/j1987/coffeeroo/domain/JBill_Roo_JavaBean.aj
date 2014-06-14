@@ -3,10 +3,12 @@
 
 package com.j1987.coffeeroo.domain;
 
+import com.j1987.coffeeroo.domain.JAnalysis;
 import com.j1987.coffeeroo.domain.JBill;
 import com.j1987.coffeeroo.domain.JSubmissionForApproval;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Set;
 
 privileged aspect JBill_Roo_JavaBean {
     
@@ -112,6 +114,14 @@ privileged aspect JBill_Roo_JavaBean {
     
     public void JBill.setSubmission(JSubmissionForApproval submission) {
         this.submission = submission;
+    }
+    
+    public Set<JAnalysis> JBill.getAnalyzes() {
+        return this.analyzes;
+    }
+    
+    public void JBill.setAnalyzes(Set<JAnalysis> analyzes) {
+        this.analyzes = analyzes;
     }
     
 }

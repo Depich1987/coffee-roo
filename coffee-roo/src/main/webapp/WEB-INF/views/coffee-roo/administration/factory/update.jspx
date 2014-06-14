@@ -1,10 +1,65 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" 
+	 xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" 
+	 xmlns:spring="http://www.springframework.org/tags"
+	 xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+	 
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
+    
+    <spring:url value="/administration/factories/validatefactorycode" var="validatefactorycode_url" />
+    
     <form:update id="fu_com_j1987_coffeeroo_domain_JFactory" modelAttribute="factory" path="/administration/factories" versionField="Version" z="7dWtDGJIdcpX8oF0ryrXSb4tS9g=" list="true">
         <field:input field="code" id="c_com_j1987_coffeeroo_domain_JFactory_code" required="true" z="+aa6WH8VUuBvqzrXz4Kt9Abz6ng="/>
         <field:input field="name" id="c_com_j1987_coffeeroo_domain_JFactory_name" required="true" z="NPaMIKvifA/xSw2V9jFF0AJP4r8="/>
         <field:textarea field="description" id="c_com_j1987_coffeeroo_domain_JFactory_description" z="1lQXgLRnZ8+r14yJDjTEtSVXgow="/>
     </form:update>
+    <SCRIPT type="text/javascript">
+	function validateFactoryCode(faCode){
+		var isSuccess = false;
+		if(faCode != ''){
+			
+			$.ajax({
+				url:'${validatefactorycode_url}',
+				type:'post',
+				dataType:'json',
+				data:{factoryCode:faCode},
+				async:false,
+				cache: false,
+				success:function(a){
+					if (a === true || faCode == '${factory.code}' ) {
+						isSuccess = true;
+					}
+				},
+				error:function(err,xhr,status){
+					alert('Une Erreur est survenue dans la verification du code Usine!');
+					console.log(err);
+				}
+			});
+		}
+		return isSuccess;
+	}
+    
+    
+    	$(document).ready(function(){
+    		
+    		$.validator.addMethod("checkfactorycode",function(value, element){
+    			return validateFactoryCode(value);
+    		}, 'Ce code Usine est deja utilise!');
+    		
+    		$.validator.addMethod("validateExpressionCode", function(value, element){
+    			var s = element.value;
+    			s.replace(/[\wÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ]/g,"");
+    			return this.optional(element) || /^[a-zA-Z0-9]+$/.test( value );
+    		},"Les caracteres speciaux et/ou accentues ne sont pas acceptes");
+    		
+    		$('#factory').validate({
+    			rules:{
+    				name:{required:true},
+    				code:{required:true,checkfactorycode:true, validateExpressionCode:true}
+    			}
+    			
+    		});
+    	});
+    </SCRIPT>
 </div>

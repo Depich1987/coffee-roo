@@ -4,7 +4,6 @@
 package com.j1987.coffeeroo.web;
 
 import com.j1987.coffeeroo.domain.JCoffeeAnalysis;
-import com.j1987.coffeeroo.domain.JDealer;
 import com.j1987.coffeeroo.domain.JExporter;
 import com.j1987.coffeeroo.domain.JFactory;
 import com.j1987.coffeeroo.domain.JLocalization;
@@ -106,7 +105,6 @@ privileged aspect JCoffeeAnalysisController_Roo_Controller {
     void JCoffeeAnalysisController.populateEditForm(Model uiModel, JCoffeeAnalysis JCoffeeAnalysis_) {
         uiModel.addAttribute("JCoffeeAnalysis_", JCoffeeAnalysis_);
         addDateTimeFormatPatterns(uiModel);
-        uiModel.addAttribute("jdealers", JDealer.findAllJDealers());
         uiModel.addAttribute("jexporters", JExporter.findAllJExporters());
         uiModel.addAttribute("jfactorys", JFactory.findAllJFactorys());
         uiModel.addAttribute("jlocalizations", JLocalization.findAllJLocalizations());

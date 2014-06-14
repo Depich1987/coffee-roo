@@ -6,17 +6,23 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     
+    
     <spring:url value="/workbench/analysis/cocoaanalysis/list?size=10" var="cocoaanalysis_url"/>
     <spring:url value="/workbench/analysis/coffeeanalysis/list?size=10" var="coffeeanalysis_url"/>
     
     <security:authorize access="hasAnyRole('ROLE_SUPERVISOR','ROLE_ADMIN')">
-    	<spring:url value="/workbench/submissions/coffee/list?size=10" var="submissionslist_url"/>
+    	<spring:url value="/workbench/bills/evaluate?form" var="evaluatebill_url"/>
     	<spring:url value="/workbench/bills/list" var="billlistfilter_url"/>
     </security:authorize>
     
     <security:authorize access="hasAnyRole('ROLE_FACTORY_MANAGER','ROLE_FACTORY_AGENT')">
-    	<spring:url value="/workbench/submissions/coffee/list/filter?size=10" var="submissionslist_url"/>
-    	<spring:url value="/workbench/bills/list/filter" var="billlistfilter_url" javaScriptEscape="false">
+    	
+    	<spring:url value="/workbench/bills/evaluate?form" var="evaluatebill_url">
+    		<spring:param name="factoryCode" value="${sessionScope.userFactoryCode}"/>
+    		<spring:param name="size" value="10"/>
+    	</spring:url>
+    	
+    	<spring:url value="/workbench/bills/list" var="billlistfilter_url" javaScriptEscape="false">
     		<spring:param name="factoryCode" value="${sessionScope.userFactoryCode}"/>
     		<spring:param name="size" value="10"/>
     	</spring:url>
@@ -25,13 +31,14 @@
    	    	<spring:param name="factoryCode" value="${sessionScope.userFactoryCode}"/>
     		<spring:param name="size" value="10"/>
    	    </spring:url>
+   	    
     	<spring:url value="/workbench/analysis/coffeeanalysis/list?size=10" var="coffeeanalysis_url">
     		<spring:param name="factoryCode" value="${sessionScope.userFactoryCode}"/>
     		<spring:param name="size" value="10"/>
     	</spring:url>
     </security:authorize>
     
-    <spring:url value="/workbench/reports/findcoffeeanalysis?form" var="periodicalanalysisreport_url"/>
+    <spring:url value="/workbench/reports/findanalysis?form" var="periodicalanalysisreport_url"/>
    	<spring:url value="/resources/images/logo-kms.png" var="img_url"/>
 	<p>
 		<a href="#">
@@ -45,29 +52,31 @@
           	<span class="glyphicon glyphicon-leaf pull-right"></span>
           </a>
           
-          <a href="${coffeeanalysis_url}" class="list-group-item"  id="analysisCocoa_activeNav">
-          	<spring:message code="analysiscocoa_labelplural"/>
+          <a href="${coffeeanalysis_url}" class="list-group-item"  id="analysisCoffee_activeNav">
+          	<spring:message code="analysiscoffee_labelplural"/>
           	<span class="glyphicon glyphicon-leaf pull-right"></span>
           </a>
           
-          <a href="${submissionslist_url}" class="list-group-item"  id="submissions_activeNav">
-          	<spring:message code="menu_item_jsubmissionforapproval_list_label"/>
-          	<span class="glyphicon glyphicon-icon-share-alt"></span>
+          <a href="${periodicalanalysisreport_url}" class="list-group-item"  id="periodicalanalysisreport_activeNav">
+          	<spring:message code="label_com_j1987_coffeeroo_domain_janalysis" var="analysis_label"/>
+          	<spring:message code="workbench_periodicalreport" arguments="${analysis_label}"/>
+          	<span class="glyphicon glyphicon-play pull-right"></span>
+          </a>
+          
+          <a href="${evaluatebill_url}" class="list-group-item"  id="evaluatebill_activeNav">
+          	<spring:message code="bill_evaluateanalysis"/>
+          	<span class="glyphicon glyphicon-file pull-right"></span>
           </a>
           
           <a href="${billlistfilter_url}" class="list-group-item"  id="bills_activeNav">
-          	<spring:message code="menu_item_jbill_list_label" var="bill_plural"/>
-          	${bill_plural}
-          	<span class="glyphicon glyphicon-icon-file"></span>
+          	<spring:message code="label_com_j1987_coffeeroo_domain_jbill_plural" var="billplural_label"/>
+          	${billplural_label}
+          	<span class="glyphicon glyphicon-file pull-right"></span>
           </a>
           
-          <a href="${periodicalanalysisreport_url}" class="list-group-item"  id="periodicalanalysisreport_activeNav">
-          
-          	<spring:message code="workbench_periodicalreport" arguments="${coffeeanalysis_plural}"/>
-          </a>
-          
-          <a href="${periodicalbillsreport_url}" class="list-group-item"  id="periodicalbillsreport_activeNav">
-          	<spring:message code="workbench_periodicalreport" arguments="${bill_plural}"/>
+          <a href="${periodicalbillsreport_url}" class="list-group-item"  id="periodicalbillreport_activeNav">
+          	<spring:message code="workbench_periodicalreport" arguments="${billplural_label}"/>
+          	<span class="glyphicon glyphicon-play pull-right"></span>
           </a>
     </div>
 </div>

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.j1987.coffeeroo.domain.JAnalysis;
 import com.j1987.coffeeroo.domain.JBridge;
+import com.j1987.coffeeroo.web.form.FilterAnalysisForm;
 
 public interface AnalysisService {
 	
@@ -30,7 +31,15 @@ public interface AnalysisService {
 
 	public JAnalysis merge(JAnalysis analysis);
 	
-	public void update(JAnalysis analysis);
+	public void updateCoffee(JAnalysis analysis);
+	
+	public void updateCocoa(JAnalysis analysis);
+	
+	public List<JAnalysis> countAnalysisByFilterForm(FilterAnalysisForm filterAnalysisForm);
+	
+	public List<JAnalysis> findAnalysisByFilterForm(FilterAnalysisForm filterAnalysisForm);
+	
+//	public List<JAnalysis> findAnalysisByFilterFormEntries(FilterAnalysisForm filterAnalysisForm,int firstResult, int maxResult);
 
 	public List<JAnalysis> findAnalysisByFactoryCodeEntries(String factoryCode, String productType,	int firstResult, int maxResults);
 	

@@ -16,6 +16,8 @@ public class CoffeeAnalysisForm implements Serializable {
 	
 	private Long tourId;
 	
+	private int version;
+	
 	private String reference;
 	
 	/**
@@ -48,6 +50,10 @@ public class CoffeeAnalysisForm implements Serializable {
     /**
      */
     private String factoryCode;
+    
+    /**
+     */
+    private String bridgeCode;
 
     /**
      */
@@ -88,191 +94,216 @@ public class CoffeeAnalysisForm implements Serializable {
     
     /**
      */
-    private BigDecimal poidsMatieresEtrangeres;
+    private BigDecimal poidsMatieresEtrangeres = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal pourcentageMatieresEtrangeres;
+    private BigDecimal pourcentageMatieresEtrangeres = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal poidsDechetsParches;
+    private BigDecimal poidsDechetsParches = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal pourcentageDechetsParches;
+    private BigDecimal pourcentageDechetsParches = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal poidsDechetsCerise;
+    private BigDecimal poidsDechetsCerise = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal pourcentageDechetsCerise;
+    private BigDecimal pourcentageDechetsCerise = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal poidsDechetsDemiCerises;
+    private BigDecimal poidsDechetsDemiCerises = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal pourcentageDechetsDemiCerises;
+    private BigDecimal pourcentageDechetsDemiCerises = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal poidsDechetsCoques;
+    private BigDecimal poidsDechetsCoques = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal pourcentageDechetsCoques;
+    private BigDecimal pourcentageDechetsCoques = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal poidsDechetsPeaux;
+    private BigDecimal poidsDechetsPeaux = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal pourcentageDechetsPeaux;
+    private BigDecimal pourcentageDechetsPeaux = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal poidsSousTotalDechets;
+    private BigDecimal poidsSousTotalDechets = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal pourcentageSousTotalDechets;
+    private BigDecimal pourcentageSousTotalDechets = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal poidsHorsNormesGrainsNoirs;
+    private BigDecimal poidsHorsNormesGrainsNoirs = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal pourcentageHorsNormesGrainsNoirs;
+    private BigDecimal pourcentageHorsNormesGrainsNoirs = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal poidsHorsNormesGrainsDemiNoirs;
+    private BigDecimal poidsHorsNormesGrainsDemiNoirs = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal pourcentageHorsNormesGrainsDemiNoirs;
+    private BigDecimal pourcentageHorsNormesGrainsDemiNoirs = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal poidsHorsNormesBrisures;
+    private BigDecimal poidsHorsNormesBrisures = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal pourcentageHorsNormesBrisures;
+    private BigDecimal pourcentageHorsNormesBrisures = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal poidsSousTotalHorsNormes;
+    private BigDecimal poidsSousTotalHorsNormes = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal pourcentageSousTotalHorsNormes;
+    private BigDecimal pourcentageSousTotalHorsNormes = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal poidsGrainsAcceptablesVert;
+    private BigDecimal poidsGrainsAcceptablesVert = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal pourcentageGrainsAcceptablesVert;
+    private BigDecimal pourcentageGrainsAcceptablesVert = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal poidsGrainsAcceptablesSpongieux;
+    private BigDecimal poidsGrainsAcceptablesSpongieux = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal pourcentageGrainsAcceptablesSpongieux;
+    private BigDecimal pourcentageGrainsAcceptablesSpongieux = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal poidsGrainsAcceptablesDemiSombre;
+    private BigDecimal poidsGrainsAcceptablesDemiSombre = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal pourcentageGrainsAcceptablesDemiSombre;
+    private BigDecimal pourcentageGrainsAcceptablesDemiSombre = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal poidsGrainsAcceptablesScolytes;
+    private BigDecimal poidsGrainsAcceptablesScolytes = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal pourcentageGrainsAcceptablesScolytes;
+    private BigDecimal pourcentageGrainsAcceptablesScolytes = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal poidsGrainsAcceptablesIndesirables;
+    private BigDecimal poidsGrainsAcceptablesIndesirables = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal pourcentageGrainsAcceptablesIndesirables;
+    private BigDecimal pourcentageGrainsAcceptablesIndesirables = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal poidsGrainsAcceptablesImmature;
+    private BigDecimal poidsGrainsAcceptablesImmature = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal pourcentageGrainsAcceptablesImmature;
+    private BigDecimal pourcentageGrainsAcceptablesImmature = new BigDecimal(0);
+    
+    /**
+     */
+    private BigDecimal poidsSousTotalGrainsAcceptables = new BigDecimal(0);
+    
+    /**
+     */
+    private BigDecimal pourcentageSousTotalGrainsAcceptables = new BigDecimal(0);
 
     /**
      */
-    private BigDecimal CalibrageTamis18;
+    private BigDecimal CalibrageTamis18 = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal CalibrageTamis16;
+    private BigDecimal CalibrageTamis16 = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal CalibrageTamis14;
+    private BigDecimal CalibrageTamis14 = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal CalibrageTamis12;
+    private BigDecimal CalibrageTamis12 = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal CalibrageTamis10;
+    private BigDecimal CalibrageTamis10 = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal CalibrageBase;
+    private BigDecimal CalibrageBase = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal pourcentageGradeG0;
+    private BigDecimal pourcentageGradeG0 = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal pourcentageGradeG1;
+    private BigDecimal pourcentageGradeG1 = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal pourcentageGradeG2;
+    private BigDecimal pourcentageGradeG2 = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal pourcentageGradeG3;
+    private BigDecimal pourcentageGradeG3 = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal pourcentageGradeG4;
+    private BigDecimal pourcentageGradeG4 = new BigDecimal(0);
     
     /**
      */
-    private BigDecimal pourcentageGradeHN;
+    private BigDecimal pourcentageGradeHN = new BigDecimal(0);
     
-    private Boolean acceptation;
+    private Long acceptation;
     
-    private Boolean confirmation;
+    private Boolean confirmity;
+    
+    /*
+	 * 
+	 */
+	private BigDecimal tauxHumidite1 = new BigDecimal(0);
+	/*
+	 * 
+	 */
+	private BigDecimal tauxHumidite2 = new BigDecimal(0);
+	/*
+	 * 
+	 */
+	private BigDecimal tauxHumidite3 = new BigDecimal(0);
+	/*
+	 * 
+	 */
+	private BigDecimal moyenneTauxHumidite = new BigDecimal(0);
 
 
 	public CoffeeAnalysisForm() {
@@ -794,20 +825,20 @@ public class CoffeeAnalysisForm implements Serializable {
 		this.pourcentageGradeHN = pourcentageGradeHN;
 	}
 
-	public Boolean getAcceptation() {
+	public Long getAcceptation() {
 		return acceptation;
 	}
 
-	public void setAcceptation(Boolean acceptation) {
+	public void setAcceptation(Long acceptation) {
 		this.acceptation = acceptation;
 	}
 
-	public Boolean getConfirmation() {
-		return confirmation;
+	public Boolean getConfirmity() {
+		return confirmity;
 	}
 
-	public void setConfirmation(Boolean confirmation) {
-		this.confirmation = confirmation;
+	public void setConfirmity(Boolean confirmity) {
+		this.confirmity = confirmity;
 	}
 
 	public String getReference() {
@@ -832,6 +863,72 @@ public class CoffeeAnalysisForm implements Serializable {
 
 	public void setTourId(Long tourId) {
 		this.tourId = tourId;
+	}
+
+	public String getBridgeCode() {
+		return bridgeCode;
+	}
+
+	public void setBridgeCode(String bridgeCode) {
+		this.bridgeCode = bridgeCode;
+	}
+
+	public BigDecimal getPoidsSousTotalGrainsAcceptables() {
+		return poidsSousTotalGrainsAcceptables;
+	}
+
+	public void setPoidsSousTotalGrainsAcceptables(
+			BigDecimal poidsSousTotalGrainsAcceptables) {
+		this.poidsSousTotalGrainsAcceptables = poidsSousTotalGrainsAcceptables;
+	}
+
+	public BigDecimal getPourcentageSousTotalGrainsAcceptables() {
+		return pourcentageSousTotalGrainsAcceptables;
+	}
+
+	public void setPourcentageSousTotalGrainsAcceptables(
+			BigDecimal pourcentageSousTotalGrainsAcceptables) {
+		this.pourcentageSousTotalGrainsAcceptables = pourcentageSousTotalGrainsAcceptables;
+	}
+
+	public BigDecimal getTauxHumidite1() {
+		return tauxHumidite1;
+	}
+
+	public void setTauxHumidite1(BigDecimal tauxHumidite1) {
+		this.tauxHumidite1 = tauxHumidite1;
+	}
+
+	public BigDecimal getTauxHumidite2() {
+		return tauxHumidite2;
+	}
+
+	public void setTauxHumidite2(BigDecimal tauxHumidite2) {
+		this.tauxHumidite2 = tauxHumidite2;
+	}
+
+	public BigDecimal getTauxHumidite3() {
+		return tauxHumidite3;
+	}
+
+	public void setTauxHumidite3(BigDecimal tauxHumidite3) {
+		this.tauxHumidite3 = tauxHumidite3;
+	}
+
+	public BigDecimal getMoyenneTauxHumidite() {
+		return moyenneTauxHumidite;
+	}
+
+	public void setMoyenneTauxHumidite(BigDecimal moyenneTauxHumidite) {
+		this.moyenneTauxHumidite = moyenneTauxHumidite;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 	

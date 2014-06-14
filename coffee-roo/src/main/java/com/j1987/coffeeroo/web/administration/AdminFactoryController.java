@@ -23,7 +23,6 @@ import org.springframework.web.util.WebUtils;
 import com.j1987.coffeeroo.domain.JBridge;
 import com.j1987.coffeeroo.domain.JFactory;
 import com.j1987.coffeeroo.services.dao.BridgeService;
-import com.j1987.coffeeroo.services.dao.CompanyService;
 import com.j1987.coffeeroo.services.dao.FactoryService;
 
 
@@ -53,9 +52,6 @@ public class AdminFactoryController {
 	
 	@Autowired
 	private BridgeService bridgeService;
-	
-	@Autowired
-	private CompanyService companyService;
 
 	public AdminFactoryController() {
 		// TODO Auto-generated constructor stub

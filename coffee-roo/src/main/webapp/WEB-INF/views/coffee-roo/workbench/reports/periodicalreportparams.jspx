@@ -11,27 +11,33 @@
     
     
     <spring:message code="label_com_j1987_coffeeroo_domain_jfactory" var="factory_label"/>
- 	<spring:message code="label_com_j1987_coffeeroo_domain_jcoffeeanalysis" var="coffeeanalysis_label"/>
+    <spring:message code="label_com_j1987_coffeeroo_domain_jbridge" var="bridge_label"/>
+ 	<spring:message code="label_com_j1987_coffeeroo_domain_janalysis" var="analysis_label"/>
  	
- 	<spring:url value="/workbench/reports/findcoffeeanalysis" var="findcoffeeanalysis_url" htmlEscape="false"/>
+ 	<spring:url value="/workbench/reports/findanalysis" var="findanalysis_url" htmlEscape="false">
+ 		<spring:param name="size" value="10"/>
+ 	</spring:url>
     
     <h1 class="page-header">
-    	Rapport Periodique
+    	<spring:message code="workbench_periodicalreport" arguments="${analysis_label}"/>
     </h1>
     
     <div class="panel panel-primary">
     	<div class="panel-heading">
-    		<spring:message code="workbench_periodicalreport"/>
+    		<spring:message code="workbench_periodicalreport" arguments="${analysis_label}"/>
     	</div>
     	<div class="pane panel-body">
-    		<form:form action="${findcoffeeanalysis_url}" role="form" modelAttribute="filterCoffeeAnalysis" method="post" cssClass="form-horizontal">
+    		<form:form action="${findanalysis_url}" role="form" modelAttribute="filterAnalysisForm" method="get" cssClass="form-horizontal">
 	 	 		<security:authorize access="hasAnyRole('ROLE_SUPERVISOR','ROLE_ADMIN')">
 				 <div class="form-group">
 				   <label class="col-sm-2 control-label">
 						${factory_label}
 				   </label>
 				   <div class="col-sm-4">
-				     <form:select path="factoryFilter" placeholder="${factory_label}" items="${factories}" itemLabel="name" itemValue="code" cssClass="form-control"/>
+				     <form:select path="factoryFilter" placeholder="${factory_label}" cssClass="form-control">
+				     	<form:option value="" label="N/A"/>
+				     	<form:options  items="${factories}" itemLabel="name" itemValue="code" />
+				     </form:select>
 				   </div>
 				 </div>
 			 	</security:authorize>
@@ -46,10 +52,58 @@
 					 </div>
 				 </security:authorize>
 				 
-				 <div class="form-group">
+				 <!-- <div class="form-group">
 				    <label class="col-sm-2 control-label" for="bridgeCode">Pont</label>
-				    <div class="col-sm-3">
-				    	<form:input   path="bridgeCode" cssClass="form-control"/>
+				    <div class="col-sm-4">
+				    	<form:select   path="bridgeFilter" placeholder="${bridge_label}" cssClass="form-control">
+				    		<form:option value="">
+				    			N/A
+				    		</form:option>
+				    		<form:options  items="${bridges}" itemLabel="name" itemValue="code"/>
+				    	</form:select>
+				    </div>
+				</div>-->
+				
+			 	<div class="form-group">
+				    <label class="col-sm-2 control-label" for="productTypeFilter">Type de Produit</label>
+				    <div class="col-sm-4">
+				    	<form:select   path="productTypeFilter" cssClass="form-control">
+				    		<form:option value="Cacao">
+				    			Cacao
+				    		</form:option>
+				    		<form:option value="Cafe">
+				    			Cafe
+				    		</form:option>
+				    	</form:select>
+				    </div>
+				</div>
+				
+				 <div class="form-group">
+				    <label class="col-sm-2 control-label" for="areaFilter">Zone</label>
+				    <div class="col-sm-4">
+				    	<form:select   path="areaFilter" cssClass="form-control">
+				    		<form:option value="0">
+				    			N/A
+				    		</form:option>
+				    		<form:options  items="${localizations}" itemLabel="name" itemValue="id"/>
+				    	</form:select>
+				    </div>
+				</div>
+				
+			 	<div class="form-group">
+				    <label class="col-sm-2 control-label" for="statusFilter">Status</label>
+				    <div class="col-sm-4">
+				    	<form:select   path="statusFilter" cssClass="form-control">
+				    		<form:option value="0">
+				    			N/A
+				    		</form:option>
+				    		<form:option value="1">
+				    			Accepte
+				    		</form:option>
+				    		<form:option value="2">
+				    			Refuse
+				    		</form:option>
+				    	</form:select>
 				    </div>
 				</div>
 				 
@@ -66,11 +120,13 @@
 				    	<form:input  path="endDate" cssClass="form-control"/>
 				    </div>
 				</div>	
-		
+				<hr />
 		     	<div class="form-group">
 				   <div class="col-sm-offset-2 col-sm-10">
 				     <button type="submit" class="btn btn-success">
 						<spring:message code="button_proceed"/>
+						<![CDATA[&nbsp;&nbsp;]]>
+						<span class="glyphicon glyphicon-cog"></span>
 					</button>
 			   		</div>
 	   			</div>
@@ -98,10 +154,23 @@
   		      autoclose: true, 
 		      todayHighlight: true 
 		    });
+    		
+    		$('#startDate').datepicker('setValue',new Date());
+    		
     		$('#endDate').datepicker({ 
     		      autoclose: true, 
     		      todayHighlight: true 
     		    });
+    	
+    		$('#endDate').datepicker('setValue',new Date());
+    		
+    		$('#filterAnalysisForm').validate({
+    			rules:{
+    				startDate:{required:true},
+    				endDate:{required:true}
+    				
+    			}
+    		});
     	});
     
     </script>

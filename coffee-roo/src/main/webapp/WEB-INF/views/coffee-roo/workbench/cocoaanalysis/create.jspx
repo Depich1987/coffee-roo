@@ -12,10 +12,11 @@
     <spring:message code="workbench_analysis_technincalinformations" var="technincalinfos_label"/>
     
     <spring:message code="workbench_analysis_generalinformations" var="generalinfos_label"/>
-    <spring:message code="menu_item_janalysis_list_label" var="analysis_plural"/>
+    <spring:message code="analysiscocoa_labelplural" var="analysis_plural"/>
+    <spring:message code="analysiscocoa_label" var="analysis_label"/>
     
     <spring:url value="/ajaxrequest/getfactoryparent" var="getfactoryparent_url"/>
-    <spring:url value="/workbench/analysis/cocoaanalysis/checkcode" var="chechreference_url"/>
+    <spring:url value="/ajaxrequest/checkcode" var="chechreference_url"/>
 
 	<h1 class="page-header">
     	${analysis_plural}
@@ -24,7 +25,7 @@
     	<div class="btn-group">
 	    		<spring:url value="/workbench/analysis/cocoaanalysis/list?size=10" var="list_url"/>
 		    	<a href="${list_url}" class="btn btn-default">
-		    		<spring:message code="entity_list_all" arguments="${labelPlural}" />
+		    		<spring:message code="entity_list_all" arguments="${analysis_plural}" />
 		    		<![CDATA[&nbsp;&nbsp;]]>
 		    		<span class="glyphicon glyphicon-list-alt"></span>
 		    	</a>
@@ -33,7 +34,8 @@
     
     <div class="panel panel-primary">
     	<div class="panel-heading">
-    		Creation Analyse Cacao
+    		<spring:message code="analysiscocoa_label" var="analysiscoffee_label"/>
+    		<spring:message code="entity_create" arguments="${analysis_label}"/>
     	</div>
     	<div class="panel-body">
            <p>
@@ -44,7 +46,7 @@
 	        <spring:url value="/workbench/analysis/cocoaanalysis/create" var="form_url"/>
 	        <form:form modelAttribute="cocoaAnalysisForm" method="post" action="${form_url}">
 
-		        <FIELDSET>
+   		        <FIELDSET>
 		        	<LEGEND>
 		        		${generalinfos_label}
 		        	</LEGEND>
@@ -452,10 +454,10 @@
 	        			</div>
 	        			<div class="col-sm-2">
 							<div class="form-group">
-						      <label for="TotalfevesArdoisees" class="control-label">
+						      <label for="totalFevesArdoisees" class="control-label">
 						       Total 
 						      </label>
-						      <form:input path="TotalfevesArdoisees" class="form-control" readonly="true"/>
+						      <form:input path="totalFevesArdoisees" class="form-control" readonly="true"/>
 		        			</div>
 		        		</div>
 	        			<div class="col-sm-2">
@@ -644,6 +646,51 @@
 						       % 
 						      </label>
 						      <form:input path="pourcentageTotalFevesDefectueuses" class="form-control" readonly="true"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		<div class="row">
+		       			<div class="col-sm-2">
+		       				<h5>Feves Violettes</h5>
+		       			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="fevesViolettePlateau1" class="control-label">
+						       Plateau1 
+						      </label>
+						      <form:input path="fevesViolettePlateau1" class="form-control"/>
+		        			</div>
+		        		</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="fevesViolettePlateau2" class="control-label">
+						       Plateau2 
+						      </label>
+						      <form:input path="fevesViolettePlateau2" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="fevesViolettePlateau3" class="control-label">
+						       Plateau3 
+						      </label>
+						      <form:input path="fevesViolettePlateau3" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="totalFevesViolette" class="control-label">
+						       Total 
+						      </label>
+						      <form:input path="totalFevesViolette" class="form-control" readonly="true"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="pourcentageFevesViolette" class="control-label">
+						       % 
+						      </label>
+						      <form:input path="pourcentageFevesViolette" class="form-control" readonly="true"/>
 		        			</div>
 	        			</div>
 		       		</div>
@@ -860,18 +907,32 @@
        			$('#pourcentageFevesPlates').val(percent);
        		});
        		
-       		$('input[name=fevesDefectueusesPlateau1],input[name=fevesDefectueusesPlateau2], input[name=fevesDefectueusesPlateau3]').on('change',function(){
+       		$('input[name=totalFevesDefectueusesPlateau1],input[name=totalFevesDefectueusesPlateau2], input[name=totalFevesDefectueusesPlateau3]').on('change',function(){
        			var sum = 0;
        			var percent = 0;
        			var $row = $(this).closest('form');
-       			var fd1 = parseFloat($row.find('input[name=fevesDefectueusesPlateau1]').val());
-       			var fd2 = parseFloat($row.find('input[name=fevesDefectueusesPlateau2]').val());
-       			var fd3 = parseFloat($row.find('input[name=fevesDefectueusesPlateau3]').val());
+       			var fd1 = parseFloat($row.find('input[name=totalFevesDefectueusesPlateau1]').val());
+       			var fd2 = parseFloat($row.find('input[name=totalFevesDefectueusesPlateau2]').val());
+       			var fd3 = parseFloat($row.find('input[name=totalFevesDefectueusesPlateau3]').val());
        			
        			sum = fd1 + fd2 + fd3 ;
        			percent = (sum/3).toFixed(2);
-       			$('#totalFevesDefectueuses').val(sum);
-       			$('#pourcentageFevesDefectueuses').val(percent);
+       			$('#sommeTotalFevesDefectueuses').val(sum);
+       			$('#pourcentageTotalFevesDefectueuses').val(percent);
+       		});
+       		
+       		$('input[name=fevesViolettePlateau1],input[name=fevesViolettePlateau2], input[name=fevesViolettePlateau3]').on('change',function(){
+       			var sum = 0;
+       			var percent = 0;
+       			var $row = $(this).closest('form');
+       			var fd1 = parseFloat($row.find('input[name=fevesViolettePlateau1]').val());
+       			var fd2 = parseFloat($row.find('input[name=fevesViolettePlateau2]').val());
+       			var fd3 = parseFloat($row.find('input[name=fevesViolettePlateau3]').val());
+       			
+       			sum = fd1 + fd2 + fd3 ;
+       			percent = (sum/3).toFixed(2);
+       			$('#totalFevesViolette').val(sum);
+       			$('#pourcentageFevesViolette').val(percent);
        		});
        		
        		$('#poidsBrisures').on('change',function(){
@@ -886,15 +947,18 @@
     			rules:{
     				tourId:{required:true},
     				reference:{required:true,checkreference:true},
+    				
     				exporterCode:{required:true},
     				supplierCode:{required:true},
     				dealerCode:{required:true},
     				provenance:{required:true},
     				bridgeCode:{required:true},
+    				
     				dateOfAnalysis:{required:true},
     				startTime:{required:true},
     				endTime:{required:true},
     				numberLading:{required:true},
+    				
     				truckNumber:{required:true},
     				totalOfReportedBags:{required:true,number:true},
     				totalOfBagPushed:{required:true,number:true},
@@ -902,17 +966,62 @@
     				netWeightOfProductAccepted:{required:true,number:true},
     				sampleCode:{required:true},
     				numberSAIGIC:{required:true},
+    				
     				certificationTypeOrProject:{required:true},
     				tauxHumidite1:{required:true,number:true},
     				tauxHumidite2:{required:true,number:true},
     				tauxHumidite3:{required:true,number:true},
+    				
+    				fevesMoisiesPlateau1:{required:true,number:true},
+    				fevesMoisiesPlateau2:{required:true,number:true},
+    				fevesMoisiesPlateau3:{required:true,number:true},
+    				totalFevesMoisies:{required:true,number:true},
+    				pourcentageFevesMoisies:{required:true,number:true},
+    				
+    				fevesArdoiseesPlateau1:{required:true,number:true},
+    				fevesArdoiseesPlateau2:{required:true,number:true},
+    				fevesArdoiseesPlateau3:{required:true,number:true},
+    				totalFevesArdoisees:{required:true,number:true},
+    				pourcentageFevesArdoisees:{required:true,number:true},
+    				
+    				fevesMiteesPlateau1:{required:true,number:true},
+    				fevesMiteesPlateau2:{required:true,number:true},
+    				fevesMiteesPlateau3:{required:true,number:true},
+    				totalFevesMitees:{required:true,number:true},
+    				pourcentageFevesMitees:{required:true,number:true},
+    				
+    				fevesGermeesPlateau1:{required:true,number:true},
+    				fevesGermeesPlateau2:{required:true,number:true},
+    				fevesGermeesPlateau3:{required:true,number:true},
+    				totalFevesGermees:{required:true,number:true},
+    				pourcentageFevesGermees:{required:true,number:true},
+    				
+    				fevesPlatesPlateau1:{required:true,number:true},
+    				fevesPlatesPlateau2:{required:true,number:true},
+    				fevesPlatesPlateau3:{required:true,number:true},
+    				totalFevesPlates:{required:true,number:true},
+    				pourcentageFevesPlates:{required:true,number:true},
+    				
+    				
+    				totalFevesDefectueusesPlateau1:{required:true,number:true},
+    				totalFevesDefectueusesPlateau2:{required:true,number:true},
+    				totalFevesDefectueusesPlateau3:{required:true,number:true},
+    				sommeTotalFevesDefectueuses:{required:true,number:true},
+    				pourcentageTotalFevesDefectueuses:{required:true,number:true},
+    				
+    				fevesViolettePlateau1:{required:true,number:true},
+    				fevesViolettePlateau2:{required:true,number:true},
+    				fevesViolettePlateau3:{required:true,number:true},
+    				totalFevesViolette:{required:true,number:true},
+    				pourcentageFevesViolette:{required:true,number:true},
+    				
     				moyenneTauxHumidite:{required:true,number:true},
     				nombreFeves:{required:true,number:true},
     				fevesPar100g:{required:true,number:true},
     				poidsBrisures:{required:true,number:true},
     				pourcentageBrisures:{required:true,number:true},
     				poidsMatieresEtrangeres:{required:true,number:true},
-    				PourcentageMatieresEtrangeres:{required:true,number:true}
+    				pourcentageMatieresEtrangeres:{required:true,number:true}
     			
     			}
     			

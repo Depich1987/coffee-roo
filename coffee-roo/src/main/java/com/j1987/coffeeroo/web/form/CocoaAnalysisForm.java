@@ -14,6 +14,8 @@ public class CocoaAnalysisForm implements Serializable {
 	
 	private Long id;
 	
+	private int version;
+	
 	private Long tourId;
 	
 	@NotNull
@@ -41,7 +43,7 @@ public class CocoaAnalysisForm implements Serializable {
     
     private BigDecimal poidsMatieresEtrangeres = new BigDecimal(0);
     
-    private BigDecimal PourcentageMatieresEtrangeres = new BigDecimal(0);
+    private BigDecimal pourcentageMatieresEtrangeres = new BigDecimal(0);
 
     /**
      */
@@ -182,7 +184,7 @@ public class CocoaAnalysisForm implements Serializable {
 	/*
 	 * 
 	 */
-	private Long TotalfevesArdoisees = Long.valueOf(0);
+	private Long totalFevesArdoisees = Long.valueOf(0);
 	/*
 	 * 
 	 */
@@ -1019,8 +1021,8 @@ public class CocoaAnalysisForm implements Serializable {
 	/**
 	 * @return the totalfevesArdoisees
 	 */
-	public Long getTotalfevesArdoisees() {
-		return TotalfevesArdoisees;
+	public Long getTotalFevesArdoisees() {
+		return totalFevesArdoisees;
 	}
 
 
@@ -1028,8 +1030,8 @@ public class CocoaAnalysisForm implements Serializable {
 	/**
 	 * @param totalfevesArdoisees the totalfevesArdoisees to set
 	 */
-	public void setTotalfevesArdoisees(Long totalfevesArdoisees) {
-		TotalfevesArdoisees = totalfevesArdoisees;
+	public void setTotalFevesArdoisees(Long totalfevesArdoisees) {
+		this.totalFevesArdoisees = totalfevesArdoisees;
 	}
 
 
@@ -1528,7 +1530,7 @@ public class CocoaAnalysisForm implements Serializable {
 	 * @return the pourcentageMatieresEtrangeres
 	 */
 	public BigDecimal getPourcentageMatieresEtrangeres() {
-		return PourcentageMatieresEtrangeres;
+		return this.pourcentageMatieresEtrangeres;
 	}
 
 
@@ -1538,7 +1540,7 @@ public class CocoaAnalysisForm implements Serializable {
 	 */
 	public void setPourcentageMatieresEtrangeres(
 			BigDecimal pourcentageMatieresEtrangeres) {
-		PourcentageMatieresEtrangeres = pourcentageMatieresEtrangeres;
+		this.pourcentageMatieresEtrangeres = pourcentageMatieresEtrangeres;
 	}
 
 
@@ -1557,6 +1559,18 @@ public class CocoaAnalysisForm implements Serializable {
 	 */
 	public void setStatus(Boolean status) {
 		this.status = status;
+	}
+
+
+
+	public int getVersion() {
+		return version;
+	}
+
+
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 	
 	

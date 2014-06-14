@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="JasperReportTemplate" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e7e322c5-e058-4953-96e5-1a2fe4a3cbc3">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="123"/>
+	<property name="ireport.y" value="152"/>
 	<parameter name="title" class="java.lang.String"/>
 	<parameter name="NumberToWord" class="java.lang.String"/>
 	<parameter name="CoffePrice" class="java.math.BigDecimal"/>
@@ -115,7 +115,7 @@
 				<textFieldExpression><![CDATA[$F{tourName}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="ba5e81f0-a91b-4dbc-9f56-e7cfd56cd73d" mode="Opaque" x="422" y="193" width="133" height="20" forecolor="#000000" backcolor="#CCCCCC"/>
+				<reportElement uuid="ba5e81f0-a91b-4dbc-9f56-e7cfd56cd73d" mode="Opaque" x="418" y="193" width="133" height="20" forecolor="#000000" backcolor="#CCCCCC"/>
 				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
 					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -167,7 +167,7 @@
 				<text><![CDATA[Designation]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="fb0e28b1-a581-4958-8c97-b418a6d7e480" mode="Opaque" x="185" y="193" width="132" height="20" forecolor="#000000" backcolor="#CCCCCC"/>
+				<reportElement uuid="fb0e28b1-a581-4958-8c97-b418a6d7e480" mode="Opaque" x="184" y="193" width="132" height="20" forecolor="#000000" backcolor="#CCCCCC"/>
 				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
 					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -175,7 +175,7 @@
 				<text><![CDATA[Poids Receptionne]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="fb0e28b1-a581-4958-8c97-b418a6d7e480" mode="Opaque" x="319" y="193" width="102" height="20" forecolor="#000000" backcolor="#CCCCCC"/>
+				<reportElement uuid="fb0e28b1-a581-4958-8c97-b418a6d7e480" mode="Opaque" x="316" y="193" width="102" height="20" forecolor="#000000" backcolor="#CCCCCC"/>
 				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
 					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -195,22 +195,22 @@
 	<detail>
 		<band height="40" splitType="Stretch">
 			<textField>
-				<reportElement uuid="9e7cfdd2-9f90-4bfd-848f-619c71a83783" x="185" y="0" width="132" height="20"/>
+				<reportElement uuid="9e7cfdd2-9f90-4bfd-848f-619c71a83783" x="184" y="0" width="132" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{totalWeightProductAllowed}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="2bc98e45-5220-4257-8ffb-60805d0b34a0" x="319" y="0" width="102" height="20"/>
+				<reportElement uuid="2bc98e45-5220-4257-8ffb-60805d0b34a0" x="316" y="0" width="102" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{unitPrice}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="9e7cfdd2-9f90-4bfd-848f-619c71a83783" x="185" y="20" width="132" height="20"/>
+				<reportElement uuid="9e7cfdd2-9f90-4bfd-848f-619c71a83783" x="184" y="20" width="132" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{totalWeightProductPushed}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="2bc98e45-5220-4257-8ffb-60805d0b34a0" x="319" y="20" width="102" height="20"/>
+				<reportElement uuid="2bc98e45-5220-4257-8ffb-60805d0b34a0" x="316" y="20" width="102" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{unitPrice}]]></textFieldExpression>
 			</textField>
@@ -246,7 +246,7 @@
 		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="22" splitType="Stretch">
+		<band height="73" splitType="Stretch">
 			<staticText>
 				<reportElement uuid="4eb1d809-2493-4f97-ad2a-e2a145413834" x="0" y="0" width="100" height="20"/>
 				<textElement>
@@ -261,22 +261,18 @@
 				</textElement>
 				<text><![CDATA[LA COMPTABILITE]]></text>
 			</staticText>
-		</band>
-	</pageFooter>
-	<summary>
-		<band height="22" splitType="Stretch">
 			<textField>
-				<reportElement uuid="3ef559b1-e975-45df-a4ba-ed58e68bd975" x="274" y="0" width="281" height="20"/>
+				<reportElement uuid="3ef559b1-e975-45df-a4ba-ed58e68bd975" x="274" y="53" width="281" height="20"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{NumberToWord} + " F CFA"]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="f1bde9e9-0e1a-40b9-8359-70ed9384fefe" x="1" y="1" width="273" height="20"/>
+				<reportElement uuid="f1bde9e9-0e1a-40b9-8359-70ed9384fefe" x="1" y="53" width="273" height="20"/>
 				<textElement/>
 				<text><![CDATA[Arrete la presente factre a la somme de :]]></text>
 			</staticText>
 		</band>
-	</summary>
+	</pageFooter>
 </jasperReport>

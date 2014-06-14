@@ -10,19 +10,22 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     
-    <spring:url value="/workbench/analysis/coffeeAnalysis/create?form" var="createcoffeeanalysis_url"/>
-    <spring:url value="/workbench/analysis/coffeeAnalysis/list?size=10" var="filtercoffeeanalysis_url"/>
+    <spring:url value="/workbench/analysis/coffeeanalysis/find" var="findanalysis_url"/>
     
-       	<security:authorize access="hasAnyRole('ROLE_SUPERVISOR','ROLE_ADMIN')">
-    		<spring:url value="/workbench/analysis/coffeeanalysis/list/filter?factoryFilter=" var="coffeeAnalysislist_url" htmlEscape="false"/>
-    	</security:authorize>
-    	
-    	<p>
+	<spring:url value="/workbench/analysis/coffeeanalysis/list?size=10" var="coffeeanalysis_url"/>
+	<security:authorize access="hasAnyRole('ROLE_FACTORY_MANAGER','ROLE_FACTORY_AGENT')">
+    	<spring:url value="/workbench/analysis/coffeeanalysis/list?size=10" var="coffeeanalysis_url">
+    		<spring:param name="factoryCode" value="${sessionScope.userFactoryCode}"/>
+    		<spring:param name="size" value="10"/>
+    	</spring:url>
+	</security:authorize>
+   	
+   	<div>
   		<div class="btn-toolbar">
 	   		<security:authorize access="hasAnyRole('ROLE_SUPERVISOR','ROLE_ADMIN')">
 	   			<c:if test="${filterCoffeeAnalysis != null}">
 		   			<div class="btn-group pull-right">
-		   				<form:form method="get" modelAttribute="filterCoffeeAnalysis" commandName="filterCoffeeAnalysis" cssClass="form-inline" action="${filtercoffeeAnalysis_url}">
+		   				<form:form method="get" modelAttribute="filterAnalysisForm" commandName="filterAnalysisForm" cssClass="form-inline" action="${coffeeanalysis_url}">
    							 <div class="form-group">
 						   		<label class="col-sm-4 control-label">
 									<spring:message code="workbench_filter_factory"/>
@@ -41,7 +44,7 @@
 				 <![CDATA[
 				 	$(document).ready(function(){
 				 		$('#factoryFilter').change(function(){
-				 			window.location = '${coffeeAnalysislist_url}'+$(this).val();
+				 			window.location = '${coffeeanalysis_url}'+$(this).val();
 				 		});
 				 	});
 				 	]]>
@@ -49,17 +52,32 @@
 	   			
 	   		</security:authorize>
 	   	</div>
-	</p>
+	</div>
     
-    <page:list id="pl_com_j1987_coffeeroo_domain_JCoffeeAnalysis" items="${coffeeAnalysis}" z="l7kkivgyJ/phKrPjR8pAmds8WP8=" path="/workbench/analysis/coffeeanalysis">
+    <page:list id="pl_com_j1987_coffeeroo_domain_JAnalysis" items="${coffeeAnalysis}" z="l7kkivgyJ/phKrPjR8pAmds8WP8=" path="/workbench/analysis/coffeeanalysis">
 
-        <table:table data="${coffeeAnalysis}" id="l_com_j1987_coffeeroo_domain_JCoffeeAnalysis" path="/workbench/analysis/coffeeanalysis" z="deMOtOjtvLPiAt2FJDCmiluc36M=" create="false" delete="false">
-            <table:column date="true" dateTimePattern="${JCoffeeAnalysis__dateofanalysis_date_format}" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_dateOfAnalysis" property="dateOfAnalysis" z="2cZVDYoqNya4rwa4c3x7MRMgIFE="/>
-            <table:column id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_numberLading" property="numberLading" z="E9w+SGbqYIYQPD3VxQLt21AKwrQ="/>
-            <table:column id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_truckNumber" property="truckNumber" z="PNIrHcyWo6a9qVF6X8eqCZlqESs="/>
-            <table:column id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_netWeightOfProductAccepted" property="netWeightOfProductAccepted" z="PH6vfqXhklEcuFUQr1fTwTnT4RI="/>
-            <table:column id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_provenance" property="provenance" z="wnvLymWdXAcBMgXhbOAdxSMiphc="/>
-            <table:column id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_dealerEntry" property="dealerEntry"  z="yDGsI2ECC9nS0HQ85pXlnmFeIZs="/>
+        <div style="margin-bottom: 15px;">
+        	<form:form action="${findanalysis_url}" modelAttribute="filterAnalysisForm" method="post" role="form" cssClass="form-inline">
+        		<div class="input-append">
+					<spring:message code="label_com_j1987_coffeeroo_domain_janalysis_reference" var="reference_label"/>
+				  	<form:input class="form-control" type="text" path="analysisReference" placeholder="${reference_label}"/>
+				  	<spring:message code="label_com_j1987_coffeeroo_domain_janalysis" var="analysis_label"/>
+				  	<button class="btn btn-default" type="submit"> 
+						<spring:message code="button_find" arguments="${analysis_label}"/>
+						<![CDATA[&nbsp;&nbsp;]]>
+					 <span class="glyphicon glyphicon-search"></span>
+					</button>
+				</div>
+        	</form:form>
+        </div>
+        <hr />
+
+        <table:table data="${coffeeAnalysis}" id="l_com_j1987_coffeeroo_domain_JAnalysis" path="/workbench/analysis/coffeeanalysis" z="deMOtOjtvLPiAt2FJDCmiluc36M=" create="false" delete="false">
+            <table:column id="c_com_j1987_coffeeroo_domain_JAnalysis_reference" property="reference"/>
+            <table:column id="c_com_j1987_coffeeroo_domain_JAnalysis_status" property="status" />
+            <table:column date="true" dateTimePattern="${JAnalysis__dateofanalysis_date_format}" id="c_com_j1987_coffeeroo_domain_JAnalysis_dateOfAnalysis" property="dateOfAnalysis"/>
+            <table:column id="c_com_j1987_coffeeroo_domain_JAnalysis_factoryName" property="factoryName"/>
+            <table:column id="c_com_j1987_coffeeroo_domain_JAnalysis_supplierName" property="supplierName"/>
         </table:table>
     </page:list>
 </div>

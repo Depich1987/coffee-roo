@@ -4,6 +4,18 @@
     <definition extends="workbenchLayout" name="workbench/report/periodicalreport">
         <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/reports/periodicalreport.jspx"/>
     </definition>
+    
+    <definition extends="workbenchLayout" name="workbench/report/periodicalreportparams">
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/reports/periodicalreportparams.jspx"/>
+    </definition>
+    
+    <definition extends="workbenchLayout" name="workbench/report/periodicalreportcocoa">
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/reports/periodicalreportcocoa.jspx"/>
+    </definition>
+    
+    <definition extends="workbenchLayout" name="workbench/report/periodicalreportcoffee">
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/reports/periodicalreportcoffee.jspx"/>
+    </definition>
 
 	<definition extends="workbenchLayout" name="workbench/coffeeanalysis/show">
         <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/coffeeanalysis/show.jspx"/>

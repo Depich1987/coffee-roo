@@ -11,54 +11,37 @@
     <jsp:output omit-xml-declaration="yes"/>
     
     <spring:url value="/workbench/analysis/coffeeanalysis/find" var="findanalysis_url"/>
+    <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_plural" var="analysisplural_label"/>
     
    <h1 class="page-header">
-    	Recherche Analyse
+    	<spring:message code="searchheadercoffee_label"/>
     </h1>
 
     <div class="panel panel-primary">
 	   	<div class="panel-heading">
-	   		Rechercher Analyses
+	   		<spring:message code="searchresult_label" arguments="${coffeeAnalysis.size()}"/>
 	   	</div>
 	   	<div class="pane panel-body">
-	   		<form:form action="${findanalysis_url}" modelAttribute="filterCoffeeAnalysis" method="post" role="form" cssClass="form-horizontal">
-	   			    <div class="form-group">
-      					<label for="analysisReference" class="col-sm-4 control-label">
-      						<spring:message code="label_com_j1987_coffeeroo_domain_jcoffeeanalysis_reference"/>
-      					</label>
-      					<div class="col-sm-6">
-      						<form:input path="analysisReference" cssClass="form-control" />
-      					</div>
-      				</div>
-	        		<hr />
-	   	            <div class="form-group">
-		   				<div class="col-sm-offset-4 col-sm-10">
-	   		          		<button id="proceed" type="submit"  class="btn btn-success">
-			          			<spring:message code="button_submit"/>
-			          			<![CDATA[&nbsp;&nbsp;]]>
-			          			<span class="glyphicon glyphicon-floppy-save"></span>
-			          		</button>
-				        </div>
-				     </div>
-	   		</form:form>
-	   		
-	   		
+
+	   		<c:if test="${coffeeAnalysis.size() eq 0}">
+	   			<div class="alert alert-info">
+	   				<spring:message code="entity_not_found" arguments="${analysisplural_label}"/>
+	   			</div>
+	   		</c:if>
 	   		<c:if test="${coffeeAnalysis.size() gt 0}">
-   			   
-			        <table:table data="${coffeeAnalysis}" id="l_com_j1987_coffeeroo_domain_JCoffeeAnalysis" path="/workbench/analysis/coffeeanalysis" z="deMOtOjtvLPiAt2FJDCmiluc36M=" create="false" delete="false" >
-			            <table:column date="true" dateTimePattern="${JCoffeeAnalysis__dateofanalysis_date_format}" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_dateOfAnalysis" property="dateOfAnalysis" z="2cZVDYoqNya4rwa4c3x7MRMgIFE="/>
-			            <table:column id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_numberLading" property="numberLading" z="E9w+SGbqYIYQPD3VxQLt21AKwrQ="/>
-			            <table:column id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_truckNumber" property="truckNumber" z="PNIrHcyWo6a9qVF6X8eqCZlqESs="/>
-			            <table:column id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_netWeightOfProductAccepted" property="netWeightOfProductAccepted" z="PH6vfqXhklEcuFUQr1fTwTnT4RI="/>
-			            <table:column id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_provenance" property="provenance" z="wnvLymWdXAcBMgXhbOAdxSMiphc="/>
-			            <table:column id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_dealerEntry" property="dealerEntry"  z="yDGsI2ECC9nS0HQ85pXlnmFeIZs="/>
-			        </table:table>
+		        <table:table data="${coffeeAnalysis}" id="l_com_j1987_coffeeroo_domain_JCoffeeAnalysis" path="/workbench/analysis/cocoaanalysis" z="deMOtOjtvLPiAt2FJDCmiluc36M=" create="false" delete="false" >
+		            <table:column id="c_com_j1987_coffeeroo_domain_JAnalysis_reference" property="reference" z="WU2xee9xMgH9d1jlyTFu2hWHl+0="/>
+            		<table:column id="c_com_j1987_coffeeroo_domain_JAnalysis_status" property="status" z="O68FNC9lwCwz0+br/HJCINCbSG8=" />
+            		<table:column date="true" dateTimePattern="${JAnalysis__dateofanalysis_date_format}" id="c_com_j1987_coffeeroo_domain_JAnalysis_dateOfAnalysis" property="dateOfAnalysis" z="yiycrQEHcIcmqXtxLluDWzmlr+c="/>
+            		<table:column id="c_com_j1987_coffeeroo_domain_JAnalysis_factoryName" property="factoryName" z="pxrvFD/hdm95CYHdxd9sttQcgQo="/>
+            		<table:column id="c_com_j1987_coffeeroo_domain_JAnalysis_supplierName" property="supplierName" z="Ys5tY5I5RjmDhgqAu3B2JOGJrLI="/>
+		        </table:table>
 	   		</c:if>
 	   	</div>
         <div class="panel-footer">
-           <span>
+           <small>
            	<spring:message code="global_sponsored"/>
-           </span>
+           </small>
        </div>
 	</div>
 </div>

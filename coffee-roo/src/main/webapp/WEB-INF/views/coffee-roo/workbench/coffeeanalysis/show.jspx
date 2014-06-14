@@ -6,26 +6,67 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     
-    <page:show id="ps_com_j1987_coffeeroo_domain_JCoffeeAnalysis" object="${coffeeAnalysis}" path="/workbench/analysis/coffeeanalysis" z="w3OboC2vCDtWdAtB0Lau6xnmQDI=" create="false" update="true"  delete="false">
-        <field:display date="true" dateTimePattern="${JCoffeeAnalysis__dateofanalysis_date_format}" field="dateOfAnalysis" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_dateOfAnalysis" object="${coffeeAnalysis}" z="Cogmi+zNsA7Chzyqu7d2YC9I73s="/>
-        <field:display field="numberLading" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_numberLading" object="${coffeeAnalysis}" z="q9DU+QKFN+xO/t49f80DgR/eLCs="/>
-        <field:display field="truckNumber" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_truckNumber" object="${coffeeAnalysis}" z="NlTU7awjIL6WBsg4ES4luvQiMls="/>
-        <field:display field="netWeightOfProductAccepted" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_netWeightOfProductAccepted" object="${coffeeAnalysis}" z="ASbpCayNp3O8PipWfw0TYOcwRcc="/>
-        <field:display field="provenance" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_provenance" object="${coffeeAnalysis}" z="DEizY3jF3iLKFY6OS3ALgONV4KY="/>
-        <field:display field="dealerEntry" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_dealerEntry" object="${coffeeAnalysis}" z="AL8+359SOtEKGWS/RuY0+tunCqw="/>
-        <field:display field="factoryEntry" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_factoryEntry" object="${coffeeAnalysis}" z="TZIhWI5+VQa6EgHmpg2BpBt9Kcg="/>
-        <field:display field="exporterEntry" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_exporterEntry" object="${coffeeAnalysis}" z="dJAlnaV6F1qPquBeJgLKCWWUE/c="/>
-        <field:display field="supplierEntry" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_supplierEntry" object="${coffeeAnalysis}" z="kpWmXHc7HrRb53WoCI+C2a0ZHwE="/>
-        <field:display date="true" dateTimePattern="HH:mm" field="startTime" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_startTime" object="${coffeeAnalysis}" z="JX1+aGyFlG3+I3dmxgBi4NaxYKg="/>
-        <field:display date="true" dateTimePattern="HH:mm" field="endTime" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_endTime" object="${coffeeAnalysis}" z="++cTrAturIdgsSk4VC9988GEjv4="/>
-        <field:display field="totalOfBagPushed" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_totalOfBagPushed" object="${coffeeAnalysis}" z="qgQjoB3rVoxG5vw4ZD3ZAcw86o0="/>
-        <field:display field="totalOfReportedBags" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_totalOfReportedBags" object="${coffeeAnalysis}" z="U+STx+GoWILZh8Z9Ti+8FXTdAPI="/>
-        <field:display field="numberOfBagAllowed" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_numberOfBagAllowed" object="${coffeeAnalysis}" z="YdnGjLTN86LMz6V43kKUiBHBElU="/>
-        <field:display field="sampleCode" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_sampleCode" object="${coffeeAnalysis}" z="WnLI+/BHDTfLLBsBq/ow8gJIRO4="/>
-        <field:display field="numberSAIGIC" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_numberSAIGIC" object="${coffeeAnalysis}" z="ZKdtiXMiqo1v84PSOpLm4YHhd8Q="/>
-        <field:display date="true" dateTimePattern="${JCoffeeAnalysis__creationdate_date_format}" field="creationDate" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_creationDate" object="${coffeeAnalysis}" z="yKtb/EwsNdRY+pqWKNAwA7VWGeY="/>
-        <field:display field="createdBy" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_createdBy" object="${coffeeAnalysis}" z="GjG2YSDSHXyydMvqjekweR5uuIY="/>
-        <field:display date="true" dateTimePattern="${JCoffeeAnalysis__modificationdate_date_format}" field="modificationDate" id="s_com_j1987_coffeeroo_domain_JCoffeeAnalysis_modificationDate" object="${coffeeAnalysis}" z="d+oGcEbPLwzT/0ffCBiJyCDHyIE="/>
-        
+    <page:show id="ps_com_j1987_coffeeroo_domain_JCoffeeAnalysis" object="${coffeeAnalysis}" path="/workbench/coffeeAnalysis/coffeecoffeeAnalysis" z="w3OboC2vCDtWdAtB0Lau6xnmQDI=" create="false" update="true"  delete="false">
+        <div class="row">
+	        <div class="col-sm-4">
+	        	<field:display field="reference" id="s_com_j1987_coffeeroo_domain_JAnalysis_reference" object="${coffeeAnalysis}" z="iYaon1KiDdKHYb60at32iqWXPbs="/>
+	        </div>
+	        <div class="col-sm-4">
+	        	<field:display field="status" id="s_com_j1987_coffeeroo_domain_JAnalysis_status" object="${coffeeAnalysis}" z="Pl938rucKvpikzCZU+9+LbbI6iI="/>
+	        </div>
+        </div>
+        <hr />
+        <div class="row">
+	        <div class="col-sm-4">
+	        	<field:display date="true" dateTimePattern="${JAnalysis__dateofcoffeeAnalysis_date_format}" field="dateOfAnalysis" id="s_com_j1987_coffeeroo_domain_JAnalysis_dateOfAnalysis" object="${coffeeAnalysis}" z="evYmStO97cD1UkUL6F4xoeG1g70="/>
+	        </div>
+        	<div class="col-sm-4">
+        		<field:display date="true" dateTimePattern="HH:mm" field="startTime" id="s_com_j1987_coffeeroo_domain_JAnalysis_startTime" object="${coffeeAnalysis}" z="yP2512wQkR5dZojsfD2VcJH4DWQ="/>
+        	</div>
+        	<div class="col-sm-4">
+        		<field:display date="true" dateTimePattern="HH:mm" field="endTime" id="s_com_j1987_coffeeroo_domain_JAnalysis_endTime" object="${coffeeAnalysis}" z="/pkFhdgoC5uE3nHF0nc4RjeJYJ8="/>
+        	</div>
+        </div>
+        <hr />
+        <div class="row">
+        	<div class="col-sm-4">
+	        	<field:display field="tour" id="s_com_j1987_coffeeroo_domain_JAnalysis_tour" object="${coffeeAnalysis}" z="AKvBkCr49Nhb9rfElRcgyHLhqB8="/>
+   		        <field:display field="factoryName" id="s_com_j1987_coffeeroo_domain_JAnalysis_factoryName" object="${coffeeAnalysis}" z="n7YhO9CZCcp0Nlfl2nFjd1QyStY="/>
+	        </div>
+	        <div class="col-sm-4">
+	        	<field:display field="provenanceName" id="s_com_j1987_coffeeroo_domain_JAnalysis_provenanceName" object="${coffeeAnalysis}" z="xAbZhBxEKxnq49Ma63i1JP9B8rk="/>
+   		        <field:display field="exporterName" id="s_com_j1987_coffeeroo_domain_JAnalysis_exporterName" object="${coffeeAnalysis}" z="kXS9nJvKkv0GEHidkeSTXe/oXic="/>
+	        </div>
+	        <div class="col-sm-4">
+	        	<field:display field="dealerName" id="s_com_j1987_coffeeroo_domain_JAnalysis_dealerName" object="${coffeeAnalysis}" z="60QzQt4+tbFWpYrIbSW7bMb0h6E="/>
+   		        <field:display field="supplierName" id="s_com_j1987_coffeeroo_domain_JAnalysis_supplierName" object="${coffeeAnalysis}" z="lFpvWZ+GMAy6MFz3zw+QkbcgCQQ="/>
+	        </div>
+        </div>
+        <hr />
+        <div class="row">
+        	<div class="col-sm-4">
+        		<field:display field="sampleCode" id="s_com_j1987_coffeeroo_domain_JAnalysis_sampleCode" object="${coffeeAnalysis}" z="pSRqHQAi0FV7YAhC4mX7MqmJtjY="/>
+        		<field:display field="numberSAIGIC" id="s_com_j1987_coffeeroo_domain_JAnalysis_numberSAIGIC" object="${coffeeAnalysis}" z="XogyFIWJBHulqWMmAA75T+MnIu0="/>
+        	</div>
+        	<div class="col-sm-4">
+        		<field:display field="netWeightOfProductAccepted" id="s_com_j1987_coffeeroo_domain_JAnalysis_netWeightOfProductAccepted" object="${coffeeAnalysis}" z="N9zupNHZ1iUwRLdQzw2Qk009evw="/>
+        		<field:display field="totalOfBagPushed" id="s_com_j1987_coffeeroo_domain_JAnalysis_totalOfBagPushed" object="${coffeeAnalysis}" z="Z1dLoAiH/6zQPtUBLaQR3Ljk3T4="/>
+        	</div>
+        	<div class="col-sm-4">
+        		<field:display field="totalOfReportedBags" id="s_com_j1987_coffeeroo_domain_JAnalysis_totalOfReportedBags" object="${coffeeAnalysis}" z="lh8MsqXw0AOLtc0XY7YyzQQRmKI="/>
+        		<field:display field="numberOfBagAllowed" id="s_com_j1987_coffeeroo_domain_JAnalysis_numberOfBagAllowed" object="${coffeeAnalysis}" z="JGLNFL7n/TEHGAs77b0M9C7Zx3U="/>
+        	</div>
+        </div>
+        <hr />
+        <div class="row">
+        	<div class="col-sm-4">
+        		<field:display date="true" dateTimePattern="${JAnalysis__creationdate_date_format}" field="creationDate" id="s_com_j1987_coffeeroo_domain_JAnalysis_creationDate" object="${coffeeAnalysis}" z="+GYcbRCnh3LV7UwFO71OBorCYCc="/>      
+        		<field:display field="createdBy" id="s_com_j1987_coffeeroo_domain_JAnalysis_createdBy" object="${coffeeAnalysis}" z="+GYcbRCnh3LV7UwFO71OBorCYCc="/>
+    		</div>
+        	<div class="col-sm-4">
+        		<field:display date="true" dateTimePattern="${JAnalysis__creationdate_date_format}" field="modificationDate" id="s_com_j1987_coffeeroo_domain_JAnalysis_modificationDate" object="${coffeeAnalysis}" z="+GYcbRCnh3LV7UwFO71OBorCYCc="/>      
+        		<field:display field="modifiedBy" id="s_com_j1987_coffeeroo_domain_JAnalysis_modifiedBy" object="${coffeeAnalysis}" z="+GYcbRCnh3LV7UwFO71OBorCYCc="/>
+    		</div>
+    	</div>
     </page:show>
 </div>

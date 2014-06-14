@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="JasperReportTemplate" pageWidth="6750" pageHeight="595" orientation="Landscape" columnWidth="6750" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="ca3d353c-5351-468e-851a-04dfc7985a60">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="JasperReportTemplate" pageWidth="2794" pageHeight="595" orientation="Landscape" columnWidth="2794" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="ca3d353c-5351-468e-851a-04dfc7985a60">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="2956"/>
+	<property name="ireport.x" value="1650"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="title" class="java.lang.String"/>
 	<field name="reference" class="java.lang.String"/>
@@ -9,937 +9,480 @@
 	<field name="numberLading" class="java.lang.String"/>
 	<field name="truckNumber" class="java.lang.String"/>
 	<field name="netWeightOfProductAccepted" class="java.math.BigDecimal"/>
-	<field name="provenance" class="java.lang.String"/>
+	<field name="provenance.name" class="java.lang.String"/>
 	<field name="dealerEntry" class="java.lang.String"/>
-	<field name="factoryEntry" class="java.lang.String"/>
 	<field name="exporterEntry" class="java.lang.String"/>
 	<field name="supplierEntry" class="java.lang.String"/>
-	<field name="startTime" class="java.util.Date"/>
-	<field name="endTime" class="java.util.Date"/>
+	<field name="totalOfBagPushed" class="java.lang.Long"/>
 	<field name="numberOfBagAllowed" class="java.lang.Long"/>
 	<field name="sampleCode" class="java.lang.String"/>
 	<field name="numberSAIGIC" class="java.lang.String"/>
 	<field name="creationDate" class="java.util.Date"/>
 	<field name="createdBy" class="java.lang.String"/>
-	<field name="submissionsForApproval" class="java.util.List"/>
+	<field name="modifiedBy" class="java.lang.String"/>
+	<field name="modificationDate" class="java.util.Date"/>
 	<field name="poidsMatieresEtrangeres" class="java.math.BigDecimal"/>
 	<field name="pourcentageMatieresEtrangeres" class="java.math.BigDecimal"/>
-	<field name="provenanceName" class="java.lang.String"/>
-	<field name="dealerName" class="java.lang.String"/>
-	<field name="exporterName" class="java.lang.String"/>
-	<field name="factoryName" class="java.lang.String"/>
+	<field name="acceptation" class="java.lang.Boolean"/>
+	<field name="conformity" class="java.lang.Boolean"/>
+	<field name="tauxHumidite1" class="java.math.BigDecimal"/>
+	<field name="tauxHumidite2" class="java.math.BigDecimal"/>
+	<field name="tauxHumidite3" class="java.math.BigDecimal"/>
+	<field name="moyenneTauxHumidite" class="java.math.BigDecimal"/>
+	<field name="nombreFeves" class="java.math.BigDecimal"/>
+	<field name="fevesPar100g" class="java.math.BigDecimal"/>
+	<field name="poidsBrisures" class="java.math.BigDecimal"/>
+	<field name="pourcentageBrisures" class="java.math.BigDecimal"/>
+	<field name="fevesMoisiesPlateau1" class="java.lang.Long"/>
+	<field name="fevesMoisiesPlateau2" class="java.lang.Long"/>
+	<field name="fevesMoisiesPlateau3" class="java.lang.Long"/>
+	<field name="totalFevesMoisies" class="java.lang.Long"/>
+	<field name="pourcentageFevesMoisies" class="java.math.BigDecimal"/>
+	<field name="fevesArdoiseesPlateau1" class="java.lang.Long"/>
+	<field name="fevesArdoiseesPlateau2" class="java.lang.Long"/>
+	<field name="fevesArdoiseesPlateau3" class="java.lang.Long"/>
+	<field name="totalFevesArdoisees" class="java.lang.Long"/>
+	<field name="pourcentageFevesArdoisees" class="java.math.BigDecimal"/>
+	<field name="fevesMiteesPlateau1" class="java.lang.Long"/>
+	<field name="fevesMiteesPlateau2" class="java.lang.Long"/>
+	<field name="fevesMiteesPlateau3" class="java.lang.Long"/>
+	<field name="totalFevesMitees" class="java.lang.Long"/>
+	<field name="pourcentageFevesMitees" class="java.math.BigDecimal"/>
+	<field name="fevesGermeesPlateau1" class="java.lang.Long"/>
+	<field name="fevesGermeesPlateau2" class="java.lang.Long"/>
+	<field name="fevesGermeesPlateau3" class="java.lang.Long"/>
+	<field name="totalFevesGermees" class="java.lang.Long"/>
+	<field name="pourcentageFevesGermees" class="java.math.BigDecimal"/>
+	<field name="fevesPlatesPlateau1" class="java.lang.Long"/>
+	<field name="fevesPlatesPlateau2" class="java.lang.Long"/>
+	<field name="fevesPlatesPlateau3" class="java.lang.Long"/>
+	<field name="totalFevesPlates" class="java.lang.Long"/>
+	<field name="pourcentageFevesPlates" class="java.math.BigDecimal"/>
+	<field name="totalFevesDefectueusesPlateau1" class="java.lang.Long"/>
+	<field name="totalFevesDefectueusesPlateau2" class="java.lang.Long"/>
+	<field name="totalFevesDefectueusesPlateau3" class="java.lang.Long"/>
+	<field name="sommeTotalFevesDefectueuses" class="java.lang.Long"/>
+	<field name="pourcentageTotalFevesDefectueuses" class="java.math.BigDecimal"/>
+	<field name="fevesViolettePlateau1" class="java.lang.Long"/>
+	<field name="fevesViolettePlateau2" class="java.lang.Long"/>
+	<field name="fevesViolettePlateau3" class="java.lang.Long"/>
+	<field name="totalFevesViolette" class="java.lang.Long"/>
+	<field name="pourcentageFevesViolette" class="java.math.BigDecimal"/>
+	<field name="classification" class="java.lang.String"/>
 	<field name="supplierName" class="java.lang.String"/>
-	<field name="nombre de sac refoules" class="java.lang.String"/>
-	<field name="nombre de sac acceptes" class="java.lang.String"/>
-	<field name="nature produit" class="java.lang.String"/>
-	<field name="type certification/projet" class="java.lang.String"/>
-	<field name="taux Humidite 1" class="java.math.BigDecimal"/>
-	<field name="taux humidite 2" class="java.math.BigDecimal"/>
-	<field name="taux humidite 3" class="java.math.BigDecimal"/>
-	<field name="moyenne taux humidite " class="java.math.BigDecimal"/>
-	<field name="nombre de feves" class="java.lang.String"/>
-	<field name="feves / 100g" class="java.lang.String"/>
-	<field name="poids brisures" class="java.math.BigDecimal"/>
-	<field name="brisures (%)" class="java.math.BigDecimal"/>
-	<field name="feves moisies plateau1" class="java.lang.String"/>
-	<field name="feves moisies plateau2" class="java.lang.String"/>
-	<field name="feves moisies plateau3" class="java.lang.String"/>
-	<field name="total Feves moisies" class="java.lang.String"/>
-	<field name="feves moisies (%)" class="java.math.BigDecimal"/>
-	<field name="feves ardoisees plateau1" class="java.lang.String"/>
-	<field name="feves ardoisees plateau2" class="java.lang.String"/>
-	<field name="feves ardoisees plateau3" class="java.lang.String"/>
-	<field name="total Feves ardoisees" class="java.lang.String"/>
-	<field name="feves ardoisees (%)" class="java.math.BigDecimal"/>
-	<field name="feves mitees plateau1" class="java.lang.String"/>
-	<field name="feves mitees plateau2" class="java.lang.String"/>
-	<field name="feves mitees plateau3" class="java.lang.String"/>
-	<field name="total Feves mitees" class="java.lang.String"/>
-	<field name="feves mitees (%)" class="java.math.BigDecimal"/>
-	<field name="feves germees plateau1" class="java.lang.String"/>
-	<field name="feves germees plateau2" class="java.lang.String"/>
-	<field name="feves germees plateau3" class="java.lang.String"/>
-	<field name="total Feves germees" class="java.lang.String"/>
-	<field name="f\eves germees (%)" class="java.math.BigDecimal"/>
-	<field name="feves plates plateau1" class="java.lang.String"/>
-	<field name="feves plates plateau2" class="java.lang.String"/>
-	<field name="feves plates plateau3" class="java.lang.String"/>
-	<field name="total Feves plates" class="java.lang.String"/>
-	<field name="feves plates (%)" class="java.math.BigDecimal"/>
-	<field name="total Feves defectueuses PL1" class="java.lang.String"/>
-	<field name="total Feves defectueuses PL2" class="java.lang.String"/>
-	<field name="total Feves defectueuses PL3" class="java.lang.String"/>
-	<field name="somme Total Feves defectueuses" class="java.lang.String"/>
-	<field name="total Feves defectueuses (%)" class="java.math.BigDecimal"/>
-	<field name="feves violettes PL1" class="java.lang.String"/>
-	<field name="feves violettes PL2" class="java.lang.String"/>
-	<field name="feves violettes PL3" class="java.lang.String"/>
-	<field name="Total Feves violettes" class="java.lang.String"/>
-	<field name="Feves violettes (%)" class="java.math.BigDecimal"/>
-	<field name="Classification G1" class="java.lang.String"/>
-	<field name="Classification G2" class="java.lang.String"/>
-	<field name="Classification SG" class="java.lang.String"/>
-	<field name="conformite" class="java.lang.Boolean"/>
-	<field name="Acceptation" class="java.lang.Boolean"/>
-	<field name="nomAnalyseur" class="java.lang.String"/>
+	<field name="dealerName" class="java.lang.String"/>
+	<field name="factoryName" class="java.lang.String"/>
+	<field name="provenanceName" class="java.lang.String"/>
+	<field name="exporterName" class="java.lang.String"/>
+	<field name="exporterEntry.code" class="java.lang.String"/>
+	<field name="supplierEntry.code" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<columnHeader>
 		<band height="31" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="acfb4f0f-da90-48a7-80be-19c4bf8f5938" mode="Opaque" x="388" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
+				<reportElement uuid="acfb4f0f-da90-48a7-80be-19c4bf8f5938" mode="Opaque" x="480" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[Date d'analyse]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="79466b85-2b01-42df-8136-7b35d023960a" mode="Opaque" x="484" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
+				<reportElement uuid="79466b85-2b01-42df-8136-7b35d023960a" mode="Opaque" x="575" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="true"/>
 				</textElement>
-				<text><![CDATA[Numero connaissement]]></text>
+				<text><![CDATA[N° CNT]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="a9a3996b-7477-4bff-a228-32b05deb515e" mode="Opaque" x="580" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
+				<reportElement uuid="a9a3996b-7477-4bff-a228-32b05deb515e" mode="Opaque" x="670" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="true"/>
 				</textElement>
-				<text><![CDATA[Numero du camion]]></text>
+				<text><![CDATA[N° camion]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="5807348b-b24c-493f-b93a-4c00658c82a6" mode="Opaque" x="676" y="1" width="113" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
+				<reportElement uuid="5807348b-b24c-493f-b93a-4c00658c82a6" mode="Opaque" x="1247" y="1" width="112" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[Poids net de produit accepte]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="93a2192d-4523-426c-9093-667f76af4aa9" mode="Opaque" x="790" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Localisation]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="60bac573-e369-4bc6-b7f1-5c51c77397bf" mode="Opaque" x="1" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
+				<reportElement uuid="60bac573-e369-4bc6-b7f1-5c51c77397bf" mode="Opaque" x="0" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[Concessionnaire]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="252c6741-0822-4456-a7c6-836fde133a58" mode="Opaque" x="97" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
+				<reportElement uuid="252c6741-0822-4456-a7c6-836fde133a58" mode="Opaque" x="385" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[Exportateur]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="1d355db1-2f5f-427c-a2e0-8fa2e3e971d7" mode="Opaque" x="886" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
+				<reportElement uuid="1d355db1-2f5f-427c-a2e0-8fa2e3e971d7" mode="Opaque" x="865" y="1" width="96" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[Fournisseur]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="230651c3-f073-4096-8866-cb94c69552da" mode="Opaque" x="982" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
+				<reportElement uuid="ebc99b18-44bb-447d-925a-311b1a4338ea" mode="Opaque" x="1359" y="1" width="96" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="true"/>
 				</textElement>
-				<text><![CDATA[Heure de debut]]></text>
+				<text><![CDATA[Total de sacs refoules]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="718f47a9-e450-43c3-88e3-03ca09814b28" mode="Opaque" x="1078" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
+				<reportElement uuid="ec7c32bf-d35d-458d-8bb6-791eb3ea6818" mode="Opaque" x="1151" y="1" width="96" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="true"/>
 				</textElement>
-				<text><![CDATA[Heure de fin]]></text>
+				<text><![CDATA[Nombre de sacs acceptes]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="ec7c32bf-d35d-458d-8bb6-791eb3ea6818" mode="Opaque" x="1368" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Nombre de sac declares]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="08247d83-cc4c-410a-b9ef-7be19d5c654a" mode="Opaque" x="1464" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
+				<reportElement uuid="08247d83-cc4c-410a-b9ef-7be19d5c654a" mode="Opaque" x="1455" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[Code echantillon]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="e56e1f82-3f8f-4be6-826b-4732b7d53edd" mode="Opaque" x="1560" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
+				<reportElement uuid="e56e1f82-3f8f-4be6-826b-4732b7d53edd" mode="Opaque" x="1056" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="true"/>
 				</textElement>
-				<text><![CDATA[Numero SAIGIC]]></text>
+				<text><![CDATA[N° Pesee SAIGIC]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9c37a4f8-501c-4e44-8dbc-0667a97c70c0" mode="Opaque" x="1656" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
+				<reportElement uuid="0a612812-eca7-41e6-bd05-8239e79437e6" mode="Opaque" x="1835" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="true"/>
 				</textElement>
-				<text><![CDATA[Date de creation]]></text>
+				<text><![CDATA[Moisies]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="df29a022-6ef5-4219-ace1-9e38f60ab801" mode="Opaque" x="1752" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
+				<reportElement uuid="a61c4155-cabe-4a78-9a24-f916ca18ac1b" mode="Opaque" x="1930" y="1" width="96" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="true"/>
 				</textElement>
-				<text><![CDATA[Poids matieres etrangeres]]></text>
+				<text><![CDATA[Ardoisees]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="36f6b87c-b975-4b80-8c30-9301735464b1" mode="Opaque" x="1848" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
+				<reportElement uuid="d7ce60b7-7b90-40ac-b404-aab3acedc7b0" mode="Opaque" x="2026" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="true"/>
 				</textElement>
-				<text><![CDATA[Matieres etrangeres (%)]]></text>
+				<text><![CDATA[Mitees]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="782da822-1abe-4322-942f-a49c8f461c22" mode="Opaque" x="193" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
+				<reportElement uuid="2a85048a-100f-4112-a2d1-66b15cd424ad" mode="Opaque" x="2121" y="1" width="96" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="true"/>
 				</textElement>
-				<text><![CDATA[Usine]]></text>
+				<text><![CDATA[Germees]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="753c308b-8891-4197-aa3b-03575fd66fea" mode="Opaque" x="1174" y="1" width="100" height="29" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
+				<reportElement uuid="566cb483-9dd4-431d-93cb-2ae6dcde3178" mode="Opaque" x="2217" y="1" width="97" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="true"/>
 				</textElement>
-				<text><![CDATA[Nombre de sac refoule]]></text>
+				<text><![CDATA[Plates]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="a16f553f-1bed-40b2-96b8-be0425dc504c" mode="Opaque" x="1275" y="1" width="93" height="29" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
+				<reportElement uuid="f58c85eb-9437-4dd5-89f0-f7c49412973f" mode="Opaque" x="2314" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="true"/>
 				</textElement>
-				<text><![CDATA[Nombre de sac acceptes]]></text>
+				<text><![CDATA[Total Defect]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="0222dea3-9844-433b-ac0b-053625395634" mode="Opaque" x="5350" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
+				<reportElement uuid="70c71fa7-e09b-402d-946d-a500d466b549" mode="Opaque" x="2414" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="true"/>
 				</textElement>
-				<text><![CDATA[Nature produit]]></text>
+				<text><![CDATA[Violettes]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="394a1223-0127-4ac9-b529-58f54bfd0887" mode="Opaque" x="5450" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
+				<reportElement uuid="ed947b27-92f9-4f39-97d4-151e1cdf6532" mode="Opaque" x="2509" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="true"/>
 				</textElement>
-				<text><![CDATA[Type certification/projet]]></text>
+				<text><![CDATA[Classification
+norme ivoirienne]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="75058539-2de4-4bbf-98a0-d6dc74e211db" mode="Opaque" x="5550" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
+				<reportElement uuid="36f6b87c-b975-4b80-8c30-9301735464b1" mode="Opaque" x="1645" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="true"/>
 				</textElement>
-				<text><![CDATA[Taux Humidite 1]]></text>
+				<text><![CDATA[M.E]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="f3845e5e-72f1-4c70-ac6f-b7bda88b0155" mode="Opaque" x="5650" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Taux humidite 2]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="bbc7f690-3849-4ff5-9700-e1209b8b197c" mode="Opaque" x="5750" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Taux humidite 3]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="40bd09c8-fc4c-41ea-aefd-d5fe65321f71" mode="Opaque" x="5850" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Moyenne taux humidite ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="92f6e7df-0b3c-4e3a-87db-b92c516fdcba" mode="Opaque" x="5950" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Nombre de feves]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="037c4d4f-3688-4e4c-bd4f-61d2d453fd7b" mode="Opaque" x="6049" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Feves / 100g]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="b68c8397-93ce-4ef1-b313-c65ae26f9cf7" mode="Opaque" x="6148" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Poids brisures]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="11545ca4-5d84-47eb-8a30-2b38958fd215" mode="Opaque" x="6248" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Brisures (%)]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="d2006fdf-1e61-444b-9c4a-f1b6a448897d" mode="Opaque" x="1944" y="1" width="100" height="29" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Feves moisies plateau1]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="0ee6d3a1-fd9a-4514-a7a7-e94c825e8f5d" mode="Opaque" x="2045" y="1" width="100" height="29" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Feves moisies plateau2]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="b1e6e4d3-169e-426f-93bf-c4f36494462c" mode="Opaque" x="2146" y="1" width="100" height="29" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Feves moisies plateau3]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="002894de-a508-4c73-a9f5-d6b7861e486d" mode="Opaque" x="2247" y="1" width="100" height="29" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Total Feves moisies]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="498d3ce0-63af-4f2e-a9fb-70d5f069bb01" mode="Opaque" x="2348" y="0" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Feves ardoisees plateau1]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="341990a5-4763-4f3b-bd03-9b43e0998f1e" mode="Opaque" x="2449" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Feves ardoisees plateau2]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="4b4db548-8cb6-4415-b811-23338be15dec" mode="Opaque" x="2551" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Feves ardoisees plateau3]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="b73381c8-6ca3-4534-ba9f-1b83c0286db7" mode="Opaque" x="2652" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Total Feves ardoisees]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="8ab4f5fc-bf15-440a-a8ba-28fc9881baf5" mode="Opaque" x="2752" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Feves ardoisees (%)]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="04f39331-a115-400b-b37d-6a2961763c4e" mode="Opaque" x="2853" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Feves mitees plateau1]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="cdacc603-df85-4e29-b110-1ed0a36c5d2b" mode="Opaque" x="2954" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Feves mitees plateau2]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="9524d7ff-ba0b-4951-bb66-4dc5c1c047b6" mode="Opaque" x="3055" y="0" width="100" height="31" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Feves mitees plateau3]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="e0914dfa-3bab-4828-ad42-06a2b9384d18" mode="Opaque" x="3155" y="0" width="100" height="31" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Total Feves mitees]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="4f29448f-d680-4897-a158-58dd98e8afd0" mode="Opaque" x="3256" y="0" width="99" height="31" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Feves mitees (%)]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="da6479e0-368f-4007-a177-d5131eda4aa7" mode="Opaque" x="3355" y="0" width="100" height="31" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Feves germees plateau1]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="1aaba756-46dd-4121-95c3-f9fabec1c52e" mode="Opaque" x="3454" y="0" width="100" height="31" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Feves germees plateau2]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="d2d4723a-294a-4773-b641-3768be9fc4fb" mode="Opaque" x="3554" y="0" width="100" height="31" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Feves germees plateau3]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="138e6e6b-e24c-42f6-a634-92f97ced34b9" mode="Opaque" x="3654" y="0" width="100" height="31" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Total Feves germees]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="69d1a5d4-997b-4338-bb91-3accc4c65755" mode="Opaque" x="3754" y="0" width="100" height="31" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Feves germees (%)]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="8ac481b7-21b7-4cb0-befd-3ae856362d87" mode="Opaque" x="3855" y="0" width="100" height="31" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Feves plates plateau1]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="20cf2098-4d5a-4f06-afad-a29230bc98ee" mode="Opaque" x="3955" y="0" width="100" height="31" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Feves plates plateau2]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="d6f6b1ca-d569-44af-a45e-063da8b34abc" mode="Opaque" x="4055" y="0" width="100" height="31" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Feves plates plateau3]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="0deea99c-07f3-42de-87f5-b57c13cdac98" mode="Opaque" x="4156" y="0" width="100" height="31" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Total Feves plates]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="a67032a8-ec45-4e63-812f-93e19a86479c" mode="Opaque" x="4254" y="0" width="100" height="31" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Feves plates (%)]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="5f9d43e6-be09-4851-b0b0-dd4fc1c03d9b" mode="Opaque" x="4354" y="0" width="100" height="31" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Total Feves defectueuses PL1]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="a831f8d9-4531-44a2-b544-7e327defca04" mode="Opaque" x="4454" y="0" width="100" height="31" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Total Feves defectueuses PL2]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="282e847a-2b82-4677-813a-e185efe74459" mode="Opaque" x="4553" y="0" width="100" height="31" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Total Feves defectueuses PL3]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="77fbb00b-b267-4d26-9f64-c3cfac3f9a0a" mode="Opaque" x="4653" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Somme Total Feves defectueuses]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="7e45d520-b1fa-46d0-9b80-9d5b7fb6ebf4" mode="Opaque" x="4751" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Total Feves defectueuses (%)]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="be7b407a-0fe8-4b85-9f8c-8b836790a871" mode="Opaque" x="4851" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Feves violettes PL1]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="57a64c14-d3e9-4c8a-9278-40d28888483f" mode="Opaque" x="4952" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Feves violettes PL2]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="61767371-ac89-43bc-8fa9-d29e8ee1821b" mode="Opaque" x="5052" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Feves violettes PL3]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="e0d44f72-6e17-4581-863c-acfe2dcd404a" mode="Opaque" x="5152" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Total Feves violettes]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="42d3d8a8-2ba8-4142-851e-771ea865975c" mode="Opaque" x="5251" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Feves violettes (%)]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="ca940c31-8745-4e01-bd0b-fd9eda38fc5b" mode="Opaque" x="6550" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Classification G1]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="ebcad973-daee-4bf2-b737-f5fe2a66294e" mode="Opaque" x="6651" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Classification G2]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="ddc07a3a-4383-4de5-a6c8-12c4df6f182a" mode="Opaque" x="6348" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Conformite]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="eeddd8b0-20a5-4b51-9555-bb6516f08df2" mode="Opaque" x="6449" y="0" width="100" height="31" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="12" isUnderline="true"/>
+				<reportElement uuid="6bf562fa-6c8d-495a-9c8a-d381c4608258" mode="Opaque" x="2604" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[Acceptation]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="a79d26e0-2a6d-4c8c-8491-fe0dc466073f" mode="Opaque" x="289" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
-				<textElement>
-					<font fontName="Arial" size="12" isUnderline="true"/>
+				<reportElement uuid="3af6ce6e-4cf3-4f4d-bbfd-5ce929b12343" mode="Opaque" x="2699" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="true"/>
 				</textElement>
-				<text><![CDATA[Nom analyseur]]></text>
+				<text><![CDATA[Confirmation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="782da822-1abe-4322-942f-a49c8f461c22" mode="Opaque" x="190" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Usine]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b36b28b6-c96e-4b0d-9206-34b587dc1bd0" mode="Opaque" x="1550" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[TH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="73b7f805-bfe4-4080-ac22-8a15974be80a" mode="Opaque" x="1740" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Brisures]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a29b5b38-e41a-4ddd-94de-ee888699ba43" mode="Opaque" x="961" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Origine]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="35d535f0-c6a4-4c68-a85f-ac6132d8d681" mode="Opaque" x="95" y="1" width="95" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Zone]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d3c30771-bf7f-4e9a-b236-9a210e660bca" mode="Opaque" x="285" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Code Exportateur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e4fcb46c-53eb-4d1c-8381-6dba2cb08915" mode="Opaque" x="765" y="1" width="100" height="30" forecolor="#FFFFFF" backcolor="#009933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Code Fournisseur]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="18" splitType="Stretch">
 			<textField>
-				<reportElement uuid="ec22bb36-e2a6-455b-a887-eb9cab984e5f" x="2" y="0" width="95" height="18"/>
+				<reportElement uuid="52ea37be-0c4c-4ef9-a997-91f9477820ee" x="95" y="0" width="95" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{provenance.name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ec22bb36-e2a6-455b-a887-eb9cab984e5f" x="0" y="0" width="95" height="18"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dealerName}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="c3baa269-8303-4aa4-b8e8-e3b88d4503ea" x="887" y="0" width="95" height="18"/>
+				<reportElement uuid="c3baa269-8303-4aa4-b8e8-e3b88d4503ea" x="865" y="0" width="96" height="18"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{supplierName}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="95643219-b3e9-475d-a26b-0faa42ac2d4f" x="983" y="0" width="95" height="18"/>
+				<reportElement uuid="477033ac-fa43-4bf8-84b5-4c4b7c40efdf" x="1359" y="0" width="96" height="18"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{startTime}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{totalOfBagPushed}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="bc225063-58d1-4210-bac0-a677b353e5f3" x="1079" y="0" width="95" height="18"/>
+				<reportElement uuid="3132d773-a808-4dfd-906d-d7063fdecba3" x="1151" y="0" width="96" height="18"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{endTime}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{numberOfBagAllowed}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="3132d773-a808-4dfd-906d-d7063fdecba3" x="1370" y="0" width="93" height="18"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="10"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{nombreSacDeclares}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="9e7a20f0-4388-4ce8-ac3d-423c6c0fa1df" x="1464" y="0" width="95" height="18"/>
+				<reportElement uuid="9e7a20f0-4388-4ce8-ac3d-423c6c0fa1df" x="1455" y="0" width="95" height="18"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{sampleCode}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="fad10cf8-8485-49f4-a50a-6d74ccd853cf" x="1560" y="0" width="95" height="18"/>
+				<reportElement uuid="fad10cf8-8485-49f4-a50a-6d74ccd853cf" x="1056" y="0" width="95" height="18"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{numberSAIGIC}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="018b9d04-a3b7-497b-a443-291065976cca" x="1656" y="0" width="95" height="18"/>
+				<reportElement uuid="de0132d8-3639-4fef-9875-2b4a4b5d5d35" mode="Transparent" x="1930" y="0" width="96" height="18" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="10"/>
+					<font fontName="Arial" size="10" isUnderline="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{creationDate}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{pourcentageFevesArdoisees}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="bae24c87-53b5-4e1d-b874-aa73e8acb516" x="1752" y="0" width="95" height="18"/>
+				<reportElement uuid="d4dd344e-761b-4ba6-8bb1-882cd4d11589" mode="Transparent" x="2026" y="0" width="95" height="18" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="10"/>
+					<font fontName="Arial" size="10" isUnderline="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{poidsMatieresEtrangeres}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{pourcentageFevesMitees}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="00496263-5b99-4094-a78a-52af67272f39" x="1848" y="0" width="95" height="18"/>
+				<reportElement uuid="8c746d34-b3c9-4e41-a82e-551ea1eebf4e" mode="Transparent" x="2121" y="0" width="96" height="18" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pourcentageFevesGermees}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="41fc55f4-0124-48bf-b0e5-f9aa025919b6" mode="Transparent" x="2217" y="0" width="97" height="18" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pourcentageFevesPlates}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="64f48550-15ae-4d1b-b393-41361d4212da" mode="Transparent" x="2314" y="0" width="100" height="18" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pourcentageTotalFevesDefectueuses}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="453682ae-ccce-428c-b35e-37423dcb7cad" mode="Transparent" x="2414" y="0" width="95" height="18" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pourcentageFevesViolette}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cb7d5e61-f03c-4335-9d5f-20d418b2ce84" mode="Transparent" x="2509" y="0" width="95" height="18" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{classification}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="00496263-5b99-4094-a78a-52af67272f39" x="1645" y="0" width="95" height="18"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{pourcentageMatieresEtrangeres}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="36ac0a1c-60cf-49bb-9778-dd1ceeade371" x="790" y="0" width="95" height="18"/>
+				<reportElement uuid="fbc856a4-ce96-47d2-8333-ba28772f1b7f" x="2604" y="0" width="95" height="18"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{provenanceName}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[(new Boolean($F{acceptation}.equals(Boolean.TRUE)) ? ("Oui"):("Non"))]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="7e125108-9ca9-43e1-9bac-d2ff166abe28" x="677" y="0" width="113" height="18"/>
+				<reportElement uuid="58de341d-f42d-49d0-ac1c-191ba3cba2af" x="2699" y="0" width="95" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new Boolean($F{conformity}.equals(Boolean.TRUE)) ? ("Oui"):("Non"))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7e125108-9ca9-43e1-9bac-d2ff166abe28" x="1247" y="0" width="112" height="18"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{netWeightOfProductAccepted}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="620c852e-9565-4dd5-95ca-57915a842afe" x="580" y="0" width="95" height="18"/>
+				<reportElement uuid="620c852e-9565-4dd5-95ca-57915a842afe" x="670" y="0" width="95" height="18"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{truckNumber}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="2162da49-7243-4614-ba83-f25f1eab5197" x="484" y="0" width="95" height="18"/>
+				<reportElement uuid="2162da49-7243-4614-ba83-f25f1eab5197" x="575" y="0" width="95" height="18"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{numberLading}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement uuid="e0780111-f9a2-4125-843a-6ba3f5531cce" x="388" y="0" width="95" height="18"/>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="e0780111-f9a2-4125-843a-6ba3f5531cce" x="480" y="0" width="95" height="18"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dateOfAnalysis}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="8b33675a-c515-47bd-a28f-3b13fd47bd22" x="97" y="0" width="95" height="18"/>
+				<reportElement uuid="8b33675a-c515-47bd-a28f-3b13fd47bd22" x="385" y="0" width="95" height="18"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{exporterName}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="58ae0bb5-f4a5-4c6c-b0f4-d71f6dd65e27" x="193" y="0" width="95" height="18"/>
+				<reportElement uuid="58ae0bb5-f4a5-4c6c-b0f4-d71f6dd65e27" x="190" y="0" width="95" height="18"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{factoryName}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="31923608-86c5-4908-8822-353960325af5" x="1174" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{Nombre de sac refoule}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="1280d16d-d3fe-4ea0-ba6a-d88bf7c401a3" x="1275" y="0" width="95" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{nombreSacAcceptes}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="d7df2463-aa40-4944-a74a-a82e81a0b048" x="5350" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{natureProduit}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="bb8afc93-9e5b-4594-8406-e2946d6ef1cf" x="5450" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{typeCertificationOuProjet}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="084ca4cf-9fcf-405a-9359-c12716b0fc46" x="5550" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{tauxHumidite1}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="9dc10781-215b-46d1-a1e1-c91c093c7bf2" x="5650" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{tauxHumidite2}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="072de767-4a19-4516-9df5-e2c075712365" x="5750" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{tauxHumidite3}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="40ca01b6-7b39-4650-817b-d1366ffb258c" x="5850" y="0" width="100" height="18"/>
-				<textElement/>
+				<reportElement uuid="53c724d3-21ae-4944-aea1-34f45b8f0b38" mode="Transparent" x="1550" y="0" width="95" height="18" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="false"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{moyenneTauxHumidite}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="53ac3c7d-e7a5-410d-91d2-4a4cae77e2e8" x="5950" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{nombreFeves}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="0b444879-28b6-4bff-8243-a95e6b6d49c2" x="6049" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{fevesPar100g}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="974f1aa1-620d-4623-8126-7063096393b1" x="6148" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{poidsBrisures}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="abac75be-8bf8-4def-9a0f-ea94d159530b" x="6248" y="0" width="100" height="18"/>
-				<textElement/>
+				<reportElement uuid="f4bc67d4-e36d-4cc5-b608-7cc36ec42512" mode="Transparent" x="1740" y="0" width="95" height="18" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="false"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{pourcentageBrisures}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="1a67a748-f2dc-4be8-bba8-b4ae5dabbd19" x="1944" y="-1" width="100" height="19"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{fevesMoisiesPlateau1}]]></textFieldExpression>
+				<reportElement uuid="38c07c5f-70f9-469c-96e8-adf18bcbe210" mode="Transparent" x="1835" y="0" width="95" height="18" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pourcentageFevesMoisies}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="e904e743-7736-4564-a9a3-3329d1182f8a" x="2044" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{fevesMoisiesPlateau2}]]></textFieldExpression>
+				<reportElement uuid="184e5ba5-6158-472e-b399-f6b90c842fa3" x="961" y="0" width="95" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{provenance.name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="a0150db6-1097-4a3d-ac90-c837344a1529" x="2146" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{fevesMoisiesPlateau3}]]></textFieldExpression>
+				<reportElement uuid="0255669c-5693-4510-9285-9264aec5a274" x="285" y="0" width="100" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{exporterEntry.code}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="192e729a-7fe1-40ce-8d6e-2a7e3b42adb8" x="2247" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{totalFevesMoisies}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="e408bbae-93e3-4740-bad6-cb481780bc88" x="2349" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{fevesArdoiseesPlateau1}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="04147dac-8537-4058-a620-7f16eedfd991" x="2449" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{fevesArdoiseesPlateau2}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="0d986a3d-81b4-4f4b-b488-e822cae9a34b" x="2551" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{fevesArdoiseesPlateau3}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="3aa432c3-2752-4811-9afb-11e04b38d8cb" x="2652" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{totalFevesArdoisees}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="d8a32e3d-36a7-464a-9461-f7c17c72bf28" x="2752" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{pourcentageFevesArdoisees}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="f8d77a21-5e19-47bf-ab50-ce2766c41619" x="2853" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{fevesMiteesPlateau1}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="ce4638bb-2fb2-400c-aab4-855974fc7663" x="2954" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{fevesMiteesPlateau2}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="60e83c28-dab2-441f-99c8-d3817be17265" x="3055" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{fevesMiteesPlateau3}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="48489c5a-9c41-434d-aa58-adda3176adf5" x="3155" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{totalFevesMitees}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="e33cbc1f-0aa3-4700-8b96-5f457a250412" x="3256" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{pourcentgeFevesMitees}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="8616c1e1-ff8b-4716-9e56-addc234611e3" x="3355" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{fevesGermeesPlateau1}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="6cd61b54-60e3-4d83-a979-52028c5d326f" x="3454" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{fevesGermeesPlateau2}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="923ff91b-425b-495f-af8d-4781554b5cb4" x="3554" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{fevesGermeesPlateau3}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="6aa68e33-2117-437c-88f9-771a5a757bca" x="3654" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{totalFevesGermees}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="0dda380e-f501-472e-a93f-e19353800e9f" x="3754" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{pourcentageFevesGermees}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="8e405246-7f70-45e0-9465-e61cf080f179" x="3855" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{fevesPlatesPlateau1}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="017fc0d9-1411-4941-b249-f96fdc378928" x="3955" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{fevesPlatesPlateau2}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="fb25bb31-bb68-4cd1-81e0-0727e7ec7aa3" x="4055" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{fevesPlatesPlateau3}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="06f50e27-3243-46f6-86f5-6e88c601832c" x="4156" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{totalFevesPlates}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="5b509fd8-d3cf-404c-b38d-2cc035c9739d" x="4254" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{pourcentageFevesPlates}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="e8803252-3ed6-4aac-9894-e0ee366301d3" x="4354" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{totalFevesDefectueusesPL1}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="6f1553b6-e9e2-4b97-97a0-db099bdef2ad" x="4454" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{totalFevesDefectueusesPL2}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="cfbfc97d-73de-47ca-97d7-f7d945f5ff13" x="4553" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{totalFevesDefectueusesPL3}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="8dfe669d-d554-46fb-a02d-ccf036804434" x="4653" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{sommeTotalFevesDefectueuses}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="eaf0542c-5d61-49e1-947f-e5d259db3a3d" x="4751" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{pourcentageTotalFevesDefectueuses}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="9a6d1e5c-8945-4d6a-8b96-4c646b17b5e2" x="4851" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{fevesViolettesPL1}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="d2a2ceb0-abdf-4d1a-b814-428f6060f91f" x="4952" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{fevesViolettesPL2}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="977a75b5-4107-4c1b-b984-f292b2d8364e" x="5052" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{fevesViolettesPL3}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="fd3246ac-0b83-41d1-b70e-a88949b9a549" x="5152" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{totalFevesViolettes}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="e821bf42-3032-40e3-ab00-f003d93d33b2" x="5251" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{pourcentageFevesViolettes}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="ce9a538a-018c-4e07-8521-4f40d397840c" x="6550" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{Classification G1}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="3dafb4e1-4e0c-4b96-8f54-469af63d51b3" x="6651" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{Classification G2}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="b731118e-39b5-4ba1-9b0f-d7801bbab3eb" x="6348" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{conformite}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="91f3a6c5-22f3-4ce3-8397-100cd53f6e36" x="6449" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{acceptation}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="1441e4c0-2824-4185-8502-64ec95165901" x="289" y="0" width="100" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{nomAnalyseur}]]></textFieldExpression>
+				<reportElement uuid="8c153738-a2df-40a9-9e42-b6ca7ff0f053" x="765" y="0" width="100" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{supplierEntry.code}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -12,4 +12,51 @@
         <field:input field="phoneNumber" id="c_com_j1987_coffeeroo_domain_JUser_phoneNumber" z="YB0npndxjgz1t7Okce4sNJaF3GY="/>
         <field:input field="email" id="c_com_j1987_coffeeroo_domain_JUser_email" validationMessageCode="field_invalid_email" z="IidVBHjyld6RnWHYASI4nWGEQjg="/>
     </form:update>
+    <SCRIPT type="text/javascript">
+		$(document).ready(function(){
+			
+    		$.validator.addMethod("confirmpassword",function(value, element){
+
+    			return value == $('#_password_id').val();
+    		}, 'Veuillez confirmer le mot passe SVP!');
+    		
+    		$.validator.addMethod("chekUserName", function(value, element) {
+    			var isSuccess = false;
+    			$.ajax({url:'${validateusername_url}',
+    				type:'post',
+    				dataType:'json',
+    				data:{userName:value},
+    				async:false,
+    				success:function(v){
+    					if (v === true || value == '${user.userName}' ) {
+    						isSuccess = true;
+    					}
+    				},error:function(err,xhr,status){
+    					alert('Une Erreur est survenue dans la verification du login!');
+    					console.log(err);
+    				}
+    				});
+    			return isSuccess;
+    			
+       		 
+   		 }, "Désolé, ce nom utilisateur est deja utilise!");
+    		
+    		$.validator.addMethod("validateExpressionUserName", function(value, element){
+    			var s = element.value;
+    			s.replace(/[\wÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ]/g,"");
+    			return this.optional(element) || /^[a-zA-Z0-9]+$/.test( value );
+    		},"Les caracteres speciaux et/ou accentues ne sont pas acceptes");
+			
+    		$('#user').validate({
+    			rules:{
+    				userName:{required:true,chekUserName:true, validateExpressionUserName: true},
+    				lastName:{required:true},
+    				firstName:{required:true},
+    				password:{required:true},
+    				confirmPassword:{required:true,confirmpassword:true},
+    				email:{email:true}
+    				}
+    		}); 
+		});
+	</SCRIPT>
 </div>

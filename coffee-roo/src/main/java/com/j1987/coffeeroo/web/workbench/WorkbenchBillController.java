@@ -11,6 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -26,24 +27,25 @@ import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
 import com.j1987.coffeeroo.domain.JBill;
+import com.j1987.coffeeroo.domain.JBridge;
 import com.j1987.coffeeroo.domain.JCoffeeAnalysis;
-import com.j1987.coffeeroo.domain.JCompany;
 import com.j1987.coffeeroo.domain.JFactory;
 import com.j1987.coffeeroo.domain.JSubmissionForApproval;
 import com.j1987.coffeeroo.framework.JUtils;
 import com.j1987.coffeeroo.services.dao.BillService;
-import com.j1987.coffeeroo.services.dao.CompanyService;
 import com.j1987.coffeeroo.services.dao.FactoryService;
 import com.j1987.coffeeroo.services.dao.SubmissionService;
 import com.j1987.coffeeroo.services.security.JSecurityService;
-import com.j1987.coffeeroo.web.form.ReportFilterForm;
+import com.j1987.coffeeroo.web.form.BillEvaluateForm;
+import com.j1987.coffeeroo.web.form.FilterAnalysisForm;
 
 @Controller
 @RequestMapping(value = "/workbench/bills")
 public class WorkbenchBillController {
 	
 	private static final String UPDATE_VIEW = "workbench/bills/update";
-//	private static final String FIND_VIEW = "workbench/bills/find";
+	private static final String EVALUATEPARAMS_VIEW = "workbench/bills/evaluateparams";
+	private static final String EVALUATE_VIEW = "workbench/bills/evaluate";
 	private static final String SHOW_VIEW = "workbench/bills/show";
 	private static final String LIST_VIEW = "workbench/bills/list";
 	private static final String CREATE_VIEW = "workbench/bills/create";
@@ -55,9 +57,7 @@ public class WorkbenchBillController {
 	
 	@Autowired
 	private JSecurityService securityService;
-	
-	@Autowired
-	private CompanyService companyService;
+
 	
 	@Autowired
 	private FactoryService factoryService;
@@ -93,6 +93,19 @@ public class WorkbenchBillController {
         return "redirect:/workbench/bills/" + encodeUrlPathSegment(bill.getId().toString(), httpServletRequest);
     }
 	
+	
+	@RequestMapping(value = "/evaluate", params="form", method= RequestMethod.GET)
+	public String evaluateBillForm(Model uiModel, HttpServletRequest httpServletRequest){
+		
+		HttpSession session = httpServletRequest.getSession();
+    	String factoryCode = (String)session.getAttribute(JUtils.HTTP_SESSION_FACTORY_CODE);
+    	
+		populateEditBillEvaluator(uiModel, new FilterAnalysisForm() , factoryCode);
+		
+		
+		return EVALUATEPARAMS_VIEW;
+	}
+	
     @RequestMapping(value = "/generatefile/{id}",method = RequestMethod.GET)
     public String generateBillreport(@PathVariable("id")Long id,
     		@RequestParam("format")String format,
@@ -123,10 +136,10 @@ public class WorkbenchBillController {
                 uiModel.addAttribute("error", "message_emptyresults_noreportgeneration");
                 return "redirect:/workbench/bills/" + encodeUrlPathSegment(id.toString(), httpServletRequest);
         }
-        JCompany company = companyService.findCompanyById(Long.valueOf(1));
+//        JCompany company = companyService.findCompanyById(Long.valueOf(1));
         
-        uiModel.addAttribute("coffeePrice", company.getCoffeePrice());
-        uiModel.addAttribute("cocoaPrice", company.getCocoaPrice());
+//        uiModel.addAttribute("coffeePrice", company.getCoffeePrice());
+//        uiModel.addAttribute("cocoaPrice", company.getCocoaPrice());
         uiModel.addAttribute("numberToWord", "");
         uiModel.addAttribute("productType", "Cafe");
         uiModel.addAttribute("format", format);
@@ -227,16 +240,16 @@ public class WorkbenchBillController {
         for (JSubmissionForApproval jSubmissionForApproval : submissionForApprovals) {
 			for (JCoffeeAnalysis analysis : jSubmissionForApproval.getAnalyzesCoffee()) {
 				
-				totalWeightAllowed = totalWeightAllowed.add(analysis.getNetWeightOfProductAccepted());
-				bill.setTourName(analysis.getTour().getName());
-				bill.setFactoryCode(analysis.getFactoryEntry().getCode());
-				bill.setFactoryName(analysis.getFactoryEntry().getName());
-				bill.setExporterName(analysis.getExporterEntry().getName());
+//				totalWeightAllowed = totalWeightAllowed.add(analysis.getNetWeightOfProductAccepted());
+//				bill.setTourName(analysis.getTour().getName());
+//				bill.setFactoryCode(analysis.getFactoryEntry().getCode());
+//				bill.setFactoryName(analysis.getFactoryEntry().getName());
+//				bill.setExporterName(analysis.getExporterEntry().getName());
 			}
 		}
         
-        JCompany company = JCompany.findJCompany(Long.valueOf("1"));
-        bill.setAmountWithoutTaxes(company.getCoffeePrice().multiply(totalWeightAllowed));
+//        JCompany company = JCompany.findJCompany(Long.valueOf("1"));
+//        bill.setAmountWithoutTaxes(company.getCoffeePrice().multiply(totalWeightAllowed));
         bill.setTotalWeightProductAllowed(totalWeightAllowed);
         bill.setTotalWeightProductPushed(new BigDecimal("0"));
         
@@ -245,6 +258,27 @@ public class WorkbenchBillController {
         if(!submissionForApprovals.isEmpty()){
         	uiModel.addAttribute("submissions", submissionForApprovals);
         }
+    }
+    
+    void populateEditBillEvaluator(Model uiModel, FilterAnalysisForm filterAnalysisForm, String factoryCode){
+    	uiModel.addAttribute("filterAnalysisForm", filterAnalysisForm);
+    	uiModel.addAttribute("currentNav", "evaluatebill");
+    	
+    	List<JFactory>  factories = null;
+    	
+    	if(factoryCode == null){
+    		 factories = factoryService.findAllFactories();
+    	}else{
+    		factories = factoryService.findFactoriesByCodeEquals(factoryCode);
+    	}
+    	
+    	 JFactory factory = null;
+    	if(!factories.isEmpty()){
+    		uiModel.addAttribute("factories", factories);
+    		factory = factories.get(0);
+    		filterAnalysisForm.setFactoryFilter(factory.getCode());
+    	}
+    	
     }
     
     void populateEditListFilterForm(Model uiModel, String factoryCode){

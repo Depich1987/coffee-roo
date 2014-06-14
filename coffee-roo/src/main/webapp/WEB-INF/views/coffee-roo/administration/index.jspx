@@ -11,8 +11,4 @@
   
   <h1 class="page-header">${title}</h1>
   
-  <p>
-  	<spring:message code="welcome_text"/>
-  </p>
-  
 </div>

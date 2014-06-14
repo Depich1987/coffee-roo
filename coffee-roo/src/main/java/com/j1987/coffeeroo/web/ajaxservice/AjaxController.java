@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.j1987.coffeeroo.domain.JAnalysis;
 import com.j1987.coffeeroo.domain.JBridge;
 import com.j1987.coffeeroo.domain.JFactory;
+import com.j1987.coffeeroo.services.dao.AnalysisService;
 import com.j1987.coffeeroo.services.dao.BridgeService;
 import com.j1987.coffeeroo.services.dao.FactoryService;
 
@@ -24,8 +26,19 @@ public class AjaxController {
 	@Autowired
 	private BridgeService bridgeService;
 	
+	@Autowired
+	private AnalysisService analysisService;
+	
 	public AjaxController() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	@RequestMapping(value = "/checkcode", method = RequestMethod.POST, produces = "application/json")
+	public @ResponseBody  boolean checkBridgeCode(@RequestParam("reference")String reference){
+		boolean valid = false;
+		List<JAnalysis> analyzes = analysisService.findAnalysisByReferenceEquals(reference);
+		if(analyzes.isEmpty()) valid = true;
+		return valid;
 	}
 	
 	@RequestMapping(value = "/getnewbridgecode", method = RequestMethod.POST, produces = "application/json")

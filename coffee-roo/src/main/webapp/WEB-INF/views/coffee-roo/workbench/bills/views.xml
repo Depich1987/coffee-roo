@@ -18,4 +18,8 @@
         <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/bills/update.jspx"/>
     </definition>
     
+   	<definition extends="workbenchLayout" name="workbench/bills/evaluateparams">
+        <put-attribute name="body" value="/WEB-INF/views/coffee-roo/workbench/bills/evaluateparams.jspx"/>
+    </definition>
+    
 </tiles-definitions>

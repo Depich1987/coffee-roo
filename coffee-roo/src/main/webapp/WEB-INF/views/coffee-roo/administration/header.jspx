@@ -46,7 +46,6 @@
               <li>
               	<a href="${workbench_url}">
 					<spring:message code="workbench_label"/>
-					<span class="glyphicon glyphicon-dashboard"></span>
 				</a>
               </li>
             </ul>

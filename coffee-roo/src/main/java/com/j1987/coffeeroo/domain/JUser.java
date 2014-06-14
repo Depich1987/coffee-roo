@@ -45,9 +45,6 @@ public class JUser {
 
     @ManyToMany
     private List<JRole> roles = new ArrayList<JRole>();
-
-    @ManyToMany
-    private List<JCompany> companies = new ArrayList<JCompany>();
     
     @ManyToMany
     private List<JFirm> firms = new ArrayList<JFirm>();

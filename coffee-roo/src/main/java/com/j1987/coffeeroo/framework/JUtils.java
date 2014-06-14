@@ -10,8 +10,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.tools.ant.Project;
 import org.apache.tools.ant.taskdefs.SQLExec;
 
-import com.j1987.coffeeroo.domain.JCompany;
 import com.j1987.coffeeroo.domain.JFactory;
+import com.j1987.coffeeroo.domain.JFirm;
 
 public class JUtils {
 
@@ -142,8 +142,8 @@ public class JUtils {
 		for (T obj : collection) {
 			String prop = null;
 			// Access the property (ex: the name)
-			if (obj instanceof JCompany) {
-				prop = ((JCompany) obj).getName();
+			if (obj instanceof JFirm) {
+				prop = ((JFirm) obj).getName();
 
 			} else if (obj instanceof JFactory) {
 				prop = ((JFactory) obj).getName();

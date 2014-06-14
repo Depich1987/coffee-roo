@@ -59,11 +59,6 @@ public class JCoffeeAnalysis {
     
     @Transient
     private String provenanceName;
-
-    /**
-     */
-    @ManyToOne
-    private JDealer dealerEntry;
     
     @Transient
     private String dealerName;
@@ -286,6 +281,14 @@ public class JCoffeeAnalysis {
     /**
      */
     private BigDecimal pourcentageGrainsAcceptablesImmature;
+    
+    /**
+     */
+    private BigDecimal poidsSousTotalGrainsAcceptables;
+    
+    /**
+     */
+    private BigDecimal pourcentageSousTotalGrainsAcceptables;
 
     /**
      */

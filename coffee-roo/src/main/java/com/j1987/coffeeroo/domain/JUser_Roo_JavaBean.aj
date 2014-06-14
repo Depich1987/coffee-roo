@@ -3,7 +3,6 @@
 
 package com.j1987.coffeeroo.domain;
 
-import com.j1987.coffeeroo.domain.JCompany;
 import com.j1987.coffeeroo.domain.JFactory;
 import com.j1987.coffeeroo.domain.JFirm;
 import com.j1987.coffeeroo.domain.JRole;
@@ -74,14 +73,6 @@ privileged aspect JUser_Roo_JavaBean {
     
     public void JUser.setRoles(List<JRole> roles) {
         this.roles = roles;
-    }
-    
-    public List<JCompany> JUser.getCompanies() {
-        return this.companies;
-    }
-    
-    public void JUser.setCompanies(List<JCompany> companies) {
-        this.companies = companies;
     }
     
     public List<JFirm> JUser.getFirms() {

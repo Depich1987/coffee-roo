@@ -43,12 +43,12 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
 		
-//		JDataImporter.getInstance(
-//				propertiesService.getSqlScript(), 
-//				propertiesService.getDbDriverClassName(), 
-//				propertiesService.getDbURL(), 
-//				propertiesService.getDbUserName(), 
-//				propertiesService.getDbPassword());
+		JDataImporter.getInstance(
+				propertiesService.getSqlScript(), 
+				propertiesService.getDbDriverClassName(), 
+				propertiesService.getDbURL(), 
+				propertiesService.getDbUserName(), 
+				propertiesService.getDbPassword());
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		

@@ -10,15 +10,20 @@
     
     <spring:message code="workbench_analysis_generalinformations" var="generalinfos_label"/>
     <spring:message code="workbench_analysis_technincalinformations" var="technincalinfos_label"/>
+    <spring:message code="analysiscoffee_labelplural" var="analysis_plural"/>
+    
+    <spring:url value="/ajaxrequest/getfactoryparent" var="getfactoryparent_url"/>
+    <spring:url value="/ajaxrequest/checkcode" var="chechreference_url"/>
+    
+    <spring:url value="/workbench/analysis/coffeeanalysis/list?size=10" var="coffeeanalysis_url" />
 
 	<h1 class="page-header">
-    	COFFEE ANALYSIS
+    	${analysis_plural}
     </h1>
     <div class="btn-toolbar" role="toolbar" style="margin-bottom: 15px;">
     	<div class="btn-group">
-	    		<spring:url value="${path}/list?size=10" var="list_url"/>
-		    	<a href="${list_url}" class="btn btn-default">
-		    		<spring:message code="entity_list_all" arguments="${labelPlural}" />
+		    	<a href="${coffeeanalysis_url}" class="btn btn-default">
+		    		<spring:message code="entity_list_all" arguments="${analysis_plural}" />
 		    		<![CDATA[&nbsp;&nbsp;]]>
 		    		<span class="glyphicon glyphicon-list-alt"></span>
 		    	</a>
@@ -27,7 +32,8 @@
     
     <div class="panel panel-primary">
     	<div class="panel-heading">
-    		ENTETE FORMULAIRE
+    		<spring:message code="analysiscoffee_label" var="analysiscoffee_label"/>
+    		<spring:message code="entity_create" arguments="${analysiscoffee_label}"/>
     	</div>
     	<div class="panel-body">
            <p>
@@ -35,7 +41,8 @@
 		        	<!-- error place -->
 		        </div>
 	        </p>
-	        <form:form modelAttribute="coffeeAnalysisForm" action="/workbench/analysis/coffeeanalysis/create">
+	        <spring:url value="/workbench/analysis/coffeeanalysis/create" var="form_url"/>
+	        <form:form modelAttribute="coffeeAnalysisForm" action="${form_url}" method="post">
 
 		        <FIELDSET>
 		        	<LEGEND>
@@ -44,12 +51,19 @@
 		        	
 	        	<!-- ******************* SELECT FIELD ******************** -->
 	        	
-		        	<div class="row">
+					<div class="row">
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="reference" class="control-label">
+						        <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_reference"/>
+						      </label>
+			   					<form:input path="reference" cssClass="form-control"/>
+			    			</div>
+		        		</div>
 		        		<div class="col-sm-4">
    			   				<div class="form-group">
 						      <label for="tourId" class="control-label">
 						        <spring:message code="label_com_j1987_coffeeroo_domain_jtour"/>
-						        :
 						      </label>
 			   					<select  name="tourId" id="tourId" class="form-control">
 			   						<c:forEach items="${tours}" var="tour">
@@ -58,14 +72,29 @@
 			   							</option>
 			   						</c:forEach>
 			   					</select>
-
+			    			</div>
+		        		</div>
+	        		</div>
+		       		<hr />
+		        	<div class="row">
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="dealerCode" class="control-label">
+						        <spring:message code="label_com_j1987_coffeeroo_domain_jdealer"/>
+						      </label>
+			   					<select  name="dealerCode" id="dealerCode" class="form-control">
+			   						<c:forEach items="${firms}" var="firm">
+			   							<option value="${firm.dealerCode}">
+			   								${firm.name}
+			   							</option>
+			   						</c:forEach>
+			   					</select>
 			    			</div>
 		        		</div>
 		        		<div class="col-sm-4">
    			   				<div class="form-group">
 						      <label for="exporterCode" class="control-label">
 						        <spring:message code="label_com_j1987_coffeeroo_domain_jexporter"/>
-						        :
 						      </label>
 			   					<form:select path="exporterCode" class="form-control">
 			   						<form:options items="${exporters}" itemLabel="name" itemValue="code" />
@@ -76,7 +105,6 @@
    			   				<div class="form-group">
 						      <label for="supplierCode" class="control-label">
 						        <spring:message code="label_com_j1987_coffeeroo_domain_jsupplier"/>
-						        :
 						      </label>
 			   					<form:select path="supplierCode" class="form-control">
 			   						<form:options items="${suppliers}" itemLabel="name" itemValue="code" />
@@ -84,14 +112,11 @@
 			    			</div>
 		        		</div>
 		       		</div>
-		       		
-		       		
 		        	<div class="row">
 		        		<div class="col-sm-4">
 	   			   				<div class="form-group">
 							      <label for="provenance" class="control-label">
 							        <spring:message code="label_com_j1987_coffeeroo_domain_jlocalization"/>
-							        :
 							      </label>
 				   					<form:select path="provenance" class="form-control">
 				   						<form:options items="${localizations}" itemLabel="name" itemValue="id" />
@@ -100,17 +125,21 @@
 		        		</div>
 		        		<div class="col-sm-4">
 		        			<div class="form-group">
-						      <label for="factoryCode" class="control-label">
-						        <spring:message code="label_com_j1987_coffeeroo_domain_jfactory"/>
-						        :
+						      <label for="bridgeCode" class="control-label">
+						        <spring:message code="label_com_j1987_coffeeroo_domain_jbridge"/>
 						      </label>
-			   					<form:select path="factoryCode" class="form-control">
-			   						<form:options items="${factories}" itemLabel="name" itemValue="code" />
+			   					<form:select path="bridgeCode" class="form-control">
+			   						<form:options items="${bridges}" itemLabel="name" itemValue="code" />
 			   					</form:select>
 			    			</div>
 		        		</div>
 		        		<div class="col-sm-4">
-		        			<p></p>
+		        			<div class="form-group">
+						      <label for="factoryCode" class="control-label">
+						        <spring:message code="label_com_j1987_coffeeroo_domain_jfactory"/>
+						      </label>
+								<form:input path="factoryCode" cssClass="form-control" readonly="true"/>
+			    			</div>
 		        		</div>
 		       		</div>
 		       		
@@ -119,26 +148,34 @@
 	       		<hr></hr>
 	       		
 					<div class="row">
-		        		<div class="col-sm-4">
+		        		<div class="col-sm-3">
+   			   				<div class="form-group">
+						      <label for="startTime" class="control-label">
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_dateofanalysis"/>
+						      </label>
+						      <form:input path="dateOfAnalysis" class="form-control"/>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-3">
    			   				<div class="form-group">
 						      <label for="numberLading" class="control-label">
-						       Numero Connaissement :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_numberlading"/>
 						      </label>
 						      <form:input path="numberLading" class="form-control"/>
 			    			</div>
 		        		</div>
-		        		<div class="col-sm-4">
+		        		<div class="col-sm-3">
    			   				<div class="form-group">
 						      <label for="truckNumber" class="control-label">
-						       Numero Camion :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_trucknumber"/>
 						      </label>
 						      <form:input path="truckNumber" class="form-control"/>
 		        		</div>
 		        		</div>
-		        		<div class="col-sm-4">
+		        		<div class="col-sm-3">
 		        			<div class="form-group">
 						      <label for="netWeightOfProductAccepted" class="control-label">
-						       Poids net de produit accepte :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_netweightofproductaccepted"/>
 						      </label>
 						      <form:input path="netWeightOfProductAccepted" class="form-control"/>
 						     </div>
@@ -146,26 +183,34 @@
 		       		</div>	       		
 	       		
 	       			<div class="row">
-		        		<div class="col-sm-4">
+		        		<div class="col-sm-3">
+   			   				<div class="form-group">
+						      <label for="startTime" class="control-label">
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_starttime"/>
+						      </label>
+						      <form:input path="startTime" class="form-control"/>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-3">
    			   				<div class="form-group">
 						      <label for="totalOfBagPushed" class="control-label">
-						       Sac total refoule :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_totalofbagpushed"/>
 						      </label>
 						      <form:input path="totalOfBagPushed" class="form-control"/>
 			    			</div>
 		        		</div>
-		        		<div class="col-sm-4">
+		        		<div class="col-sm-3">
    			   				<div class="form-group">
 						      <label for="totalOfReportedBags" class="control-label">
-						       Sac total reporte :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_totalofreportedbags"/>
 						      </label>
 						      <form:input path="totalOfReportedBags" class="form-control"/>
 		        		</div>
 		        		</div>
-		        		<div class="col-sm-4">
+		        		<div class="col-sm-3">
 		        			<div class="form-group">
 						      <label for="numberOfBagAllowed" class="control-label">
-						       Numero de sac declare :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_numberofbagallowed"/>
 						      </label>
 						      <form:input path="numberOfBagAllowed" class="form-control"/>
 						     </div>
@@ -173,23 +218,31 @@
 		       		</div>	      
 	       			
 	       			<div class="row">
-		        		<div class="col-sm-4">
+		        		<div class="col-sm-3">
+   			   				<div class="form-group">
+						      <label for="endTime" class="control-label">
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_endtime"/>
+						      </label>
+						      <form:input path="endTime" class="form-control"/>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-3">
    			   				<div class="form-group">
 						      <label for="sampleCode" class="control-label">
-						       Code echantillon :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_samplecode"/>
 						      </label>
 						      <form:input path="sampleCode" class="form-control"/>
 			    			</div>
 		        		</div>
-		        		<div class="col-sm-4">
+		        		<div class="col-sm-3">
    			   				<div class="form-group">
 						      <label for="numberSAIGIC" class="control-label">
-						       Numero SAIGIC :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_numbersaigic"/>
 						      </label>
 						      <form:input path="numberSAIGIC" class="form-control"/>
 		        			</div>
 		        		</div>
-		        		<div class="col-sm-4">
+		        		<div class="col-sm-3">
    			   				<div class="form-group">
 						      <p></p>
 		        			</div>
@@ -205,13 +258,53 @@
 		        	<div class="row">
 		        		<div class="col-sm-4">
 		        			<h4>
+		        				Taux Humidite %
+		        			</h4>
+		        		</div>
+		        		<div class="col-sm-2">
+   			   				<div class="form-group">
+						      <label for="tauxHumidite1" class="control-label">
+						       Prise 1 :
+						      </label>
+						      <form:input path="tauxHumidite1" class="form-control"/>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-2">
+   			   				<div class="form-group">
+							      <label for="tauxHumidite2" class="control-label">
+							       Prise 2 :
+							      </label>
+							      <form:input path="tauxHumidite2" class="form-control"/>
+			        		</div>
+		        		</div>
+		        		<div class="col-sm-2">
+   			   				<div class="form-group">
+							      <label for="tauxHumidite3" class="control-label">
+							       Prise 3 :
+							      </label>
+							      <form:input path="tauxHumidite3" class="form-control"/>
+			        		</div>
+		        		</div>
+		        		<div class="col-sm-2">
+   			   				<div class="form-group">
+							      <label for="moyenneTauxHumidite" class="control-label">
+							       Moy % :
+							      </label>
+							      <form:input path="moyenneTauxHumidite" class="form-control" readonly="true"/>
+			        		</div>
+		        		</div>
+		       		</div>	  
+		        	<hr/>
+		        	<div class="row">
+		        		<div class="col-sm-4">
+		        			<h4>
 		        				Rubrique
 		        			</h4>
 		        		</div>
 		        		<div class="col-sm-4">
    			   				<div class="form-group">
 						      <label for="poidsMatieresEtrangeres" class="control-label">
-						       Poids matieres etrangeres :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_poidsmatieresetrangeres"/>
 						      </label>
 						      <form:input path="poidsMatieresEtrangeres" class="form-control"/>
 			    			</div>
@@ -219,9 +312,9 @@
 		        		<div class="col-sm-4">
    			   				<div class="form-group">
 						      <label for="pourcentageMatieresEtrangeres" class="control-label">
-						       Matieres etrangeres (%) :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_pourcentagematieresetrangeres"/>
 						      </label>
-						      <form:input path="pourcentageMatieresEtrangeres" class="form-control"/>
+						      <form:input path="pourcentageMatieresEtrangeres" class="form-control" readonly="true"/>
 		        		</div>
 		        		</div>
 		       		</div>	  
@@ -236,7 +329,7 @@
 		        		<div class="col-sm-4">
 	  			   				<div class="form-group">
 						      <label for="poidsDechetsParches" class="control-label">
-						       Poids dechets parches :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_poidsdechetsparches"/>
 						      </label>
 						      <form:input path="poidsDechetsParches" class="form-control"/>
 			    			</div>
@@ -244,9 +337,9 @@
 		        		<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="pourcentageDechetsParches" class="control-label">
-						       Dechets Parches (%) :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_pourcentagedechetsparches"/>
 						      </label>
-						      <form:input path="pourcentageDechetsParches" class="form-control"/>
+						      <form:input path="pourcentageDechetsParches" class="form-control" readonly="true"/>
 		        			</div>
 	        			</div>
 		       		</div>
@@ -257,7 +350,7 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="poidsDechetsCerise" class="control-label">
-						       Poids dechets cerise :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_poidsdechetscerise"/>
 						      </label>
 						      <form:input path="poidsDechetsCerise" class="form-control"/>
 		        			</div>
@@ -265,9 +358,9 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="pourcentageDechetsCerise" class="control-label">
-						       Dechets cerise (%) :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_pourcentagedechetscerise"/>
 						      </label>
-						      <form:input path="pourcentageDechetsCerise" class="form-control"/>
+						      <form:input path="pourcentageDechetsCerise" class="form-control" readonly="true"/>
 		        			</div>
 	        			</div>
 		       		</div>
@@ -278,7 +371,7 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="poidsDechetsDemiCerises" class="control-label">
-						       Poids dechets demi cerises :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_poidsdechetsdemicerises"/>
 						      </label>
 						      <form:input path="poidsDechetsDemiCerises" class="form-control"/>
 		        			</div>
@@ -286,9 +379,9 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="pourcentageDechetsDemiCerises" class="control-label">
-						       Dechets demi cerise (%) :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_pourcentagedechetsdemicerises"/>
 						      </label>
-						      <form:input path="pourcentageDechetsDemiCerises" class="form-control"/>
+						      <form:input path="pourcentageDechetsDemiCerises" class="form-control" readonly="true"/>
 		        			</div>
 	        			</div>
 		       		</div>
@@ -299,7 +392,7 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="poidsDechetsCoques" class="control-label">
-						       Poids dechets coques :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_poidsdechetscoques"/>
 						      </label>
 						      <form:input path="poidsDechetsCoques" class="form-control"/>
 		        			</div>
@@ -307,9 +400,9 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="pourcentageDechetsCoques" class="control-label">
-						       Dechets coques (%) :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_pourcentagedechetscoques"/>
 						      </label>
-						      <form:input path="pourcentageDechetsCoques" class="form-control"/>
+						      <form:input path="pourcentageDechetsCoques" class="form-control" readonly="true"/>
 		        			</div>
 	        			</div>
 		       		</div>
@@ -320,7 +413,7 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="poidsDechetsPeaux" class="control-label">
-						       Poids dechet peaux :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_poidsdechetspeaux"/>
 						      </label>
 						      <form:input path="poidsDechetsPeaux" class="form-control"/>
 		        			</div>
@@ -328,9 +421,9 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="pourcentageDechetsPeaux" class="control-label">
-						       Dechets peaux (%) :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_pourcentagedechetspeaux"/>
 						      </label>
-						      <form:input path="pourcentageDechetsPeaux" class="form-control"/>
+						      <form:input path="pourcentageDechetsPeaux" class="form-control" readonly="true"/>
 		        			</div>
 	        			</div>
 		       		</div>
@@ -341,17 +434,17 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="poidsSousTotalDechets" class="control-label">
-						       Poids sous total dechet :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_poidssoustotaldechets"/>
 						      </label>
-						      <form:input path="poidsSousTotalDechets" class="form-control"/>
+						      <form:input path="poidsSousTotalDechets" class="form-control" readonly="true"/>
 		        			</div>
 	        			</div>
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="pourcentageSousTotalDechets" class="control-label">
-						       Sous total dechets (%) :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_pourcentagesoustotaldechets"/>
 						      </label>
-						      <form:input path="pourcentageSousTotalDechets" class="form-control"/>
+						      <form:input path="pourcentageSousTotalDechets" class="form-control" readonly="true"/>
 		        			</div>
 	        			</div>
 		       		</div>
@@ -366,7 +459,7 @@
 		       				<div class="col-sm-4">
 		       					<div class="form-group">
 		       						<label for="poidsHorsNormesGrainsNoirs" class="control-label">
-		       						Poids hors normes grains noirs :
+		       							<spring:message code="label_com_j1987_coffeeroo_domain_janalysis_poidshorsnormesgrainsnoirs"/>
 		       						</label>
 		       						<form:input path="poidsHorsNormesGrainsNoirs" class="form-control" />
 		       					</div>
@@ -374,9 +467,9 @@
 		       				<div class="col-sm-4">
 		       					<div class="form-group">
 		       						<label for="pourcentageHorsNormesGrainsNoirs" class="control-label">
-		       						Hors normes grains noirs (%) :
+		       							<spring:message code="label_com_j1987_coffeeroo_domain_janalysis_pourcentagehorsnormesgrainsnoirs"/>
 		       						</label>
-		       						<form:input path="pourcentageHorsNormesGrainsNoirs" class="form-control" />
+		       						<form:input path="pourcentageHorsNormesGrainsNoirs" class="form-control" readonly="true"/>
 		       					</div>
 		       				</div>
 		       				<div class="col-sm-4">
@@ -385,7 +478,7 @@
 		       				<div class="col-sm-4">
 		       					<div class="form-group">
 		       						<label for="poidsHorsNormesGrainsDemiNoirs" class="control-label">
-		       						Poids hors normes grains demi noirs :
+		       							<spring:message code="label_com_j1987_coffeeroo_domain_janalysis_poidshorsnormesgrainsdeminoirs"/>
 		       						</label>
 		       						<form:input path="poidsHorsNormesGrainsDemiNoirs" class="form-control" />
 		       					</div>
@@ -393,9 +486,9 @@
 		       				<div class="col-sm-4">
 		       					<div class="form-group">
 		       						<label for="pourcentageHorsNormesGrainsDemiNoirs" class="control-label">
-		       						Hors normes grains demi noirs (%) :
+		       							<spring:message code="label_com_j1987_coffeeroo_domain_janalysis_pourcentagehorsnormesgrainsdeminoirs"/>
 		       						</label>
-		       						<form:input path="pourcentageHorsNormesGrainsDemiNoirs" class="form-control" />
+		       						<form:input path="pourcentageHorsNormesGrainsDemiNoirs" class="form-control" readonly="true"/>
 		       					</div>
 		       				</div>
 		       				<div class="col-sm-4">
@@ -404,7 +497,7 @@
 		       				<div class="col-sm-4">
 		       					<div class="form-group">
 		       						<label for="poidsHorsNormesBrisures" class="control-label">
-		       						Poids hors normes brisures :
+		       							<spring:message code="label_com_j1987_coffeeroo_domain_janalysis_poidshorsnormesbrisures"/>
 		       						</label>
 		       						<form:input path="poidsHorsNormesBrisures" class="form-control" />
 		       					</div>
@@ -412,9 +505,9 @@
 		       				<div class="col-sm-4">
 		       					<div class="form-group">
 		       						<label for="pourcentageHorsNormesBrisures" class="control-label">
-		       						Hors normes brisures (%) :
+		       							<spring:message code="label_com_j1987_coffeeroo_domain_janalysis_pourcentagehorsnormesbrisures"/>
 		       						</label>
-		       						<form:input path="pourcentageHorsNormesBrisures" class="form-control" />
+		       						<form:input path="pourcentageHorsNormesBrisures" class="form-control" readonly="true"/>
 		       					</div>
 		       				</div>
 		       				<div class="col-sm-4">
@@ -423,17 +516,17 @@
 		       				<div class="col-sm-4">
 		       					<div class="form-group">
 		       						<label for="poidsSousTotalHorsNormes" class="control-label">
-		       						Poids sous total hors normes :
+		       							<spring:message code="label_com_j1987_coffeeroo_domain_janalysis_poidssoustotalhorsnormes"/>
 		       						</label>
-		       						<form:input path="poidsSousTotalHorsNormes" class="form-control" />
+		       						<form:input path="poidsSousTotalHorsNormes" class="form-control" readonly="true"/>
 		       					</div>
 		       				</div>
 		       				<div class="col-sm-4">
 		       					<div class="form-group">
 		       						<label for="pourcentageSousTotalHorsNormes" class="control-label">
-		       						Sous total hors normes (%) :
+		       							<spring:message code="label_com_j1987_coffeeroo_domain_janalysis_pourcentagesoustotalhorsnormes"/>
 		       						</label>
-		       						<form:input path="pourcentageSousTotalHorsNormes" class="form-control" />
+		       						<form:input path="pourcentageSousTotalHorsNormes" class="form-control" readonly="true"/>
 		       					</div>
 		       				</div>
 		       			</div>
@@ -450,7 +543,7 @@
 		        		<div class="col-sm-4">
 	  			   				<div class="form-group">
 						      <label for="poidsGrainsAcceptablesVert" class="control-label">
-						       Poids grains acceptables vert :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_poidsgrainsacceptablesvert"/>
 						      </label>
 						      <form:input path="poidsGrainsAcceptablesVert" class="form-control"/>
 			    			</div>
@@ -458,9 +551,9 @@
 		        		<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="pourcentageGrainsAcceptablesVert" class="control-label">
-						       Grains acceptables vert (%) :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_pourcentagegrainsacceptablesvert"/>
 						      </label>
-						      <form:input path="pourcentageGrainsAcceptablesVert" class="form-control"/>
+						      <form:input path="pourcentageGrainsAcceptablesVert" class="form-control" readonly="true"/>
 		        			</div>
 	        			</div>
 		       		</div>
@@ -471,7 +564,7 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="poidsGrainsAcceptablesSpongieux" class="control-label">
-						       Poids grains acceptables spongieux :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_poidsgrainsacceptablesspongieux"/>
 						      </label>
 						      <form:input path="poidsGrainsAcceptablesSpongieux" class="form-control"/>
 		        			</div>
@@ -479,9 +572,9 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="pourcentageGrainsAcceptablesSpongieux" class="control-label">
-						       Grains acceptables spongieux (%) :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_pourcentagegrainsacceptablesspongieux"/>
 						      </label>
-						      <form:input path="pourcentageGrainsAcceptablesSpongieux" class="form-control"/>
+						      <form:input path="pourcentageGrainsAcceptablesSpongieux" class="form-control" readonly="true"/>
 		        			</div>
 	        			</div>
 		       		</div>
@@ -492,7 +585,7 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="poidsGrainsAcceptablesDemiSombre" class="control-label">
-						       Poids grains acceptables demi sombre :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_poidsgrainsacceptablesdemisombre"/>
 						      </label>
 						      <form:input path="poidsGrainsAcceptablesDemiSombre" class="form-control"/>
 		        			</div>
@@ -500,9 +593,9 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="pourcentageGrainsAcceptablesDemiSombre" class="control-label">
-						       Grains acceptables demi sombre (%) :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_pourcentagegrainsacceptablesdemisombre"/>
 						      </label>
-						      <form:input path="pourcentageGrainsAcceptablesDemiSombre" class="form-control"/>
+						      <form:input path="pourcentageGrainsAcceptablesDemiSombre" class="form-control" readonly="true"/>
 		        			</div>
 	        			</div>
 		       		</div>
@@ -513,7 +606,7 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="poidsGrainsAcceptablesScolytes" class="control-label">
-						       Poids grains acceptables scolytes :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_poidsgrainsacceptablesscolytes"/>
 						      </label>
 						      <form:input path="poidsGrainsAcceptablesScolytes" class="form-control"/>
 		        			</div>
@@ -521,9 +614,9 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="pourcentageGrainsAcceptablesScolytes" class="control-label">
-						       Grains acceptables scolytes (%) :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_pourcentagegrainsacceptablesscolytes"/>
 						      </label>
-						      <form:input path="pourcentageGrainsAcceptablesScolytes" class="form-control"/>
+						      <form:input path="pourcentageGrainsAcceptablesScolytes" class="form-control" readonly="true"/>
 		        			</div>
 	        			</div>
 		       		</div>
@@ -534,7 +627,7 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="poidsGrainsAcceptablesIndesirables" class="control-label">
-						       Poids grains acceptables indesirables :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_poidsgrainsacceptablesindesirables"/>
 						      </label>
 						      <form:input path="poidsGrainsAcceptablesIndesirables" class="form-control"/>
 		        			</div>
@@ -542,9 +635,9 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="pourcentageGrainsAcceptablesIndesirables" class="control-label">
-						       Grains acceptables indesirables (%) :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_pourcentagegrainsacceptablesindesirables"/>
 						      </label>
-						      <form:input path="pourcentageGrainsAcceptablesIndesirables" class="form-control"/>
+						      <form:input path="pourcentageGrainsAcceptablesIndesirables" class="form-control" readonly="true"/>
 		        			</div>
 	        			</div>
 		       		</div>
@@ -555,7 +648,7 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="poidsGrainsAcceptablesImmature" class="control-label">
-						       Poids grains acceptables immature :
+       						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_poidsgrainsacceptablesimmature"/>
 						      </label>
 						      <form:input path="poidsGrainsAcceptablesImmature" class="form-control"/>
 		        			</div>
@@ -563,9 +656,9 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="pourcentageGrainsAcceptablesImmature" class="control-label">
-						       Poids grains acceptables immature (%) :
+						       	<spring:message code="label_com_j1987_coffeeroo_domain_janalysis_pourcentagegrainsacceptablesimmature"/>
 						      </label>
-						      <form:input path="pourcentageGrainsAcceptablesImmature" class="form-control"/>
+						      <form:input path="pourcentageGrainsAcceptablesImmature" class="form-control" readonly="true"/>
 		        			</div>
 	        			</div>
 		       		</div>
@@ -576,18 +669,18 @@
 		        		</div>
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
-						      <label for="poidsGrainsAcceptablesIndesirables" class="control-label">
-						       Poids grains acceptables indesirables :
+						      <label for="poidsSousTotalGrainsAcceptables" class="control-label">
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_poidssoustotalgrainsacceptables"/>
 						      </label>
-						      <form:input path="poidsGrainsAcceptablesIndesirables" class="form-control"/>
+						      <form:input path="poidsSousTotalGrainsAcceptables" class="form-control" readonly="true"/>
 		        			</div>
 	        			</div>
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
-						      <label for="pourcentageGrainsAcceptablesIndesirables" class="control-label">
-						       Grains acceptables indesirables (%) :
+						      <label for="pourcentageSousTotalGrainsAcceptables" class="control-label">
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_pourcentagesoustotalgrainsacceptables"/>
 						      </label>
-						      <form:input path="pourcentageGrainsAcceptablesIndesirables" class="form-control"/>
+						      <form:input path="pourcentageSousTotalGrainsAcceptables" class="form-control" readonly="true"/>
 		        			</div>
 	        			</div>
 		       		</div>
@@ -603,7 +696,7 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="CalibrageTamis18" class="control-label">
-						       Tamis 18 :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_calibragetamis18"/>
 						      </label>
 						      <form:input path="CalibrageTamis18" class="form-control"/>
 		        			</div>
@@ -611,7 +704,7 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="CalibrageTamis16" class="control-label">
-						       Tamis 16 :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_calibragetamis16"/>
 						      </label>
 						      <form:input path="CalibrageTamis16" class="form-control"/>
 		        			</div>
@@ -623,7 +716,7 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="CalibrageTamis14" class="control-label">
-						       Tamis 14 :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_calibragetamis14"/>
 						      </label>
 						      <form:input path="CalibrageTamis14" class="form-control"/>
 		        			</div>
@@ -631,7 +724,7 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="CalibrageTamis12" class="control-label">
-						       Tamis 12 :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_calibragetamis12"/>
 						      </label>
 						      <form:input path="CalibrageTamis12" class="form-control"/>
 		        			</div>
@@ -643,7 +736,7 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="CalibrageTamis10" class="control-label">
-						       Tamis 10 :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_calibragetamis10"/>
 						      </label>
 						      <form:input path="CalibrageTamis10" class="form-control"/>
 		        			</div>
@@ -651,7 +744,7 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="CalibrageBase" class="control-label">
-						       Base :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_calibragebase"/>
 						      </label>
 						      <form:input path="CalibrageBase" class="form-control"/>
 		        			</div>
@@ -669,7 +762,7 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="pourcentageGradeG0" class="control-label">
-						       Grade G0 :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_pourcentagegradeg0"/>
 						      </label>
 						      <form:input path="pourcentageGradeG0" class="form-control"/>
 		        			</div>
@@ -677,7 +770,7 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="pourcentageGradeG1" class="control-label">
-						       Grade G1 :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_pourcentagegradeg1"/>
 						      </label>
 						      <form:input path="pourcentageGradeG1" class="form-control"/>
 		        			</div>
@@ -689,7 +782,7 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="pourcentageGradeG2" class="control-label">
-						       Grade G2 :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_pourcentagegradeg2"/>
 						      </label>
 						      <form:input path="pourcentageGradeG2" class="form-control"/>
 		        			</div>
@@ -697,7 +790,7 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="pourcentageGradeG3" class="control-label">
-						       Grade G3 :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_pourcentagegradeg3"/>
 						      </label>
 						      <form:input path="pourcentageGradeG3" class="form-control"/>
 		        			</div>
@@ -709,7 +802,7 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="pourcentageGradeG4" class="control-label">
-						       Grade G4 :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_pourcentagegradeg4"/>
 						      </label>
 						      <form:input path="pourcentageGradeG4" class="form-control"/>
 		        			</div>
@@ -717,14 +810,14 @@
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
 						      <label for="pourcentageGradeHN" class="control-label">
-						       Grade HN :
+						       <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_pourcentagegradehn"/>
 						      </label>
 						      <form:input path="pourcentageGradeHN" class="form-control"/>
 		        			</div>
 	        			</div>
 		       		</div>
 		       		
-		       		<hr></hr>
+		       		<hr/>
 		       		
 		       		<div class="row">
 	        			<div class="col-sm-4">
@@ -733,19 +826,19 @@
 						       Acceptation :
 						      </label>
 						      <form:select path="acceptation" class="form-control">
-						      	<form:option value="Oui"></form:option>
-						      	<form:option value="Non"></form:option>
+						      	<form:option value="1" label="Oui"/>
+						      	<form:option value="0" label="Non" />
 						      </form:select>
 		        			</div>
 	        			</div>
 	        			<div class="col-sm-4">
 	  			   			<div class="form-group">
-						      <label for="confirmation" class="control-label">
+						      <label for="confirmity" class="control-label">
 						       Conformite :
 						      </label>
-						      <form:select path="confirmation" class="form-control">
-						      	<form:option value="Oui"></form:option>
-						      	<form:option value="Non"></form:option>
+						      <form:select path="confirmity" class="form-control">
+						      	<form:option value="1" label="Oui"/>
+						      	<form:option value="0" label="Non" />
 						      </form:select>
 		        			</div>
 	        			</div>
@@ -753,7 +846,16 @@
 	  			   			<h4></h4>
 	        			</div>
 		       		</div>
-		        	
+   	    			<hr />
+	   	            <div class="form-group">
+		   				<div class="col-sm-10">
+	   		          		<button id="proceed" type="submit" class="btn btn-success">
+			          			<spring:message code="button_save"/>
+			          			<![CDATA[&nbsp;&nbsp;]]>
+			          			<span class="glyphicon glyphicon-floppy-save"></span>
+			          		</button>
+				        </div>
+				     </div>
 		        </FIELDSET>
        		</form:form>
         </div>
@@ -772,7 +874,7 @@
 			$.ajax({
 				url:'${chechreference_url}',
 				type:'post',
-				dataType:'text',
+				dataType:'json',
 				data:{reference:ref},
 				async:false,
 				success:function(a){
@@ -815,11 +917,6 @@
     			return validateAnalysisReference(value);
     		}, 'Cette Reference est deja utilisee!');
     		
-    		$.validator.addMethod("validateExpressionCode", function(value, element){
-    			var s = element.value;
-    			s.replace(/[\wÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ]/g,"");
-    			return this.optional(element) || /^[a-zA-Z0-9]+$/.test( value );
-    		},"Les caracteres speciaux et/ou accentues ne sont pas acceptes");
        		
        		$('#dateOfAnalysis').datepicker('setValue',new Date());
        		$('#startTime').timepicker();
@@ -1048,7 +1145,7 @@
        		$('#coffeeAnalysisForm').validate({
     			rules:{
     				tourId:{required:true},
-    				reference:{required:true,checkreference:true, validateExpressionCode:true},
+    				reference:{required:true,checkreference:true},
     				exporterCode:{required:true},
     				supplierCode:{required:true},
     				dealerEntry:{required:true},

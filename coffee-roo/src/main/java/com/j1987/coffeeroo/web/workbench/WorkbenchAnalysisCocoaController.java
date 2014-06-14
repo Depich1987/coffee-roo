@@ -23,13 +23,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
 import com.j1987.coffeeroo.domain.JAnalysis;
 import com.j1987.coffeeroo.domain.JBridge;
-import com.j1987.coffeeroo.domain.JCoffeeAnalysis;
 import com.j1987.coffeeroo.domain.JExporter;
 import com.j1987.coffeeroo.domain.JFactory;
 import com.j1987.coffeeroo.domain.JFirm;
@@ -94,13 +92,7 @@ public class WorkbenchAnalysisCocoaController {
 		// TODO Auto-generated constructor stub
 	}
 	
-	@RequestMapping(value = "/checkcode", method = RequestMethod.POST, produces = "application/json")
-	public @ResponseBody  boolean checkBridgeCode(@RequestParam("reference")String reference){
-		boolean valid = false;
-		List<JAnalysis> analyzes = analysisService.findAnalysisByReferenceEquals(reference);
-		if(analyzes.isEmpty()) valid = true;
-		return valid;
-	}
+
 	
 	@RequestMapping(value = "/create", method = RequestMethod.POST, produces = "text/html")
     public String create(@Valid CocoaAnalysisForm cocoaAnalysisForm, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) throws FactoryNotFoundException {
@@ -268,11 +260,38 @@ public class WorkbenchAnalysisCocoaController {
     	cocoaAnalysis.setTotalFevesDefectueusesPlateau3(cocoaAnalysisForm.getTotalFevesDefectueusesPlateau3());
     	cocoaAnalysis.setFevesViolettePlateau3(cocoaAnalysisForm.getFevesViolettePlateau3());
     	
+    	cocoaAnalysis.setSommeTotalFevesDefectueuses(cocoaAnalysisForm.getSommeTotalFevesDefectueuses());
+    	cocoaAnalysis.setPourcentageTotalFevesDefectueuses(cocoaAnalysisForm.getPourcentageTotalFevesDefectueuses());
+    	
+    	cocoaAnalysis.setTotalFevesMoisies(cocoaAnalysisForm.getTotalFevesMoisies());
+    	cocoaAnalysis.setPourcentageFevesMoisies(cocoaAnalysisForm.getPourcentageFevesMoisies());
+    	
+    	cocoaAnalysis.setTotalFevesArdoisees(cocoaAnalysisForm.getTotalFevesArdoisees());
+    	cocoaAnalysis.setPourcentageFevesArdoisees(cocoaAnalysisForm.getPourcentageFevesArdoisees());
+    	
+    	cocoaAnalysis.setTotalFevesGermees(cocoaAnalysisForm.getTotalFevesGermees());
+    	cocoaAnalysis.setPourcentageFevesGermees(cocoaAnalysisForm.getPourcentageFevesGermees());
+    	
+    	cocoaAnalysis.setTotalFevesMitees(cocoaAnalysisForm.getTotalFevesMitees());
+    	cocoaAnalysis.setPourcentageFevesMitees(cocoaAnalysisForm.getPourcentageFevesMitees());
+    	
+    	cocoaAnalysis.setTotalFevesPlates(cocoaAnalysisForm.getTotalFevesPlates());
+    	cocoaAnalysis.setPourcentageFevesPlates(cocoaAnalysisForm.getPourcentageFevesPlates());
+    	
+    	cocoaAnalysis.setTotalFevesViolette(cocoaAnalysisForm.getTotalFevesViolette());
+    	cocoaAnalysis.setPourcentageFevesViolette(cocoaAnalysisForm.getPourcentageFevesViolette());
+    	
     	cocoaAnalysis.setClassification(cocoaAnalysisForm.getClassification());
     	cocoaAnalysis.setConformity(cocoaAnalysisForm.getConformity());
     	
-    	cocoaAnalysis.setStatus(cocoaAnalysisForm.getStatus());
     	
+    	if(cocoaAnalysisForm.getAcceptation() == 1){
+    		cocoaAnalysis.setStatus(true);
+    		cocoaAnalysis.setAcceptation(true);
+    	}else{
+    		cocoaAnalysis.setStatus(false);
+    		cocoaAnalysis.setAcceptation(false);
+    	}
     	cocoaAnalysis.setProductType(JUtils.COCOA_PRODUCT);
     	analysisService.persist(cocoaAnalysis);
     	
@@ -327,6 +346,7 @@ public class WorkbenchAnalysisCocoaController {
        
        uiModel.addAttribute("analysis", analysis);
        uiModel.addAttribute("itemId", id);
+       uiModel.addAttribute("currentNav", "analysisCocoa");
         
         return  SHOW_VIEW;
     }
@@ -381,12 +401,224 @@ public class WorkbenchAnalysisCocoaController {
         return LIST_VIEW;
     }
     
+    
+	@RequestMapping(value = "/update", method = RequestMethod.PUT, produces = "text/html")
+    public String update(@Valid CocoaAnalysisForm cocoaAnalysisForm, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) throws FactoryNotFoundException {
+        
+		if (bindingResult.hasErrors()) {
+            populateEditForm(uiModel, cocoaAnalysisForm, cocoaAnalysisForm.getFactoryCode());
+            logger.debug("create() - the cocoaAnalysisForm object is invalid. Redirect to create view");
+            return UPDATE_VIEW;
+        }
+		
+        uiModel.asMap().clear();
+        
+
+        JAnalysis cocoaAnalysis =  analysisService.findAnalysis(cocoaAnalysisForm.getId(), JUtils.COCOA_PRODUCT);
+        
+        String factoryCode = null;
+        
+        cocoaAnalysis.setReference(cocoaAnalysisForm.getReference());
+        
+        List<JBridge> bridgeEntries = bridgeService.findBridgesByCodeEquals(cocoaAnalysisForm.getBridgeCode());
+        JBridge bridgeEntry = null;
+        
+        if(!bridgeEntries.isEmpty()){
+        	bridgeEntry = bridgeEntries.get(0);
+        }
+        
+        cocoaAnalysis.setBridge(bridgeEntry);
+        if(bridgeEntry.getFactory() != null){
+        	JFactory factory = bridgeEntry.getFactory();
+        	cocoaAnalysis.setFactoryCode(factory.getCode());
+        	cocoaAnalysis.setFactoryName(factory.getName());
+        }
+
+        if(cocoaAnalysisForm.getFactoryCode() != null){
+        	factoryCode = cocoaAnalysisForm.getFactoryCode();
+        }
+
+        JExporter exporterEntry = null;
+        List<JExporter> exporters = exporterService.findExportersByCodeEquals(cocoaAnalysisForm.getExporterCode());
+        if(! exporters.isEmpty()){
+        	exporterEntry = exporters.get(0);
+        }
+		cocoaAnalysis.setExporterEntry(exporterEntry);
+		cocoaAnalysis.setExporterName(exporterEntry.getName());
+		
+		JFirm dealerEntry = null;
+		List<JFirm> firms = firmService.findFirmsByCodeEquals(cocoaAnalysisForm.getDealerCode());
+		if(!firms.isEmpty()){
+			dealerEntry = firms.get(0);
+		}
+		cocoaAnalysis.setDealerEntry(dealerEntry);
+		cocoaAnalysis.setDealerName(dealerEntry.getName());
+		
+		JSupplier supplierEntry = null ;
+		List<JSupplier> suppliers = supplierService.findSuppliersByCodeEquals(cocoaAnalysisForm.getSupplierCode());
+		if(! suppliers.isEmpty()){
+			supplierEntry = suppliers.get(0);
+		}
+		cocoaAnalysis.setSupplierEntry(supplierEntry);
+		cocoaAnalysis.setSupplierName(supplierEntry.getName());
+		
+		JLocalization provenance = localizationService.findLocalization(cocoaAnalysisForm.getProvenance());
+		cocoaAnalysis.setProvenance(provenance);
+		
+		JTour tour = tourService.findTour(cocoaAnalysisForm.getTourId());
+		cocoaAnalysis.setTour(tour);
+		
+//		cocoaAnalysis.setCreatedBy(securityService.currentUser());
+//        cocoaAnalysis.setCreationDate(new Date());
+        
+        try {
+			Date coffeeAnalysisDate = JUtils.DATE_FORMAT.parse(cocoaAnalysisForm.getDateOfAnalysis());
+			
+			Date startTime = JUtils.TIME_FORMAT.parse(cocoaAnalysisForm.getStartTime());
+			Date endTime = JUtils.TIME_FORMAT.parse(cocoaAnalysisForm.getEndTime());
+			
+			if(coffeeAnalysisDate != null){
+				cocoaAnalysis.setDateOfAnalysis(coffeeAnalysisDate);
+			}
+			
+			if(startTime != null){
+				cocoaAnalysis.setStartTime(startTime);
+			}
+			
+			if(endTime != null){
+				cocoaAnalysis.setEndTime(endTime);
+			}
+			
+		} catch (ParseException e) {
+
+			populateEditForm(uiModel, cocoaAnalysisForm, factoryCode);
+			logger.debug("create() - message :"+e.getMessage());
+			return UPDATE_VIEW;
+		}
+        
+        cocoaAnalysis.setNetWeightOfProductAccepted(cocoaAnalysisForm.getNetWeightOfProductAccepted());
+        cocoaAnalysis.setNumberLading(cocoaAnalysisForm.getNumberLading());
+        cocoaAnalysis.setNumberSAIGIC(cocoaAnalysisForm.getNumberSAIGIC());
+    	cocoaAnalysis.setNumberOfBagAllowed(cocoaAnalysisForm.getNumberOfBagAllowed());
+    	cocoaAnalysis.setTruckNumber(cocoaAnalysisForm.getTruckNumber());
+    	cocoaAnalysis.setTotalOfReportedBags(cocoaAnalysisForm.getTotalOfReportedBags());
+    	cocoaAnalysis.setTotalOfBagPushed(cocoaAnalysisForm.getTotalOfBagPushed());
+    	cocoaAnalysis.setSampleCode(cocoaAnalysisForm.getSampleCode());
+    	
+    	/**
+    	 * Taux Humidite
+    	 */
+    	cocoaAnalysis.setTauxHumidite1(cocoaAnalysisForm.getTauxHumidite1());
+    	cocoaAnalysis.setTauxHumidite2(cocoaAnalysisForm.getTauxHumidite2());
+    	cocoaAnalysis.setTauxHumidite3(cocoaAnalysisForm.getTauxHumidite3());
+    	cocoaAnalysis.setMoyenneTauxHumidite(cocoaAnalysisForm.getMoyenneTauxHumidite());
+    	
+    	/**
+    	 * Grainage
+    	 */
+    	cocoaAnalysis.setNombreFeves(cocoaAnalysisForm.getNombreFeves());
+    	cocoaAnalysis.setFevesPar100g(cocoaAnalysisForm.getFevesPar100g());
+    	
+    	/**
+    	 * Matieres Etrangeres
+    	 */
+    	cocoaAnalysis.setPoidsMatieresEtrangeres(cocoaAnalysisForm.getPoidsMatieresEtrangeres());
+    	cocoaAnalysis.setPourcentageMatieresEtrangeres(cocoaAnalysisForm.getPourcentageMatieresEtrangeres());
+        
+    	/**
+    	 * Brisures
+    	 */
+    	cocoaAnalysis.setPoidsBrisures(cocoaAnalysisForm.getPoidsBrisures());
+    	cocoaAnalysis.setPourcentageBrisures(cocoaAnalysisForm.getPourcentageBrisures());
+    	
+    	/********************
+    	 * Epreuve a la coupe
+    	 ********************/
+    	
+    	/**
+    	 * Plateau 1
+    	 */
+    	cocoaAnalysis.setFevesMoisiesPlateau1(cocoaAnalysisForm.getFevesMoisiesPlateau1());
+    	cocoaAnalysis.setFevesArdoiseesPlateau1(cocoaAnalysisForm.getFevesArdoiseesPlateau1());
+    	cocoaAnalysis.setFevesMiteesPlateau1(cocoaAnalysisForm.getFevesMiteesPlateau1());
+    	cocoaAnalysis.setFevesGermeesPlateau1(cocoaAnalysisForm.getFevesGermeesPlateau1());
+    	cocoaAnalysis.setFevesPlatesPlateau1(cocoaAnalysisForm.getFevesPlatesPlateau1());
+    	cocoaAnalysis.setTotalFevesDefectueusesPlateau1(cocoaAnalysisForm.getTotalFevesDefectueusesPlateau1());
+    	cocoaAnalysis.setFevesViolettePlateau1(cocoaAnalysisForm.getFevesViolettePlateau1());
+    	
+    	/**
+    	 * Plateau 2
+    	 */
+    	cocoaAnalysis.setFevesMoisiesPlateau2(cocoaAnalysisForm.getFevesMoisiesPlateau2());
+    	cocoaAnalysis.setFevesArdoiseesPlateau2(cocoaAnalysisForm.getFevesArdoiseesPlateau2());
+    	cocoaAnalysis.setFevesMiteesPlateau2(cocoaAnalysisForm.getFevesMiteesPlateau2());
+    	cocoaAnalysis.setFevesGermeesPlateau2(cocoaAnalysisForm.getFevesGermeesPlateau2());
+    	cocoaAnalysis.setFevesPlatesPlateau2(cocoaAnalysisForm.getFevesPlatesPlateau2());
+    	cocoaAnalysis.setTotalFevesDefectueusesPlateau2(cocoaAnalysisForm.getTotalFevesDefectueusesPlateau2());
+    	cocoaAnalysis.setFevesViolettePlateau2(cocoaAnalysisForm.getFevesViolettePlateau2());
+    	
+    	/**
+    	 * Plateau 3
+    	 */
+    	cocoaAnalysis.setFevesMoisiesPlateau3(cocoaAnalysisForm.getFevesMoisiesPlateau3());
+    	cocoaAnalysis.setFevesArdoiseesPlateau3(cocoaAnalysisForm.getFevesArdoiseesPlateau3());
+    	cocoaAnalysis.setFevesMiteesPlateau3(cocoaAnalysisForm.getFevesMiteesPlateau3());
+    	cocoaAnalysis.setFevesGermeesPlateau3(cocoaAnalysisForm.getFevesGermeesPlateau3());
+    	cocoaAnalysis.setFevesPlatesPlateau3(cocoaAnalysisForm.getFevesPlatesPlateau3());
+    	cocoaAnalysis.setTotalFevesDefectueusesPlateau3(cocoaAnalysisForm.getTotalFevesDefectueusesPlateau3());
+    	cocoaAnalysis.setFevesViolettePlateau3(cocoaAnalysisForm.getFevesViolettePlateau3());
+    	
+      	cocoaAnalysis.setSommeTotalFevesDefectueuses(cocoaAnalysisForm.getSommeTotalFevesDefectueuses());
+    	cocoaAnalysis.setPourcentageTotalFevesDefectueuses(cocoaAnalysisForm.getPourcentageTotalFevesDefectueuses());
+    	
+    	cocoaAnalysis.setTotalFevesMoisies(cocoaAnalysisForm.getTotalFevesMoisies());
+    	cocoaAnalysis.setPourcentageFevesMoisies(cocoaAnalysisForm.getPourcentageFevesMoisies());
+    	
+    	cocoaAnalysis.setTotalFevesArdoisees(cocoaAnalysisForm.getTotalFevesArdoisees());
+    	cocoaAnalysis.setPourcentageFevesArdoisees(cocoaAnalysisForm.getPourcentageFevesArdoisees());
+    	
+    	cocoaAnalysis.setTotalFevesGermees(cocoaAnalysisForm.getTotalFevesGermees());
+    	cocoaAnalysis.setPourcentageFevesGermees(cocoaAnalysisForm.getPourcentageFevesGermees());
+    	
+    	cocoaAnalysis.setTotalFevesMitees(cocoaAnalysisForm.getTotalFevesMitees());
+    	cocoaAnalysis.setPourcentageFevesMitees(cocoaAnalysisForm.getPourcentageFevesMitees());
+    	
+    	cocoaAnalysis.setTotalFevesPlates(cocoaAnalysisForm.getTotalFevesPlates());
+    	cocoaAnalysis.setPourcentageFevesPlates(cocoaAnalysisForm.getPourcentageFevesPlates());
+    	
+    	cocoaAnalysis.setTotalFevesViolette(cocoaAnalysisForm.getTotalFevesViolette());
+    	cocoaAnalysis.setPourcentageFevesViolette(cocoaAnalysisForm.getPourcentageFevesViolette());
+    	
+    	cocoaAnalysis.setClassification(cocoaAnalysisForm.getClassification());
+    	cocoaAnalysis.setConformity(cocoaAnalysisForm.getConformity());
+    	
+    	
+    	if(cocoaAnalysisForm.getAcceptation() == 1){
+    		cocoaAnalysis.setStatus(true);
+    		cocoaAnalysis.setAcceptation(true);
+    	}else{
+    		cocoaAnalysis.setStatus(false);
+    		cocoaAnalysis.setAcceptation(false);
+    	}
+    	cocoaAnalysis.setProductType(JUtils.COCOA_PRODUCT);
+    	
+    	cocoaAnalysis.setModificationDate(new Date());
+    	cocoaAnalysis.setModifiedBy(securityService.currentUser());
+    	
+    	analysisService.merge(cocoaAnalysis);
+    	
+    	 logger.debug("update()- a cocoaAnalysis has been updated with success !");
+         
+         return "redirect:/workbench/analysis/cocoaanalysis/" + encodeUrlPathSegment(cocoaAnalysis.getId().toString(), httpServletRequest);
+	}
+    
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String updateForm(@PathVariable("id")Long id, Model uiModel, HttpServletRequest httpServletRequest) {
     	
     	CocoaAnalysisForm cocoaAnalysisForm = new CocoaAnalysisForm();
     	
     	JAnalysis  analysis = analysisService.findAnalysis(id, JUtils.COCOA_PRODUCT);
+    	populateEditCocoaAnalysisForm(analysis, cocoaAnalysisForm);
 
     	HttpSession session = httpServletRequest.getSession();
     	String factoryCode = (String)session.getAttribute(JUtils.HTTP_SESSION_FACTORY_CODE);
@@ -447,40 +679,61 @@ public class WorkbenchAnalysisCocoaController {
 	void populateEditCocoaAnalysisForm(JAnalysis analysis, CocoaAnalysisForm cocoaAnalysisForm){
 		
 		cocoaAnalysisForm.setId(analysis.getId());
+		
+		cocoaAnalysisForm.setReference(analysis.getReference());
+		cocoaAnalysisForm.setTourId(analysis.getTour().getId());
+		cocoaAnalysisForm.setProvenance(analysis.getProvenance().getId());
+		cocoaAnalysisForm.setDealerCode(analysis.getDealerEntry().getDealerCode());
+		cocoaAnalysisForm.setExporterCode(analysis.getExporterEntry().getCode());
+		cocoaAnalysisForm.setClassification(analysis.getClassification());
+		cocoaAnalysisForm.setConformity(analysis.getConformity());
+		cocoaAnalysisForm.setSupplierCode(analysis.getSupplierEntry().getCode());
+		cocoaAnalysisForm.setFactoryCode(analysis.getFactoryCode());
+		cocoaAnalysisForm.setBridgeCode(analysis.getBridge().getCode());
+
+		String dateFormatedAsString = JUtils.DATE_FORMAT.format(analysis.getDateOfAnalysis());
+		String startTimeAsString = JUtils.TIME_FORMAT.format(analysis.getStartTime());
+		String endTimeAsString =JUtils.TIME_FORMAT.format(analysis.getEndTime());
+		
+		cocoaAnalysisForm.setDateOfAnalysis(dateFormatedAsString);
+		cocoaAnalysisForm.setStartTime(startTimeAsString);
+		cocoaAnalysisForm.setEndTime(endTimeAsString);
+		
+		
 		cocoaAnalysisForm.setNetWeightOfProductAccepted(analysis.getNetWeightOfProductAccepted());
 		cocoaAnalysisForm.setNumberLading(analysis.getNumberLading());
-        analysis.setNumberSAIGIC(analysis.getNumberSAIGIC());
-    	analysis.setNumberOfBagAllowed(analysis.getNumberOfBagAllowed());
-    	analysis.setTruckNumber(analysis.getTruckNumber());
-    	analysis.setTotalOfReportedBags(analysis.getTotalOfReportedBags());
-    	analysis.setTotalOfBagPushed(analysis.getTotalOfBagPushed());
-    	analysis.setSampleCode(analysis.getSampleCode());
+        cocoaAnalysisForm.setNumberSAIGIC(analysis.getNumberSAIGIC());
+    	cocoaAnalysisForm.setNumberOfBagAllowed(analysis.getNumberOfBagAllowed());
+    	cocoaAnalysisForm.setTruckNumber(analysis.getTruckNumber());
+    	cocoaAnalysisForm.setTotalOfReportedBags(analysis.getTotalOfReportedBags());
+    	cocoaAnalysisForm.setTotalOfBagPushed(analysis.getTotalOfBagPushed());
+    	cocoaAnalysisForm.setSampleCode(analysis.getSampleCode());
     	
     	/**
     	 * Taux Humidite
     	 */
-    	analysis.setTauxHumidite1(analysis.getTauxHumidite1());
-    	analysis.setTauxHumidite2(analysis.getTauxHumidite2());
-    	analysis.setTauxHumidite3(analysis.getTauxHumidite3());
-    	analysis.setMoyenneTauxHumidite(analysis.getMoyenneTauxHumidite());
+    	cocoaAnalysisForm.setTauxHumidite1(analysis.getTauxHumidite1());
+    	cocoaAnalysisForm.setTauxHumidite2(analysis.getTauxHumidite2());
+    	cocoaAnalysisForm.setTauxHumidite3(analysis.getTauxHumidite3());
+    	cocoaAnalysisForm.setMoyenneTauxHumidite(analysis.getMoyenneTauxHumidite());
     	
     	/**
     	 * Grainage
     	 */
-    	analysis.setNombreFeves(analysis.getNombreFeves());
-    	analysis.setFevesPar100g(analysis.getFevesPar100g());
+    	cocoaAnalysisForm.setNombreFeves(analysis.getNombreFeves());
+    	cocoaAnalysisForm.setFevesPar100g(analysis.getFevesPar100g());
     	
     	/**
     	 * Matieres Etrangeres
     	 */
-    	analysis.setPoidsMatieresEtrangeres(analysis.getPoidsMatieresEtrangeres());
-    	analysis.setPourcentageMatieresEtrangeres(analysis.getPourcentageMatieresEtrangeres());
+    	cocoaAnalysisForm.setPoidsMatieresEtrangeres(analysis.getPoidsMatieresEtrangeres());
+    	cocoaAnalysisForm.setPourcentageMatieresEtrangeres(analysis.getPourcentageMatieresEtrangeres());
         
     	/**
     	 * Brisures
     	 */
-    	analysis.setPoidsBrisures(analysis.getPoidsBrisures());
-    	analysis.setPourcentageBrisures(analysis.getPourcentageBrisures());
+    	cocoaAnalysisForm.setPoidsBrisures(analysis.getPoidsBrisures());
+    	cocoaAnalysisForm.setPourcentageBrisures(analysis.getPourcentageBrisures());
     	
     	/********************
     	 * Epreuve a la coupe
@@ -489,40 +742,62 @@ public class WorkbenchAnalysisCocoaController {
     	/**
     	 * Plateau 1
     	 */
-    	analysis.setFevesMoisiesPlateau1(analysis.getFevesMoisiesPlateau1());
-    	analysis.setFevesArdoiseesPlateau1(analysis.getFevesArdoiseesPlateau1());
-    	analysis.setFevesMiteesPlateau1(analysis.getFevesMiteesPlateau1());
-    	analysis.setFevesGermeesPlateau1(analysis.getFevesGermeesPlateau1());
-    	analysis.setFevesPlatesPlateau1(analysis.getFevesPlatesPlateau1());
-    	analysis.setTotalFevesDefectueusesPlateau1(analysis.getTotalFevesDefectueusesPlateau1());
-    	analysis.setFevesViolettePlateau1(analysis.getFevesViolettePlateau1());
+    	cocoaAnalysisForm.setFevesMoisiesPlateau1(analysis.getFevesMoisiesPlateau1());
+    	cocoaAnalysisForm.setFevesArdoiseesPlateau1(analysis.getFevesArdoiseesPlateau1());
+    	cocoaAnalysisForm.setFevesMiteesPlateau1(analysis.getFevesMiteesPlateau1());
+    	cocoaAnalysisForm.setFevesGermeesPlateau1(analysis.getFevesGermeesPlateau1());
+    	cocoaAnalysisForm.setFevesPlatesPlateau1(analysis.getFevesPlatesPlateau1());
+    	cocoaAnalysisForm.setTotalFevesDefectueusesPlateau1(analysis.getTotalFevesDefectueusesPlateau1());
+    	cocoaAnalysisForm.setFevesViolettePlateau1(analysis.getFevesViolettePlateau1());
     	
     	/**
     	 * Plateau 2
     	 */
-    	analysis.setFevesMoisiesPlateau2(analysis.getFevesMoisiesPlateau2());
-    	analysis.setFevesArdoiseesPlateau2(analysis.getFevesArdoiseesPlateau2());
-    	analysis.setFevesMiteesPlateau2(analysis.getFevesMiteesPlateau2());
-    	analysis.setFevesGermeesPlateau2(analysis.getFevesGermeesPlateau2());
-    	analysis.setFevesPlatesPlateau2(analysis.getFevesPlatesPlateau2());
-    	analysis.setTotalFevesDefectueusesPlateau2(analysis.getTotalFevesDefectueusesPlateau2());
-    	analysis.setFevesViolettePlateau2(analysis.getFevesViolettePlateau2());
+    	cocoaAnalysisForm.setFevesMoisiesPlateau2(analysis.getFevesMoisiesPlateau2());
+    	cocoaAnalysisForm.setFevesArdoiseesPlateau2(analysis.getFevesArdoiseesPlateau2());
+    	cocoaAnalysisForm.setFevesMiteesPlateau2(analysis.getFevesMiteesPlateau2());
+    	cocoaAnalysisForm.setFevesGermeesPlateau2(analysis.getFevesGermeesPlateau2());
+    	cocoaAnalysisForm.setFevesPlatesPlateau2(analysis.getFevesPlatesPlateau2());
+    	cocoaAnalysisForm.setTotalFevesDefectueusesPlateau2(analysis.getTotalFevesDefectueusesPlateau2());
+    	cocoaAnalysisForm.setFevesViolettePlateau2(analysis.getFevesViolettePlateau2());
     	
     	/**
     	 * Plateau 3
     	 */
-    	analysis.setFevesMoisiesPlateau3(analysis.getFevesMoisiesPlateau3());
-    	analysis.setFevesArdoiseesPlateau3(analysis.getFevesArdoiseesPlateau3());
-    	analysis.setFevesMiteesPlateau3(analysis.getFevesMiteesPlateau3());
-    	analysis.setFevesGermeesPlateau3(analysis.getFevesGermeesPlateau3());
-    	analysis.setFevesPlatesPlateau3(analysis.getFevesPlatesPlateau3());
-    	analysis.setTotalFevesDefectueusesPlateau3(analysis.getTotalFevesDefectueusesPlateau3());
-    	analysis.setFevesViolettePlateau3(analysis.getFevesViolettePlateau3());
+    	cocoaAnalysisForm.setFevesMoisiesPlateau3(analysis.getFevesMoisiesPlateau3());
+    	cocoaAnalysisForm.setFevesArdoiseesPlateau3(analysis.getFevesArdoiseesPlateau3());
+    	cocoaAnalysisForm.setFevesMiteesPlateau3(analysis.getFevesMiteesPlateau3());
+    	cocoaAnalysisForm.setFevesGermeesPlateau3(analysis.getFevesGermeesPlateau3());
+    	cocoaAnalysisForm.setFevesPlatesPlateau3(analysis.getFevesPlatesPlateau3());
+    	cocoaAnalysisForm.setTotalFevesDefectueusesPlateau3(analysis.getTotalFevesDefectueusesPlateau3());
+    	cocoaAnalysisForm.setFevesViolettePlateau3(analysis.getFevesViolettePlateau3());
     	
-    	analysis.setClassification(analysis.getClassification());
-    	analysis.setConformity(analysis.getConformity());
+    	cocoaAnalysisForm.setSommeTotalFevesDefectueuses(analysis.getSommeTotalFevesDefectueuses());
+    	cocoaAnalysisForm.setPourcentageTotalFevesDefectueuses(analysis.getPourcentageTotalFevesDefectueuses());
     	
-    	analysis.setStatus(analysis.getStatus());
+    	cocoaAnalysisForm.setTotalFevesMoisies(analysis.getTotalFevesMoisies());
+    	cocoaAnalysisForm.setPourcentageFevesMoisies(analysis.getPourcentageFevesMoisies());
+    	
+    	cocoaAnalysisForm.setTotalFevesArdoisees(analysis.getTotalFevesArdoisees());
+    	cocoaAnalysisForm.setPourcentageFevesArdoisees(analysis.getPourcentageFevesArdoisees());
+    	
+    	cocoaAnalysisForm.setTotalFevesGermees(analysis.getTotalFevesGermees());
+    	cocoaAnalysisForm.setPourcentageFevesGermees(analysis.getPourcentageFevesGermees());
+    	
+    	cocoaAnalysisForm.setTotalFevesMitees(analysis.getTotalFevesMitees());
+    	cocoaAnalysisForm.setPourcentageFevesMitees(analysis.getPourcentageFevesMitees());
+    	
+    	cocoaAnalysisForm.setTotalFevesPlates(analysis.getTotalFevesPlates());
+    	cocoaAnalysisForm.setPourcentageFevesPlates(analysis.getPourcentageFevesPlates());
+    	
+    	cocoaAnalysisForm.setTotalFevesViolette(analysis.getTotalFevesViolette());
+    	cocoaAnalysisForm.setPourcentageFevesViolette(analysis.getPourcentageFevesViolette());
+    	
+    	cocoaAnalysisForm.setClassification(analysis.getClassification());
+    	cocoaAnalysisForm.setConformity(analysis.getConformity());
+    	
+    	cocoaAnalysisForm.setStatus(analysis.getStatus());
+    	cocoaAnalysisForm.setVersion(analysis.getVersion());
 	}
     
     String encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

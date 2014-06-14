@@ -10,7 +10,7 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     
-    <spring:url value="/workbench/analysis/coffeeanalysis/find" var="findanalysis_url"/>
+    <spring:url value="/workbench/analysis/cocoaanalysis/find" var="findanalysis_url"/>
     <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_plural" var="analysisplural_label"/>
     
    <h1 class="page-header">
@@ -22,20 +22,18 @@
 	   		<spring:message code="searchresult_label" arguments="${analysis.size()}"/>
 	   	</div>
 	   	<div class="pane panel-body">
-
 	   		<c:if test="${analysis.size() eq 0}">
 	   			<div class="alert alert-info">
 	   				<spring:message code="entity_not_found" arguments="${analysisplural_label}"/>
 	   			</div>
 	   		</c:if>
 	   		<c:if test="${analysis.size() gt 0}">
-		        <table:table data="${analysis}" id="l_com_j1987_coffeeroo_domain_JCoffeeAnalysis" path="/workbench/analysis/coffeeanalysis" z="deMOtOjtvLPiAt2FJDCmiluc36M=" create="false" delete="false" >
-		            <table:column date="true" dateTimePattern="${JCoffeeAnalysis__dateofanalysis_date_format}" id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_dateOfAnalysis" property="dateOfAnalysis" z="2cZVDYoqNya4rwa4c3x7MRMgIFE="/>
-		            <table:column id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_numberLading" property="numberLading" z="E9w+SGbqYIYQPD3VxQLt21AKwrQ="/>
-		            <table:column id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_truckNumber" property="truckNumber" z="PNIrHcyWo6a9qVF6X8eqCZlqESs="/>
-		            <table:column id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_netWeightOfProductAccepted" property="netWeightOfProductAccepted" z="PH6vfqXhklEcuFUQr1fTwTnT4RI="/>
-		            <table:column id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_provenance" property="provenance" z="wnvLymWdXAcBMgXhbOAdxSMiphc="/>
-		            <table:column id="c_com_j1987_coffeeroo_domain_JCoffeeAnalysis_dealerEntry" property="dealerEntry"  z="yDGsI2ECC9nS0HQ85pXlnmFeIZs="/>
+		        <table:table data="${analysis}" id="l_com_j1987_coffeeroo_domain_JAnalysis" path="/workbench/analysis/cocoaanalysis" z="deMOtOjtvLPiAt2FJDCmiluc36M=" create="false" delete="false" >
+		            <table:column id="c_com_j1987_coffeeroo_domain_JAnalysis_reference" property="reference" z="WU2xee9xMgH9d1jlyTFu2hWHl+0="/>
+		            <table:column id="c_com_j1987_coffeeroo_domain_JAnalysis_status" property="status" z="O68FNC9lwCwz0+br/HJCINCbSG8=" />
+		            <table:column date="true" dateTimePattern="${JAnalysis__dateofanalysis_date_format}" id="c_com_j1987_coffeeroo_domain_JAnalysis_dateOfAnalysis" property="dateOfAnalysis" z="yiycrQEHcIcmqXtxLluDWzmlr+c="/>
+		            <table:column id="c_com_j1987_coffeeroo_domain_JAnalysis_factoryName" property="factoryName" z="pxrvFD/hdm95CYHdxd9sttQcgQo="/>
+		            <table:column id="c_com_j1987_coffeeroo_domain_JAnalysis_supplierName" property="supplierName" z="Ys5tY5I5RjmDhgqAu3B2JOGJrLI="/>
 		        </table:table>
 	   		</c:if>
 	   	</div>

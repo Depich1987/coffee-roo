@@ -85,13 +85,11 @@
     <bean id="userService" class="com.j1987.coffeeroo.services.dao.UserServiceImpl" />
     <bean id="firmService" class="com.j1987.coffeeroo.services.dao.FirmServiceImpl" />
     <bean id="bridgeService" class="com.j1987.coffeeroo.services.dao.BridgeServiceImpl" />
-    <bean id="companyService" class="com.j1987.coffeeroo.services.dao.CompanyServiceImpl" />
     <bean id="billService" class="com.j1987.coffeeroo.services.dao.BillServiceImpl" />
     <bean id="submissionCoffeeService" class="com.j1987.coffeeroo.services.dao.SubmissionServiceImpl"/>
     <bean id="factoryService" class="com.j1987.coffeeroo.services.dao.FactoryServiceImpl" />
     <bean id="localizationService" class="com.j1987.coffeeroo.services.dao.LocalizationServiceImpl" />
     <bean id="tourService" class="com.j1987.coffeeroo.services.dao.TourServiceImpl" />
-    <bean id="dealerService" class="com.j1987.coffeeroo.services.dao.DealerServiceImpl" />
     <bean id="supplierService" class="com.j1987.coffeeroo.services.dao.SupplierServiceImpl" />
     <bean id="exporterService" class="com.j1987.coffeeroo.services.dao.ExporterServiceImpl" />
     <bean id="analysisService" class="com.j1987.coffeeroo.services.dao.AnalysisServiceImpl" />

@@ -4,6 +4,7 @@
 package com.j1987.coffeeroo.domain;
 
 import com.j1987.coffeeroo.domain.JAnalysis;
+import com.j1987.coffeeroo.domain.JBill;
 import com.j1987.coffeeroo.domain.JBridge;
 import com.j1987.coffeeroo.domain.JExporter;
 import com.j1987.coffeeroo.domain.JFirm;
@@ -12,6 +13,7 @@ import com.j1987.coffeeroo.domain.JSupplier;
 import com.j1987.coffeeroo.domain.JTour;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Set;
 
 privileged aspect JAnalysis_Roo_JavaBean {
     
@@ -29,6 +31,14 @@ privileged aspect JAnalysis_Roo_JavaBean {
     
     public void JAnalysis.setStatus(Boolean status) {
         this.status = status;
+    }
+    
+    public Boolean JAnalysis.getExistInBill() {
+        return this.existInBill;
+    }
+    
+    public void JAnalysis.setExistInBill(Boolean existInBill) {
+        this.existInBill = existInBill;
     }
     
     public Date JAnalysis.getDateOfAnalysis() {
@@ -399,12 +409,12 @@ privileged aspect JAnalysis_Roo_JavaBean {
         this.fevesArdoiseesPlateau3 = fevesArdoiseesPlateau3;
     }
     
-    public Long JAnalysis.getTotalfevesArdoisees() {
-        return this.TotalfevesArdoisees;
+    public Long JAnalysis.getTotalFevesArdoisees() {
+        return this.totalFevesArdoisees;
     }
     
-    public void JAnalysis.setTotalfevesArdoisees(Long TotalfevesArdoisees) {
-        this.TotalfevesArdoisees = TotalfevesArdoisees;
+    public void JAnalysis.setTotalFevesArdoisees(Long totalFevesArdoisees) {
+        this.totalFevesArdoisees = totalFevesArdoisees;
     }
     
     public BigDecimal JAnalysis.getPourcentageFevesArdoisees() {
@@ -895,6 +905,22 @@ privileged aspect JAnalysis_Roo_JavaBean {
         this.pourcentageGrainsAcceptablesImmature = pourcentageGrainsAcceptablesImmature;
     }
     
+    public BigDecimal JAnalysis.getPoidsSousTotalGrainsAcceptables() {
+        return this.poidsSousTotalGrainsAcceptables;
+    }
+    
+    public void JAnalysis.setPoidsSousTotalGrainsAcceptables(BigDecimal poidsSousTotalGrainsAcceptables) {
+        this.poidsSousTotalGrainsAcceptables = poidsSousTotalGrainsAcceptables;
+    }
+    
+    public BigDecimal JAnalysis.getPourcentageSousTotalGrainsAcceptables() {
+        return this.pourcentageSousTotalGrainsAcceptables;
+    }
+    
+    public void JAnalysis.setPourcentageSousTotalGrainsAcceptables(BigDecimal pourcentageSousTotalGrainsAcceptables) {
+        this.pourcentageSousTotalGrainsAcceptables = pourcentageSousTotalGrainsAcceptables;
+    }
+    
     public BigDecimal JAnalysis.getCalibrageTamis18() {
         return this.calibrageTamis18;
     }
@@ -989,6 +1015,22 @@ privileged aspect JAnalysis_Roo_JavaBean {
     
     public void JAnalysis.setPourcentageGradeHN(BigDecimal pourcentageGradeHN) {
         this.pourcentageGradeHN = pourcentageGradeHN;
+    }
+    
+    public String JAnalysis.getCertificationTypeOrProject() {
+        return this.certificationTypeOrProject;
+    }
+    
+    public void JAnalysis.setCertificationTypeOrProject(String certificationTypeOrProject) {
+        this.certificationTypeOrProject = certificationTypeOrProject;
+    }
+    
+    public Set<JBill> JAnalysis.getBills() {
+        return this.bills;
+    }
+    
+    public void JAnalysis.setBills(Set<JBill> bills) {
+        this.bills = bills;
     }
     
 }

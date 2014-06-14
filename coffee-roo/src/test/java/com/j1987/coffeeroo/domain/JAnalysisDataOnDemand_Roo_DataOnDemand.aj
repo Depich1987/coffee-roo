@@ -58,6 +58,7 @@ privileged aspect JAnalysisDataOnDemand_Roo_DataOnDemand {
         setCalibrageTamis14(obj, index);
         setCalibrageTamis16(obj, index);
         setCalibrageTamis18(obj, index);
+        setCertificationTypeOrProject(obj, index);
         setClassification(obj, index);
         setConformity(obj, index);
         setCreatedBy(obj, index);
@@ -65,6 +66,7 @@ privileged aspect JAnalysisDataOnDemand_Roo_DataOnDemand {
         setDateOfAnalysis(obj, index);
         setDealerName(obj, index);
         setEndTime(obj, index);
+        setExistInBill(obj, index);
         setExporterName(obj, index);
         setFactoryCode(obj, index);
         setFactoryName(obj, index);
@@ -112,6 +114,7 @@ privileged aspect JAnalysisDataOnDemand_Roo_DataOnDemand {
         setPoidsHorsNormesGrainsNoirs(obj, index);
         setPoidsMatieresEtrangeres(obj, index);
         setPoidsSousTotalDechets(obj, index);
+        setPoidsSousTotalGrainsAcceptables(obj, index);
         setPoidsSousTotalHorsNormes(obj, index);
         setPourcentageBrisures(obj, index);
         setPourcentageDechetsCerise(obj, index);
@@ -142,6 +145,7 @@ privileged aspect JAnalysisDataOnDemand_Roo_DataOnDemand {
         setPourcentageHorsNormesGrainsNoirs(obj, index);
         setPourcentageMatieresEtrangeres(obj, index);
         setPourcentageSousTotalDechets(obj, index);
+        setPourcentageSousTotalGrainsAcceptables(obj, index);
         setPourcentageSousTotalHorsNormes(obj, index);
         setPourcentageTotalFevesDefectueuses(obj, index);
         setProductType(obj, index);
@@ -154,6 +158,7 @@ privileged aspect JAnalysisDataOnDemand_Roo_DataOnDemand {
         setTauxHumidite1(obj, index);
         setTauxHumidite2(obj, index);
         setTauxHumidite3(obj, index);
+        setTotalFevesArdoisees(obj, index);
         setTotalFevesDefectueusesPlateau1(obj, index);
         setTotalFevesDefectueusesPlateau2(obj, index);
         setTotalFevesDefectueusesPlateau3(obj, index);
@@ -164,7 +169,6 @@ privileged aspect JAnalysisDataOnDemand_Roo_DataOnDemand {
         setTotalFevesViolette(obj, index);
         setTotalOfBagPushed(obj, index);
         setTotalOfReportedBags(obj, index);
-        setTotalfevesArdoisees(obj, index);
         setTruckNumber(obj, index);
         return obj;
     }
@@ -209,6 +213,11 @@ privileged aspect JAnalysisDataOnDemand_Roo_DataOnDemand {
         obj.setCalibrageTamis18(calibrageTamis18);
     }
     
+    public void JAnalysisDataOnDemand.setCertificationTypeOrProject(JAnalysis obj, int index) {
+        String certificationTypeOrProject = "certificationTypeOrProject_" + index;
+        obj.setCertificationTypeOrProject(certificationTypeOrProject);
+    }
+    
     public void JAnalysisDataOnDemand.setClassification(JAnalysis obj, int index) {
         String classification = "classification_" + index;
         obj.setClassification(classification);
@@ -242,6 +251,11 @@ privileged aspect JAnalysisDataOnDemand_Roo_DataOnDemand {
     public void JAnalysisDataOnDemand.setEndTime(JAnalysis obj, int index) {
         Date endTime = new GregorianCalendar(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH), Calendar.getInstance().get(Calendar.HOUR_OF_DAY), Calendar.getInstance().get(Calendar.MINUTE), Calendar.getInstance().get(Calendar.SECOND) + new Double(Math.random() * 1000).intValue()).getTime();
         obj.setEndTime(endTime);
+    }
+    
+    public void JAnalysisDataOnDemand.setExistInBill(JAnalysis obj, int index) {
+        Boolean existInBill = false;
+        obj.setExistInBill(existInBill);
     }
     
     public void JAnalysisDataOnDemand.setExporterName(JAnalysis obj, int index) {
@@ -479,6 +493,11 @@ privileged aspect JAnalysisDataOnDemand_Roo_DataOnDemand {
         obj.setPoidsSousTotalDechets(poidsSousTotalDechets);
     }
     
+    public void JAnalysisDataOnDemand.setPoidsSousTotalGrainsAcceptables(JAnalysis obj, int index) {
+        BigDecimal poidsSousTotalGrainsAcceptables = BigDecimal.valueOf(index);
+        obj.setPoidsSousTotalGrainsAcceptables(poidsSousTotalGrainsAcceptables);
+    }
+    
     public void JAnalysisDataOnDemand.setPoidsSousTotalHorsNormes(JAnalysis obj, int index) {
         BigDecimal poidsSousTotalHorsNormes = BigDecimal.valueOf(index);
         obj.setPoidsSousTotalHorsNormes(poidsSousTotalHorsNormes);
@@ -629,6 +648,11 @@ privileged aspect JAnalysisDataOnDemand_Roo_DataOnDemand {
         obj.setPourcentageSousTotalDechets(pourcentageSousTotalDechets);
     }
     
+    public void JAnalysisDataOnDemand.setPourcentageSousTotalGrainsAcceptables(JAnalysis obj, int index) {
+        BigDecimal pourcentageSousTotalGrainsAcceptables = BigDecimal.valueOf(index);
+        obj.setPourcentageSousTotalGrainsAcceptables(pourcentageSousTotalGrainsAcceptables);
+    }
+    
     public void JAnalysisDataOnDemand.setPourcentageSousTotalHorsNormes(JAnalysis obj, int index) {
         BigDecimal pourcentageSousTotalHorsNormes = BigDecimal.valueOf(index);
         obj.setPourcentageSousTotalHorsNormes(pourcentageSousTotalHorsNormes);
@@ -689,6 +713,11 @@ privileged aspect JAnalysisDataOnDemand_Roo_DataOnDemand {
         obj.setTauxHumidite3(tauxHumidite3);
     }
     
+    public void JAnalysisDataOnDemand.setTotalFevesArdoisees(JAnalysis obj, int index) {
+        Long totalFevesArdoisees = new Integer(index).longValue();
+        obj.setTotalFevesArdoisees(totalFevesArdoisees);
+    }
+    
     public void JAnalysisDataOnDemand.setTotalFevesDefectueusesPlateau1(JAnalysis obj, int index) {
         Long totalFevesDefectueusesPlateau1 = new Integer(index).longValue();
         obj.setTotalFevesDefectueusesPlateau1(totalFevesDefectueusesPlateau1);
@@ -737,11 +766,6 @@ privileged aspect JAnalysisDataOnDemand_Roo_DataOnDemand {
     public void JAnalysisDataOnDemand.setTotalOfReportedBags(JAnalysis obj, int index) {
         Long totalOfReportedBags = new Integer(index).longValue();
         obj.setTotalOfReportedBags(totalOfReportedBags);
-    }
-    
-    public void JAnalysisDataOnDemand.setTotalfevesArdoisees(JAnalysis obj, int index) {
-        Long TotalfevesArdoisees = new Integer(index).longValue();
-        obj.setTotalfevesArdoisees(TotalfevesArdoisees);
     }
     
     public void JAnalysisDataOnDemand.setTruckNumber(JAnalysis obj, int index) {

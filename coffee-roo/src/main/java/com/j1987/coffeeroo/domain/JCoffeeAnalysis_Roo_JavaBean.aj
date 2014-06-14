@@ -4,7 +4,6 @@
 package com.j1987.coffeeroo.domain;
 
 import com.j1987.coffeeroo.domain.JCoffeeAnalysis;
-import com.j1987.coffeeroo.domain.JDealer;
 import com.j1987.coffeeroo.domain.JExporter;
 import com.j1987.coffeeroo.domain.JFactory;
 import com.j1987.coffeeroo.domain.JLocalization;
@@ -87,14 +86,6 @@ privileged aspect JCoffeeAnalysis_Roo_JavaBean {
     
     public void JCoffeeAnalysis.setProvenanceName(String provenanceName) {
         this.provenanceName = provenanceName;
-    }
-    
-    public JDealer JCoffeeAnalysis.getDealerEntry() {
-        return this.dealerEntry;
-    }
-    
-    public void JCoffeeAnalysis.setDealerEntry(JDealer dealerEntry) {
-        this.dealerEntry = dealerEntry;
     }
     
     public String JCoffeeAnalysis.getDealerName() {
@@ -519,6 +510,22 @@ privileged aspect JCoffeeAnalysis_Roo_JavaBean {
     
     public void JCoffeeAnalysis.setPourcentageGrainsAcceptablesImmature(BigDecimal pourcentageGrainsAcceptablesImmature) {
         this.pourcentageGrainsAcceptablesImmature = pourcentageGrainsAcceptablesImmature;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPoidsSousTotalGrainsAcceptables() {
+        return this.poidsSousTotalGrainsAcceptables;
+    }
+    
+    public void JCoffeeAnalysis.setPoidsSousTotalGrainsAcceptables(BigDecimal poidsSousTotalGrainsAcceptables) {
+        this.poidsSousTotalGrainsAcceptables = poidsSousTotalGrainsAcceptables;
+    }
+    
+    public BigDecimal JCoffeeAnalysis.getPourcentageSousTotalGrainsAcceptables() {
+        return this.pourcentageSousTotalGrainsAcceptables;
+    }
+    
+    public void JCoffeeAnalysis.setPourcentageSousTotalGrainsAcceptables(BigDecimal pourcentageSousTotalGrainsAcceptables) {
+        this.pourcentageSousTotalGrainsAcceptables = pourcentageSousTotalGrainsAcceptables;
     }
     
     public BigDecimal JCoffeeAnalysis.getCalibrageTamis18() {

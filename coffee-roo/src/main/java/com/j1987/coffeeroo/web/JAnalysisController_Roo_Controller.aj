@@ -4,6 +4,7 @@
 package com.j1987.coffeeroo.web;
 
 import com.j1987.coffeeroo.domain.JAnalysis;
+import com.j1987.coffeeroo.domain.JBill;
 import com.j1987.coffeeroo.domain.JBridge;
 import com.j1987.coffeeroo.domain.JExporter;
 import com.j1987.coffeeroo.domain.JFirm;
@@ -105,6 +106,7 @@ privileged aspect JAnalysisController_Roo_Controller {
     void JAnalysisController.populateEditForm(Model uiModel, JAnalysis JAnalysis_) {
         uiModel.addAttribute("JAnalysis_", JAnalysis_);
         addDateTimeFormatPatterns(uiModel);
+        uiModel.addAttribute("jbills", JBill.findAllJBills());
         uiModel.addAttribute("jbridges", JBridge.findAllJBridges());
         uiModel.addAttribute("jexporters", JExporter.findAllJExporters());
         uiModel.addAttribute("jfirms", JFirm.findAllJFirms());

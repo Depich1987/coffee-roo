@@ -7,8 +7,6 @@ import com.j1987.coffeeroo.domain.JAnalysis;
 import com.j1987.coffeeroo.domain.JBill;
 import com.j1987.coffeeroo.domain.JBridge;
 import com.j1987.coffeeroo.domain.JCoffeeAnalysis;
-import com.j1987.coffeeroo.domain.JCompany;
-import com.j1987.coffeeroo.domain.JDealer;
 import com.j1987.coffeeroo.domain.JExporter;
 import com.j1987.coffeeroo.domain.JFactory;
 import com.j1987.coffeeroo.domain.JFirm;
@@ -119,54 +117,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         return new org.springframework.core.convert.converter.Converter<java.lang.String, com.j1987.coffeeroo.domain.JCoffeeAnalysis>() {
             public com.j1987.coffeeroo.domain.JCoffeeAnalysis convert(String id) {
                 return getObject().convert(getObject().convert(id, Long.class), JCoffeeAnalysis.class);
-            }
-        };
-    }
-    
-    public Converter<JCompany, String> ApplicationConversionServiceFactoryBean.getJCompanyToStringConverter() {
-        return new org.springframework.core.convert.converter.Converter<com.j1987.coffeeroo.domain.JCompany, java.lang.String>() {
-            public String convert(JCompany jCompany) {
-                return new StringBuilder().append(jCompany.getName()).append(' ').append(jCompany.getNumberCC()).append(' ').append(jCompany.getTaxationRegime()).append(' ').append(jCompany.getTaxCenter()).toString();
-            }
-        };
-    }
-    
-    public Converter<Long, JCompany> ApplicationConversionServiceFactoryBean.getIdToJCompanyConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.j1987.coffeeroo.domain.JCompany>() {
-            public com.j1987.coffeeroo.domain.JCompany convert(java.lang.Long id) {
-                return JCompany.findJCompany(id);
-            }
-        };
-    }
-    
-    public Converter<String, JCompany> ApplicationConversionServiceFactoryBean.getStringToJCompanyConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.j1987.coffeeroo.domain.JCompany>() {
-            public com.j1987.coffeeroo.domain.JCompany convert(String id) {
-                return getObject().convert(getObject().convert(id, Long.class), JCompany.class);
-            }
-        };
-    }
-    
-    public Converter<JDealer, String> ApplicationConversionServiceFactoryBean.getJDealerToStringConverter() {
-        return new org.springframework.core.convert.converter.Converter<com.j1987.coffeeroo.domain.JDealer, java.lang.String>() {
-            public String convert(JDealer jDealer) {
-                return new StringBuilder().append(jDealer.getCode()).append(' ').append(jDealer.getName()).append(' ').append(jDealer.getDescription()).toString();
-            }
-        };
-    }
-    
-    public Converter<Long, JDealer> ApplicationConversionServiceFactoryBean.getIdToJDealerConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.j1987.coffeeroo.domain.JDealer>() {
-            public com.j1987.coffeeroo.domain.JDealer convert(java.lang.Long id) {
-                return JDealer.findJDealer(id);
-            }
-        };
-    }
-    
-    public Converter<String, JDealer> ApplicationConversionServiceFactoryBean.getStringToJDealerConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.j1987.coffeeroo.domain.JDealer>() {
-            public com.j1987.coffeeroo.domain.JDealer convert(String id) {
-                return getObject().convert(getObject().convert(id, Long.class), JDealer.class);
             }
         };
     }
@@ -400,12 +350,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getJCoffeeAnalysisToStringConverter());
         registry.addConverter(getIdToJCoffeeAnalysisConverter());
         registry.addConverter(getStringToJCoffeeAnalysisConverter());
-        registry.addConverter(getJCompanyToStringConverter());
-        registry.addConverter(getIdToJCompanyConverter());
-        registry.addConverter(getStringToJCompanyConverter());
-        registry.addConverter(getJDealerToStringConverter());
-        registry.addConverter(getIdToJDealerConverter());
-        registry.addConverter(getStringToJDealerConverter());
         registry.addConverter(getJExporterToStringConverter());
         registry.addConverter(getIdToJExporterConverter());
         registry.addConverter(getStringToJExporterConverter());

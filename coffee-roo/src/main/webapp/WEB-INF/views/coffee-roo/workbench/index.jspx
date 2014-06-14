@@ -12,11 +12,7 @@
   <h1 class="page-header">${title}</h1>
   
   <p>
-  	<spring:message code="welcome_text"/>
-  	<center>
-  		<img alt="" src="${img_url}" width="555" class="img-thumbnail"/>
-  	</center>
-  	
+	<img alt="" src="${img_url}" width="555" class="img-thumbnail"/>
   </p>
   
 </div>

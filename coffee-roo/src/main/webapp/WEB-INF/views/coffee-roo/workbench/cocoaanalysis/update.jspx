@@ -1,37 +1,1033 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" 
+	 xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" 
+	  xmlns:form="http://www.springframework.org/tags/form" 
+	 xmlns:jsp="http://java.sun.com/JSP/Page" 
+	 xmlns:spring="http://www.springframework.org/tags" version="2.0">
+	 
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    <form:update id="fu_com_j1987_coffeeroo_domain_JAnalysis" modelAttribute="JAnalysis_" path="/janalyses" versionField="Version" z="HL1g7RvbeUW7UPAMPmJT+tH0ETw=">
-        <field:input field="reference" id="c_com_j1987_coffeeroo_domain_JAnalysis_reference" z="f7M3mDnRgh1viOCoUKGtLinxOxE="/>
-        <field:input field="status" id="c_com_j1987_coffeeroo_domain_JAnalysis_status" validationMessageCode="field_invalid_integer" z="4Ub+1hQVRJki7WsR4B79APipAmw="/>
-        <field:datetime dateTimePattern="${JAnalysis__dateofanalysis_date_format}" field="dateOfAnalysis" id="c_com_j1987_coffeeroo_domain_JAnalysis_dateOfAnalysis" required="true" z="4fMl/08JKasTMQC6wAADjfqzlD4="/>
-        <field:input field="numberLading" id="c_com_j1987_coffeeroo_domain_JAnalysis_numberLading" required="true" z="pRnFyKQkbgHV5jQLNmZo5b3KDLs="/>
-        <field:input field="truckNumber" id="c_com_j1987_coffeeroo_domain_JAnalysis_truckNumber" required="true" z="CTaGkoHzxwJEeEnW/uxgqeYS54c="/>
-        <field:input field="netWeightOfProductAccepted" id="c_com_j1987_coffeeroo_domain_JAnalysis_netWeightOfProductAccepted" validationMessageCode="field_invalid_number" z="Hb004hino3c0lCZT8+fS3mswpt4="/>
-        <field:datetime dateTimePattern="${JAnalysis__starttime_date_format}" field="startTime" id="c_com_j1987_coffeeroo_domain_JAnalysis_startTime" z="4kOSsRm8PUuRVNnXyObRSZhwQug="/>
-        <field:datetime dateTimePattern="${JAnalysis__endtime_date_format}" field="endTime" id="c_com_j1987_coffeeroo_domain_JAnalysis_endTime" z="5Rv99beeQfCmDqQGfJZdW9HzfEo="/>
-        <field:input field="totalOfBagPushed" id="c_com_j1987_coffeeroo_domain_JAnalysis_totalOfBagPushed" validationMessageCode="field_invalid_integer" z="1SaOijgPld3wDD6MXymZr449iCM="/>
-        <field:input field="totalOfReportedBags" id="c_com_j1987_coffeeroo_domain_JAnalysis_totalOfReportedBags" validationMessageCode="field_invalid_integer" z="f92d9MHSyTBkRLhbTgURT/jorYY="/>
-        <field:input field="numberOfBagAllowed" id="c_com_j1987_coffeeroo_domain_JAnalysis_numberOfBagAllowed" validationMessageCode="field_invalid_integer" z="ThA0q7UXnRXBC+m5WhQdtZ/Cjgw="/>
-        <field:input field="sampleCode" id="c_com_j1987_coffeeroo_domain_JAnalysis_sampleCode" required="true" z="+b7pQHmblMmdAPKUmAOLRAw/Kvk="/>
-        <field:input field="numberSAIGIC" id="c_com_j1987_coffeeroo_domain_JAnalysis_numberSAIGIC" z="keVhCyvpfywUhLPlthUbyXa5+8k="/>
-        <field:datetime dateTimePattern="${JAnalysis__creationdate_date_format}" field="creationDate" id="c_com_j1987_coffeeroo_domain_JAnalysis_creationDate" z="Q4UMkVa/NcikGoNd/AJU2XoQrXs="/>
-        <field:input field="createdBy" id="c_com_j1987_coffeeroo_domain_JAnalysis_createdBy" z="vabK4hiPwMO7wENqG1C/kmnOxcE="/>
-        <field:input field="modifiedBy" id="c_com_j1987_coffeeroo_domain_JAnalysis_modifiedBy" z="nzJYeMv12VJ8LSWXJbHZ2DN8Vy4="/>
-        <field:datetime dateTimePattern="${JAnalysis__modificationdate_date_format}" field="modificationDate" id="c_com_j1987_coffeeroo_domain_JAnalysis_modificationDate" z="K5//ceaJr+OMzHvuX3tOgn7CNHI="/>
-        <field:input field="productType" id="c_com_j1987_coffeeroo_domain_JAnalysis_productType" z="nUMDzUvs3cwJPS2pUEP+mK1BklU="/>
-        <field:select field="provenance" id="c_com_j1987_coffeeroo_domain_JAnalysis_provenance" itemValue="id" items="${jlocalizations}" path="/jlocalizations" z="QrbgKShcUrFUVZKygkY8D0KwUEU="/>
-        <field:select field="tour" id="c_com_j1987_coffeeroo_domain_JAnalysis_tour" itemValue="id" items="${jtours}" path="/jtours" z="vHGaVl/DFpr5jl+dQgrv0MUgTE4="/>
-        <field:input field="provenanceName" id="c_com_j1987_coffeeroo_domain_JAnalysis_provenanceName" z="htdVjMmFY9D0L8yZ+WY5DU4gwtI="/>
-        <field:select field="dealerEntry" id="c_com_j1987_coffeeroo_domain_JAnalysis_dealerEntry" itemValue="id" items="${jdealers}" path="/jdealers" z="o225R/aLRIaPW0/HjN3cm42MBIw="/>
-        <field:input field="dealerName" id="c_com_j1987_coffeeroo_domain_JAnalysis_dealerName" z="7+E8t7+yL1XXrQabUktYYvqhV70="/>
-        <field:input field="factoryCode" id="c_com_j1987_coffeeroo_domain_JAnalysis_factoryCode" z="Nuz1TWawQrsxhXFrMJbiNMyXhsA="/>
-        <field:input field="bridge" id="c_com_j1987_coffeeroo_domain_JAnalysis_bridge" z="zKGEm7lGcbA3+JJN4AbIP1dHr0I="/>
-        <field:input field="factoryName" id="c_com_j1987_coffeeroo_domain_JAnalysis_factoryName" z="8DoLSSmEpziC+LMdKAmhAF5d0Ic="/>
-        <field:select field="exporterEntry" id="c_com_j1987_coffeeroo_domain_JAnalysis_exporterEntry" itemValue="id" items="${jexporters}" path="/jexporters" z="drlGf96NB7y5W1ntB5YlUW0BDyQ="/>
-        <field:input field="exporterName" id="c_com_j1987_coffeeroo_domain_JAnalysis_exporterName" z="LXEU2bzkJ7/wvei/M3YAcmhAWLU="/>
-        <field:select field="supplierEntry" id="c_com_j1987_coffeeroo_domain_JAnalysis_supplierEntry" itemValue="id" items="${jsuppliers}" path="/jsuppliers" z="JHYFimMxqG6YTFXDa6BbVYoRNoU="/>
-        <field:input field="supplierName" id="c_com_j1987_coffeeroo_domain_JAnalysis_supplierName" z="uHtomBhKKVkEohK+YmgjsyViYiQ="/>
-    </form:update>
+    
+    <spring:message code="workbench_analysis_generalinformations" var="generalinfos_label"/>
+    <spring:message code="workbench_analysis_technincalinformations" var="technincalinfos_label"/>
+    
+    <spring:message code="workbench_analysis_generalinformations" var="generalinfos_label"/>
+    <spring:message code="analysiscocoa_labelplural" var="analysiscocoa_plural"/>
+    <spring:message code="analysiscocoa_label" var="analysiscocoa_label"/>
+    
+    <spring:url value="/ajaxrequest/getfactoryparent" var="getfactoryparent_url"/>
+    <spring:url value="/ajaxrequest/checkcode" var="chechreference_url"/>
+
+	<h1 class="page-header">
+    	${analysiscocoa_plural}
+    </h1>
+    <div class="btn-toolbar" role="toolbar" style="margin-bottom: 15px;">
+    	<div class="btn-group">
+	    		<spring:url value="/workbench/analysis/cocoaanalysis/list?size=10" var="list_url"/>
+		    	<a href="${list_url}" class="btn btn-default">
+		    		<spring:message code="entity_list_all" arguments="${analysiscocoa_plural}" />
+		    		<![CDATA[&nbsp;&nbsp;]]>
+		    		<span class="glyphicon glyphicon-list-alt"></span>
+		    	</a>
+    	</div>
+    </div>
+    
+    <div class="panel panel-primary">
+    	<div class="panel-heading">
+    		<spring:message arguments="${analysiscocoa_label}" code="entity_update" htmlEscape="false" />
+    	</div>
+    	<div class="panel-body">
+           <p>
+		        <div id="error-message">
+		        	<!-- error place -->
+		        </div>
+	        </p>
+	        <spring:url value="/workbench/analysis/cocoaanalysis/update" var="form_url"/>
+	        <form:form modelAttribute="cocoaAnalysisForm" method="put" action="${form_url}">
+
+		       <FIELDSET>
+		        	<LEGEND>
+		        		${generalinfos_label}
+		        	</LEGEND>
+		        	
+	        	<!-- ******************* SELECT FIELD ******************** -->
+	        		<div class="row">
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="reference" class="control-label">
+						        <spring:message code="label_com_j1987_coffeeroo_domain_janalysis_reference"/>
+						        :
+						      </label>
+			   					<form:input path="reference" cssClass="form-control"/>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="tourId" class="control-label">
+						        <spring:message code="label_com_j1987_coffeeroo_domain_jtour"/>
+						        :
+						      </label>
+			   					<select  name="tourId" id="tourId" class="form-control">
+			   						<c:forEach items="${tours}" var="tour">
+			   							<option value="${tour.id}">
+			   								${tour.name}
+			   							</option>
+			   						</c:forEach>
+			   					</select>
+			    			</div>
+		        		</div>
+	        		</div>
+	        		<hr />
+		        	<div class="row">
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="dealerCode" class="control-label">
+						        <spring:message code="label_com_j1987_coffeeroo_domain_jdealer"/>
+						        :
+						      </label>
+			   					<select  name="dealerCode" id="dealerCode" class="form-control">
+			   						<c:forEach items="${firms}" var="firm">
+			   							<option value="${firm.dealerCode}">
+			   								${firm.name}
+			   							</option>
+			   						</c:forEach>
+			   					</select>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="exporterCode" class="control-label">
+						        <spring:message code="label_com_j1987_coffeeroo_domain_jexporter"/>
+						        :
+						      </label>
+			   					<form:select path="exporterCode" class="form-control">
+			   						<form:options items="${exporters}" itemLabel="name" itemValue="code" />
+			   					</form:select>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+   			   				<div class="form-group">
+						      <label for="supplierCode" class="control-label">
+						        <spring:message code="label_com_j1987_coffeeroo_domain_jsupplier"/>
+						        :
+						      </label>
+			   					<form:select path="supplierCode" class="form-control">
+			   						<form:options items="${suppliers}" itemLabel="name" itemValue="code" />
+			   					</form:select>
+			    			</div>
+		        		</div>
+		       		</div>
+
+		        	<div class="row">
+		        		<div class="col-sm-4">
+	   			   				<div class="form-group">
+							      <label for="provenance" class="control-label">
+							        <spring:message code="label_com_j1987_coffeeroo_domain_jlocalization"/>
+							        :
+							      </label>
+				   					<form:select path="provenance" class="form-control">
+				   						<form:options items="${localizations}" itemLabel="name" itemValue="id" />
+				   					</form:select>
+				    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+		        			<div class="form-group">
+						      <label for="bridgeCode" class="control-label">
+						        <spring:message code="label_com_j1987_coffeeroo_domain_jbridge"/>
+						        :
+						      </label>
+			   					<form:select path="bridgeCode" class="form-control">
+			   						<form:options items="${bridges}" itemLabel="name" itemValue="code" />
+			   					</form:select>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+		        			<div class="form-group">
+						      <label for="factoryCode" class="control-label">
+						        <spring:message code="label_com_j1987_coffeeroo_domain_jfactory"/>
+						        :
+						      </label>
+								<form:input path="factoryCode" cssClass="form-control" readonly="true"/>
+			    			</div>
+		        		</div>
+		       		</div>
+		       		
+	       		<!-- ******************* INPUT FIELD ******************** -->
+	       		
+	       		<hr></hr>
+	       		
+					<div class="row">
+		        		<div class="col-sm-3">
+   			   				<div class="form-group">
+						      <label for="startTime" class="control-label">
+						       Date Analyse :
+						      </label>
+						      <form:input path="dateOfAnalysis" class="form-control"/>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-3">
+   			   				<div class="form-group">
+						      <label for="numberLading" class="control-label">
+						       Numero Connaissement :
+						      </label>
+						      <form:input path="numberLading" class="form-control"/>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-3">
+   			   				<div class="form-group">
+						      <label for="truckNumber" class="control-label">
+						       Numero Camion :
+						      </label>
+						      <form:input path="truckNumber" class="form-control"/>
+		        		</div>
+		        		</div>
+		        		<div class="col-sm-3">
+		        			<div class="form-group">
+						      <label for="netWeightOfProductAccepted" class="control-label">
+						       Poids net produit accepte :
+						      </label>
+						      <form:input path="netWeightOfProductAccepted" class="form-control"/>
+						     </div>
+		        		</div>
+		       		</div>	       		
+	       		
+	       			<div class="row">
+		        		<div class="col-sm-3">
+   			   				<div class="form-group">
+						      <label for="startTime" class="control-label">
+						       Heure de debut :
+						      </label>
+						      <form:input path="startTime" class="form-control"/>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-3">
+   			   				<div class="form-group">
+						      <label for="totalOfBagPushed" class="control-label">
+						       Sac total refoule :
+						      </label>
+						      <form:input path="totalOfBagPushed" class="form-control"/>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-3">
+   			   				<div class="form-group">
+						      <label for="totalOfReportedBags" class="control-label">
+						       Sac total declares :
+						      </label>
+						      <form:input path="totalOfReportedBags" class="form-control"/>
+		        		</div>
+		        		</div>
+		        		<div class="col-sm-3">
+		        			<div class="form-group">
+						      <label for="numberOfBagAllowed" class="control-label">
+						       Numero de sac acceptes :
+						      </label>
+						      <form:input path="numberOfBagAllowed" class="form-control"/>
+						     </div>
+		        		</div>
+		       		</div>	      
+	       			
+	       			<div class="row">
+		        		<div class="col-sm-3">
+   			   				<div class="form-group">
+						      <label for="endTime" class="control-label">
+						       Heure de Fin :
+						      </label>
+						      <form:input path="endTime" class="form-control"/>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-3">
+   			   				<div class="form-group">
+						      <label for="sampleCode" class="control-label">
+						       Code echantillon :
+						      </label>
+						      <form:input path="sampleCode" class="form-control"/>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-3">
+   			   				<div class="form-group">
+						      <label for="numberSAIGIC" class="control-label">
+						       Numero SAIGIC :
+						      </label>
+						      <form:input path="numberSAIGIC" class="form-control"/>
+		        			</div>
+		        		</div>
+		        		<div class="col-sm-3">
+   			   				<div class="form-group">
+						      <label for="certificationTypeOrProject" class="control-label">
+						      	certificationTypeOrProject
+						      </label>
+						      <form:input path="certificationTypeOrProject" class="form-control"/>
+		        			</div>
+		        		</div>
+		       		</div>	   
+	       			
+	       		</FIELDSET>
+	       		
+	       		<FIELDSET>
+		        	<LEGEND>
+		        		${technincalinfos_label}
+		        	</LEGEND>
+		        	<div class="row">
+		        		<div class="col-sm-4">
+		        			<h4>
+		        				Determination Taux Humidite %
+		        			</h4>
+		        		</div>
+		        		<div class="col-sm-2">
+   			   				<div class="form-group">
+						      <label for="tauxHumidite1" class="control-label">
+						       Palteau 1 :
+						      </label>
+						      <form:input path="tauxHumidite1" class="form-control"/>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-2">
+   			   				<div class="form-group">
+							      <label for="tauxHumidite2" class="control-label">
+							       Plateau2 :
+							      </label>
+							      <form:input path="tauxHumidite2" class="form-control"/>
+			        		</div>
+		        		</div>
+		        		<div class="col-sm-2">
+   			   				<div class="form-group">
+							      <label for="tauxHumidite3" class="control-label">
+							       Plateau3 :
+							      </label>
+							      <form:input path="tauxHumidite3" class="form-control"/>
+			        		</div>
+		        		</div>
+		        		<div class="col-sm-2">
+   			   				<div class="form-group">
+							      <label for="moyenneTauxHumidite" class="control-label">
+							       Moy % :
+							      </label>
+							      <form:input path="moyenneTauxHumidite" class="form-control" readonly="true"/>
+			        		</div>
+		        		</div>
+		       		</div>	  
+		        	<hr/>
+		        	
+	        		<div class="row">
+	        			<div class="col-sm-4">
+		        			<h4>
+		        				Determination du Grainage
+		        			</h4>
+		        		</div>
+		        		<div class="col-sm-4">
+	  			   				<div class="form-group">
+						      <label for="nombreFeves" class="control-label">
+						       nombreFeves :
+						      </label>
+						      <form:input path="nombreFeves" class="form-control"/>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="fevesPar100g" class="control-label">
+						       fevesPar100g :
+						      </label>
+						      <form:input path="fevesPar100g" class="form-control"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		<hr />
+	        		<div class="row">
+	        			<div class="col-sm-4">
+		        			<h4>
+		        				Matieres Etrangeres
+		        			</h4>
+		        		</div>
+		        		<div class="col-sm-4">
+	  			   				<div class="form-group">
+						      <label for="poidsMatieresEtrangeres" class="control-label">
+						       poidsMatieresEtrangeres :
+						      </label>
+						      <form:input path="poidsMatieresEtrangeres" class="form-control"/>
+			    			</div>
+		        		</div>
+		        		<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="PourcentageMatieresEtrangeres" class="control-label">
+						       PourcentageMatieresEtrangeres :
+						      </label>
+						      <form:input path="PourcentageMatieresEtrangeres" class="form-control" readonly="true"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		<hr />
+		       		<div class="row">
+	        			<div class="col-sm-4">
+							<h4>Brisures</h4>
+		        		</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="poidsBrisures" class="control-label">
+						       poidsBrisures :
+						      </label>
+						      <form:input path="poidsBrisures" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="pourcentageBrisures" class="control-label">
+						       pourcentageBrisures (%) :
+						      </label>
+						      <form:input path="pourcentageBrisures" class="form-control"  readonly="true"/>
+		        			</div>
+	        			</div>
+		       		</div>
+					<hr />
+		       		<div class="row">
+		       			<div class="col-sm-2">
+		       				<h5>Feves Moisies</h5>
+		       			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="fevesMoisiesPlateau1" class="control-label">
+						       Plateau1 
+						      </label>
+						      <form:input path="fevesMoisiesPlateau1" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="fevesMoisiesPlateau2" class="control-label">
+						       Plateau2 
+						      </label>
+						      <form:input path="fevesMoisiesPlateau2" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="fevesMoisiesPlateau3" class="control-label">
+						       Plateau3 
+						      </label>
+						      <form:input path="fevesMoisiesPlateau3" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="totalFevesMoisies" class="control-label">
+						       total 
+						      </label>
+						      <form:input path="totalFevesMoisies" class="form-control" readonly="true"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-2">
+							<div class="form-group">
+						      <label for="pourcentageFevesMoisies" class="control-label">
+						      % 
+						      </label>
+						      <form:input path="pourcentageFevesMoisies" class="form-control" readonly="true"/>
+		        			</div>
+		        		</div>
+		       		</div>
+		       		<div class="row">
+		       			<div class="col-sm-2">
+		       				<h5>Feves Ardoisees</h5>
+		       			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="fevesArdoiseesPlateau1" class="control-label">
+						       Plateau1 
+						      </label>
+						      <form:input path="fevesArdoiseesPlateau1" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="fevesArdoiseesPlateau2" class="control-label">
+						       Plateau2 
+						      </label>
+						      <form:input path="fevesArdoiseesPlateau2" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="fevesArdoiseesPlateau3" class="control-label">
+						       Plateau3 
+						      </label>
+						      <form:input path="fevesArdoiseesPlateau3" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-2">
+							<div class="form-group">
+						      <label for="totalFevesArdoisees" class="control-label">
+						       Total 
+						      </label>
+						      <form:input path="totalFevesArdoisees" class="form-control" readonly="true"/>
+		        			</div>
+		        		</div>
+	        			<div class="col-sm-2">
+							<div class="form-group">
+						      <label for="pourcentageFevesArdoisees" class="control-label">
+						       % 
+						      </label>
+						      <form:input path="pourcentageFevesArdoisees" class="form-control" readonly="true"/>
+		        			</div>
+		        		</div>
+		       		</div>
+		       		<div class="row">
+		       			<div class="col-sm-2">
+		       				<h5>Feves Mitees</h5>
+		       			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="fevesMiteesPlateau1" class="control-label">
+						       Plateau1 
+						      </label>
+						      <form:input path="fevesMiteesPlateau1" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="fevesMiteesPlateau2" class="control-label">
+						       Plateau2 
+						      </label>
+						      <form:input path="fevesMiteesPlateau2" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="fevesMiteesPlateau3" class="control-label">
+						       Plateau3 
+						      </label>
+						      <form:input path="fevesMiteesPlateau3" class="form-control"/>
+		        			</div>
+		        		</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="totalFevesMitees" class="control-label">
+						       Total 
+						      </label>
+						      <form:input path="totalFevesMitees" class="form-control" readonly="true"/>
+		        			</div>
+		        		</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="pourcentageFevesMitees" class="control-label">
+						       % 
+						      </label>
+						      <form:input path="pourcentageFevesMitees" class="form-control" readonly="true"/>
+		        			</div>
+		        		</div>
+		       		</div>
+		       		<div class="row">
+		       			<div class="col-sm-2">
+		       				<h5>Feves Germees</h5>
+		       			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="fevesGermeesPlateau1" class="control-label">
+						       Plateau1 
+						      </label>
+						      <form:input path="fevesGermeesPlateau1" class="form-control"/>
+		        			</div>
+		        		</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="fevesGermeesPlateau2" class="control-label">
+						       Plateau2 
+						      </label>
+						      <form:input path="fevesGermeesPlateau2" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="fevesGermeesPlateau3" class="control-label">
+						       Plateau3 
+						      </label>
+						      <form:input path="fevesGermeesPlateau3" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="totalFevesGermees" class="control-label">
+						       Total 
+						      </label>
+						      <form:input path="totalFevesGermees" class="form-control" readonly="true"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="pourcentageFevesGermees" class="control-label">
+						       % 
+						      </label>
+						      <form:input path="pourcentageFevesGermees" class="form-control" readonly="true"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		<div class="row">
+		       			<div class="col-sm-2">
+		       				<h5>Feves Plates</h5>
+		       			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="fevesPlatesPlateau1" class="control-label">
+						       Plateau1 
+						      </label>
+						      <form:input path="fevesPlatesPlateau1" class="form-control"/>
+		        			</div>
+		        		</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="fevesPlatesPlateau2" class="control-label">
+						       Plateau2 
+						      </label>
+						      <form:input path="fevesPlatesPlateau2" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="fevesPlatesPlateau3" class="control-label">
+						       Plateau3 
+						      </label>
+						      <form:input path="fevesPlatesPlateau3" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="totalFevesPlates" class="control-label">
+						       Total 
+						      </label>
+						      <form:input path="totalFevesPlates" class="form-control" readonly="true"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="pourcentageFevesPlates" class="control-label">
+						       % 
+						      </label>
+						      <form:input path="pourcentageFevesPlates" class="form-control" readonly="true"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		<div class="row">
+		       			<div class="col-sm-2">
+		       				<h5>Total Feves Def.</h5>
+		       			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="totalFevesDefectueusesPlateau1" class="control-label">
+						       Plateau1 
+						      </label>
+						      <form:input path="totalFevesDefectueusesPlateau1" class="form-control"/>
+		        			</div>
+		        		</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="totalFevesDefectueusesPlateau2" class="control-label">
+						       Plateau2 
+						      </label>
+						      <form:input path="totalFevesDefectueusesPlateau2" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="totalFevesDefectueusesPlateau3" class="control-label">
+						       Plateau3 
+						      </label>
+						      <form:input path="totalFevesDefectueusesPlateau3" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="sommeTotalFevesDefectueuses" class="control-label">
+						       Total 
+						      </label>
+						      <form:input path="sommeTotalFevesDefectueuses" class="form-control" readonly="true"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="pourcentageTotalFevesDefectueuses" class="control-label">
+						       % 
+						      </label>
+						      <form:input path="pourcentageTotalFevesDefectueuses" class="form-control" readonly="true"/>
+		        			</div>
+	        			</div>
+		       		</div>
+		       		<div class="row">
+		       			<div class="col-sm-2">
+		       				<h5>Feves Violettes</h5>
+		       			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="fevesViolettePlateau1" class="control-label">
+						       Plateau1 
+						      </label>
+						      <form:input path="fevesViolettePlateau1" class="form-control"/>
+		        			</div>
+		        		</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="fevesViolettePlateau2" class="control-label">
+						       Plateau2 
+						      </label>
+						      <form:input path="fevesViolettePlateau2" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="fevesViolettePlateau3" class="control-label">
+						       Plateau3 
+						      </label>
+						      <form:input path="fevesViolettePlateau3" class="form-control"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="totalFevesViolette" class="control-label">
+						       Total 
+						      </label>
+						      <form:input path="totalFevesViolette" class="form-control" readonly="true"/>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-2">
+	  			   			<div class="form-group">
+						      <label for="pourcentageFevesViolette" class="control-label">
+						       % 
+						      </label>
+						      <form:input path="pourcentageFevesViolette" class="form-control" readonly="true"/>
+		        			</div>
+	        			</div>
+		       		</div>
+					<hr />
+		       		<div class="row">
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="classification" class="control-label">
+						       Classification :
+						      </label>
+						      <form:select path="classification" class="form-control">
+						      	<form:option value="G1"></form:option>
+						      	<form:option value="G2"></form:option>
+						      	<form:option value="SG"></form:option>
+						      </form:select>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="acceptation" class="control-label">
+						       Acceptation :
+						      </label>
+						      <form:select path="acceptation" class="form-control">
+						      	<form:option value="1" label="Oui"/>
+						      	<form:option value="0" label="Non" />
+						      </form:select>
+		        			</div>
+	        			</div>
+	        			<div class="col-sm-4">
+	  			   			<div class="form-group">
+						      <label for="conformity" class="control-label">
+						       Conformite :
+						      </label>
+						      <form:select path="conformity" class="form-control">
+						      	<form:option value="1" label="Oui"/>
+						      	<form:option value="0" label="Non" />
+						      </form:select>
+		        			</div>
+	        			</div>
+		       		</div>
+   	    			<hr />
+	   	            <div class="form-group">
+		   				<div class="col-sm-10">
+		   					<form:hidden path="id" />
+	   		          		<button id="proceed" type="submit" class="btn btn-success">
+			          			<spring:message code="button_save"/>
+			          			<![CDATA[&nbsp;&nbsp;]]>
+			          			<span class="glyphicon glyphicon-floppy-save"></span>
+			          		</button>
+				        </div>
+				     </div>
+		        </FIELDSET>
+		        
+       		</form:form>
+        </div>
+         <div class="panel-footer">
+           <small>
+           	<spring:message code="global_sponsored"/>
+           </small>
+         </div>
+    </div>
+    <script type="text/javascript">
+    
+    function validateAnalysisReference(ref){
+		var isSuccess = false;
+		if(ref != ''){
+			
+			$.ajax({
+				url:'${chechreference_url}',
+				type:'post',
+				dataType:'json',
+				data:{reference:ref},
+				async:false,
+				success:function(a){
+					if (a === true || value == '${cocoaAnalysisForm.reference}' ) {
+						isSuccess = true;
+					}
+				},
+				error:function(err,xhr,status){
+					alert('Une Erreur est survenue dans la verification de la reference analyse!');
+					console.log(err);
+				}
+			});
+		}
+		return isSuccess;
+	}
+    
+	function getBridgeParent(brCode){
+		var isSuccess = false;
+		if(brCode != ''){
+			$('#factoryCode').val('');
+			$.ajax({
+				url:'${getfactoryparent_url}',
+				type:'post',
+				dataType:'text',
+				data:{bridgeCode:brCode},
+				async:false,
+				success:function(a){
+					$('#factoryCode').val(a);
+				},
+				error:function(err,xhr,status){
+					alert('Une Erreur est survenue dans la recherche de l\'usine parente !');
+					console.log(err);
+				}
+			});
+		}
+		return isSuccess;
+	}
+    
+       	$(document).ready(function(){
+       		
+       		$.validator.addMethod("checkreference",function(value, element){
+    			return validateAnalysisReference(value);
+    		}, 'Cette Reference est deja utilisee!');
+    		
+       		
+       		$('#dateOfAnalysis').datepicker('setValue',new Date('${cocoaAnalysisForm.dateOfAnalysis}'));
+       		
+       		getBridgeParent($('#bridgeCode').val());
+       		
+       		$('#bridgeCode').on('change',function(){
+       			//alert($(this).val());
+       			getBridgeParent($(this).val());
+       		});
+       		
+       		$('input[name=tauxHumidite1], input[name=tauxHumidite2], input[name=tauxHumidite3]')
+       		.on('change',function(){
+       			var moy_th = 0;
+       			var $row = $(this).closest('form');
+       			
+       			var th1 = parseFloat($row.find('input[name=tauxHumidite1]').val());
+       			var th2 = parseFloat($row.find('input[name=tauxHumidite2]').val());
+       			var th3 = parseFloat($row.find('input[name=tauxHumidite3]').val());
+       			
+       			moy_th = ((th1 + th2 + th3)/3).toFixed(2);
+       			$('#moyenneTauxHumidite').val(moy_th);
+       		});
+       		
+       		$('#poidsMatieresEtrangeres').on('change',function(){
+       			var percent_me = 0;
+       			//var $row = $(this).closest('form');
+       			var pb = parseFloat($(this).val());
+       			percent_me = (pb/3).toFixed(2);
+       			$('#PourcentageMatieresEtrangeres').val(percent_me);
+       		});
+       		
+       		
+       		$('input[name=fevesMoisiesPlateau1],input[name=fevesMoisiesPlateau2], input[name=fevesMoisiesPlateau3]').on('change',function(){
+       			var sum = 0;
+       			var percent = 0;
+       			var $row = $(this).closest('form');
+       			var fm1 = parseFloat($row.find('input[name=fevesMoisiesPlateau1]').val());
+       			var fm2 = parseFloat($row.find('input[name=fevesMoisiesPlateau2]').val());
+       			var fm3 = parseFloat($row.find('input[name=fevesMoisiesPlateau3]').val());
+       			
+       			sum = fm1 + fm2 + fm3 ;
+       			percent = (sum/3).toFixed(2);
+       			$('#totalFevesMoisies').val(sum);
+       			$('#pourcentageFevesMoisies').val(percent);
+       		});
+       		
+       		$('input[name=fevesArdoiseesPlateau1],input[name=fevesArdoiseesPlateau2], input[name=fevesArdoiseesPlateau3]').on('change',function(){
+       			var sum = 0;
+       			var percent = 0;
+       			var $row = $(this).closest('form');
+       			var fa1 = parseFloat($row.find('input[name=fevesArdoiseesPlateau1]').val());
+       			var fa2 = parseFloat($row.find('input[name=fevesArdoiseesPlateau2]').val());
+       			var fa3 = parseFloat($row.find('input[name=fevesArdoiseesPlateau3]').val());
+       			
+       			sum = fa1 + fa2 + fa3 ;
+       			percent = (sum/3).toFixed(2);
+       			$('#totalFevesArdoisees').val(sum);
+       			$('#pourcentageFevesArdoisees').val(percent);
+       		});
+       		
+       		$('input[name=fevesMiteesPlateau1],input[name=fevesMiteesPlateau2], input[name=fevesMiteesPlateau3]').on('change',function(){
+       			var sum = 0;
+       			var percent = 0;
+       			var $row = $(this).closest('form');
+       			var fa1 = parseFloat($row.find('input[name=fevesMiteesPlateau1]').val());
+       			var fa2 = parseFloat($row.find('input[name=fevesMiteesPlateau2]').val());
+       			var fa3 = parseFloat($row.find('input[name=fevesMiteesPlateau3]').val());
+       			
+       			sum = fa1 + fa2 + fa3 ;
+       			percent = (sum/3).toFixed(2);
+       			$('#totalFevesMitees').val(sum);
+       			$('#pourcentageFevesMitees').val(percent);
+       		});
+       		
+       		$('input[name=fevesGermeesPlateau1],input[name=fevesGermeesPlateau2], input[name=fevesGermeesPlateau3]').on('change',function(){
+       			var sum = 0;
+       			var percent = 0;
+       			var $row = $(this).closest('form');
+       			var fg1 = parseFloat($row.find('input[name=fevesGermeesPlateau1]').val());
+       			var fg2 = parseFloat($row.find('input[name=fevesGermeesPlateau2]').val());
+       			var fg3 = parseFloat($row.find('input[name=fevesGermeesPlateau3]').val());
+       			
+       			sum = fg1 + fg2 + fg3 ;
+       			percent = (sum/3).toFixed(2);
+       			$('#totalFevesGermees').val(sum);
+       			$('#pourcentageFevesGermees').val(percent);
+       		});
+       		
+       		$('input[name=fevesPlatesPlateau1],input[name=fevesPlatesPlateau2], input[name=fevesPlatesPlateau3]').on('change',function(){
+       			var sum = 0;
+       			var percent = 0;
+       			var $row = $(this).closest('form');
+       			var fp1 = parseFloat($row.find('input[name=fevesPlatesPlateau1]').val());
+       			var fp2 = parseFloat($row.find('input[name=fevesPlatesPlateau2]').val());
+       			var fp3 = parseFloat($row.find('input[name=fevesPlatesPlateau3]').val());
+       			
+       			sum = fp1 + fp2 + fp3 ;
+       			percent = (sum/3).toFixed(2);
+       			$('#totalFevesPlates').val(sum);
+       			$('#pourcentageFevesPlates').val(percent);
+       		});
+       		
+       		$('input[name=totalFevesDefectueusesPlateau1],input[name=totalFevesDefectueusesPlateau2], input[name=totalFevesDefectueusesPlateau3]').on('change',function(){
+       			var sum = 0;
+       			var percent = 0;
+       			var $row = $(this).closest('form');
+       			var fd1 = parseFloat($row.find('input[name=totalFevesDefectueusesPlateau1]').val());
+       			var fd2 = parseFloat($row.find('input[name=totalFevesDefectueusesPlateau2]').val());
+       			var fd3 = parseFloat($row.find('input[name=totalFevesDefectueusesPlateau3]').val());
+       			
+       			sum = fd1 + fd2 + fd3 ;
+       			percent = (sum/3).toFixed(2);
+       			$('#sommeTotalFevesDefectueuses').val(sum);
+       			$('#pourcentageTotalFevesDefectueuses').val(percent);
+       		});
+       		
+       		$('input[name=fevesViolettePlateau1],input[name=fevesViolettePlateau2], input[name=fevesViolettePlateau3]').on('change',function(){
+       			var sum = 0;
+       			var percent = 0;
+       			var $row = $(this).closest('form');
+       			var fd1 = parseFloat($row.find('input[name=fevesViolettePlateau1]').val());
+       			var fd2 = parseFloat($row.find('input[name=fevesViolettePlateau2]').val());
+       			var fd3 = parseFloat($row.find('input[name=fevesViolettePlateau3]').val());
+       			
+       			sum = fd1 + fd2 + fd3 ;
+       			percent = (sum/3).toFixed(2);
+       			$('#totalFevesViolette').val(sum);
+       			$('#pourcentageFevesViolette').val(percent);
+       		});
+       		
+       		$('#poidsBrisures').on('change',function(){
+       			var percent_me = 0;
+       			//var $row = $(this).closest('form');
+       			var pb = parseFloat($(this).val());
+       			percent_me = (pb/3).toFixed(2);
+       			$('#pourcentageBrisures').val(percent_me);
+       		});
+       		
+       		$('#cocoaAnalysisForm').validate({
+    			rules:{
+    				tourId:{required:true},
+    				reference:{required:true,checkreference:true},
+    				
+    				exporterCode:{required:true},
+    				supplierCode:{required:true},
+    				dealerCode:{required:true},
+    				provenance:{required:true},
+    				bridgeCode:{required:true},
+    				
+    				dateOfAnalysis:{required:true},
+    				startTime:{required:true},
+    				endTime:{required:true},
+    				numberLading:{required:true},
+    				
+    				truckNumber:{required:true},
+    				totalOfReportedBags:{required:true,number:true},
+    				totalOfBagPushed:{required:true,number:true},
+    				numberOfBagAllowed:{required:true,number:true},
+    				netWeightOfProductAccepted:{required:true,number:true},
+    				sampleCode:{required:true},
+    				numberSAIGIC:{required:true},
+    				
+    				certificationTypeOrProject:{required:true},
+    				tauxHumidite1:{required:true,number:true},
+    				tauxHumidite2:{required:true,number:true},
+    				tauxHumidite3:{required:true,number:true},
+    				
+    				fevesMoisiesPlateau1:{required:true,number:true},
+    				fevesMoisiesPlateau2:{required:true,number:true},
+    				fevesMoisiesPlateau3:{required:true,number:true},
+    				totalFevesMoisies:{required:true,number:true},
+    				pourcentageFevesMoisies:{required:true,number:true},
+    				
+    				fevesArdoiseesPlateau1:{required:true,number:true},
+    				fevesArdoiseesPlateau2:{required:true,number:true},
+    				fevesArdoiseesPlateau3:{required:true,number:true},
+    				totalFevesArdoisees:{required:true,number:true},
+    				pourcentageFevesArdoisees:{required:true,number:true},
+    				
+    				fevesMiteesPlateau1:{required:true,number:true},
+    				fevesMiteesPlateau2:{required:true,number:true},
+    				fevesMiteesPlateau3:{required:true,number:true},
+    				totalFevesMitees:{required:true,number:true},
+    				pourcentageFevesMitees:{required:true,number:true},
+    				
+    				fevesGermeesPlateau1:{required:true,number:true},
+    				fevesGermeesPlateau2:{required:true,number:true},
+    				fevesGermeesPlateau3:{required:true,number:true},
+    				totalFevesGermees:{required:true,number:true},
+    				pourcentageFevesGermees:{required:true,number:true},
+    				
+    				fevesPlatesPlateau1:{required:true,number:true},
+    				fevesPlatesPlateau2:{required:true,number:true},
+    				fevesPlatesPlateau3:{required:true,number:true},
+    				totalFevesPlates:{required:true,number:true},
+    				pourcentageFevesPlates:{required:true,number:true},
+    				
+    				
+    				totalFevesDefectueusesPlateau1:{required:true,number:true},
+    				totalFevesDefectueusesPlateau2:{required:true,number:true},
+    				totalFevesDefectueusesPlateau3:{required:true,number:true},
+    				sommeTotalFevesDefectueuses:{required:true,number:true},
+    				pourcentageTotalFevesDefectueuses:{required:true,number:true},
+    				
+    				fevesViolettePlateau1:{required:true,number:true},
+    				fevesViolettePlateau2:{required:true,number:true},
+    				fevesViolettePlateau3:{required:true,number:true},
+    				totalFevesViolette:{required:true,number:true},
+    				pourcentageFevesViolette:{required:true,number:true},
+    				
+    				moyenneTauxHumidite:{required:true,number:true},
+    				nombreFeves:{required:true,number:true},
+    				fevesPar100g:{required:true,number:true},
+    				poidsBrisures:{required:true,number:true},
+    				pourcentageBrisures:{required:true,number:true},
+    				poidsMatieresEtrangeres:{required:true,number:true},
+    				pourcentageMatieresEtrangeres:{required:true,number:true}
+    			
+    			}
+    			
+    		});
+       		
+       		
+       	});
+     </script>
 </div>

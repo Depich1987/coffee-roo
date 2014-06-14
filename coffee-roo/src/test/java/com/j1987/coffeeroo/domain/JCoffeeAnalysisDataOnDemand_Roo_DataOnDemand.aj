@@ -5,7 +5,6 @@ package com.j1987.coffeeroo.domain;
 
 import com.j1987.coffeeroo.domain.JCoffeeAnalysis;
 import com.j1987.coffeeroo.domain.JCoffeeAnalysisDataOnDemand;
-import com.j1987.coffeeroo.domain.JDealerDataOnDemand;
 import com.j1987.coffeeroo.domain.JExporterDataOnDemand;
 import com.j1987.coffeeroo.domain.JFactoryDataOnDemand;
 import com.j1987.coffeeroo.domain.JLocalizationDataOnDemand;
@@ -32,9 +31,6 @@ privileged aspect JCoffeeAnalysisDataOnDemand_Roo_DataOnDemand {
     private Random JCoffeeAnalysisDataOnDemand.rnd = new SecureRandom();
     
     private List<JCoffeeAnalysis> JCoffeeAnalysisDataOnDemand.data;
-    
-    @Autowired
-    JDealerDataOnDemand JCoffeeAnalysisDataOnDemand.jDealerDataOnDemand;
     
     @Autowired
     JExporterDataOnDemand JCoffeeAnalysisDataOnDemand.jExporterDataOnDemand;
@@ -91,6 +87,7 @@ privileged aspect JCoffeeAnalysisDataOnDemand_Roo_DataOnDemand {
         setPoidsHorsNormesGrainsNoirs(obj, index);
         setPoidsMatieresEtrangeres(obj, index);
         setPoidsSousTotalDechets(obj, index);
+        setPoidsSousTotalGrainsAcceptables(obj, index);
         setPoidsSousTotalHorsNormes(obj, index);
         setPourcentageDechetsCerise(obj, index);
         setPourcentageDechetsCoques(obj, index);
@@ -114,6 +111,7 @@ privileged aspect JCoffeeAnalysisDataOnDemand_Roo_DataOnDemand {
         setPourcentageHorsNormesGrainsNoirs(obj, index);
         setPourcentageMatieresEtrangeres(obj, index);
         setPourcentageSousTotalDechets(obj, index);
+        setPourcentageSousTotalGrainsAcceptables(obj, index);
         setPourcentageSousTotalHorsNormes(obj, index);
         setReference(obj, index);
         setSampleCode(obj, index);
@@ -315,6 +313,11 @@ privileged aspect JCoffeeAnalysisDataOnDemand_Roo_DataOnDemand {
         obj.setPoidsSousTotalDechets(poidsSousTotalDechets);
     }
     
+    public void JCoffeeAnalysisDataOnDemand.setPoidsSousTotalGrainsAcceptables(JCoffeeAnalysis obj, int index) {
+        BigDecimal poidsSousTotalGrainsAcceptables = BigDecimal.valueOf(index);
+        obj.setPoidsSousTotalGrainsAcceptables(poidsSousTotalGrainsAcceptables);
+    }
+    
     public void JCoffeeAnalysisDataOnDemand.setPoidsSousTotalHorsNormes(JCoffeeAnalysis obj, int index) {
         BigDecimal poidsSousTotalHorsNormes = BigDecimal.valueOf(index);
         obj.setPoidsSousTotalHorsNormes(poidsSousTotalHorsNormes);
@@ -428,6 +431,11 @@ privileged aspect JCoffeeAnalysisDataOnDemand_Roo_DataOnDemand {
     public void JCoffeeAnalysisDataOnDemand.setPourcentageSousTotalDechets(JCoffeeAnalysis obj, int index) {
         BigDecimal pourcentageSousTotalDechets = BigDecimal.valueOf(index);
         obj.setPourcentageSousTotalDechets(pourcentageSousTotalDechets);
+    }
+    
+    public void JCoffeeAnalysisDataOnDemand.setPourcentageSousTotalGrainsAcceptables(JCoffeeAnalysis obj, int index) {
+        BigDecimal pourcentageSousTotalGrainsAcceptables = BigDecimal.valueOf(index);
+        obj.setPourcentageSousTotalGrainsAcceptables(pourcentageSousTotalGrainsAcceptables);
     }
     
     public void JCoffeeAnalysisDataOnDemand.setPourcentageSousTotalHorsNormes(JCoffeeAnalysis obj, int index) {

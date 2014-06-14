@@ -7,4 +7,71 @@
         <field:input field="name" id="c_com_j1987_coffeeroo_domain_JBridge_name" z="fGxM1oyHW+15TmYgDlmAR5pnh7c="/>
         <field:select field="factory" id="c_com_j1987_coffeeroo_domain_JBridge_factory" itemLabel="name" itemValue="id" items="${factories}" path="/jfactorys" z="y0+kSnQAA9tIU3h38KdLHShU9lg="/>
     </form:update>
+    <SCRIPT type="text/javascript">
+	function validateBridgeCode(brCode){
+		var isSuccess = false;
+		if(brCode != ''){
+			
+			$.ajax({
+				url:'${validatebridgecode_url}',
+				type:'post',
+				dataType:'json',
+				data:{bridgeCode:brCode},
+				async:false,
+				success:function(a){
+					if (a === true || brCode == '${bridge.code}' ) {
+						isSuccess = true;
+					}
+				},
+				error:function(err,xhr,status){
+					alert('Une Erreur est survenue dans la verification du code Pont!');
+					console.log(err);
+				}
+			});
+		}
+		return isSuccess;
+	}
+    
+    
+    	$(document).ready(function(){
+    		
+    		$.validator.addMethod("checkbridgecode",function(value, element){
+    			return validateBridgeCode(value);
+    		}, 'Ce code Pont est deja utilise!');
+    		
+    		$.validator.addMethod("validateExpressionCode", function(value, element){
+    			var s = element.value;
+    			s.replace(/[\wÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ]/g,"");
+    			return this.optional(element) || /^[a-zA-Z0-9]+$/.test( value );
+    		},"Les caracteres speciaux et/ou accentues ne sont pas acceptes");
+    		
+    		$('#factory').on('change',function(){
+    			var dataValue = $(this).val();
+    			
+    			$.ajax({
+    				url:'${ajaxrequest_url}',
+    				type:'post',
+    				dataType:'text',
+    				data:{factoryId:dataValue},
+    				async:false,
+    				success:function(r){
+    					$('#code').val(r);
+    				},
+    				error:function(err,xhr,status){
+    					alert('Une Erreur est survenue dans la generation automatique du code Pont!');
+    					console.log(err);
+    				}
+    			});
+    			
+    		});
+    		
+    		$('#bridge').validate({
+    			rules:{
+    				name:{required:true},
+    				code:{required:true,checkbridgecode:true, validateExpressionCode:true}
+    			}
+    			
+    		});
+    	});
+    </SCRIPT>
 </div>

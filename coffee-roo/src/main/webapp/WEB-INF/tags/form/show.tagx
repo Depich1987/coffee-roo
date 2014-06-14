@@ -137,9 +137,9 @@
 	          	<jsp:doBody />
 	          </div>
 	          <div class="panel-footer">
-	            <span>
+	            <small>
 	            	<spring:message code="global_sponsored"/>
-	            </span>
+	            </small>
 	          </div>
 	        </c:when>
 	        <c:otherwise>

@@ -40,14 +40,12 @@
               <li>
               	<a href="${administration_url}">
 					<spring:message code="administration_label"/>
-					<span class="glyphicon glyphicon-qrcode pull-right"></span>
 				</a>
               </li>
               
               <li class="active">
               	<a href="${workbench_url}">
 					<spring:message code="workbench_label"/>
-					<span class="glyphicon glyphicon-dashboard pull-right"></span>
 				</a>
               </li>
             </ul>
