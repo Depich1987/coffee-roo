@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" 
+	 xmlns:page="urn:jsptagdir:/WEB-INF/tags/form"
+	 xmlns:form="http://www.springframework.org/tags/form"
+	 xmlns:spring="http://www.springframework.org/tags"
+	 xmlns:c="http://java.sun.com/jsp/jstl/core" 
+	 xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+	 
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    
+    <spring:url value="/workbench/analysis/cocoaanalysis/find" var="findanalysis_url"/>
+    <spring:url value="/workbench/reports/generatereport" var="generate_url"/>
+    <spring:url value="/workbench/reports/findanalysis?form" var="periodicalanalysisreport_url"/>
+    
+    <spring:message code="label_com_j1987_coffeeroo_domain_janalysis" var="analysis_label"/>
+    
+    <h1 class="page-header">
+    	<spring:message code="workbench_periodicalreport" arguments="${analysis_label}"/>
+    </h1>
+    <p>
+	   	<a href="${periodicalanalysisreport_url}" class="btn btn-default">
+	   		<spring:message code="searchresult_newsearch"/>
+	   		<![CDATA[&nbsp;&nbsp;]]>
+	   		<span class="glyphicon glyphicon-search"></span>    	
+	   	</a>
+    </p>
+ 	<div class="panel panel-primary">
+	   	<div class="panel-heading">
+	   		<spring:message code="searchresult_label" arguments="${analysis.size()}"/>
+	   	</div>
+	   	<div class="pane panel-body">
+		    <c:if test="${error != null}">
+			    <div class="alert alert-danger">
+			    	${error}
+			    </div>
+		    </c:if>
+		    <c:if test="${analysis.size() eq 0 }">
+    		  <div class="alert alert-info">
+	          	<spring:message arguments="${analysis_label}" code="entity_not_found" />
+	          </div>
+		    </c:if>
+	   		<c:if test="${analysis.size() gt 0 }">
+		   		<div style="margin-bottom: 15px;">
+		   		    <form:form modelAttribute="filterAnalysisForm" action="${generate_url}" method="get">
+				    	<form:hidden path="factoryFilter" />
+				    	<form:hidden path="productTypeFilter" />
+				    	<form:hidden path="areaFilter" />
+				    	<form:hidden path="statusFilter" />
+				    	<form:hidden path="startDate" />
+				    	<form:hidden path="endDate" />
+				    	<button type="submit" class="btn btn-success">
+				    		Generer Fichier xls 
+				    		<![CDATA[&nbsp;&nbsp;]]>
+				    		<span class="glyphicon glyphicon-cloud-download"></span>
+				    	</button>
+				    </form:form>
+			    </div>
+		        <table:table data="${analysis}" id="l_com_j1987_coffeeroo_domain_JAnalysis" path="/workbench/analysis/cocoaanalysis" z="y4OTI1R9tKs6WFsasyBGOhRSuY4=" delete="false" create="false" update="false" show="false">
+		            <table:column id="c_com_j1987_coffeeroo_domain_JAnalysis_reference" property="reference" z="WU2xee9xMgH9d1jlyTFu2hWHl+0="/>
+		            <table:column id="c_com_j1987_coffeeroo_domain_JAnalysis_status" property="status" z="O68FNC9lwCwz0+br/HJCINCbSG8=" />
+		            <table:column date="true" dateTimePattern="${JAnalysis__dateofanalysis_date_format}" id="c_com_j1987_coffeeroo_domain_JAnalysis_dateOfAnalysis" property="dateOfAnalysis" z="yiycrQEHcIcmqXtxLluDWzmlr+c="/>
+		            <table:column id="c_com_j1987_coffeeroo_domain_JAnalysis_exporterName" property="factoryCode" z="oSFJ0bJovpHxoa/u8WToAuL+6LY="/>
+		            <table:column id="c_com_j1987_coffeeroo_domain_JAnalysis_factoryName" property="factoryName" z="pxrvFD/hdm95CYHdxd9sttQcgQo="/>
+		            <table:column id="c_com_j1987_coffeeroo_domain_JAnalysis_supplierName" property="netWeightOfProductAccepted" z="Ys5tY5I5RjmDhgqAu3B2JOGJrLI="/>
+		        </table:table>
+	        </c:if>
+        </div>
+        <div class="panel-footer">
+           <small>
+           	<spring:message code="global_sponsored"/>
+           </small>
+       	</div>
+  	</div>
+</div>

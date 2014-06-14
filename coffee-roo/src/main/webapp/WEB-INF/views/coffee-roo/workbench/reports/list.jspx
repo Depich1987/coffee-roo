@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" 
+	 xmlns:page="urn:jsptagdir:/WEB-INF/tags/form"
+	 xmlns:form="http://www.springframework.org/tags/form"
+	 xmlns:spring="http://www.springframework.org/tags" 
+	 xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+	 
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    
+    <spring:url value="/workbench/analysis/cocoaanalysis/find" var="findanalysis_url"/>
+    
+    <page:list id="pl_com_j1987_coffeeroo_domain_JAnalysis" items="${cocoaAnalysis}" path="/workbench/analysis/cocoaanalysis" z="UYD+VeoQFBO5TfFPZR/29JF4v/E=">
+        
+        <div style="margin-bottom: 15px;">
+        	<form:form action="${findanalysis_url}" modelAttribute="filterAnalysisForm" method="post" role="form" cssClass="form-inline">
+        		<div class="input-append">
+        		  <label>N* Analyse</label>
+				  <form:input class="form-control" type="text" path="analysisReference"/>
+				  <button class="btn btn-default" type="submit"> Search <span class="gliphicon glyphicon-icon-search"></span></button>
+				</div>
+        	</form:form>
+        </div>
+        <hr />
+        <table:table data="${cocoaAnalysis}" id="l_com_j1987_coffeeroo_domain_JAnalysis" path="/workbench/analysis/cocoaanalysis" z="y4OTI1R9tKs6WFsasyBGOhRSuY4=" delete="false">
+            <table:column id="c_com_j1987_coffeeroo_domain_JAnalysis_reference" property="reference" z="WU2xee9xMgH9d1jlyTFu2hWHl+0="/>
+            <table:column id="c_com_j1987_coffeeroo_domain_JAnalysis_status" property="status" z="O68FNC9lwCwz0+br/HJCINCbSG8=" />
+            <table:column date="true" dateTimePattern="${JAnalysis__dateofanalysis_date_format}" id="c_com_j1987_coffeeroo_domain_JAnalysis_dateOfAnalysis" property="dateOfAnalysis" z="yiycrQEHcIcmqXtxLluDWzmlr+c="/>
+            <table:column id="c_com_j1987_coffeeroo_domain_JAnalysis_exporterName" property="factoryCode" z="oSFJ0bJovpHxoa/u8WToAuL+6LY="/>
+            <table:column id="c_com_j1987_coffeeroo_domain_JAnalysis_factoryName" property="factoryName" z="pxrvFD/hdm95CYHdxd9sttQcgQo="/>
+            <table:column id="c_com_j1987_coffeeroo_domain_JAnalysis_supplierName" property="netWeightOfProductAccepted" z="Ys5tY5I5RjmDhgqAu3B2JOGJrLI="/>
+        </table:table>
+    </page:list>
+</div>
